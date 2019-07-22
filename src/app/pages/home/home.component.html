@@ -1,0 +1,68 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        <i class="lni-chevron-left"></i> Back</a>
+</nav>
+
+
+<section class="main">
+    <div class="row">
+
+        <!--  ..................menu sidebar................................. -->
+        <div class="menu-sidebar">
+            <!-- <p class="menu-title">Drag and Drop to add Section</p> -->
+            <div class="row" >
+                <div class="col-md-6" *ngFor=" let item of icon_field">
+                    <div class="menu-item" draggable="true"  (dragstart)="drag($event)">
+                        <img src="assets/img/icons/{{item.icon}}">
+                        <span> {{item.name}}
+                            <br> {{item.subName}} </span>
+                    </div>
+                </div>
+  
+            </div>
+        </div>
+
+        <!--  ..................form working part................................. -->
+        <div class="working-part" (drop)="drop($event)" 
+        (dragover)="allowDrop($event)">
+            <div class="formtitle">
+                <p class="page-title">This the description which also can be added.</p>
+            </div>
+
+            <div id="header-format">
+                <div class="mb-40">
+                    <input class="name-input" placeholder="Write Your Text Here" aria-invalid="false" style="">
+                </div>
+                <div class="">
+                    <p class="user-answer">Short answer text</p>
+                </div>
+            </div>
+
+            <div id="Short-text-format">
+                <div class="mb-40">
+                    <input class="name-input" placeholder="Write Your Text Here" aria-invalid="false" style="">
+                </div>
+                <div class="#">
+                    <p class="user-answer">Short answer text</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--  ..................property right sidebar................................. -->
+        <div class="property-part">
+
+        </div>
+    </div>
+</section>
+
+
+<a href="#" class="back-to-top">
+    <i class="lni-chevron-up"></i>
+</a>
