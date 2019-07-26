@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { DndModule } from 'ngx-drag-drop';
+import { FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -20,7 +22,11 @@ import { SidebarComponent } from './share/sidebar/sidebar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SweetAlert2Module.forRoot(),
+    FormsModule,
+    AppRoutingModule,
+    DndModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
