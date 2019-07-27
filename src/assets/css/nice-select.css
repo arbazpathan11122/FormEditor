@@ -1,21 +1,21 @@
 .nice-select {
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
-  border-radius: 5px;
-  border: solid 1px #e8e8e8;
+  -border-radius: 5px;
+  border-bottom: dashed 1px #000;
   box-sizing: border-box;
   clear: both;
   cursor: pointer;
   display: block;
-  float: left;
+  -float: left;
   font-family: inherit;
   font-size: 14px;
   font-weight: normal;
-  height: 42px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: none;
-  padding-left: 18px;
-  padding-right: 30px;
+ -padding-left: 18px;
+  -padding-right: 30px;
   position: relative;
   text-align: left !important;
   -webkit-transition: all 0.2s ease-in-out;
@@ -136,3 +136,12 @@
 
 .no-csspointerevents .nice-select.open .list {
   display: block; }
+
+  .box-nice-select{
+    border-radius: 5px !important;
+    border: solid 1px #cccccc !important;
+    padding-left: 18px;
+    padding-right: 30px;
+    height: 40px;
+    line-height: 40px;
+  }
