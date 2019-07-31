@@ -10,6 +10,7 @@ import { LoginComponent } from './share/login/login.component';
 import { NavComponent } from './share/nav/nav.component';
 import { FooterComponent } from './share/footer/footer.component';
 import { SidebarComponent } from './share/sidebar/sidebar.component';
+import { FormViewComponent } from './pages/form-view/form-view.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SidebarComponent } from './share/sidebar/sidebar.component';
     NavComponent,
     FooterComponent,
     SidebarComponent,
+    FormViewComponent,
   ],
   imports: [
     BrowserModule,

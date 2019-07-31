@@ -109,7 +109,8 @@
 	overflow: hidden;
 	box-shadow: 0 1px 6px 0 rgba(101, 95, 95, 0.18);
 	height: 100%;
-	margin: auto;
+  margin: auto;
+  background: #ffffff;
 }
 .working-part .active{
      background-color: #f9f9f9
@@ -145,33 +146,7 @@
 
 
 /*-------------formats-------------*/
-#Short-text-format{
-	 padding: 40px;
-}
-#Long-text-format{
-	 padding:40px;
-}
-#phone-number-format{
-	 padding: 40px;
-}
-#Website-format{
-	 padding: 40px;
-}
-#Date-format{
-	 padding:40px;
-}
-#Yes-No-format{
-	 padding: 40px;
-}
-#Upload-format{
-	 padding: 40px;
-}
-#email-format{
-	 padding: 40px;
-}
-#Rating-format{
-	padding: 40px
-}
+
 
 /*-----rating css-------*/
 fieldset, label { margin: 0; padding: 0; }
@@ -218,7 +193,6 @@ fieldset, label { margin: 0; padding: 0; }
 
 /*-------------property part-------------*/
 .property-part{
-	-border:1px solid yellow;
     height: calc(100vh - 50px);
     position: fixed;
     overflow-y:auto;
