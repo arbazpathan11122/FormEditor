@@ -130,6 +130,8 @@
 }
 .file-name{
   list-style-type: none;
+  padding-left:0px;
+  text-align: center;
 }
 .file-name li{
   color: #676767;
@@ -242,7 +244,7 @@ fieldset, label { margin: 0; padding: 0; }
 .part-title{
 	-border:1px solid red;
 	margin-bottom:15px;
-	font-size: 13px;
+	font-size: 15px;
 }
 .add-new-property a{
 	padding:5px;

@@ -3,7 +3,7 @@ import { icons_and_fields } from '../../class/data';
 import swal from 'sweetalert2';
 import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
 import { field, value } from 'src/app/class/global.model';
-
+declare const $:any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -35,6 +35,11 @@ export class HomeComponent implements OnInit {
 
 
   constructor() {
+    setTimeout(() => {
+      $('[data-toggle="tooltip"]').tooltip();
+      // .tooltip();   
+      
+    }, 0);
 
 
   }

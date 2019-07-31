@@ -10,21 +10,21 @@
 
 
 <div class="main">
-    <div class="row">
-        <div class="col-lg-3 menu-sidebar">
+    <div class="row col-12">
+        <div class="col-3 menu-sidebar">
             <ul class="file-name">
                 <li><i class="fa fa-home"></i> Here comes filename</li>
             </ul>
             <p class="menu-title text-center">Drag or Double click to add section</p>
             <div class="row m-auto ">
-                <!-- <div class="col-lg-6"> -->
-                <div class="menu-item col-md-6" *ngFor=" let item of iconField ">
-                    <div class="row m-auto" [dndDraggable]="item" [dndEffectAllowed]="'copy'"
+                <!-- <div class="col-6"> -->
+                <div class="menu-item col-6" *ngFor=" let item of iconField ">
+                    <div  data-toggle="tooltip" title="Hooray!" class="row m-auto" [dndDraggable]="item" [dndEffectAllowed]="'copy'"
                         (dndEnd)="onDragEnd($event)">
-                        <div class="col-md-4">
+                        <div class="col-4">
                             <img src="assets/img/icons/{{item.icon}}">
                         </div>
-                        <div class="col-md-8 pl-2 pr-0">
+                        <div class="col-8 pl-2 pr-0">
                             <span> {{item.name}}
                                 <br> {{item.subName}} </span>
                         </div>
@@ -34,7 +34,7 @@
 
             </div>
         </div>
-        <div class="col-lg-6 col-md-12 p-0  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <div class="col-6 p-0  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
 
             <div class="form-group" style="margin-bottom: 0px !important; padding: 30px 60px 5px 60px;"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
@@ -394,7 +394,7 @@
         </div>
 
 
-        <div class="col-lg-3 col-md-12 property-part">
+        <div class="col-3 property-part">
             <div class="property-tab">
                 <ul class="nav nav-pills navtab-bg nav-justified">
                     <li class="nav-item">
@@ -484,13 +484,13 @@
                         <div class="response-validation mt-3 mb-3">
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadio1"> &nbsp Response
+                                <label class="custom-control-label" for="customRadio1"> &nbsp; Response
                                     Validation</label>
                             </div>
                         </div>
 
                         <div class="row required-inputs">
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <div class="user-input mb-3">
                                     <select name="put a velue">
                                         <option value="volvo">Number</option>
@@ -499,7 +499,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <div class="user-input mb-3">
                                     <select name="put a velue">
                                         <option value="volvo">Greater Than</option>
@@ -508,19 +508,19 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <div class="user-input mb-3">
                                     <input class="name-input" placeholder="256" aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-12">
                                 <div class="user-input mb-3">
                                     <input class="name-input" placeholder="Custom error text" aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <div class="user-input mb-3">
                                     <select name="put a velue">
                                         <option value="volvo">Select atleast</option>
@@ -529,13 +529,13 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <div class="user-input mb-3">
                                     <input class="name-input" placeholder="2" aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div class="col-md-7">
+                            <div class="col-7">
                                 <div class="user-input mb-3">
                                     <select name="put a velue">
                                         <option value="volvo">Only available in</option>
@@ -544,7 +544,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-5">
                                 <div class="user-input mb-3">
                                     <select name="put a velue">
                                         <option value="volvo">Country</option>
@@ -553,7 +553,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-7">
+                            <div class="col-7">
                                 <div class="user-input mb-3">
                                     <select name="put a velue">
                                         <option value="volvo">Accept only</option>
@@ -562,7 +562,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-5">
                                 <div class="user-input mb-3">
                                     <select name="put a velue">
                                         <option value="volvo">After</option>
@@ -571,7 +571,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <div class="user-input mb-3">
                                     <input class="name-input" type="date" placeholder="date" aria-invalid="false">
                                 </div>
@@ -647,6 +647,3 @@
 
 </div>
 
-<a href="#" class="back-to-top">
-    <i class="lni-chevron-up"></i>
-</a>
