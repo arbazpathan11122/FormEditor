@@ -20,7 +20,8 @@
                 <!-- <div class="col-6"> -->
                 <div class="menu-item col-6" *ngFor=" let item of iconField ">
                     <div data-toggle="tooltip" title="Hooray!" class="row m-auto" [dndDraggable]="item"
-                        [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)">
+                        [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)"
+                        (dblclick)="dblclickMove($event ,model.attributes, item)">
                         <div class="col-4">
                             <img src="assets/img/icons/{{item.icon}}">
                         </div>
@@ -38,10 +39,10 @@
 
             <div class="form-group" style="margin-bottom: 0px !important; padding: 30px 60px 5px 60px;"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
-                <!-- <h2>
+                <h2>
                     <input class="form-control" type="text" [(ngModel)]="model.name" />
                 </h2>
-                <input class="form-control" type="text" [(ngModel)]="model.description" /> -->
+                <input class="form-control" type="text" [(ngModel)]="model.description" />
 
                 <div class="formtitle">
                     <!-- <h5>Hey, This is the welcome section of the form.</h5> -->
@@ -157,24 +158,25 @@
                         <div class="col-md-1">
                             <i class="fa fa-ellipsis-v dndHandle"></i>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-9 ">
 
                             <div *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')"
                                 id="Header-format">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" type="text" [(ngModel)]="item.label" aria-invalid="false">
+                                    <input class="name-input " type="text" [(ngModel)]="item.label"
+                                        aria-invalid="false">
                                 </div>
                             </div>
 
                             <div *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')"
                                 id="email-format">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" type="{{item.type}}"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
+                                        aria-invalid="false">
                                 </div>
-                                <div  class="user-input">
+                                <div class="user-input">
                                     <input class="name-input" placeholder="{{item.placeholder}}"
-                                        [(ngModel)]="item.placeholder"  [pattern]="item.regex" aria-invalid="false">
+                                        [(ngModel)]="item.placeholder" [pattern]="item.regex" aria-invalid="false">
                                 </div>
                             </div>
                             <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'" id="Yes-No-format">
@@ -191,17 +193,17 @@
                                 </div>
                             </div>
 
-                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')" id="Short-text-format">
+                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')"
+                                id="Short-text-format">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" 
-                                        [(ngModel)]="item.value" aria-invalid="false">
+                                    <input class="name-input" [(ngModel)]="item.value" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input class="name-input" placeholder="{{item.placeholder}}" aria-invalid="false">
                                 </div>
                             </div>
 
-                         
+
 
 
 
@@ -215,7 +217,7 @@
                                 </div>
                             </div>
 
-                           
+
 
 
                             <!-- <div *ngIf="item.type=='number'">
@@ -286,7 +288,8 @@
                             </div> -->
                         </div>
                         <div class="col-md-2">
-                            <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                            <i *ngIf="item.toggle" (click)="item.toggle=false; currentValidation(item)"
+                                class="fa fa-chevron-up pull-right"></i>
                             <i *ngIf="!item.toggle" (click)="item.toggle=true"
                                 class="fa fa-chevron-down pull-right"></i>
                             <i (click)="removeField(i)" class="fa fa-trash pull-right"></i>
@@ -408,19 +411,19 @@
             <div class="property-tab">
                 <ul class="nav nav-pills navtab-bg nav-justified">
                     <li class="nav-item">
-                        <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                        <a href="#Properties" data-toggle="tab" aria-expanded="false" class="nav-link ">
                             Properties
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#profile1" data-toggle="tab" aria-expanded="true" class="nav-link">
+                        <a href="#Settings" data-toggle="tab" aria-expanded="true" class="nav-link active">
                             Settings
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content mt-20">
-                    <div class="tab-pane active" id="home1">
-
+                    <div class="tab-pane show" id="Properties">
+<!-- 
                         <div class="nice-select wide box-nice-select mt-3" tabindex="0">
                             <span class="current">Short Text Format</span>
                             <ul class="list">
@@ -428,13 +431,19 @@
                                 <li data-value="3" class="option">A disabled option</li>
                                 <li data-value="4" class="option">Potato</li>
                             </ul>
-                        </div>
+                        </div> -->
 
-                        <div class="required-part mt-4 mb-4">
-                            <label class="switch">
+                        <div *ngIf="selectedItem" class="required-part mt-4 mb-4">
+                            <i *ngIf="selectedItem?.required" (click)="selectedItem.required=false"
+                                class="fa fa-toggle-on red"></i>
+                            <i *ngIf="!selectedItem?.required" (click)="selectedItem.required=true"
+                                class="fa fa-toggle-off"></i>
+                            <!-- <label class="switch">
                                 <input type="checkbox">
                                 <span class="slider round"></span>
-                            </label> &nbsp; Required
+                            </label> &nbsp; Required -->
+                            <label>Required</label>
+
 
                             <div class="float-right required-icons">
                                 <a href="#">
@@ -445,7 +454,7 @@
                                 </a>
                             </div>
                         </div>
-
+<!-- 
                         <div class="text-property mt-4 mb-4">
                             <h6 class="part-title">Text properties</h6>
 
@@ -489,7 +498,7 @@
                                 <img src="assets/img/icons/Button.png">
                                 <span>Button</span>
                             </a>
-                        </div>
+                        </div> -->
 
                         <div class="response-validation mt-3 mb-3">
                             <div class="custom-control custom-radio">
@@ -518,15 +527,22 @@
                                 </div>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-6" *ngIf="selectedItem.min">
                                 <div class="user-input mb-3">
-                                    <input class="name-input" placeholder="256" aria-invalid="false">
+                                    <p>Min Char</p>
+                                    <input class="name-input" [(ngModel)]="selectedItem.min" aria-invalid="false">
+                                </div>
+                            </div>
+                            <div class="col-6" *ngIf="selectedItem?.mix">
+                                <div class="user-input mb-3">
+                                    <p>Max Char</p>
+                                    <input class="name-input" [(ngModel)]="selectedItem.mix" aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div class="col-12">
+                            <div class="col-12" *ngIf="selectedItem?.errorText">
                                 <div class="user-input mb-3">
-                                    <input class="name-input" placeholder="Custom error text" aria-invalid="false">
+                                    <input class="name-input" [(ngModel)]="selectedItem.errorText" aria-invalid="false">
                                 </div>
                             </div>
 
@@ -592,7 +608,7 @@
                     </div>
 
 
-                    <div class="tab-pane show" id="profile1">
+                    <div class="tab-pane active " id="Settings">
 
                         <label class="nice-lable">Font</label>
                         <div class="nice-select box-nice-select wide mb-3" tabindex="0">
@@ -607,12 +623,12 @@
                         <div class="theme-setting-color mt-5">
                             <div class="que-color mb-2">
                                 <p>Question color</p>
-                                <input type="color" class="input-lg" value="#ddd">
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.bgColor" value="#ddd">
                             </div>
 
                             <div class="que-color mb-2">
                                 <p>Answer color</p>
-                                <input type="color" class="input-lg" value="#ddd">
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.textColor" value="#ddd">
                             </div>
 
                             <div class="que-color mb-2">

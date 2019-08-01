@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
     value: ''
   };
   success = false;
-
-
+  showProperties = false;
+  selectedItem: any = {};
   modelFields: Array<field> = [];
   model: any = {
     name: 'App name...',
@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
   drop(event) {
 
   }
+
   onDragStart(event: DragEvent) {
     console.log('drag started', JSON.stringify(event, null, 2));
   }
@@ -85,7 +86,7 @@ export class HomeComponent implements OnInit {
     console.log('dragover', JSON.stringify(event, null, 2));
   }
 
-  onDrop(event: DndDropEvent, list?: any[]) {
+  onDrop(event: DndDropEvent, list?: any[], ) {
     console.log(event);
     console.log(list);
 
@@ -102,7 +103,17 @@ export class HomeComponent implements OnInit {
       list.splice(index, 0, event.data);
     }
   }
+  dblclickMove(event: DndDropEvent, list: any, item: any) {
+    list.splice(list.length, 0, item);
 
+  }
+  currentValidation(item) {
+    console.log(item);
+    this.showProperties = true;
+    console.log(this.showProperties);
+    this.selectedItem = item;
+
+  }
   addValue(values) {
     values.push(this.value);
     this.value = { label: '', value: '' };

@@ -6,6 +6,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'header.png',
         fielType: 'header',
+        errorText: 'Custom Error Field',
         label: 'Enter Your Heading',
         type: 'text',
         handle: true
@@ -20,7 +21,7 @@ export const icons_and_fields = [
         fielType: 'shortText',
         value: 'Enter your Discription here',
         placeholder: 'Short Answer Text',
-
+        errorText: 'maximum 256 charector are allowed',
         min: 0,
         max: 256,
         handle: true
@@ -34,6 +35,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'statement.png',
         fielType: 'statement',
+        errorText: 'Custom Error Field',
         label: 'Enter your Statement here',
         type: 'text',
         handle: true
@@ -46,6 +48,7 @@ export const icons_and_fields = [
         subName: 'Number',
         icon: 'mobile_no.png',
         fielType: 'phone',
+        errorText: 'Custom Error Field',
         type: 'text',
         label: 'Enter Your Phone',
         required: true,
@@ -62,6 +65,7 @@ export const icons_and_fields = [
         subName: 'Choice',
         icon: 'picture_format.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
 
     {
@@ -70,6 +74,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'mail.png',
         fielType: 'email',
+        errorText: 'Custom Error Field',
         type: 'email',
         required: true,
         label: 'Email',
@@ -86,6 +91,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'dropdown.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
 
     {
@@ -94,6 +100,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'file_upload.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
 
     {
@@ -102,6 +109,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'yes_no.png',
         fielType: 'yesNo',
+        errorText: 'Custom Error Field',
         label: 'Are you married ?',
         inputValue: '',
         values: ['Yes', 'No'],
@@ -113,6 +121,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'payment.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
     {
         id: 11,
@@ -120,6 +129,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'true_false.png',
         fielType: 'trueFalse',
+        errorText: 'Custom Error Field',
         label: 'Are you married ?',
         inputValue: '',
         values: ['True', 'False'],
@@ -132,6 +142,7 @@ export const icons_and_fields = [
         subName: 'Choie',
         icon: 'multiple_choice.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
 
     {
@@ -140,6 +151,7 @@ export const icons_and_fields = [
         subName: 'Scale',
         icon: 'rating.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
 
     {
@@ -148,6 +160,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'long_text.png',
         fielType: 'longText',
+        errorText: 'Custom Error Field',
         value: 'Enter your Discription here',
         placeholder: 'Long Answer Text',
         min: 0,
@@ -162,6 +175,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'website.png',
         fielType: 'website',
+        errorText: 'Custom Error Field',
         type: 'url',
         required: true,
         label: 'Enter your website Link here',
@@ -179,6 +193,7 @@ export const icons_and_fields = [
         type: 'date',
         icon: 'date.png',
         fielType: '',
+        errorText: 'Custom Error Field',
         placeholder: 'Date',
         className: 'form-control'
     },
@@ -189,6 +204,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'footer.png',
         fielType: 'footer',
+        errorText: 'Custom Error Field',
         type: 'text',
         label: 'footer content',
         handle: true
@@ -201,6 +217,7 @@ export const icons_and_fields = [
         subName: 'Dropdown',
         icon: 'conditional_dropdown.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
 
 
@@ -210,6 +227,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'table.png',
         fielType: '',
+        errorText: 'Custom Error Field',
     },
 
 
