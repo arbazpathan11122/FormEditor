@@ -1,4 +1,6 @@
+// tslint:disable-next-line:class-name
 export class field {
+  // tslint:disable-next-line:variable-name
   _id?: any;
   name?: any;
   type?: any;
