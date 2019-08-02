@@ -73,12 +73,24 @@
           <input class="name-input" disabled placeholder="Are you married ?" aria-invalid="false">
         </div>
         <div class="user-input">
-          <label class="checkbox-inline mr-4">
-            <input type="checkbox" value="">&nbsp; Yes
+          <!-- <label class="checkbox-inline mr-4 ">
+            <input type="radio" class="custom-control-input" id="customRadio" name="example" value="customEx">&nbsp; Yes
           </label>
           <label class="checkbox-inline">
-            <input type="checkbox" value="">&nbsp; No
-          </label>
+            <input type="radio" class="custom-control-input" id="customRadio2" name="example2">&nbsp; No
+          </label> -->
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="customRadio1" name="example1">
+            <label class="custom-control-label" for="customRadio1">Yes</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="customRadio2" name="example1">
+            <label class="custom-control-label" for="customRadio2">No</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="customRadio3" name="example1">
+            <label class="custom-control-label" for="customRadio3">Maybe</label>
+          </div>
         </div>
       </div>
 
@@ -136,7 +148,7 @@
             </div>
             <div class="col-5">
               <select name="Star">
-                <option value="Star"> <i class="fa fa-star-o" aria-hidden="true"></i> &nbsp; Star</option>
+                <option value="Star">Star</option>
                 <option value="Smiley">Smiley</option>
                 <option value="Sun">Sun</option>
                 <option value="Heart">Heart</option>
@@ -156,7 +168,6 @@
         <div class="mb-3 maker-input">
           <textarea class="form-control form-statement" rows="2" spellcheck="false"
             placeholder="you can achieve anything if you want in life. Dreems should be seen by open eyes if they are meant to be completed"></textarea>
-          <!-- <input class="name-input form-statement" disabled placeholder="you can achieve anything if you want in life. Dreems should be seen by open eyes if they are meant to be completed" aria-invalid="false"> -->
         </div>
       </div>
 
@@ -186,26 +197,60 @@
           <div class="add-picture">
             <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
             <input class="name-input mb-2" placeholder="Website" aria-invalid="false">
-            <p class="right-img right-ico">image_1234</p>
+            <p class="right-img right-ico">image_1234 &nbsp; &nbsp; <i class="fa fa-times" aria-hidden="true"></i></p>
           </div>
 
           <div class="add-picture">
               <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
               <input class="name-input mb-2" placeholder="Application" aria-invalid="false">
-              <p class="right-img right-ico">image_1234</p>
+              <p class="right-img right-ico">image_1234 &nbsp; &nbsp; <i class="fa fa-times" aria-hidden="true"></i></p>
             </div>
 
-            <div class="add-picture" style="width: 60%">
+            <div class="add-picture">
                 <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
-                <input class="name-input mb-2" placeholder="Add option" aria-invalid="false">
-               <button type="button" class="btn btn-light right-ico">Upload file</button>
+                <input style="width: 50%" class="name-input mb-2" placeholder="Add option" aria-invalid="false">
+                <input  style="width: 40%" type="file" class="right-ico form-control-file" >
               </div>
         </div>
       </div>
 
 
+      <div id="conditional-dropdown-format">
+        <div class="mb-3 maker-input">
+          <input class="name-input" placeholder="This is the conditional format.*" aria-invalid="false">
+        </div>
+        <div class="user-input">
+          <div class="row">
+             <div class="col-4">
+                <div  class="add-condi-dropdown">
+                    <i aria-hidden="true" class="fa left-ico">1</i>
+                  <input  aria-invalid="false" class="name-input mb-2" placeholder="I am invincible.">
+                  <i  aria-hidden="true" class="fa fa-times right-ico"></i>
+                </div>
+             </div>
 
+             <div class="col-4">
+                <div class="add-condi-dropdown">
+                    <i aria-hidden="true" class="fa left-ico">1. a.</i> 
+                    <input aria-invalid="false" class="name-input mb-2" placeholder="I am invincible.">
+                    <i aria-hidden="true" class="fa fa-times right-ico"></i>
+                  </div>
+             </div>
 
+             <div class="col-4">
+                <div class="add-condi-dropdown">
+                    <i aria-hidden="true" class="fa fa-chevron-down left-ico"></i> 
+                    <input aria-invalid="false" class="name-input mb-2" placeholder="I am invincible.">
+             </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="justify-content-center d-flex" id="submit-part">
+        <button type="button" class="btn btn-primary">Save</button> &nbsp; &nbsp; &nbsp;
+        <button type="button" class="btn btn-light">Next</button>
+      </div>
+
   </div>
 </div>

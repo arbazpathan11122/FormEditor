@@ -27,7 +27,6 @@
     border:none;
     width: 100%;
     box-sizing: border-box;
-    font-family: poppins,sans-serif;
     color: #151948;
     font-size: 16px;
 }
@@ -189,6 +188,11 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
 
+.form-header{
+  font-size:22px !important;
+  font-weight: 600;
+  color:#000000;
+}
 
 
 /*-------------property part-------------*/
@@ -235,7 +239,7 @@ fieldset, label { margin: 0; padding: 0; }
 	height:25px;
 }
 .required-part{
-	-border:1px solid red;
+	line-height: 18px;
 }
 .required-part .switch {
   position: relative;

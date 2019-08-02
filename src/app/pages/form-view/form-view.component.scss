@@ -21,6 +21,9 @@
 #dropdown-format{
     padding: 40px;
 }
+#conditional-dropdown-format{
+    padding: 40px;
+}
 #picture-choice-format{
     padding: 40px;
 }
@@ -62,7 +65,16 @@ font-size: 20px
     padding-left: 25px;
     border-bottom: 1px solid #cccccc
 }
-
+.add-dropdown .numbering{
+    position: relative;
+    top: 26px;
+}
+#conditional-dropdown-format .add-dropdown .right-ico{
+    right: 0;
+    position: absolute;
+    top:30px;
+    color: #6c757d;
+}
 .add-picture{
     padding-bottom: 5px;
     position: relative;
@@ -93,4 +105,31 @@ font-size: 20px
     border:2px dashed #dddddd;
     padding: 5px 10px;;
     margin-left: 20px;
+}
+#submit-part{
+    padding: 40px
+}
+#submit-part .btn{
+    padding: 7px 20px;
+}
+.add-condi-dropdown{
+    padding-bottom: 5px;
+    position: relative;
+    display: inline-block;
+}
+.add-condi-dropdown .left-ico{
+    float: left;
+    position: relative;
+    top:20px;
+    color: #6c757d;
+}
+.add-condi-dropdown .right-ico{
+    right: 0;
+    position: absolute;
+    top:20px;
+    color: #6c757d;
+}
+.add-condi-dropdown input{
+    padding-left: 30px;
+    border-bottom: 1px solid #cccccc
 }

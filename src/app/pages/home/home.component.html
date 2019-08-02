@@ -36,17 +36,23 @@
         </div>
         <div class="col-6 p-0  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
 
-            <div class="form-group" style="margin-bottom: 0px !important; padding: 30px 60px 5px 60px;"
+            <div class="form-group" style="margin-bottom: 0px !important;"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
-                <h2>
+                <!-- <h2>
                     <input class="form-control" type="text" [(ngModel)]="model.name" />
                 </h2>
-                <input class="form-control" type="text" [(ngModel)]="model.description" />
+                <input class="form-control" type="text" [(ngModel)]="model.description" /> -->
 
                 <div class="formtitle">
-                    <h5>Hey, This is the welcome section of the form.</h5>
-                    <span class="page-title">This the description which also can be added.</span>
-                </div>
+                    <div class="mb-2 maker-input">
+                      <input class="name-input form-header" placeholder="Hey, This is the welcome section of the form"
+                        aria-invalid="false">
+                    </div>
+                    <div class="maker-input">
+                        <input class="name-input" placeholder="This the discription which also can be added."
+                          aria-invalid="false">
+                      </div>
+                  </div>
 
                 <div class="active" id="Short-text-format">
                     <div class="mb-3 maker-input">
@@ -94,8 +100,11 @@
                         <label class="checkbox-inline mr-4">
                             <input type="checkbox" value="">&nbsp; Yes
                         </label>
-                        <label class="checkbox-inline">
+                        <label class="checkbox-inline mr-4">
                             <input type="checkbox" value="">&nbsp; No
+                        </label>
+                        <label class="checkbox-inline mr-4">
+                            <input type="checkbox" value="">&nbsp; Maybe
                         </label>
                     </div>
                 </div>
