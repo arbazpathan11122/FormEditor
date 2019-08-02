@@ -55,7 +55,6 @@ export const icons_and_fields = [
         placeholder: 'Enter your phone number',
         inputValue: '',
         regex: '[789][0-9]{9}',
-        errorText: 'Please enter a valid phone number',
         handle: true
     },
 
@@ -74,7 +73,6 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'mail.png',
         fielType: 'email',
-        errorText: 'Custom Error Field',
         type: 'email',
         required: true,
         label: 'Email',
@@ -182,7 +180,6 @@ export const icons_and_fields = [
         inputValue: '',
         placeholder: 'Enter your website link',
         // regex: '^[\da-fA-F]{2}([-:])([\da-fA-F]{2}\1){4}[\da-fA-F]{2}',
-        errorText: 'Please enter a valid email',
         handle: true
     },
 
