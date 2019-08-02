@@ -19,7 +19,7 @@
             <div class="row m-auto ">
                 <!-- <div class="col-6"> -->
                 <div class="menu-item col-6" *ngFor=" let item of iconField ">
-                    <div data-toggle="tooltip" title="Hooray!" class="row m-auto" [dndDraggable]="item"
+                    <div data-toggle="tooltip" title="{{item.tooltip}}" class="row m-auto" [dndDraggable]="item"
                         [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)"
                         (dblclick)="dblclickMove($event ,model.attributes, item)">
                         <div class="col-4">
