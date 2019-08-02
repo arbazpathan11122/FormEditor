@@ -24,7 +24,6 @@ import { FormViewComponent } from './pages/form-view/form-view.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
     AppRoutingModule,

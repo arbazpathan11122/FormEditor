@@ -3,7 +3,7 @@ import { icons_and_fields } from '../../class/data';
 import swal from 'sweetalert2';
 import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
 import { field, value } from 'src/app/class/global.model';
-declare const $:any;
+declare const $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
     value: ''
   };
   success = false;
-
-
+  showProperties = false;
+  selectedItem: any = {};
   modelFields: Array<field> = [];
   model: any = {
     name: 'App name...',
@@ -37,8 +37,7 @@ export class HomeComponent implements OnInit {
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
-      // .tooltip();   
-      
+
     }, 0);
 
 
@@ -48,6 +47,14 @@ export class HomeComponent implements OnInit {
 
 
   }
+  allowDrop(event) {
+
+  }
+
+  drop(event) {
+
+  }
+
   onDragStart(event: DragEvent) {
     console.log('drag started', JSON.stringify(event, null, 2));
   }
@@ -79,7 +86,11 @@ export class HomeComponent implements OnInit {
     console.log('dragover', JSON.stringify(event, null, 2));
   }
 
-  onDrop(event: DndDropEvent, list?: any[]) {
+  onDrop(event: DndDropEvent, list?: any[], ) {
+    console.log(event);
+    console.log(list);
+
+
     if (list && (event.dropEffect === 'copy' || event.dropEffect === 'move')) {
 
       if (event.dropEffect === 'copy') {
@@ -92,7 +103,17 @@ export class HomeComponent implements OnInit {
       list.splice(index, 0, event.data);
     }
   }
+  dblclickMove(event: DndDropEvent, list: any, item: any) {
+    list.splice(list.length, 0, item);
 
+  }
+  currentValidation(item) {
+    console.log(item);
+    this.showProperties = true;
+    console.log(this.showProperties);
+    this.selectedItem = item;
+
+  }
   addValue(values) {
     values.push(this.value);
     this.value = { label: '', value: '' };

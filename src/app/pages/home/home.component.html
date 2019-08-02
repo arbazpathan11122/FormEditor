@@ -19,8 +19,9 @@
             <div class="row m-auto ">
                 <!-- <div class="col-6"> -->
                 <div class="menu-item col-6" *ngFor=" let item of iconField ">
-                    <div  data-toggle="tooltip" title="Hooray!" class="row m-auto" [dndDraggable]="item" [dndEffectAllowed]="'copy'"
-                        (dndEnd)="onDragEnd($event)">
+                    <div data-toggle="tooltip" title="Hooray!" class="row m-auto" [dndDraggable]="item"
+                        [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)"
+                        (dblclick)="dblclickMove($event ,model.attributes, item)">
                         <div class="col-4">
                             <img src="assets/img/icons/{{item.icon}}">
                         </div>
@@ -44,25 +45,23 @@
                 <input class="form-control" type="text" [(ngModel)]="model.description" /> -->
 
                 <div class="formtitle">
-                    <div class="mb-2 maker-input">
-                      <input class="name-input form-header" placeholder="Hey, This is the welcome section of the form"
-                        aria-invalid="false">
+                    <!-- <h5>Hey, This is the welcome section of the form.</h5> -->
+                    <!-- <input class="name-input" placeholder="Short Answer Text" aria-invalid="false"> -->
+                    <div class="mb-3 maker-input">
+                        <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
                     </div>
-                    <div class="maker-input">
-                        <input class="name-input" placeholder="This the discription which also can be added."
-                          aria-invalid="false">
-                      </div>
-                  </div>
+                    <!-- <span class="page-title">This the description which also can be added.</span> -->
+                </div>
 
-                <div class="active" id="Short-text-format">
+                <!-- <div class="active" id="Short-text-format">
                     <div class="mb-3 maker-input">
                         <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
                     </div>
                     <div style="width: 50%" class="user-input">
                         <input class="name-input" placeholder="Short Answer Text" aria-invalid="false">
                     </div>
-                </div>
-
+                </div> -->
+                <!-- 
                 <div id="Long-text-format">
                     <div class="mb-3 maker-input">
                         <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
@@ -147,28 +146,7 @@
                             <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
                     </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                </div> -->
 
 
             </div>
@@ -180,43 +158,72 @@
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, model.attributes, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
                     <div class="row form-group" dndHandle>
-                        <div class="col-1">
+                        <div class="col-md-1">
                             <i class="fa fa-ellipsis-v dndHandle"></i>
                         </div>
-                        <div class="col-7">
-                            <!-- <i [ngClass]="item.icon" class="fa pull-left"></i>
-                <h5>{{item.label}}
-                <span *ngIf="item.required" class="red">*</span></h5> -->
-                            <div *ngIf="item.type=='text'">
-                                <label>{{item.label}}</label>
-                                <label *ngIf="item.required" class="text-danger">*</label>
-                                <input type="text" class="form-control" id="{{item.name}}"
-                                    placeholder="{{item.placeholder}}">
-                            </div>
-                            <!-- <div *ngIf="item.type=='email'">
-                                <label>{{item.label}}</label>
-                                <label *ngIf="item.required" class="text-danger">*</label>
-                                <input type="email" class="form-control" id="{{item.name}}"
-                                    placeholder="{{item.placeholder}}"> -->
+                        <div class="col-md-9 ">
 
-
-                            <div *ngIf="item.type=='email'" id="email-format">
+                            <div *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')"
+                                id="Header-format">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" type="text" id="{{item.name}}" [(ngModel)]="item.label"
-                                        aria-invalid="false"> <label *ngIf="item.required" class="text-danger">*</label>
-                                </div>
-                                <div style="width: 50%" class="user-input">
-                                    <input class="name-input" [(ngModel)]="item.placeholder" aria-invalid="false">
+                                    <input class="name-input " type="text" [(ngModel)]="item.label"
+                                        aria-invalid="false">
                                 </div>
                             </div>
-                            <!-- </div> -->
-                            <div *ngIf="item.type=='phone'">
-                                <label>{{item.label}}</label>
-                                <label *ngIf="item.required" class="text-danger">*</label>
-                                <input type="text" class="form-control" id="{{item.name}}"
-                                    placeholder="{{item.placeholder}}">
+
+                            <div *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')"
+                                id="email-format">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
+                                        aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <input class="name-input" placeholder="{{item.placeholder}}"
+                                        [(ngModel)]="item.placeholder" [pattern]="item.regex" aria-invalid="false">
+                                </div>
                             </div>
-                            <div *ngIf="item.type=='number'">
+                            <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'" id="Yes-No-format">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input disabled">
+                                    <label class="checkbox-inline mr-4">
+                                        <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[0]}}
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[1]}}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')"
+                                id="Short-text-format">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input" [(ngModel)]="item.value" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <input class="name-input" placeholder="{{item.placeholder}}" aria-invalid="false">
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div *ngIf="item.fielType=='date'" id="Date-format">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input" placeholder="How old are you ?" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <input style="width:25%" class="name-input" disabled placeholder="12 / DD / YYYY"
+                                        aria-invalid="false" id="datepicker">
+                                </div>
+                            </div>
+
+
+
+
+                            <!-- <div *ngIf="item.type=='number'">
                                 <label>{{item.label}}</label>
                                 <label *ngIf="item.required" class="text-danger">*</label>
                                 <input type="number" class="form-control" id="{{item.name}}" min="{{item.min}}"
@@ -256,7 +263,6 @@
                                 <select class="form-control" id="{{item.name}}">
                                     <option *ngFor="let v of item.values" [value]="v.value">{{v.label}}</option>
                                 </select>
-                                <!-- <small class="form-text text-muted">{{item.description}}</small> -->
                             </div>
                             <div *ngIf="item.type=='checkbox'">
                                 <label>{{item.label}}</label>
@@ -282,16 +288,17 @@
                             <div *ngIf="item.type=='button'" class="btn-cont">
                                 <input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}"
                                     class="btn btn-primary" id="{{item.name}}">
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="col-4">
-                            <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                        <div class="col-md-2">
+                            <i *ngIf="item.toggle" (click)="item.toggle=false; currentValidation(item)"
+                                class="fa fa-chevron-up pull-right"></i>
                             <i *ngIf="!item.toggle" (click)="item.toggle=true"
                                 class="fa fa-chevron-down pull-right"></i>
                             <i (click)="removeField(i)" class="fa fa-trash pull-right"></i>
                         </div>
                     </div>
-                    <div *ngIf="item.toggle" class="toggle-Wrapper">
+                    <div *ngIf="false" class="toggle-Wrapper">
                         <div class="form-group">
                             <label>Required</label>
                             <i *ngIf="item.required" (click)="item.required=false" class="fa fa-toggle-on red"></i>
@@ -336,7 +343,7 @@
                         </div>
 
                         <!-- radio || checkbox || autocomplete -->
-                        <div *ngIf="item.type=='radio'|| item.type=='checkbox' || item.type=='autocomplete'">
+                        <!-- <div *ngIf="item.type=='radio'|| item.type=='checkbox' || item.type=='autocomplete'">
                             <div class="row">
                                 <div class="col-5">
                                     <div class="form-group">
@@ -388,7 +395,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
 
@@ -407,19 +414,19 @@
             <div class="property-tab">
                 <ul class="nav nav-pills navtab-bg nav-justified">
                     <li class="nav-item">
-                        <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                        <a href="#Properties" data-toggle="tab" aria-expanded="false" class="nav-link ">
                             Properties
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#profile1" data-toggle="tab" aria-expanded="true" class="nav-link">
+                        <a href="#Settings" data-toggle="tab" aria-expanded="true" class="nav-link active">
                             Settings
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content mt-20">
-                    <div class="tab-pane active" id="home1">
-
+                    <div class="tab-pane show" id="Properties">
+<!-- 
                         <div class="nice-select wide box-nice-select mt-3" tabindex="0">
                             <span class="current">Short Text Format</span>
                             <ul class="list">
@@ -427,13 +434,19 @@
                                 <li data-value="3" class="option">A disabled option</li>
                                 <li data-value="4" class="option">Potato</li>
                             </ul>
-                        </div>
+                        </div> -->
 
-                        <div class="required-part mt-4 mb-4">
-                            <label class="switch">
+                        <div *ngIf="selectedItem" class="required-part mt-4 mb-4">
+                            <i *ngIf="selectedItem?.required" (click)="selectedItem.required=false"
+                                class="fa fa-toggle-on red"></i>
+                            <i *ngIf="!selectedItem?.required" (click)="selectedItem.required=true"
+                                class="fa fa-toggle-off"></i>
+                            <!-- <label class="switch">
                                 <input type="checkbox">
                                 <span class="slider round"></span>
-                            </label> &nbsp; Required
+                            </label> &nbsp; Required -->
+                            <label>Required</label>
+
 
                             <div class="float-right required-icons">
                                 <a href="#">
@@ -444,7 +457,7 @@
                                 </a>
                             </div>
                         </div>
-
+ 
                         <div class="text-property mt-4 mb-4">
                             <h6 class="part-title">Text properties</h6>
 
@@ -488,7 +501,7 @@
                                 <img src="assets/img/icons/Button.png">
                                 <span>Button</span>
                             </a>
-                        </div>
+                        </div> 
 
                         <div class="response-validation mt-3 mb-3">
                             <div class="custom-control custom-radio">
@@ -517,15 +530,22 @@
                                 </div>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-6" *ngIf="selectedItem.min">
                                 <div class="user-input mb-3">
-                                    <input class="name-input" placeholder="256" aria-invalid="false">
+                                    <p>Min Char</p>
+                                    <input class="name-input" [(ngModel)]="selectedItem.min" aria-invalid="false">
+                                </div>
+                            </div>
+                            <div class="col-6" *ngIf="selectedItem?.mix">
+                                <div class="user-input mb-3">
+                                    <p>Max Char</p>
+                                    <input class="name-input" [(ngModel)]="selectedItem.mix" aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div class="col-12">
+                            <div class="col-12" *ngIf="selectedItem?.errorText">
                                 <div class="user-input mb-3">
-                                    <input class="name-input" placeholder="Custom error text" aria-invalid="false">
+                                    <input class="name-input" [(ngModel)]="selectedItem.errorText" aria-invalid="false">
                                 </div>
                             </div>
 
@@ -591,7 +611,7 @@
                     </div>
 
 
-                    <div class="tab-pane show" id="profile1">
+                    <div class="tab-pane active " id="Settings">
 
                         <label class="nice-lable">Font</label>
                         <div class="nice-select box-nice-select wide mb-3" tabindex="0">
@@ -606,12 +626,12 @@
                         <div class="theme-setting-color mt-5">
                             <div class="que-color mb-2">
                                 <p>Question color</p>
-                                <input type="color" class="input-lg" value="#ddd">
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.bgColor" value="#ddd">
                             </div>
 
                             <div class="que-color mb-2">
                                 <p>Answer color</p>
-                                <input type="color" class="input-lg" value="#ddd">
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.textColor" value="#ddd">
                             </div>
 
                             <div class="que-color mb-2">
@@ -655,4 +675,3 @@
     </div>
 
 </div>
-
