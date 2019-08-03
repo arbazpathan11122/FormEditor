@@ -5,8 +5,32 @@
     </button>
     <a class="navbar-brand" href="#">
         <i class="lni-chevron-left"></i> Back</a>
-    <a class="navbar-brand" routerLink="/formView">
-        <i class="lni-chevron-right"></i> View</a>
+
+    <div class="top-bar mx-auto">
+        <div class="stepwizard">
+            <div class="stepwizard-row">
+                <div class="stepwizard-step">
+                    <a href="#">
+                        <button type="button" class="btn btn-primary btn-circle">1</button>
+                        <p>Form</p>
+                    </a>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#">
+                        <button type="button" class="btn btn-circle">2</button>
+                        <p>Process</p>
+                    </a>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#">
+                        <button type="button" class="btn btn-circle">3</button>
+                        <p>Publish</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </nav>
 
 
@@ -38,7 +62,7 @@
 
             </div>
         </div>
-        <div class="col-6 p-0  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
 
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                 [style.color]="model.theme.textColor">
@@ -47,19 +71,18 @@
 
 
                 <div class="formtitle">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
+                    <div class="maker-input">
+                        <input class="name-input" placeholder="Branding form" aria-invalid="false">
                     </div>
                 </div>
-
-
 
             </div>
             <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,model.attributes)"
                 class="dndDropArea" [ngClass]="{'empty':model.attributes.length == 0}"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
 
-                <div class="field" *ngFor="let item of model.attributes;let i= index;" (dndStart)="onDragStart($event)"
+                <div class="field active
+                " *ngFor="let item of model.attributes;let i= index;" (dndStart)="onDragStart($event)"
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, model.attributes, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
                     <div class="row form-group" dndHandle>
@@ -68,16 +91,16 @@
                         </div>
                         <div class="col-md-9 ">
 
-                            <div *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')"
-                                id="Header-format">
+                            <div
+                                *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input " type="text" [(ngModel)]="item.label"
                                         aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')"
-                                id="email-format">
+                            <div
+                                *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
                                         aria-invalid="false">
@@ -87,7 +110,7 @@
                                         [(ngModel)]="item.placeholder" [pattern]="item.regex" aria-invalid="false">
                                 </div>
                             </div>
-                            <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'" id="Yes-No-format">
+                            <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
@@ -101,8 +124,7 @@
                                 </div>
                             </div>
 
-                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')"
-                                id="Short-text-format">
+                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
@@ -112,10 +134,7 @@
                             </div>
 
 
-
-
-
-                            <div *ngIf="item.fielType=='date'" id="Date-format">
+                            <div *ngIf="item.fielType=='date'">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" placeholder="How old are you ?" aria-invalid="false">
                                 </div>
@@ -126,25 +145,23 @@
                             </div>
 
 
-                                <div *ngIf="item.fielType=='dropdown'" >
-                                    <div class="mb-3 maker-input">
-                                        <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
-                                    </div>
-                                    <ol class="user-input ">
-                                        <li *ngFor="let i of item.values; let valueIndex=index;">
+                            <div *ngIf="item.fielType=='dropdown'">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <ol class="user-input ">
+                                    <li *ngFor="let i of item.values; let valueIndex=index;">
 
-                                            
-                                                <ng-container class="add-dropdown ">
 
-                                                    <input class="name-input mb-2" [(ngModel)]="i.label"
-                                                        aria-invalid="false">
-                                                    <i class="fa fa-times right-ico"
-                                                        (click)="item.values.splice(valueIndex,1)"
-                                                        aria-hidden="true"></i>
-                                                </ng-container>
-                                        </li>
-                                    </ol>
-                                    <!-- <div class="user-input " *ngFor="let i of item.values; let valueIndex=index;">
+                                        <ng-container class="add-dropdown ">
+
+                                            <input class="name-input mb-2" [(ngModel)]="i.label" aria-invalid="false">
+                                            <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
+                                                aria-hidden="true"></i>
+                                        </ng-container>
+                                    </li>
+                                </ol>
+                                <!-- <div class="user-input " *ngFor="let i of item.values; let valueIndex=index;">
                                         <div class="add-dropdown ">
                                                {{valueIndex +1}}
                                             <input class="name-input mb-2" [(ngModel)]="i.label"
@@ -154,31 +171,29 @@
                                         </div>
 
                                     </div> -->
-                                    <button class="btn" (click)="addValue(item.values)"> add Option</button>
+                                <button class="btn" (click)="addValue(item.values)"> add Option</button>
 
+                            </div>
+
+
+                            <div *ngIf="item.fielType=='picture'">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
+                                <ol class="user-input ">
+                                    <li *ngFor="let i of item.values; let valueIndex=index;">
 
 
-                                    <div *ngIf="item.fielType=='picture'">
-                                        <div class="mb-3 maker-input">
-                                            <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
-                                        </div>
-                                        <ol class="user-input ">
-                                            <li *ngFor="let i of item.values; let valueIndex=index;">
-    
-                                                
-                                                    <ng-container class="add-dropdown ">
-    
-                                                        <input class="name-input mb-2" [(ngModel)]="i.label"
-                                                            aria-invalid="false">
-                                                            <input type='file' >
-                                                        <i class="fa fa-times right-ico"
-                                                            (click)="item.values.splice(valueIndex,1)"
-                                                            aria-hidden="true"></i>
-                                                    </ng-container>
-                                            </li>
-                                        </ol>
-                                        <!-- <div class="user-input " *ngFor="let i of item.values; let valueIndex=index;">
+                                        <ng-container class="add-dropdown ">
+
+                                            <input class="name-input mb-2" [(ngModel)]="i.label" aria-invalid="false">
+                                            <input type='file'>
+                                            <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
+                                                aria-hidden="true"></i>
+                                        </ng-container>
+                                    </li>
+                                </ol>
+                                <!-- <div class="user-input " *ngFor="let i of item.values; let valueIndex=index;">
                                             <div class="add-dropdown ">
                                                    {{valueIndex +1}}
                                                 <input class="name-input mb-2" [(ngModel)]="i.label"
@@ -188,10 +203,10 @@
                                             </div>
     
                                         </div> -->
-                                        <button class="btn" (click)="addValue(item.values)"> add Option</button>
-    
-                                    </div>
-    
+                                <button class="btn" (click)="addValue(item.values)"> add Option</button>
+
+                            </div>
+
 
                         </div>
                         <div class="col-md-2">
