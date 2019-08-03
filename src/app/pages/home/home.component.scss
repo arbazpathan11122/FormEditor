@@ -199,8 +199,11 @@ fieldset, label { margin: 0; padding: 0; }
     padding:15px;
     right:0;
 }
-.property-content{
+.property-tab{
 	padding: 15px;
+}
+.property-tab .tab-content{
+	-border:1px solid red;
 }
 .text-property{
 	-border:1px solid red;
@@ -213,13 +216,9 @@ fieldset, label { margin: 0; padding: 0; }
 	height:18px;
 }
 .part-title{
-  font-size: 15px;
-  font-weight: 500
-}
-.part-heading{
+	-border:1px solid red;
 	margin-bottom:15px;
-  font-size: 17px;
-  font-weight: 500
+	font-size: 15px;
 }
 .add-new-property a{
 	padding:5px;
