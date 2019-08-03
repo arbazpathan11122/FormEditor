@@ -1,1 +1,230 @@
 <p>footer works!</p>
+<div class="col-3 property-part">
+        <div class="text-center part-heading mt-3">Property settings</div>
+        <div class="text-center part-title mt-3">Section title</div>
+        <div class="property-content">
+            <div *ngIf="selectedItem" class="required-part mb-4">
+                <i *ngIf="selectedItem?.required" (click)="selectedItem.required=false"
+                    class="fa fa-toggle-on red"></i>
+                <i *ngIf="!selectedItem?.required" (click)="selectedItem.required=true"
+                    class="fa fa-toggle-off"></i> &nbsp;
+                <!-- <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label> &nbsp; Required -->
+                <label>Required</label>
+
+
+                <div class="float-right required-icons">
+                    <a href="#">
+                        <i class="fa fa-clone"></i>
+                    </a> &nbsp; &nbsp;
+                </div>
+            </div>
+
+            <!-- <div class="text-property mt-4 mb-4">
+                        <h6 class="part-title">Text properties</h6>
+
+                        <a href="#">
+                            <img src="assets/img/icons/left_align.png">
+                        </a>
+                        <a href="#">
+                            <img src="assets/img/icons/Center.png">
+                        </a>
+                        <a href="#">
+                            <img src="assets/img/icons/Right_Align.png">
+                        </a>
+                        &nbsp;
+                        <a href="#">
+                            <img src="assets/img/icons/Bold.png">
+                        </a>
+                        <a href="#">
+                            <img src="assets/img/icons/Italic.png">
+                        </a>
+                        <a href="#">
+                            <img src="assets/img/icons/Underline.png">
+                        </a>
+                    </div>
+
+                    <div class="add-new-property mt-4 mb-4">
+                        <h6 class="part-title">Add New</h6>
+
+                        <a href="#">
+                            <img src="assets/img/icons/Text.png">
+                            <span>Text</span>
+                        </a>
+                        <a href="#">
+                            <img src="assets/img/icons/Image.png">
+                            <span>Image</span>
+                        </a>
+                        <a href="#">
+                            <img src="assets/img/icons/Video-01.png">
+                            <span>Video</span>
+                        </a>
+                        <a href="#">
+                            <img src="assets/img/icons/Button.png">
+                            <span>Button</span>
+                        </a>
+                    </div> -->
+
+            <div class="response-validation mt-3 mb-3">
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1"> &nbsp; Response
+                        Validation</label>
+                </div>
+            </div>
+
+            <div class="row required-inputs">
+                <div class="col-6">
+                    <div class="user-input mb-3">
+                        <select name="put a velue">
+                            <option value="volvo">Number</option>
+                            <option value="saab">number</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="user-input mb-3">
+                        <select name="put a velue">
+                            <option value="volvo">Greater Than</option>
+                            <option value="saab">Greater Than</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-6" *ngIf="selectedItem.min">
+                    <div class="user-input mb-3">
+                        <p>Min Char</p>
+                        <input class="name-input" [(ngModel)]="selectedItem.min" aria-invalid="false">
+                    </div>
+                </div>
+                <div class="col-6" *ngIf="selectedItem?.mix">
+                    <div class="user-input mb-3">
+                        <p>Max Char</p>
+                        <input class="name-input" [(ngModel)]="selectedItem.mix" aria-invalid="false">
+                    </div>
+                </div>
+
+                <div class="col-12" *ngIf="selectedItem?.errorText">
+                    <div class="user-input mb-3">
+                        <input class="name-input" [(ngModel)]="selectedItem.errorText" aria-invalid="false">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="user-input mb-3">
+                        <select name="put a velue">
+                            <option value="volvo">Select atleast</option>
+                            <option value="saab">Select atleast</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="user-input mb-3">
+                        <input class="name-input" placeholder="2" aria-invalid="false">
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="user-input mb-3">
+                        <select name="put a velue">
+                            <option value="volvo">Only available in</option>
+                            <option value="saab">Only available in</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <div class="user-input mb-3">
+                        <select name="put a velue">
+                            <option value="volvo">Country</option>
+                            <option value="saab">Country</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="user-input mb-3">
+                        <select name="put a velue">
+                            <option value="volvo">Accept only</option>
+                            <option value="saab">Accept only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <div class="user-input mb-3">
+                        <select name="put a velue">
+                            <option value="volvo">After</option>
+                            <option value="saab">After</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="user-input mb-3">
+                        <input class="name-input" type="date" placeholder="date" aria-invalid="false">
+                    </div>
+                </div>
+
+            </div>
+
+            <label class="nice-lable">Font</label>
+            <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                <span class="current">Montsarret</span>
+                <ul class="list">
+                    <li data-value="2" class="option">Another option</li>
+                    <li data-value="3" class="option">A disabled option</li>
+                    <li data-value="4" class="option">Potato</li>
+                </ul>
+            </div>
+
+            <div class="theme-setting-color mt-5">
+                <div class="que-color mb-2">
+                    <p>Question color</p>
+                    <input type="color" class="input-lg" [(ngModel)]="model.theme.bgColor" value="#ddd">
+                </div>
+
+                <div class="que-color mb-2">
+                    <p>Answer color</p>
+                    <input type="color" class="input-lg" [(ngModel)]="model.theme.textColor" value="#ddd">
+                </div>
+
+                <div class="que-color mb-2">
+                    <p>Button color</p>
+                    <input type="color" class="input-lg" value="#ddd">
+                </div>
+
+                <div class="que-color mb-2">
+                    <p>Background Image</p>
+                    <i class="fa fa-check-square-o float-right" aria-hidden="true"></i>
+                </div>
+
+                <div class="que-color mb-5">
+                    <p>Theme Change</p>
+                    <i class="fa fa-check-square-o float-right" aria-hidden="true"></i>
+                </div>
+
+                <hr style="border:1px dashed gray">
+            </div>
+
+            <div class="form-pages mt-3">
+                <p class="text-center mb-3">Form pages</p>
+                <p class="mb-2">
+                    <a href="#">1. &nbsp; Payment requisition</a>
+                </p>
+                <p class="mb-2">
+                    <a href="#">2. &nbsp; Payment Order</a>
+                </p>
+                <p class="mb-2">
+                    <a href="#">3. &nbsp; Payment reciept</a>
+                </p>
+                <p class="mb-2">
+                    <a href="#">4. &nbsp; Payment</a>
+                </p>
+            </div>
+        </div>
+    </div>
