@@ -107,9 +107,12 @@ export class HomeComponent implements OnInit {
       }
       list.splice(index, 0, event.data);
     }
+    this.currentValidation(event.data);
   }
   dblclickMove(event: DndDropEvent, list: any, item: any) {
     list.splice(list.length, 0, item);
+    this.currentValidation(item);
+
 
   }
   currentValidation(item) {
@@ -119,6 +122,19 @@ export class HomeComponent implements OnInit {
     this.selectedItem = item;
 
   }
+
+  // check object is not null or valid
+
+  isValidObject(obj) {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+
+        return true;
+      }
+  }
+    return false;
+  }
+
   addValue(values) {
     values.push(this.value);
     this.value = { label: '', value: '' };

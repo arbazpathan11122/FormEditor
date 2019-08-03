@@ -7,7 +7,6 @@ export const icons_and_fields = [
         icon: 'header.png',
         fielType: 'header',
         tooltip: 'The first thing your users will see.',
-        errorText: 'Custom Error Field',
         label: 'Enter Your Heading',
         type: 'text',
         handle: true
@@ -20,11 +19,12 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'short_text.png',
         fielType: 'shortText',
+        required: true,
         tooltip: 'Good for short answers, like names.',
-        value: 'Enter your Discription here',
+        label: 'Enter your Discription here',
         placeholder: 'Short Answer Text',
         errorText: 'maximum 256 charector are allowed',
-        min: 0,
+        min: 1,
         max: 256,
         handle: true
 
@@ -38,7 +38,6 @@ export const icons_and_fields = [
         icon: 'statement.png',
         fielType: 'statement',
         tooltip: 'say to your users without asking for a response.',
-        errorText: 'Custom Error Field',
         label: 'Enter your Statement here',
         type: 'text',
         handle: true
@@ -51,11 +50,12 @@ export const icons_and_fields = [
         subName: 'Number',
         icon: 'mobile_no.png',
         fielType: 'phone',
+        required: true,
         tooltip: 'Ask for a phone number with a right format.',
         errorText: 'Custom Error Field',
         type: 'text',
         label: 'Enter Your Phone',
-        required: true,
+
         placeholder: 'Enter your phone number',
         inputValue: '',
         regex: '[789][0-9]{9}',
@@ -67,9 +67,23 @@ export const icons_and_fields = [
         name: 'Picture',
         subName: 'Choice',
         icon: 'picture_format.png',
-        fielType: '',
+        fielType: 'picture',
+        required: true,
+        label: 'Select the picture',
         tooltip: 'Give your users image option to choose from.',
         errorText: 'Custom Error Field',
+        values: [
+            {
+                label: 'Option 1',
+                value: 'option-1',
+              img: '',
+            },
+            {
+                label: 'Option 2',
+                value: 'option-2',
+                img: '',
+            }
+        ]
     },
 
     {
@@ -78,9 +92,10 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'mail.png',
         fielType: 'email',
+        required: true,
         tooltip: 'Ask for a email address.',
         type: 'email',
-        required: true,
+
         label: 'Email',
         inputValue: '',
         placeholder: 'Enter your email',
@@ -94,9 +109,20 @@ export const icons_and_fields = [
         name: 'Dropdown',
         subName: 'Format',
         icon: 'dropdown.png',
-        fielType: '',
+        fielType: 'dropdown',
+        required: true,
         tooltip: 'Provide a list of options to choose from.',
         errorText: 'Custom Error Field',
+        values: [
+            {
+                label: 'Option 1',
+                value: 'option-1'
+            },
+            {
+                label: 'Option 2',
+                value: 'option-2'
+            }
+        ]
     },
 
     {
@@ -105,6 +131,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'file_upload.png',
         fielType: '',
+        required: true,
         tooltip: 'Ask for any type of file.',
         errorText: 'Custom Error Field',
     },
@@ -115,6 +142,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'yes_no.png',
         fielType: 'yesNo',
+        required: true,
         tooltip: 'Give your users just three options.',
         errorText: 'Custom Error Field',
         label: 'Are you married ?',
@@ -128,6 +156,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'payment.png',
         fielType: '',
+        required: true,
         tooltip: '',
         errorText: 'Custom Error Field',
     },
@@ -137,6 +166,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'true_false.png',
         fielType: 'trueFalse',
+        required: true,
         tooltip: 'Ask your users is it true or not.',
         errorText: 'Custom Error Field',
         label: 'Are you married ?',
@@ -151,6 +181,7 @@ export const icons_and_fields = [
         subName: 'Choie',
         icon: 'multiple_choice.png',
         fielType: '',
+        required: true,
         tooltip: 'Give your audience options to choose from.',
         errorText: 'Custom Error Field',
     },
@@ -161,6 +192,7 @@ export const icons_and_fields = [
         subName: 'Scale',
         icon: 'rating.png',
         fielType: '',
+        required: true,
         tooltip: 'Ask them to rate something.',
         errorText: 'Custom Error Field',
     },
@@ -171,9 +203,10 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'long_text.png',
         fielType: 'longText',
+        required: true,
         tooltip: 'Good for long answers, like the meaning of life',
         errorText: 'Custom Error Field',
-        value: 'Enter your Discription here',
+        label: 'Enter your Discription here',
         placeholder: 'Long Answer Text',
         min: 0,
         max: 256,
@@ -187,10 +220,11 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'website.png',
         fielType: 'website',
+        required: true,
         tooltip: 'Ask your audience to share a link.',
         errorText: 'Custom Error Field',
         type: 'url',
-        required: true,
+
         label: 'Enter your website Link here',
         inputValue: '',
         placeholder: 'Enter your website link',
@@ -204,7 +238,8 @@ export const icons_and_fields = [
         subName: 'Format',
         type: 'date',
         icon: 'date.png',
-        fielType: '',
+        fielType: 'date',
+        required: true,
         tooltip: 'Only accepts answers as calendar dates.',
         errorText: 'Custom Error Field',
         placeholder: 'Date',
@@ -231,8 +266,8 @@ export const icons_and_fields = [
         subName: 'Dropdown',
         icon: 'conditional_dropdown.png',
         fielType: '',
+        required: true,
         tooltip: 'Ask your users the question depending on other answers.',
-        errorText: 'Custom Error Field',
     },
 
 
@@ -242,6 +277,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'table.png',
         fielType: '',
+        required: true,
         tooltip: '',
         errorText: 'Custom Error Field',
     },

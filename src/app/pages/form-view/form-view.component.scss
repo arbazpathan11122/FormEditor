@@ -1,135 +1,135 @@
 
-.form-control:focus{
-    box-shadow: none
-}
-.form-page{
-    background: #f8f8f8;
-    overflow-x: hidden;
-}
-.working-part{
-    background: #ffffff
-}
-.formtitle {
-    padding: 35px 40px 0px 40px;
-}
-#multiple-choice-format{
-    padding: 40px;
-}
-#statement-format{
-    padding: 40px;
-}
-#dropdown-format{
-    padding: 40px;
-}
-#conditional-dropdown-format{
-    padding: 40px;
-}
-#picture-choice-format{
-    padding: 40px;
-}
-.maker-input input{
-    color: #000000
-}
-.maker-input .name-input::placeholder{
-    color:#000000;
-}
-.rating-ico span{
-font-size: 20px
-}
-.form-header{
-    font-size:20px;
-    font-weight: 600
-}
-.form-statement{
-   font-weight: 300;
-   font-style: italic;
-   border:none;
-}
-.add-dropdown{
-    padding-bottom: 5px;
-    position: relative;
-}
-.add-dropdown .left-ico{
-    float: left;
-    position: relative;
-    top:20px;
-    color: #6c757d;
-}
-.add-dropdown .right-ico{
-    right: 0;
-    position: absolute;
-    top:20px;
-    color: #6c757d;
-}
-.add-dropdown input{
-    padding-left: 25px;
-    border-bottom: 1px solid #cccccc
-}
-.add-dropdown .numbering{
-    position: relative;
-    top: 26px;
-}
-#conditional-dropdown-format .add-dropdown .right-ico{
-    right: 0;
-    position: absolute;
-    top:30px;
-    color: #6c757d;
-}
-.add-picture{
-    padding-bottom: 5px;
-    position: relative;
-}
-.add-picture .right-img{
-    border:1px solid #cccccc;
-    width: 30%;
-    text-align: center;
-    height: 30px;
-}
-.add-picture .left-ico{
-    position: relative;
-    top:25px;
-    color: #6c757d;
-}
-.add-picture input{
-    padding-left: 25px;
-    border-bottom: 1px solid #cccccc;
-    width: 67%;
-}
-.add-picture .right-ico{
-    right: 0;
-    position: absolute;
-    top:24px;
-    color: #6c757d;
-}
-.add-picture button{
-    border:2px dashed #dddddd;
-    padding: 5px 10px;;
-    margin-left: 20px;
-}
-#submit-part{
-    padding: 40px
-}
-#submit-part .btn{
-    padding: 7px 20px;
-}
-.add-condi-dropdown{
-    padding-bottom: 5px;
-    position: relative;
-    display: inline-block;
-}
-.add-condi-dropdown .left-ico{
-    float: left;
-    position: relative;
-    top:20px;
-    color: #6c757d;
-}
-.add-condi-dropdown .right-ico{
-    right: 0;
-    position: absolute;
-    top:20px;
-    color: #6c757d;
-}
-.add-condi-dropdown input{
-    padding-left: 30px;
-    border-bottom: 1px solid #cccccc
-}
+// .form-control:focus{
+//     box-shadow: none
+// }
+// .form-page{
+//     background: #f8f8f8;
+//     overflow-x: hidden;
+// }
+// .working-part{
+//     background: #ffffff
+// }
+// .formtitle {
+//     padding: 35px 40px 0px 40px;
+// }
+// #multiple-choice-format{
+//     padding: 40px;
+// }
+// #statement-format{
+//     padding: 40px;
+// }
+// #dropdown-format{
+//     padding: 40px;
+// }
+// #conditional-dropdown-format{
+//     padding: 40px;
+// }
+// #picture-choice-format{
+//     padding: 40px;
+// }
+// .maker-input input{
+//     color: #000000
+// }
+// .maker-input .name-input::placeholder{
+//     color:#000000;
+// }
+// .rating-ico span{
+// font-size: 20px
+// }
+// .form-header{
+//     font-size:20px;
+//     font-weight: 600
+// }
+// .form-statement{
+//    font-weight: 300;
+//    font-style: italic;
+//    border:none;
+// }
+// .add-dropdown{
+//     padding-bottom: 5px;
+//     position: relative;
+// }
+// .add-dropdown .left-ico{
+//     float: left;
+//     position: relative;
+//     top:20px;
+//     color: #6c757d;
+// }
+// .add-dropdown .right-ico{
+//     right: 0;
+//     position: absolute;
+//     top:20px;
+//     color: #6c757d;
+// }
+// .add-dropdown input{
+//     padding-left: 25px;
+//     border-bottom: 1px solid #cccccc
+// }
+// .add-dropdown .numbering{
+//     position: relative;
+//     top: 26px;
+// }
+// #conditional-dropdown-format .add-dropdown .right-ico{
+//     right: 0;
+//     position: absolute;
+//     top:30px;
+//     color: #6c757d;
+// }
+// .add-picture{
+//     padding-bottom: 5px;
+//     position: relative;
+// }
+// .add-picture .right-img{
+//     border:1px solid #cccccc;
+//     width: 30%;
+//     text-align: center;
+//     height: 30px;
+// }
+// .add-picture .left-ico{
+//     position: relative;
+//     top:25px;
+//     color: #6c757d;
+// }
+// .add-picture input{
+//     padding-left: 25px;
+//     border-bottom: 1px solid #cccccc;
+//     width: 67%;
+// }
+// .add-picture .right-ico{
+//     right: 0;
+//     position: absolute;
+//     top:24px;
+//     color: #6c757d;
+// }
+// .add-picture button{
+//     border:2px dashed #dddddd;
+//     padding: 5px 10px;;
+//     margin-left: 20px;
+// }
+// #submit-part{
+//     padding: 40px
+// }
+// #submit-part .btn{
+//     padding: 7px 20px;
+// }
+// .add-condi-dropdown{
+//     padding-bottom: 5px;
+//     position: relative;
+//     display: inline-block;
+// }
+// .add-condi-dropdown .left-ico{
+//     float: left;
+//     position: relative;
+//     top:20px;
+//     color: #6c757d;
+// }
+// .add-condi-dropdown .right-ico{
+//     right: 0;
+//     position: absolute;
+//     top:20px;
+//     color: #6c757d;
+// }
+// .add-condi-dropdown input{
+//     padding-left: 30px;
+//     border-bottom: 1px solid #cccccc
+// }
