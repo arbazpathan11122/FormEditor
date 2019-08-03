@@ -5,6 +5,32 @@
     </button>
     <a class="navbar-brand" href="#">
         <i class="lni-chevron-left"></i> Back</a>
+    
+        <div class="top-bar mx-auto">
+                <div class="stepwizard">
+                    <div class="stepwizard-row">
+                        <div class="stepwizard-step">
+                            <a href="#">
+                                <button type="button" class="btn btn-primary btn-circle">1</button>
+                                <p>Form</p>
+                            </a>
+                        </div>
+                        <div class="stepwizard-step">
+                            <a href="#">
+                            <button type="button" class="btn btn-circle">2</button>
+                            <p>Process</p>
+                            </a>
+                        </div>
+                        <div class="stepwizard-step">
+                            <a href="#">
+                            <button type="button" class="btn btn-circle">3</button>
+                            <p>Publish</p>
+                            </a>
+                        </div> 
+                    </div>
+                </div>
+                </div>
+
 </nav>
 
 
@@ -14,7 +40,7 @@
         <div class="col-3 menu-sidebar">
 
             <div class="mb-3 maker-input file-name">
-                <i class="fa fa-home"></i> <input class="name-input" placeholder="Your File name" aria-invalid="false">
+                <i class="fa fa-home"></i> <input class="name-input" placeholder="Somnath folder" aria-invalid="false">
             </div>
             <p class="menu-title text-center">Drag or Double click to add section</p>
             <div class="row m-auto ">
@@ -35,25 +61,24 @@
 
             </div>
         </div>
-        <div class="col-6 p-0  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
 
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                 [style.color]="model.theme.textColor">
 
                 <div class="formtitle">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
+                    <div class="maker-input">
+                        <input class="name-input" placeholder="Branding form" aria-invalid="false">
                     </div>
                 </div>
-
-
 
             </div>
             <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,model.attributes)"
                 class="dndDropArea" [ngClass]="{'empty':model.attributes.length == 0}"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
 
-                <div class="field" *ngFor="let item of model.attributes;let i= index;" (dndStart)="onDragStart($event)"
+                <div class="field active
+                " *ngFor="let item of model.attributes;let i= index;" (dndStart)="onDragStart($event)"
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, model.attributes, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
                     <div class="row form-group" dndHandle>
@@ -62,16 +87,16 @@
                         </div>
                         <div class="col-md-9 ">
 
-                            <div *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')"
-                                id="Header-format">
+                            <div
+                                *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input " type="text" [(ngModel)]="item.label"
                                         aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')"
-                                id="email-format">
+                            <div
+                                *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
                                         aria-invalid="false">
@@ -81,7 +106,7 @@
                                         [(ngModel)]="item.placeholder" [pattern]="item.regex" aria-invalid="false">
                                 </div>
                             </div>
-                            <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'" id="Yes-No-format">
+                            <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
@@ -95,9 +120,9 @@
                                 </div>
                             </div>
 
-                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')"
-                                id="Short-text-format">
+                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')">
                                 <div class="mb-3 maker-input">
+                                    <span class="req-ico">*</span>
                                     <input class="name-input" [(ngModel)]="item.value" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
@@ -106,10 +131,7 @@
                             </div>
 
 
-
-
-
-                            <div *ngIf="item.fielType=='date'" id="Date-format">
+                            <div *ngIf="item.fielType=='date'">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" placeholder="How old are you ?" aria-invalid="false">
                                 </div>
@@ -118,10 +140,6 @@
                                         aria-invalid="false" id="datepicker">
                                 </div>
                             </div>
-
-
-
-
                         </div>
                         <div class="col-md-2">
                             <i *ngIf="item.toggle" (click)="item.toggle=false; currentValidation(item)"
@@ -214,16 +232,16 @@
                                 <a href="#">
                                     <i class="fa fa-clone"></i>
                                 </a> &nbsp; &nbsp;
-                                <a href="#">
+                                <!-- <a href="#">
                                     <i class="fa fa-trash-o"></i>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
 
 
                         <div class="response-validation mt-3 mb-3">
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                <!-- <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input"> -->
                                 <label class="custom-control-label" for="customRadio1"> &nbsp; Response
                                     Validation</label>
                             </div>

@@ -16,7 +16,7 @@ export const icons_and_fields = [
 
     {
         id: 2,
-        name: 'Short text',
+        name: 'Text',
         subName: 'Format',
         icon: 'short_text.png',
         fielType: 'shortText',
@@ -167,9 +167,9 @@ export const icons_and_fields = [
 
     {
         id: 14,
-        name: 'Long text',
+        name: 'Number',
         subName: 'Format',
-        icon: 'long_text.png',
+        icon: 'Number.png',
         fielType: 'longText',
         tooltip: 'Good for long answers, like the meaning of life',
         errorText: 'Custom Error Field',

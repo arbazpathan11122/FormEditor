@@ -14,7 +14,7 @@
 	padding-left: 30px;
 }
 .main{
-	margin-top: 50px;
+	margin-top: 90px;
 }
 .maker-input .name-input{
     order: 2;
@@ -66,7 +66,6 @@
 .menu-sidebar{
 	-border:1px solid purple;
 	padding: 20px 25px;
-    -margin-left:20px;
 	height: calc(100vh - 50px);
     overflow-y:auto;
     position: fixed;
@@ -102,7 +101,50 @@
     font-size: 12px;
     text-transform: uppercase;
 }
-
+.stepwizard-step p {
+    margin-top: 10px;    
+    margin-bottom:0;
+    font-size:15px;
+}
+.stepwizard-row {
+    display: table-row;
+}
+.stepwizard {
+    display: table;     
+    width: 100%;
+    position: relative;
+}
+.stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+.stepwizard-row:before {
+    top: 30%;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;  
+}
+.stepwizard-step {    
+    display: table-cell;
+    text-align: center;
+    position: relative;
+    width:125px;
+}
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.428571429;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+}
 /*-------------working form part-------------*/
 .working-part{
 	overflow: hidden;
@@ -115,7 +157,7 @@
      background-color: #f9f9f9
 }
 .formtitle{
-	padding: 35px 50px;
+	padding: 15px 50px;
 }
 .formtitle .page-title{
 	color: #b8b8b8;
@@ -138,7 +180,13 @@
   line-height:30px; 
   color:#000000;
 }
-
+.req-ico{
+  float: right;
+  position: absolute;
+  left: 5px;
+  font-size: 20px;
+  color: red;
+}
 
 /*-------------formats-------------*/
 
