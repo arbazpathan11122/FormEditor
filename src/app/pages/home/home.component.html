@@ -5,6 +5,8 @@
     </button>
     <a class="navbar-brand" href="#">
         <i class="lni-chevron-left"></i> Back</a>
+        <a class="navbar-brand" routerLink="/formView">
+            <i class="lni-chevron-right"></i> View</a>
 </nav>
 
 
@@ -16,7 +18,7 @@
                 <i class="fa fa-home"></i> <input class="name-input" placeholder="Short Answer Text" aria-invalid="false">
             </div> -->
             <div class="mb-3 maker-input file-name">
-                    <i class="fa fa-home"></i>  <input class="name-input" placeholder="Your File name" aria-invalid="false">
+                    <i class="fa fa-home"></i>  <input class="name-input" [(ngModel)]="model.folder.FolderName" placeholder="Your folder name" aria-invalid="false">
                 </div>
             <p class="menu-title text-center">Drag or Double click to add section</p>
             <div class="row m-auto ">
@@ -56,70 +58,8 @@
                     <!-- <span class="page-title">This the description which also can be added.</span> -->
                 </div>
 
-                <!-- <div class="active" id="Short-text-format">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
-                    </div>
-                    <div style="width: 50%" class="user-input">
-                        <input class="name-input" placeholder="Short Answer Text" aria-invalid="false">
-                    </div>
-                </div> -->
-                <!-- 
-                <div id="Long-text-format">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
-                    </div>
-                    <div class="user-input">
-                        <input class="name-input" disabled placeholder="Short Answer Text" aria-invalid="false">
-                    </div>
-                    <span class="mt-3 float-right" style="color:#b8b8b8">256 maximum characters</span>
-                </div>
-
-                <div id="Website-format">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="Your Portfolio Link." aria-invalid="false">
-                    </div>
-                    <div class="user-input">
-                        <input class="name-input" disabled placeholder="https://" aria-invalid="false">
-                    </div>
-                </div>
-
-                <div id="Date-format">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="How old are you ?" aria-invalid="false">
-                    </div>
-                    <div class="user-input">
-                        <input style="width:25%" class="name-input" disabled placeholder="12 / DD / YYYY"
-                            aria-invalid="false" id="datepicker">
-                    </div>
-                </div>
-
-                <div id="Yes-No-format">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="Are you married ?" aria-invalid="false">
-                    </div>
-                    <div class="user-input disabled">
-                        <label class="checkbox-inline mr-4">
-                            <input type="checkbox" value="">&nbsp; Yes
-                        </label>
-                        <label class="checkbox-inline mr-4">
-                            <input type="checkbox" value="">&nbsp; No
-                        </label>
-                        <label class="checkbox-inline mr-4">
-                            <input type="checkbox" value="">&nbsp; Maybe
-                        </label>
-                    </div>
-                </div>
-
-                <div id="email-format">
-                    <div class="mb-3 maker-input">
-                        <input class="name-input" placeholder="Please Provide your email." aria-invalid="false">
-                    </div>
-                    <div style="width: 50%" class="user-input">
-                        <input class="name-input" disabled placeholder="Type your email here." aria-invalid="false">
-                    </div>
-                </div>
-
+              
+<!-- 
                 <div id="Rating-format">
                     <div class="mb-3 maker-input">
                         <input class="name-input" placeholder="Rate our service." aria-invalid="false">
@@ -149,7 +89,7 @@
                             <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
                     </div>
-                </div> -->
+                </div>  -->
 
 
             </div>
@@ -417,16 +357,12 @@
             <div class="text-center part-heading mt-3">Property settings</div>
             <div class="text-center part-title mt-3">Section title</div>
             <div class="property-content">
-                <div *ngIf="selectedItem" class="required-part mb-4">
-                    <i *ngIf="selectedItem?.required" (click)="selectedItem.required=false"
-                        class="fa fa-toggle-on red"></i>
-                    <i *ngIf="!selectedItem?.required" (click)="selectedItem.required=true"
-                        class="fa fa-toggle-off"></i> &nbsp;
-                    <!-- <label class="switch">
-                                <input type="checkbox">
+                <div *ngIf="selectedItem !=={}" class="required-part mb-4">
+                    
+                    <label class="switch">
+                                <input type="checkbox" [(ngModel)]="selectedItem.required">
                                 <span class="slider round"></span>
-                            </label> &nbsp; Required -->
-                    <label>Required</label>
+                            </label> &nbsp; Required
 
 
                     <div class="float-right required-icons">
@@ -483,7 +419,7 @@
 
                 <div class="response-validation mt-3 mb-3">
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                        <!-- <input type="radio" id="customRadio1" value="true" name="customRadio" class="custom-control-input"> -->
                         <label class="custom-control-label" for="customRadio1"> &nbsp; Response
                             Validation</label>
                     </div>
@@ -521,11 +457,6 @@
                         </div>
                     </div>
 
-                    <div class="col-12" *ngIf="selectedItem?.errorText">
-                        <div class="user-input mb-3">
-                            <input class="name-input" [(ngModel)]="selectedItem.errorText" aria-invalid="false">
-                        </div>
-                    </div>
 
                     <div class="col-6">
                         <div class="user-input mb-3">
@@ -584,9 +515,15 @@
                         </div>
                     </div>
 
+                    <div class="col-12" *ngIf="selectedItem?.errorText">
+                        <div class="user-input mb-3">
+                            <input class="name-input" [(ngModel)]="selectedItem.errorText" aria-invalid="false">
+                        </div>
+                    </div>
+
                 </div>
 
-                <label class="nice-lable">Font</label>
+                <!-- <label class="nice-lable">Font</label>
                 <div class="nice-select box-nice-select wide mb-3" tabindex="0">
                     <span class="current">Montsarret</span>
                     <ul class="list">
@@ -639,7 +576,7 @@
                     <p class="mb-2">
                         <a href="#">4. &nbsp; Payment</a>
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

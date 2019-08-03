@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
   model: any = {
     name: 'App name...',
     description: 'App Description...',
+     folder: {
+       FolderName: '',
+    FileName: '',
+    pages: []
+  },
     theme: {
       bgColor: 'f0f0f0',
       textColor: '555555',
