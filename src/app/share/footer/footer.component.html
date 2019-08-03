@@ -1,4 +1,4 @@
-<p>footer works!</p>
+<!-- <p>footer works!</p>
 <div class="col-3 property-part">
         <div class="text-center part-heading mt-3">Property settings</div>
         <div class="text-center part-title mt-3">Section title</div>
@@ -8,10 +8,7 @@
                     class="fa fa-toggle-on red"></i>
                 <i *ngIf="!selectedItem?.required" (click)="selectedItem.required=true"
                     class="fa fa-toggle-off"></i> &nbsp;
-                <!-- <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round"></span>
-                        </label> &nbsp; Required -->
+             
                 <label>Required</label>
 
 
@@ -20,7 +17,7 @@
                         <i class="fa fa-clone"></i>
                     </a> &nbsp; &nbsp;
                 </div>
-            </div>
+            </div> -->
 
             <!-- <div class="text-property mt-4 mb-4">
                         <h6 class="part-title">Text properties</h6>
@@ -66,8 +63,8 @@
                             <span>Button</span>
                         </a>
                     </div> -->
-
-            <div class="response-validation mt-3 mb-3">
+<!-- sss -->
+            <!-- <div class="response-validation mt-3 mb-3">
                 <div class="custom-control custom-radio">
                     <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio1"> &nbsp; Response
@@ -243,15 +240,12 @@
         <div class="main">
             <div class="row col-12">
                 <div class="col-3 menu-sidebar">
-                    <!-- <div class="file-name">
-                        <i class="fa fa-home"></i> <input class="name-input" placeholder="Short Answer Text" aria-invalid="false">
-                    </div> -->
+                  
                     <div class="mb-3 maker-input file-name">
                             <i class="fa fa-home"></i>  <input class="name-input" placeholder="Your File name" aria-invalid="false">
                         </div>
                     <p class="menu-title text-center">Drag or Double click to add section</p>
                     <div class="row m-auto ">
-                        <!-- <div class="col-6"> -->
                         <div class="menu-item col-6" *ngFor=" let item of iconField ">
                             <div data-toggle="tooltip" title="{{item.tooltip}}" class="row m-auto" [dndDraggable]="item"
                                 [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)"
@@ -273,20 +267,20 @@
         
                     <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                         [style.color]="model.theme.textColor">
-                        <!-- <h2>
-                            <input class="form-control" type="text" [(ngModel)]="model.name" />
-                        </h2>
-                        <input class="form-control" type="text" [(ngModel)]="model.description" /> -->
+                      
         
                         <div class="formtitle">
-                            <!-- <h5>Hey, This is the welcome section of the form.</h5> -->
-                            <!-- <input class="name-input" placeholder="Short Answer Text" aria-invalid="false"> -->
+                          
                             <div class="mb-3 maker-input">
                                 <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
                             </div>
-                            <!-- <span class="page-title">This the description which also can be added.</span> -->
                         </div>
-        
+         -->
+
+
+<!-- kkkk -->
+
+
                         <!-- <div class="active" id="Short-text-format">
                             <div class="mb-3 maker-input">
                                 <input class="name-input" placeholder="Write Your Text Here.." aria-invalid="false">
@@ -381,9 +375,9 @@
                                 </fieldset>
                             </div>
                         </div> -->
+        <!-- sssss -->
         
-        
-                    </div>
+                    <!-- </div>
                     <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,model.attributes)"
                         class="dndDropArea" [ngClass]="{'empty':model.attributes.length == 0}"
                         [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
@@ -455,7 +449,10 @@
                                     </div>
         
         
-        
+         -->
+
+
+         <!-- kkkkk -->
         
                                     <!-- <div *ngIf="item.type=='number'">
                                         <label>{{item.label}}</label>
@@ -523,7 +520,9 @@
                                         <input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}"
                                             class="btn btn-primary" id="{{item.name}}">
                                     </div> -->
-                                </div>
+                     
+                     <!-- ssss -->
+                                <!-- </div>
                                 <div class="col-md-2">
                                     <i *ngIf="item.toggle" (click)="item.toggle=false; currentValidation(item)"
                                         class="fa fa-chevron-up pull-right"></i>
@@ -560,7 +559,6 @@
                                     <input class="form-control" type="text" [(ngModel)]="item.errorText" />
                                 </div>
         
-                                <!-- number -->
                                 <div *ngIf="item.type=='number'" class="row">
                                     <div class="col-6">
                                         <div class="form-group">
@@ -574,8 +572,13 @@
                                             <input class="form-control" type="text" [(ngModel)]="item.max" />
                                         </div>
                                     </div>
-                                </div>
-        
+                                </div> -->
+      
+      
+                                <!-- kkkkk -->
+      
+      
+      
                                 <!-- radio || checkbox || autocomplete -->
                                 <!-- <div *ngIf="item.type=='radio'|| item.type=='checkbox' || item.type=='autocomplete'">
                                     <div class="row">
@@ -632,12 +635,11 @@
                                 </div> -->
         
         
-        
-        
+        <!-- ssss -->
+<!--         
                             </div>
                         </div>
-                        <!--optional placeholder element for dropzone-->
-                        <!--will be removed from DOM on init-->
+                      
                         <div class="dndPlaceholder" dndPlaceholderRef>
                         </div>
                     </section>
@@ -665,10 +667,7 @@
                                             class="fa fa-toggle-on red"></i>
                                         <i *ngIf="!selectedItem?.required" (click)="selectedItem.required=true"
                                             class="fa fa-toggle-off"></i> &nbsp;
-                                        <!-- <label class="switch">
-                                            <input type="checkbox">
-                                            <span class="slider round"></span>
-                                        </label> &nbsp; Required -->
+                                   
                                         <label>Required</label>
             
             
@@ -681,7 +680,15 @@
                                             </a>
                                         </div>
                                     </div>
-            
+             -->
+
+
+
+<!-- kkkk -->
+
+
+
+
                                     <!-- <div class="text-property mt-4 mb-4">
                                         <h6 class="part-title">Text properties</h6>
             
@@ -726,8 +733,18 @@
                                             <span>Button</span>
                                         </a>
                                     </div> -->
-            
-                                    <div class="response-validation mt-3 mb-3">
+          
+                                    
+
+
+
+
+
+
+<!-- sss -->
+
+
+                                    <!-- <div class="response-validation mt-3 mb-3">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
                                             <label class="custom-control-label" for="customRadio1"> &nbsp; Response
@@ -898,4 +915,4 @@
                     </div>
             </div>
         
-        </div>
+        </div> -->

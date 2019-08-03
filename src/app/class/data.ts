@@ -111,6 +111,7 @@ export const icons_and_fields = [
         icon: 'dropdown.png',
         fielType: 'dropdown',
         required: true,
+        label: ' enter quetion for  selection',
         tooltip: 'Provide a list of options to choose from.',
         errorText: 'Custom Error Field',
         values: [
@@ -131,6 +132,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'file_upload.png',
         fielType: '',
+        label: 'uploud your resume',
         required: true,
         tooltip: 'Ask for any type of file.',
         errorText: 'Custom Error Field',
@@ -180,10 +182,21 @@ export const icons_and_fields = [
         name: 'Multiple',
         subName: 'Choie',
         icon: 'multiple_choice.png',
-        fielType: '',
+        fielType: 'multiple',
         required: true,
+        label: 'Enter question for multiselection',
         tooltip: 'Give your audience options to choose from.',
         errorText: 'Custom Error Field',
+        values: [
+            {
+                label: 'Option 1',
+                value: 'option-1'
+            },
+            {
+                label: 'Option 2',
+                value: 'option-2'
+            }
+        ]
     },
 
     {
@@ -193,6 +206,7 @@ export const icons_and_fields = [
         icon: 'rating.png',
         fielType: '',
         required: true,
+        label: 'Rate our product',
         tooltip: 'Ask them to rate something.',
         errorText: 'Custom Error Field',
     },
@@ -202,11 +216,11 @@ export const icons_and_fields = [
         name: 'Number',
         subName: 'Format',
         icon: 'Number.png',
-        fielType: 'longText',
+        fielType: 'number',
         required: true,
         tooltip: 'Good for long answers, like the meaning of life',
         errorText: 'Custom Error Field',
-        label: 'Enter your Discription here',
+        label: 'Enter your amount in number here',
         placeholder: 'Long Answer Text',
         min: 0,
         max: 256,
@@ -240,6 +254,8 @@ export const icons_and_fields = [
         icon: 'date.png',
         fielType: 'date',
         required: true,
+        label: 'How old are you ?',
+
         tooltip: 'Only accepts answers as calendar dates.',
         errorText: 'Custom Error Field',
         placeholder: 'Date',
@@ -265,9 +281,10 @@ export const icons_and_fields = [
         name: 'Conditional',
         subName: 'Dropdown',
         icon: 'conditional_dropdown.png',
-        fielType: '',
+        fielType: 'conditional',
         required: true,
         tooltip: 'Ask your users the question depending on other answers.',
+        label: 'Ask your users the question depending on other answers.',
     },
 
 
@@ -276,9 +293,10 @@ export const icons_and_fields = [
         name: 'Table',
         subName: 'Format',
         icon: 'table.png',
-        fielType: '',
+        fielType: 'table',
         required: true,
         tooltip: '',
+        label: 'Enter Footer contain',
         errorText: 'Custom Error Field',
     },
 

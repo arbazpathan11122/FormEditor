@@ -124,19 +124,19 @@
                                 </div>
                             </div>
 
-                            <div *ngIf="(item.fielType=='shortText')|| (item.fielType=='longText')">
+                            <div *ngIf="(item.fielType=='text')|| (item.fielType=='number')">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
-                                    <input class="name-input" placeholder="{{item.placeholder}}" aria-invalid="false">
+                                    <input class="name-input" type="" placeholder="{{item.placeholder}}" aria-invalid="false">
                                 </div>
                             </div>
 
 
                             <div *ngIf="item.fielType=='date'">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" placeholder="How old are you ?" aria-invalid="false">
+                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input style="width:25%" class="name-input" disabled placeholder="12 / DD / YYYY"
@@ -145,7 +145,8 @@
                             </div>
 
 
-                            <div *ngIf="item.fielType=='dropdown'">
+                            <div
+                                *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
@@ -156,6 +157,11 @@
                                         <ng-container class="add-dropdown ">
 
                                             <input class="name-input mb-2" [(ngModel)]="i.label" aria-invalid="false">
+                                            <ng-container *ngIf="item.fielType=='picture'">
+
+                                                <input type="file">
+                                            </ng-container>
+
                                             <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
                                                 aria-hidden="true"></i>
                                         </ng-container>
@@ -176,7 +182,7 @@
                             </div>
 
 
-                            <div *ngIf="item.fielType=='picture'">
+                            <div *ngIf="item.fielType=='conditional'">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
@@ -193,16 +199,7 @@
                                         </ng-container>
                                     </li>
                                 </ol>
-                                <!-- <div class="user-input " *ngFor="let i of item.values; let valueIndex=index;">
-                                            <div class="add-dropdown ">
-                                                   {{valueIndex +1}}
-                                                <input class="name-input mb-2" [(ngModel)]="i.label"
-                                                    aria-invalid="false">
-                                                <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
-                                                    aria-hidden="true"></i>
-                                            </div>
-    
-                                        </div> -->
+
                                 <button class="btn" (click)="addValue(item.values)"> add Option</button>
 
                             </div>
