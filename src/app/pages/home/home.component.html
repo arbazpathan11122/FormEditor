@@ -10,19 +10,19 @@
         <div class="stepwizard">
             <div class="stepwizard-row">
                 <div class="stepwizard-step">
-                    <a href="#">
+                    <a>
                         <button type="button" class="btn btn-primary btn-circle">1</button>
                         <p>Form</p>
                     </a>
                 </div>
                 <div class="stepwizard-step">
-                    <a href="#">
+                    <a>
                         <button type="button" class="btn btn-circle">2</button>
                         <p>Process</p>
                     </a>
                 </div>
                 <div class="stepwizard-step">
-                    <a href="#">
+                    <a>
                         <button type="button" class="btn btn-circle">3</button>
                         <p>Publish</p>
                     </a>
@@ -53,7 +53,7 @@
                             <img src="assets/img/icons/{{item.icon}}">
                         </div>
                         <div class="col-8 pl-2 pr-0">
-                            <span> {{item.name}}
+                            <span> {{item.uniqName}}
                                 <br> {{item.subName}} </span>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                 " *ngFor="let item of model.attributes;let i= index;" (dndStart)="onDragStart($event)"
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, model.attributes, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
-                    <div class="row form-group" dndHandle>
+                    <div class="row form-group" (click)=" currentValidation(item)" dndHandle>
                         <div class="col-md-1">
                             <i class="fa fa-ellipsis-v dndHandle"></i>
                         </div>
@@ -118,8 +118,11 @@
                                     <label class="checkbox-inline mr-4">
                                         <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[0]}}
                                     </label>
-                                    <label class="checkbox-inline">
+                                    <label class="checkbox-inline mr-4">
                                         <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[1]}}
+                                    </label>
+                                    <label class="checkbox-inline mr-4" *ngIf="item.values[2]">
+                                        <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[2]}}
                                     </label>
                                 </div>
                             </div>
@@ -129,21 +132,76 @@
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
-                                    <input class="name-input" type="" placeholder="{{item.placeholder}}" aria-invalid="false">
+                                    <input class="name-input" type="" placeholder="{{item.placeholder}}"
+                                        aria-invalid="false">
                                 </div>
                             </div>
 
 
+                            <div *ngIf="item.fielType=='file'">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <input type="file" disabled class="name-input" aria-invalid="false">
+                                </div>
+                            </div>
                             <div *ngIf="item.fielType=='date'">
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
-                                    <input style="width:25%" class="name-input" disabled placeholder="12 / DD / YYYY"
+                                    <input style="width:75%" class="name-input" disabled placeholder="12 / DD / YYYY"
                                         aria-invalid="false" id="datepicker">
                                 </div>
                             </div>
+                            <div *ngIf="item.fielType=='rating'">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <div class="mb-2 rating-ico"
+                                                *ngIf="item.selestedValidation!=='btn btn-light'">
 
+                                                <span style="opacity: 1" *ngFor="let star of numberArray; let i=index"
+                                                    [ngClass]="item.selestedValidation"></span>&nbsp;
+                                                <!-- <button *ngIf="item.selestedValidation=='btn btn-light'" type="button"
+                                                    class="btn btn-light">{{i}}</button> &nbsp; -->
+
+                                            </div>
+                                            <div class="mb-2 rating-ico"
+                                                *ngIf="item.selestedValidation== 'btn btn-light'">
+
+
+                                                <button style="background-color:#e2e6ea"
+                                                    *ngFor="let star of numberArray; let i=index" type="button"
+                                                    class="btn btn-light">{{i}}</button> &nbsp;
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-5">
+                                            <select [(ngModel)]="item.selestedValidation" class="name-input">
+                                                <option *ngFor="let c of item.formRating" [value]="c.value">
+                                                    {{c.label}}</option>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="user-input">
+                                                <input class="name-input" type="number" min="2" max=20
+                                                    (ngModelChange)="generateDynamicArray(item.ratingLimit)"
+                                                    [(ngModel)]="item.ratingLimit" aria-invalid="false"
+                                                    (keyup)="((item.ratingLimit >20)? item.ratingLimit = 20 : ((item.ratingLimit <2)? item.ratingLimit = 2 :item.ratingLimit  =item.ratingLimit))">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div
                                 *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
@@ -151,20 +209,21 @@
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input ">
-                                    <li *ngFor="let i of item.values; let valueIndex=index;">
+                                    <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
 
 
-                                        <ng-container class="add-dropdown ">
+                                        <!-- <ng-container class="add-dropdown "> -->
 
-                                            <input class="name-input mb-2" [(ngModel)]="i.label" aria-invalid="false">
-                                            <ng-container *ngIf="item.fielType=='picture'">
+                                        <input class="name-input mb-2" name="i.uniqName{{valueIndex}}"
+                                            [(ngModel)]="i.label" aria-invalid="false">
+                                        <ng-container *ngIf="item.fielType=='picture'">
 
-                                                <input type="file">
-                                            </ng-container>
-
-                                            <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
-                                                aria-hidden="true"></i>
+                                            <input class="right-ico" accept="image/*" type="file">
                                         </ng-container>
+
+                                        <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
+                                            aria-hidden="true"></i>
+                                        <!-- </ng-container> -->
                                     </li>
                                 </ol>
                                 <!-- <div class="user-input " *ngFor="let i of item.values; let valueIndex=index;">
@@ -177,7 +236,7 @@
                                         </div>
 
                                     </div> -->
-                                <button class="btn" (click)="addValue(item.values)"> add Option</button>
+                                <button class="btn" (click)="addValue( item.values)"> add Option</button>
 
                             </div>
 
@@ -285,6 +344,7 @@
                 <div class="tab-content mt-20">
                     <div class="tab-pane active" id="Properties">
                         <div *ngIf="isValidObject(selectedItem)">
+                            <label>{{selectedItem.uniqName}}</label>
 
                             <div *ngIf="!((selectedItem.name =='Statement')||(selectedItem.name =='Footer')||(selectedItem.name =='Header'))"
                                 class="required-part mt-4 mb-4">
@@ -307,7 +367,7 @@
                             </div>
 
 
-                            <div *ngIf="!((selectedItem.name =='Statement')||(selectedItem.name =='Footer')||(selectedItem.name =='Header'))"
+                            <div *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))"
                                 class="response-validation mt-3 mb-3">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" id="customRadio1" value="true" name="customRadio"
@@ -317,7 +377,113 @@
                                 </div>
                             </div>
 
+
+                            <div class="required-part mt-4 mb-4" *ngIf="selectedItem.fielType=='rating'">
+
+                                <i *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false"
+                                    class="fa fa-toggle-on red"></i>
+                                <i *ngIf="!selectedItem.userComment.want" (click)="selectedItem.userComment.want=true"
+                                    class="fa fa-toggle-off"></i> &nbsp;
+
+                                <label> comment is Required On Reating</label>
+
+
+                            </div>
+
+
+                            <div class="row" *ngIf="selectedItem.fielType=='email'">
+                                <div class="col-md-12 user-input mb-3">
+                                        <label> Allow Only One email</label>
+
+                                    <select [(ngModel)]="selectedItem.selestedValidation" class="name-input">
+                                        <option [value]="''">Select Validation</option>
+                                        <option *ngFor="let c of selectedItem.emailValidation" [value]="c.pattern">
+                                            {{c.label}}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="row" *ngIf="selectedItem?.formValidations">
+                                <div class="col-md-12 user-input mb-3">
+
+                                    <select [(ngModel)]="selectedItem.selestedValidation" class="name-input">
+                                        <option [value]="''">Select Validation</option>
+                                        <option *ngFor="let c of selectedItem?.formValidations" [value]="c.value">
+                                            {{c.label}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-md-12"
+                                    *ngIf="((selectedItem.fielType=='multiple')|| (selectedItem.fielType=='dropdown')|| (selectedItem.fielType=='picture')|| (selectedItem.fielType=='file'))">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((selectedItem.selestedValidation !=='') &&  (selectedItem.fielType!=='file'))">
+                                        <p> Number</p>
+
+                                        <input class="name-input" min="0" type="number"
+                                            [(ngModel)]="selectedItem[selectedItem.selestedValidation]"
+                                            aria-invalid="false">
+                                    </div>
+
+                                    <div class="user-input mb-3"
+                                        *ngIf="((selectedItem.selestedValidation !=='') &&  (selectedItem.fielType =='file'))">
+                                        <p> Size</p>
+
+                                        <input class="name-input" min="0" type="number"
+                                            [(ngModel)]="selectedItem.selestedValidation" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" *ngIf="selectedItem.fielType=='date'">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((selectedItem.selestedValidation =='min') || (selectedItem.selestedValidation =='both'))">
+
+                                        <p>Start Date</p>
+                                        <input class="datepicker name-input" type="date" [(ngModel)]="selectedItem.min"
+                                            aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" *ngIf="selectedItem.fielType=='date'">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((selectedItem.selestedValidation =='max') || (selectedItem.selestedValidation =='both'))">
+
+                                        <p>End Date</p>
+                                        <input class="datepicker name-input" [min]="selectedItem.min" type="date"
+                                            [(ngModel)]="selectedItem.max" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="col-md-12"
+                                    *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((selectedItem.selestedValidation =='min') || (selectedItem.selestedValidation =='both'))">
+                                        <p
+                                            *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                            Min {{selectedItem.uniqName}}</p>
+
+                                        <input class="name-input" type="number" min="0" maxlength="15"
+                                            (keyup)="((selectedItem.min == null)? selectedItem.min = 0 : selectedItem.min =selectedItem.min)"
+                                            [(ngModel)]="selectedItem.min" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="col-md-12"
+                                    *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((selectedItem.selestedValidation =='max') || (selectedItem.selestedValidation =='both'))">
+                                        <p
+                                            *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                            Max {{selectedItem.uniqName}}</p>
+
+                                        <input class="name-input" type="number" [min]="selectedItem.min" maxlength="15"
+                                            (keyup)="((selectedItem.max <selectedItem.min)? selectedItem.max= selectedItem.min : selectedItem.max =selectedItem.max)"
+                                            [(ngModel)]="selectedItem.max" aria-invalid="false">
+                                    </div>
+                                </div>
+
+                            </div>
                             <div class="row required-inputs">
+
+
+
                                 <!-- <div class="col-6">
                                     <div class="user-input mb-3">
                                         <select name="put a velue">
@@ -325,32 +491,46 @@
                                             <option value="saab">number</option>
                                         </select>
                                     </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="user-input mb-3">
-                                        <select name="put a velue">
-                                            <option value="volvo">Greater Than</option>
-                                            <option value="saab">Greater Than</option>
-                                        </select>
-                                    </div>
                                 </div> -->
 
-                                <div class="col-6" *ngIf="selectedItem.min">
-                                    <div class="user-input mb-3">
-                                        <p>Min Char</p>
-                                        <input class="name-input" [(ngModel)]="selectedItem.min" aria-invalid="false">
+
+                                <!-- <div class="col-12"
+                                    *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                    <div class=" mb-3">
+                                        <select [(ngModel)]="selectedItem.selestedValidation">
+                                            <option *ngFor="let c of selectedItem.selectValidationFrom"
+                                                [value]="c.value">{{c.label}}</option>
+                                          
+
+                                        </select>
+                                    </div> -->
+                                <!-- <div class="col-6"
+                                        *ngIf="((selectedItem.selestedValidation =='min') || (selectedItem.selestedValidation =='both'))">
+                                        <div class="user-input mb-3">
+                                            <p>Min Char</p>
+                                            <input class="name-input" type="number" min="0" maxlength="15"
+                                                (keyup)="((selectedItem.min == null)? selectedItem.min = 0 : selectedItem.min =selectedItem.min)"
+                                                [(ngModel)]="selectedItem.min" aria-invalid="false">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6" *ngIf="selectedItem.max">
-                                    <div class="user-input mb-3">
-                                        <p>Max Char</p>
-                                        <input class="name-input" [(ngModel)]="selectedItem.max" aria-invalid="false">
+                                    <div class="col-6"
+                                        *ngIf="((selectedItem.selestedValidation =='max') || (selectedItem.selestedValidation =='both'))">
+                                        <div class="user-input mb-3">
+                                            <p>Max Char</p>
+                                            <input class="name-input" type="number" [min]="selectedItem.min"
+                                                maxlength="15"
+                                                (keyup)="((selectedItem.max <selectedItem.min)? selectedItem.max= selectedItem.min : selectedItem.max =selectedItem.max)"
+                                                [(ngModel)]="selectedItem.max" aria-invalid="false">
+                                        </div>
                                     </div>
-                                </div>
+
+                                </div> -->
+
 
                                 <div class="col-12" *ngIf="selectedItem.errorText">
                                     <div class="user-input mb-3">
+                                        <p> Custom Error Message</p>
+
                                         <input class="name-input" [(ngModel)]="selectedItem.errorText"
                                             aria-invalid="false">
                                     </div>
@@ -359,13 +539,15 @@
                                 <!-- <div class="col-6">
                                     <div class="user-input mb-3">
                                         <select name="put a velue">
-                                            <option value="volvo">Select atleast</option>
-                                            <option value="saab">Select atleast</option>
+                                            <option value="min">Select atleast</option>
+                                            <option value="saab">Select exectly</option>
+                                            <option value="saab">Select atmost</option>
+
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="col-6">
+                                <!--        <div class="col-6">
                                     <div class="user-input mb-3">
                                         <input class="name-input" placeholder="2" aria-invalid="false">
                                     </div>

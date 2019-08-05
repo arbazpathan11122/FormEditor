@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
     label: '',
     value: ''
   };
+
+
+  numberArray = [1, 2, 3, 4, 5];
   success = false;
   showProperties = false;
   selectedItem: any = {};
@@ -22,11 +25,11 @@ export class HomeComponent implements OnInit {
   model: any = {
     name: 'App name...',
     description: 'App Description...',
-     folder: {
-       FolderName: '',
-    FileName: '',
-    pages: []
-  },
+    folder: {
+      FolderName: '',
+      FileName: '',
+      pages: []
+    },
     theme: {
       bgColor: 'f0f0f0',
       textColor: '555555',
@@ -39,12 +42,12 @@ export class HomeComponent implements OnInit {
   reports: any = [];
 
 
+ 
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
 
     }, 0);
-
 
   }
 
@@ -110,16 +113,25 @@ export class HomeComponent implements OnInit {
     this.currentValidation(event.data);
   }
   dblclickMove(event: DndDropEvent, list: any, item: any) {
-    list.splice(list.length, 0, item);
+    console.log(event);
+    // item.name = item.type + '-' + new Date().getTime();
+    console.log(item);
+
+    list.splice(list.length, 0, JSON.parse(JSON.stringify(item)));
     this.currentValidation(item);
 
 
   }
   currentValidation(item) {
+    delete this.selectedItem;
     console.log(item);
+
+    // item.name = item.type + '-' + new Date().getTime();
+    console.log(item);
+
     this.showProperties = true;
-    console.log(this.showProperties);
     this.selectedItem = item;
+    // console.log(this.formValidations[this.selectedItem.fielType]);
 
   }
 
@@ -131,13 +143,29 @@ export class HomeComponent implements OnInit {
 
         return true;
       }
-  }
+    }
     return false;
   }
 
   addValue(values) {
     values.push(this.value);
     this.value = { label: '', value: '' };
+  }
+
+
+
+
+  generateDynamicArray(no) {
+    console.log(no);
+
+    this.numberArray.splice(0, this.numberArray.length);
+    for (let i = 0; i < no; i++) {
+      this.numberArray.push(i);
+      console.log(i, no);
+
+    }
+    console.log(this.numberArray);
+
   }
 
   removeField(i) {
@@ -152,6 +180,9 @@ export class HomeComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.model.attributes.splice(i, 1);
+        delete this.selectedItem;
+        this.selectedItem = this.model.attributes[i - 1];
+
       }
     });
 

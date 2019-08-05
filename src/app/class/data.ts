@@ -2,6 +2,7 @@
 export const icons_and_fields = [
     {
         id: 1,
+        uniqName: 'Header',
         name: 'Header',
         subName: 'Format',
         icon: 'header.png',
@@ -15,24 +16,41 @@ export const icons_and_fields = [
 
     {
         id: 2,
+        uniqName: 'Text',
         name: 'Text',
         subName: 'Format',
         icon: 'short_text.png',
-        fielType: 'shortText',
+        fielType: 'text',
         required: true,
         tooltip: 'Good for short answers, like names.',
-        label: 'Enter your Discription here',
-        placeholder: 'Short Answer Text',
+        label: 'Enter your Question here',
+        placeholder: ' Answer Text',
         errorText: 'maximum 256 charector are allowed',
-        min: 1,
+        min: 0,
         max: 256,
-        handle: true
+        handle: true,
+        selestedValidation: '',
+        formValidations: [
+            {
+                label: ' Greater Then',
+                value: 'min'
+            },
+            {
+                label: ' Less Then',
+                value: 'max'
+            },
+            {
+                label: 'Between',
+                value: 'both'
+            }
+        ]
 
 
     },
 
     {
         id: 3,
+        uniqName: 'Statement',
         name: 'Statement',
         subName: 'Format',
         icon: 'statement.png',
@@ -46,6 +64,7 @@ export const icons_and_fields = [
 
     {
         id: 4,
+        uniqName: 'Phone',
         name: 'Phone',
         subName: 'Number',
         icon: 'mobile_no.png',
@@ -64,6 +83,7 @@ export const icons_and_fields = [
 
     {
         id: 5,
+        uniqName: 'Picture',
         name: 'Picture',
         subName: 'Choice',
         icon: 'picture_format.png',
@@ -74,20 +94,95 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         values: [
             {
-                label: 'Option 1',
+                label: 'Enter Your Option Here',
                 value: 'option-1',
-              img: '',
+                img: '',
             },
             {
-                label: 'Option 2',
+                label: 'Enter Your Option Here',
                 value: 'option-2',
                 img: '',
             }
-        ]
+        ],
+        selestedValidation: '',
+
+        formValidations: [
+            {
+                label: 'Select atleast',
+                value: 'min'
+            },
+            {
+                label: 'Select exectly',
+                value: 'max'
+            },
+            {
+                label: 'Select atmost',
+                value: 'both'
+            }
+        ],
+        // formValidations: {
+        //     multiple: [
+        //         {
+        //             label: 'Select atleast',
+        //             value: 'min'
+        //         },
+        //         {
+        //             label: 'Select exectly',
+        //             value: 'max'
+        //         },
+        //         {
+        //             label: 'Select atmost',
+        //             value: 'both'
+        //         }
+        //     ],
+        //     text: [
+        //         {
+        //             label: ' Greater Then',
+        //             value: 'min'
+        //         },
+        //         {
+        //             label: ' Less Then',
+        //             value: 'max'
+        //         },
+        //         {
+        //             label: 'Exactly',
+        //             value: 'both'
+        //         }
+        //     ],
+        //     date: [
+        //         {
+        //             label: 'After',
+        //             value: 'min'
+        //         },
+        //         {
+        //             label: ' Before',
+        //             value: 'max'
+        //         },
+        //         {
+        //             label: 'Between',
+        //             value: 'both'
+        //         }
+        //     ],
+        //     file: [
+        //         {
+        //             label: 'Kb',
+        //             value: 'Kb'
+        //         },
+        //         {
+        //             label: ' Mb',
+        //             value: 'Mb'
+        //         },
+        //         {
+        //             label: 'Gb',
+        //             value: 'Gb'
+        //         }
+        //     ]
+        // }
     },
 
     {
         id: 6,
+        uniqName: 'Email',
         name: 'Email',
         subName: 'Format',
         icon: 'mail.png',
@@ -99,13 +194,51 @@ export const icons_and_fields = [
         label: 'Email',
         inputValue: '',
         placeholder: 'Enter your email',
-        regex: '^([a-zA-Z0-9_.-]+)@([a-zA-Z0-9_.-]+)\.([a-zA-Z]{2,5})$',
         errorText: 'Please enter a valid email',
-        handle: true
+        selestedValidation: '',
+        handle: true,
+        emailValidation: [
+            {
+                label: 'Gmail',
+                pattern: '.+@Gmail.com',
+
+            },
+            {
+                label: 'Outlook',
+                pattern: '.+@Gmail.com',
+
+            },
+            {
+                label: 'Yahoo',
+                pattern: '.+@Gmail.com',
+
+            },
+            {
+                label: 'Zoho',
+                pattern: '.+@Gmail.com',
+
+            },
+            {
+                label: 'Mail',
+                pattern: '.+@Gmail.com',
+
+            },
+            {
+                label: 'ProtonMail',
+                pattern: '.+@Gmail.com',
+
+            },
+            {
+                label: 'GMX',
+                pattern: '.+@Gmail.com',
+
+            },
+        ]
     },
 
     {
         id: 7,
+        uniqName: 'Dropdown',
         name: 'Dropdown',
         subName: 'Format',
         icon: 'dropdown.png',
@@ -116,30 +249,65 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         values: [
             {
-                label: 'Option 1',
+                label: 'Enter Your Option Here',
                 value: 'option-1'
             },
             {
-                label: 'Option 2',
+                label: 'Enter Your Option Here',
                 value: 'option-2'
             }
-        ]
+        ],
+        selestedValidation: '',
+
+        formValidations: [
+            {
+                label: 'Select atleast',
+                value: 'min'
+            },
+            {
+                label: 'Select exectly',
+                value: 'max'
+            },
+            {
+                label: 'Select atmost',
+                value: 'both'
+            }]
+
     },
 
     {
         id: 8,
+        uniqName: 'File Upload',
         name: 'File Upload',
         subName: 'Format',
         icon: 'file_upload.png',
-        fielType: '',
+        fielType: 'file',
         label: 'uploud your resume',
         required: true,
         tooltip: 'Ask for any type of file.',
         errorText: 'Custom Error Field',
+        selestedValidation: '',
+
+        formValidations: [
+            {
+                label: 'Kb',
+                value: 'Kb'
+            },
+            {
+                label: ' Mb',
+                value: 'Mb'
+            },
+            {
+                label: 'Gb',
+                value: 'Gb'
+            }
+        ]
+
     },
 
     {
         id: 9,
+        uniqName: 'Yes/No',
         name: 'Yes/No',
         subName: 'Format',
         icon: 'yes_no.png',
@@ -149,11 +317,12 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         label: 'Are you married ?',
         inputValue: '',
-        values: ['Yes', 'No'],
+        values: ['Yes', 'No', 'MayBe'],
     },
 
     {
         id: 10,
+        uniqName: 'Payment',
         name: 'Payment',
         subName: 'Format',
         icon: 'payment.png',
@@ -164,6 +333,7 @@ export const icons_and_fields = [
     },
     {
         id: 11,
+        uniqName: 'True/False',
         name: 'True/False',
         subName: 'Format',
         icon: 'true_false.png',
@@ -179,6 +349,7 @@ export const icons_and_fields = [
 
     {
         id: 12,
+        uniqName: 'Multiple',
         name: 'Multiple',
         subName: 'Choie',
         icon: 'multiple_choice.png',
@@ -189,30 +360,79 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         values: [
             {
-                label: 'Option 1',
-                value: 'option-1'
+                label: 'Enter Your Option Here',
+                value: 'option-2'
             },
             {
-                label: 'Option 2',
+                label: 'Enter Your Option Here',
                 value: 'option-2'
             }
+        ],
+        selestedValidation: '',
+        formValidations: [
+
+            {
+                label: 'Select atleast',
+                value: 'min'
+            },
+            {
+                label: 'Select exectly',
+                value: 'max'
+            },
+            {
+                label: 'Select atmost',
+                value: 'both'
+            }
+
         ]
     },
 
     {
         id: 13,
+        uniqName: 'Rating',
         name: 'Rating',
         subName: 'Scale',
         icon: 'rating.png',
-        fielType: '',
+        fielType: 'rating',
         required: true,
         label: 'Rate our product',
         tooltip: 'Ask them to rate something.',
         errorText: 'Custom Error Field',
+        selestedValidation: 'fa fa-star-o',
+        ratingLimit: 5,
+        userComment: {
+            want: false,
+            comment: '',
+        },
+        formRating: [
+            // 'fa fa-star-o', 'fa fa-smile-o', 'fa fa-sun-o', 'fa fa-heart-o', 'btn btn-light',
+
+            {
+                label: 'Star',
+                value: 'fa fa-star-o'
+            },
+            {
+                label: 'Smiley',
+                value: 'fa fa-smile-o'
+            },
+            {
+                label: 'Sun',
+                value: 'fa fa-sun-o'
+            },
+            {
+                label: 'Heart',
+                value: 'fa fa-heart-o'
+            },
+            {
+                label: 'Number',
+                value: 'btn btn-light'
+            }
+        ],
     },
 
     {
         id: 14,
+        uniqName: 'Number',
         name: 'Number',
         subName: 'Format',
         icon: 'Number.png',
@@ -224,12 +444,30 @@ export const icons_and_fields = [
         placeholder: 'Long Answer Text',
         min: 0,
         max: 256,
+        selestedValidation: '',
+        formValidations: [
+            {
+                label: ' Greater Then',
+                value: 'min'
+            },
+            {
+                label: ' Less Then',
+                value: 'max'
+            },
+            {
+                label: 'Between',
+                value: 'both'
+            }
+        ],
+
+
         handle: true
 
     },
 
     {
         id: 15,
+        uniqName: 'Website',
         name: 'Website',
         subName: 'Format',
         icon: 'website.png',
@@ -248,6 +486,7 @@ export const icons_and_fields = [
 
     {
         id: 16,
+        uniqName: 'Date',
         name: 'Date',
         subName: 'Format',
         type: 'date',
@@ -259,17 +498,32 @@ export const icons_and_fields = [
         tooltip: 'Only accepts answers as calendar dates.',
         errorText: 'Custom Error Field',
         placeholder: 'Date',
-        className: 'form-control'
+        selestedValidation: '',
+
+        formValidations: [
+            {
+                label: 'After',
+                value: 'min'
+            },
+            {
+                label: ' Before',
+                value: 'max'
+            },
+            {
+                label: 'Between',
+                value: 'both'
+            }
+        ],
     },
 
     {
         id: 17,
+        uniqName: 'Footer',
         name: 'Footer',
         subName: 'Format',
         icon: 'footer.png',
         fielType: 'footer',
         tooltip: '',
-        errorText: 'Custom Error Field',
         type: 'text',
         label: 'footer content',
         handle: true
@@ -278,6 +532,7 @@ export const icons_and_fields = [
 
     {
         id: 18,
+        uniqName: 'Conditional',
         name: 'Conditional',
         subName: 'Dropdown',
         icon: 'conditional_dropdown.png',
@@ -290,6 +545,7 @@ export const icons_and_fields = [
 
     {
         id: 19,
+        uniqName: 'Table',
         name: 'Table',
         subName: 'Format',
         icon: 'table.png',

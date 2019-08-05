@@ -7,7 +7,7 @@
                 <form class="form-horizontal" #logingForm="ngForm">
                     <div class="heading">No Code BPM <br></div>
                     <div class="form-group">
-                        <i class="fa fa-user"></i><input required [(ngModel)]="user.userName" name="username"  class="form-control" placeholder="Username" id="exampleInputEmail1">
+                        <i class="fa fa-user"></i><input required [(ngModel)]="user.userName"  type="email"  pattern=".+@Gmail.com" size="30" name="username"  class="form-control" placeholder="Username" id="exampleInputEmail1">
                     </div>
                     <div class="form-group">
                         <i class="fa fa-lock"></i><input required [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Password">
