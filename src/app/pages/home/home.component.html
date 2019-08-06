@@ -64,6 +64,90 @@
         </div>
         <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
 
+            <div id="conditional-dropdown-format">
+                <div class="mb-3 maker-input">
+                    <input class="name-input" placeholder="This is the conditional format.*" aria-invalid="false">
+                </div>
+                <div class="user-input">
+                    <div class="row">
+                        <div class="col">
+                            <div class="add-condi-dropdown">
+                                <ol class="pl-4">
+                                    <li>
+                                        <input aria-invalid="false" class="name-input mb-2"
+                                            placeholder="I am invincible.">
+                                        <i aria-hidden="true" class="fa fa-times right-ico"></i>
+                                    </li>
+                                    <li>
+                                        <input aria-invalid="false" class="name-input mb-2 mt-3"
+                                            placeholder="Add option">
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="add-condi-dropdown">
+                                <ol class="pl-4" type="A">
+                                    <li>
+                                        <input aria-invalid="false" class="name-input mb-2"
+                                            placeholder="I am invincible.">
+                                        <i aria-hidden="true" class="fa fa-times right-ico"></i>
+                                    </li>
+                                    <li>
+                                        <input aria-invalid="false" class="name-input mb-2 mt-3"
+                                            placeholder="Add option">
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="file-upload-format">
+                <div class="mb-4 maker-input">
+                    <input class="name-input" placeholder="Your Portfolio Link." aria-invalid="false">
+                </div>
+                <div class="user-input">
+                    <input type="file" id="real-file" hidden="hidden" />
+                    <button type="button" class="btn btn-primary btn-style mr-2" id="custom-button">CHOOSE A
+                        FILE</button>
+                    <span id="custom-text">Select file</span>
+                </div>
+            </div>
+
+            
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                 [style.color]="model.theme.textColor">
 
@@ -208,17 +292,23 @@
                                 <div class="mb-3 maker-input">
                                     <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
-                                <ol class="user-input ">
+                                <ol class="user-input pl-4">
                                     <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
 
 
                                         <!-- <ng-container class="add-dropdown "> -->
 
-                                        <input class="name-input mb-2" name="i.uniqName{{valueIndex}}"
+                                        <input style="width: 50%" class="name-input mb-4" name="i.uniqName{{valueIndex}}"
                                             [(ngModel)]="i.label" aria-invalid="false">
+                                            
                                         <ng-container *ngIf="item.fielType=='picture'">
 
-                                            <input class="right-ico" accept="image/*" type="file">
+                                                <div class="right-ico mr-5">
+                                                        <input type="file" id="real-file" hidden="hidden" />
+                                                        <button type="button" class="btn btn-sm btn-primary btn-style mr-2" id="custom-button">Upload</button>
+                                                        <span id="custom-text">Select file</span>
+                                                </div>
+                                               
                                         </ng-container>
 
                                         <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
@@ -236,7 +326,8 @@
                                         </div>
 
                                     </div> -->
-                                <button class="btn" (click)="addValue( item.values)"> add Option</button>
+                                <button class="btn btn-primary btn-style" (click)="addValue( item.values)"> add
+                                    Option</button>
 
                             </div>
 
@@ -344,7 +435,7 @@
                 <div class="tab-content mt-20">
                     <div class="tab-pane active" id="Properties">
                         <div *ngIf="isValidObject(selectedItem)">
-                            <label>{{selectedItem.uniqName}}</label>
+                            <p class="text-center mt-2">{{selectedItem.uniqName}}</p>
 
                             <div *ngIf="!((selectedItem.name =='Statement')||(selectedItem.name =='Footer')||(selectedItem.name =='Header'))"
                                 class="required-part mt-4 mb-4">
@@ -368,13 +459,8 @@
 
 
                             <div *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))"
-                                class="response-validation mt-3 mb-3">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" value="true" name="customRadio"
-                                        class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1"> &nbsp; Response
-                                        Validation</label>
-                                </div>
+                                class="response-validation mt-4 mb-3">
+                                <label>Response Validation</label>
                             </div>
 
 
@@ -393,13 +479,13 @@
 
                             <div class="row" *ngIf="selectedItem.fielType=='email'">
                                 <div class="col-md-12 user-input mb-3">
-                                        <label> Allow Only One email</label>
+                                    <label> Allow Only One email</label>
 
-                                    <select [(ngModel)]="selectedItem.selestedValidation" class="name-input">
+                                    <select [(ngModel)]="selectedItem.selestedValidation"
+                                        class="name-input nice-select box-nice-select wide mb-3">
                                         <option [value]="''">Select Validation</option>
                                         <option *ngFor="let c of selectedItem.emailValidation" [value]="c.pattern">
                                             {{c.label}}</option>
-
                                     </select>
                                 </div>
                             </div>
