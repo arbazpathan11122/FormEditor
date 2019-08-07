@@ -37,7 +37,7 @@
     });
   </script>
 
-  <script>
+  <!-- <script>
     // Add active class to the current button (highlight it)
     var header = document.getElementById("myDIV");
     var btns = header.getElementsByClassName("btn");
@@ -48,7 +48,32 @@
         this.className += " active";
       });
     }
-  </script>
+  </script> -->
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+     const realFileBtn = document.getElementById("real-file");
+     const customBtn = document.getElementById("custom-button");
+     const customTxt = document.getElementById("custom-text");
+
+     customBtn.addEventListener("click", function() {
+       realFileBtn.click();
+     });
+
+     realFileBtn.addEventListener("change", function() {
+       if (realFileBtn.value) {
+         customTxt.innerHTML = realFileBtn.value.match(
+           /[\/\\]([\w\d\s\.\-\(\)]+)$/
+         )[1];
+       } else {
+         customTxt.innerHTML = "No file chosen, yet.";
+       }
+     });
+     });
+
+ </script>
+
+  
 
 </body>
 
