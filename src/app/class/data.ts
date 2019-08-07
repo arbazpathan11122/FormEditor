@@ -20,7 +20,7 @@ export const icons_and_fields = [
         subName: 'Format',
         icon: 'footer.png',
         fielType: 'footer',
-        tooltip: '',
+        tooltip: 'The last thing your users will see.',
         type: 'text',
         label: 'footer content',
         handle: true

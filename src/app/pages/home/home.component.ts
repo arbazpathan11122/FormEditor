@@ -15,8 +15,9 @@ export class HomeComponent implements OnInit {
     label: '',
     value: ''
   };
-
-
+  showBtn = true;
+  hideClass = 'mainshow';
+  showNav = true;
   numberArray = [1, 2, 3, 4, 5];
   success = false;
   showProperties = false;
@@ -42,7 +43,12 @@ export class HomeComponent implements OnInit {
   reports: any = [];
 
 
-
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+  dropdownList1 = [];
+  selectedItems2 = [];
+  dropdownSettings3 = {};
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -52,9 +58,125 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dropdownList = [
+      {
+        id: 1,
+        label: 'Gmail',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 2,
+        label: 'Outlook',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 3,
+        label: 'Yahoo',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 4,
+        label: 'Zoho',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 5,
+        label: 'Mail',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 6,
+        label: 'ProtonMail',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 7,
+        label: 'GMX',
+        pattern: '.+@Gmail.com',
+
+      },
+    ];
+
+    this.dropdownList1 = [
+      {
+        id: 1,
+        label: 'India',
+        pattern: 'india',
+
+      },
+      {
+        id: 2,
+        label: 'pakistan',
+        pattern: 'pakistan',
+
+      },
+      {
+        id: 3,
+        label: 'BanglaDesh',
+        pattern: 'BanglaDesh',
+
+      },
+      {
+        id: 4,
+        label: 'china',
+        pattern: 'china',
+
+      },
+      {
+        id: 5,
+        label: 'japan',
+        pattern: 'japan',
+
+      },
+      {
+        id: 6,
+        label: 'U S A',
+        pattern: 'pakistan',
+
+      },
+      {
+        id: 7,
+        label: 'Brazil',
+        pattern: '.+@Gmail.com',
+
+      },
+    ];
 
 
+    // this.selectedItems = [
+    //   {
+    //     id: 7,
+    //     label: 'GMX',
+    //     pattern: '.+@Gmail.com',
+
+
+    //   },
+    // ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'label',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
+
+
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+
   allowDrop(event) {
 
   }
@@ -188,7 +310,20 @@ export class HomeComponent implements OnInit {
 
   }
 
+  showNavbar() {
 
+
+    if (this.showBtn) {
+      this.showNav = false;
+      this.hideClass = 'mainhide';
+
+    } else {
+      this.showNav = true;
+      this.hideClass = 'mainshow';
+
+    }
+    this.showBtn = !this.showBtn;
+  }
 
   submitbtn() {
     localStorage.setItem('FormObject', JSON.stringify(this.model));

@@ -51,7 +51,7 @@
 }
 
 .dndDropArea.empty{
-    min-height:200px;
+    min-height:600px;
     border: dotted #ddd 2px;
 }
 
@@ -139,17 +139,22 @@
 .back-to-top i{
 	color:#fff;font-size:20px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out
 }
+// .navbar{
+// 	border-bottom: 2px solid #ddd !important;
+// 	z-index: 99999; 
+// 	background: #fff;
+// }
+
 .navbar{
 	border-bottom: 2px solid #ddd !important;
 	z-index: 99999; 
-    background: #fff;
-    display: block;
+  background: #fff;
+  display: block;
 }
-.pl-30{
-	padding-left: 30px;
-}
-.main{
-	margin-top: 50px;
+
+
+.maker-input {
+    display: flex;
 }
 .maker-input{
     display: flex;
@@ -250,6 +255,9 @@
 }
 .working-part .active{
      background-color: #f9f9f9
+}
+.working-part .active1{
+    background-color: #ffffff
 }
 .formtitle{
 	padding: 35px 50px;

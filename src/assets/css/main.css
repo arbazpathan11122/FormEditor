@@ -1,42 +1,9 @@
 
-.back-to-top{
-	display:none;position:fixed;bottom:18px;right:15px;width:45px;height:45px;line-height:50px;cursor:pointer;text-align:center;border-radius:4px;background:#53f;background:linear-gradient(95deg,#5533ff 40%,#25ddf5 100%);box-shadow:0 8px 9px 0 rgba(96,94,94,.17);z-index:9999999
-}
-.back-to-top i{
-	color:#fff;font-size:20px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out
-}
 .navbar{
 	border-bottom: 2px solid #ddd !important;
 	z-index: 99999; 
   background: #fff;
   display: flex;
-}
-.pl-30{
-	padding-left: 30px;
-}
-.main{
-	margin-top: 50px;
-}
-.maker-input{
-  display: flex;
-}
-
-.maker-input .name-input{
-    order: 2;
-    display: block;
-    margin-top: 0;
-    background: none;
-    padding: 2px 2px 1px;
-    line-height: 26px;
-    height: 30px;
-    border:none;
-    width: 100%;
-    box-sizing: border-box;
-    color: #151948;
-    font-size: 18px;
-}
-.maker-input .name-input:focus{
-	outline: none;
 }
 .user-input .name-input{
     order: 2;
