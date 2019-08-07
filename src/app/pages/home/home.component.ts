@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit {
   reports: any = [];
 
 
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+
 
   constructor() {
     setTimeout(() => {
@@ -52,9 +56,78 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dropdownList = [
+      {
+        id: 1,
+        label: 'Gmail',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 2,
+        label: 'Outlook',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 3,
+        label: 'Yahoo',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 4,
+        label: 'Zoho',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 5,
+        label: 'Mail',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 6,
+        label: 'ProtonMail',
+        pattern: '.+@Gmail.com',
+
+      },
+      {
+        id: 7,
+        label: 'GMX',
+        pattern: '.+@Gmail.com',
+
+      },
+    ];
+    this.selectedItems = [
+      {
+        id: 7,
+        label: 'GMX',
+        pattern: '.+@Gmail.com',
 
 
+      },
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'label',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
+
+
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+
   allowDrop(event) {
 
   }

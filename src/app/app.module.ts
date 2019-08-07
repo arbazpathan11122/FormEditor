@@ -11,6 +11,7 @@ import { NavComponent } from './share/nav/nav.component';
 import { FooterComponent } from './share/footer/footer.component';
 import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { FormViewComponent } from './pages/form-view/form-view.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormViewComponent } from './pages/form-view/form-view.component';
   ],
   imports: [
     BrowserModule,
+    NgMultiSelectDropDownModule.forRoot(),
     SweetAlert2Module.forRoot(),
     FormsModule,
     AppRoutingModule,
