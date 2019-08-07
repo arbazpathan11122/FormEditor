@@ -1,72 +1,51 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">
-        <i class="fa fa-home"></i>
-        Home</a>
-
-    <!-- <div class="top-bar mx-auto">
-        <div class="stepwizard">
-            <div class="stepwizard-row">
-                <div class="stepwizard-step">
-                    <a>
-                        <button type="button" class="btn btn-primary btn-circle">1</button>
-                        <p>Form</p>
-                    </a>
-                </div>
-                <div class="stepwizard-step">
-                    <a>
-                        <button type="button" class="btn btn-circle">2</button>
-                        <p>Process</p>
-                    </a>
-                </div>
-                <div class="stepwizard-step">
-                    <a>
-                        <button type="button" class="btn btn-circle">3</button>
-                        <p>Publish</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
+<nav class="navbar fixed-top navbar-expand-lg navbar-light p-3">
     <div class="row ">
-        <div class="col-md-4">
-            <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                <span class="current"> Folder Name</span>
-                <ul class="list">
-                    <li data-value="2" class="option">Another option</li>
-                    <li data-value="3" class="option">A disabled option</li>
-                    <li data-value="4" class="option">Potato</li>
-                </ul>
+        <div class="col-2">
+            <button aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler" data-target="#navbarTogglerDemo03" data-toggle="collapse" type="button"><span
+                    class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-home"></i> Home</a>
+        </div>
+        <div class="col-8">
+            <div class="row ">
+                <div class="col-4">
+                    <div class="nice-select box-nice-select wide" tabindex="0">
+                        <span class="current"> Folder Name</span>
+                        <ul class="list">
+                            <li class="option" data-value="2">Another option</li>
+                            <li class="option" data-value="3">A disabled option</li>
+                            <li class="option" data-value="4">Potato</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="nice-select box-nice-select wide" tabindex="0">
+                        <span class="current">Form Name</span>
+                        <ul class="list">
+                            <li class="option" data-value="2">Another option</li>
+                            <li class="option" data-value="3">A disabled option</li>
+                            <li class="option" data-value="4">Potato</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="nice-select box-nice-select wide" tabindex="0">
+                        <span class="current"> Page Name</span>
+                        <ul class="list">
+                            <li class="option" data-value="2">Another option</li>
+                            <li class="option" data-value="3">A disabled option</li>
+                            <li class="option" data-value="4">Potato</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                <span class="current">Form Name</span>
-                <ul class="list">
-                    <li data-value="2" class="option">Another option</li>
-                    <li data-value="3" class="option">A disabled option</li>
-                    <li data-value="4" class="option">Potato</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                <span class="current"> Page Name</span>
-                <ul class="list">
-                    <li data-value="2" class="option">Another option</li>
-                    <li data-value="3" class="option">A disabled option</li>
-                    <li data-value="4" class="option">Potato</li>
-                </ul>
-            </div>
-        </div>
+        <div class="col-2">
 
+        </div>
     </div>
 </nav>
-
 
 
 <div class="main">
@@ -203,6 +182,8 @@
 
             
 
+            
+
 
        
 
@@ -255,6 +236,46 @@
                     <button class="btn btn-warning" (click)="submitbtn()">+ Page </button>
                 </div>
             </div> -->
+
+            <div class="form-detailing-part row pt-3 pb-3">
+                <div class="col-8">
+                    <div class="form-group row col">
+                        <label for="inputPassword" class=" col-form-label">Form name: </label>
+                        <div class="col user-input">
+                            <input type="text" class="form-control name-input" placeholder="Enter your form name">
+                        </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <form class="form-inline">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i><!--  Add new --></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="page-detailing-part row pt-3 pb-3">
+                <div class="col-8">
+                    <div class="form-group row col">
+                        <label for="inputPassword" class=" col-form-label">Page name: </label>
+                        <div class="col user-input">
+                            <input type="text" class="form-control name-input" placeholder="Enter your form name">
+                        </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <form class="form-inline">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i><!--  Add new --></button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                 [style.color]="model.theme.textColor">
 
@@ -505,7 +526,7 @@
                                 <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
                                     class="fa fa-toggle-off"></i> &nbsp;
 
-                                <label>Mandatory Or Not?</label>
+                                <label data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Mandatory Or Not?</label>
 
 
                                 <!-- <div class="float-right required-icons">
