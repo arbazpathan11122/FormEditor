@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light p-3">
+<nav *ngIf="showNav" class="navbar fixed-top navbar-expand-lg navbar-light p-3">
     <div class="row ">
         <div class="col-2">
             <button aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
@@ -39,16 +39,29 @@
                         </ul>
                     </div>
                 </div>
+                <!-- <div class="col-4">
+                        
+                </div> -->
             </div>
         </div>
         <div class="col-2">
-
+            <a>
+                <button class="btn btn-primary" (click)="submitbtn()">submit</button>
+            </a>
         </div>
     </div>
 </nav>
+<!-- show hide button -->
+<div class="hide-show-btn">
 
+    <button *ngIf="!showBtn" (click)="showNavbar() " class="btn btn-primary btn-sm" type="submit">Hide</button>
+    <button *ngIf="showBtn" (click)=" showNavbar()" class="btn btn-primary btn-sm" type="submit">show</button>
 
-<div class="main">
+    <!-- <i class="fa fa-eye-slash" aria-hidden="true"></i> -->
+
+</div>
+
+<div [class]="hideClass">
     <div class="row col-12">
         <div class="col-3 menu-sidebar">
 
@@ -68,7 +81,6 @@
                         </div>
                         <div class="col-8 pl-2 pr-0 mt-3">
                             <span> {{item.uniqName}}
-                                <!-- <br> {{item.subName}}  -->
                             </span>
                         </div>
                     </div>
@@ -95,185 +107,109 @@
             </div>
         </div>
         <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
-            <!-- <div class="row">
-                <div class="col-md-4">
-                    <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                        <span class="current"> Folder Name</span>
-                        <ul class="list">
-                            <li data-value="2" class="option">Another option</li>
-                            <li data-value="3" class="option">A disabled option</li>
-                            <li data-value="4" class="option">Potato</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                        <span class="current">Form Name</span>
-                        <ul class="list">
-                            <li data-value="2" class="option">Another option</li>
-                            <li data-value="3" class="option">A disabled option</li>
-                            <li data-value="4" class="option">Potato</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                        <span class="current"> Page Name</span>
-                        <ul class="list">
-                            <li data-value="2" class="option">Another option</li>
-                            <li data-value="3" class="option">A disabled option</li>
-                            <li data-value="4" class="option">Potato</li>
-                        </ul>
-                    </div>
-                </div>
 
-            <div id="conditional-dropdown-format">
-                <div class="mb-3 maker-input">
-                    <input class="name-input" placeholder="This is the conditional format.*" aria-invalid="false">
-                </div>
-                <div class="user-input">
-                    <div class="row">
-                        <div class="col">
-                            <div class="add-condi-dropdown">
-                                <ol class="pl-4">
-                                    <li>
-                                        <input aria-invalid="false" class="name-input mb-2"
-                                            placeholder="I am invincible.">
-                                        <i aria-hidden="true" class="fa fa-times right-ico"></i>
-                                    </li>
-                                    <li>
-                                        <input aria-invalid="false" class="name-input mb-2 mt-3"
-                                            placeholder="Add option">
-                                    </li>
-                                </ol>
+            <!-- form tabs -->
+            <ul class="nav nav-pills navtab-bg nav-justified">
+                <li class="nav-item">
+                    <a href="#Folder" data-toggle="tab" aria-expanded="false" class="nav-link  active">
+                        Folder
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#Form" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                        Form
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#Page" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                        <i class=" fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;
+                        Page &nbsp; &nbsp;&nbsp; <i class="fa fa-chevron-right"></i>
+
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content mt-20">
+                <div class="tab-pane active" id="Folder">
+                    <div class="form-detailing-part row pt-1 pb-1">
+                        <div class="col-9 pr-0">
+                            <div class="form-group row col">
+                                <label for="inputPassword" class=" col-form-label">Folder name: </label>
+                                <div class="col user-input">
+                                    <input type="text" class="form-control name-input"
+                                        placeholder="Enter your Folder name">
+                                </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="add-condi-dropdown">
-                                <ol class="pl-4" type="A">
-                                    <li>
-                                        <input aria-invalid="false" class="name-input mb-2"
-                                            placeholder="I am invincible.">
-                                        <i aria-hidden="true" class="fa fa-times right-ico"></i>
-                                    </li>
-                                    <li>
-                                        <input aria-invalid="false" class="name-input mb-2 mt-3"
-                                            placeholder="Add option">
-                                    </li>
-                                </ol>
+                        <div class="col-3">
+                            <form class="form-inline float-right">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> </button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane show" id="Form">
+                    <div class="form-detailing-part row pt-1 pb-1">
+                        <div class="col-9 pr-0">
+                            <div class="form-group row col">
+                                <label for="inputPassword" class=" col-form-label">Form name: </label>
+                                <div class="col user-input">
+                                    <input type="text" class="form-control name-input"
+                                        placeholder="Enter your form name">
+                                </div>
                             </div>
                         </div>
+                        <div class="col-3">
+                            <form class="form-inline float-right">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> </button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane show" id="Page">
+
+                    <div class="page-detailing-part row pt-1 pb-1">
+                        <div class="col-9 pr-0">
+                            <div class="form-group row col">
+                                <label for="inputPassword" class=" col-form-label">Page name: </label>
+                                <div class="col user-input">
+                                    <input type="text" class="form-control name-input"
+                                        placeholder="Enter your Page name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <form class="form-inline float-right">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> </button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <div id="file-upload-format">
-                <div class="mb-4 maker-input">
-                    <input class="name-input" placeholder="Your Portfolio Link." aria-invalid="false">
-                </div>
-                <div class="user-input">
-                    <input type="file" id="real-file" hidden="hidden" />
-                    <button type="button" class="btn btn-primary btn-style mr-2" id="custom-button">CHOOSE A
-                        FILE</button>
-                    <span id="custom-text">Select file</span>
-                </div>
-            </div>
-
-            
-
-            
-
-
-       
+            <!-- form tab end -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
-                [style.color]="model.theme.textColor">
-
-                    <div>
-                        <div class="user-input">
-                            <input class="name-input" placeholder="Form Name" aria-invalid="false">
-
-
-                        </div>
-                        <br>
-                        <div class="user-input">
-                            <input class="name-input" placeholder="Page Name" aria-invalid="false">
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <button class="btn btn-warning" (click)="submitbtn()">+ Page </button>
-
-                    <button class="btn btn-warning" (click)="submitbtn()">+ Page </button>
-                </div>
-            </div> -->
-
-            <div class="form-detailing-part row pt-3 pb-3">
-                <div class="col-8">
-                    <div class="form-group row col">
-                        <label for="inputPassword" class=" col-form-label">Form name: </label>
-                        <div class="col user-input">
-                            <input type="text" class="form-control name-input" placeholder="Enter your form name">
-                        </div>
-                        </div>
-                </div>
-                <div class="col-4">
-                    <form class="form-inline">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i><!--  Add new --></button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="page-detailing-part row pt-3 pb-3">
-                <div class="col-8">
-                    <div class="form-group row col">
-                        <label for="inputPassword" class=" col-form-label">Page name: </label>
-                        <div class="col user-input">
-                            <input type="text" class="form-control name-input" placeholder="Enter your form name">
-                        </div>
-                        </div>
-                </div>
-                <div class="col-4">
-                    <form class="form-inline">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i><!--  Add new --></button>
-                    </form>
-                </div>
-            </div>
-
-
+            <hr style="border:1px dashed gray">
 
 
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
@@ -287,7 +223,7 @@
                 class="dndDropArea" [ngClass]="{'empty':model.attributes.length == 0}"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
 
-                <div class="field active
+                <div class="field active1
                 " *ngFor="let item of model.attributes;let i= index;" (dndStart)="onDragStart($event)"
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, model.attributes, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
@@ -308,7 +244,7 @@
                             <div
                                 *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
+                                   <span *ngIf="item.required" class="red">*</span> <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
                                         aria-invalid="false">
                                 </div>
                                 <div class="user-input">
@@ -318,7 +254,7 @@
                             </div>
                             <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span *ngIf="item.required" class="red">*</span>      <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input disabled">
                                     <label class="checkbox-inline mr-4">
@@ -335,7 +271,7 @@
 
                             <div *ngIf="(item.fielType=='text')|| (item.fielType=='number')">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span *ngIf="item.required" class="red">*</span>   <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input class="name-input" type="" placeholder="{{item.placeholder}}"
@@ -346,7 +282,7 @@
 
                             <div *ngIf="item.fielType=='file'">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span *ngIf="item.required" class="red">*</span>        <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="right-ico mr-5">
                                     <input type="file" id="real-file" hidden="hidden" />
@@ -359,16 +295,16 @@
                             </div>
                             <div *ngIf="item.fielType=='date'">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span *ngIf="item.required" class="red">*</span>          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
-                                    <input style="width:75%" class="name-input" disabled placeholder="12 / DD / YYYY"
-                                        aria-invalid="false" id="datepicker">
+                                    <input style="width:75%" class="name-input" max="2050-12-31" disabled
+                                        placeholder="12 / DD / YYYY" aria-invalid="false" id="datepicker">
                                 </div>
                             </div>
                             <div *ngIf="item.fielType=='rating'">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span *ngIf="item.required" class="red">*</span>           <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <div class="row">
@@ -417,7 +353,7 @@
                             <div
                                 *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span *ngIf="item.required" class="red">*</span>       <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input pl-4">
                                     <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
@@ -462,7 +398,7 @@
 
                             <div *ngIf="item.fielType=='conditional'">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span *ngIf="item.required" class="red">*</span>          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input ">
                                     <li *ngFor="let i of item.values; let valueIndex=index;">
@@ -526,7 +462,8 @@
                                 <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
                                     class="fa fa-toggle-off"></i> &nbsp;
 
-                                <label data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Mandatory Or Not?</label>
+                                <label data-toggle="tooltip" data-placement="top" title="You Want to "
+                                    data-original-title="Tooltip on top">Mandatory Or Not?</label>
 
 
                                 <!-- <div class="float-right required-icons">
@@ -542,7 +479,7 @@
 
                             <div *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))"
                                 class="response-validation mt-4 mb-3">
-                                <label>Response Validation</label>
+                                <label><b> Response Validation</b></label>
                             </div>
 
 
@@ -571,9 +508,22 @@
                                     </select> -->
 
                                     <ng-multiselect-dropdown [placeholder]="'Select Mail '" [data]="dropdownList"
-                                    [(ngModel)]="selectedItems" [settings]="dropdownSettings"
-                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-                                </ng-multiselect-dropdown>
+                                        [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+                                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                    </ng-multiselect-dropdown>
+
+                                </div>
+                            </div>
+
+
+                            <div class="row" *ngIf="selectedItem.fielType=='phone'">
+                                <div class="col-md-12 user-input mb-3">
+
+
+                                    <ng-multiselect-dropdown [placeholder]="'Select country phone  '"
+                                        [data]="dropdownList1" [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+                                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                    </ng-multiselect-dropdown>
 
                                 </div>
                             </div>
@@ -740,7 +690,7 @@
                         </div>
 
                         <div class="row" *ngIf="model.attributes.length>0">
-                            <label class="nice-lable">Mapping</label>
+                            <label class="nice-lable"> <b>Mapping</b></label>
                             <div class="col-md-12">
                                 <div class="nice-select box-nice-select wide mb-3" tabindex="0">
                                     <span class="current"> File Name</span>
@@ -763,12 +713,12 @@
                                 </div>
                             </div>
 
-                            <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList"
+                            <!-- <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList"
                                 [(ngModel)]="selectedItems" [settings]="dropdownSettings"
                                 (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-                            </ng-multiselect-dropdown>
+                            </ng-multiselect-dropdown> -->
 
-                            <!-- <div class="col-md-12">
+                            <div class="col-md-12">
                                 <div class="nice-select box-nice-select wide mb-3" tabindex="0">
                                     <span class="current">Element Name</span>
                                     <ul class="list">
@@ -777,7 +727,7 @@
                                         <li data-value="4" class="option">Potato</li>
                                     </ul>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
 
@@ -838,7 +788,7 @@
                                 <a href="#">4. &nbsp; Payment</a>
                             </p>
                         </div> -->
-
+                        <!-- 
                         <label class="nice-lable">Inbox</label>
 
                         <div class="row">
@@ -877,7 +827,7 @@
                                 <button class="btn btn-primary" (click)="submitbtn()">submit</button>
                             </a>
 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

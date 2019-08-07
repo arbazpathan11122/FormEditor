@@ -359,9 +359,11 @@
 //   background: #ccc; 
 // }
 
-.main{	margin-top: 74px;
+.mainshow{	margin-top: 74px;
 }
- 
+.mainhide{	margin-top: 0px;
+}
+
 #file-upload-format{
   padding: 40px;
 }
@@ -377,6 +379,12 @@
   white-space: normal;
   word-wrap: break-word;
 }
+.hide-show-btn{
+  position: fixed;
+  top:20px;
+  right: 30px;
+  z-index: 999999;
+ }
 
 // .right-ico{
 //     right: 0;
