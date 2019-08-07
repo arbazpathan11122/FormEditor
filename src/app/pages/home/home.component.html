@@ -49,7 +49,7 @@
 
 
 <div class="main">
-    <div class="row col-12">
+    <div class="row">
         <div class="col-3 menu-sidebar">
 
             <!-- <div class="mb-3 maker-input file-name">
@@ -66,7 +66,7 @@
                         <div class="col-4">
                             <img src="assets/img/icons/{{item.icon}}"><br>
                         </div>
-                        <div class="col-8 pl-2 pr-0 mt-3">
+                        <div class="col-8 pl-2 pr-0 mt-2">
                             <span> {{item.uniqName}}
                                 <!-- <br> {{item.subName}}  -->
                             </span>
@@ -180,37 +180,15 @@
                 </div>
             </div>
 
+
+            
+
             
 
             
 
 
        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
@@ -237,8 +215,8 @@
                 </div>
             </div> -->
 
-            <div class="form-detailing-part row pt-3 pb-3">
-                <div class="col-8">
+            <div class="form-detailing-part row pt-4">
+                <div class="col-9">
                     <div class="form-group row col">
                         <label for="inputPassword" class=" col-form-label">Form name: </label>
                         <div class="col user-input">
@@ -246,17 +224,17 @@
                         </div>
                         </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <form class="form-inline">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i><!--  Add new --></button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><!--  Add new --></button>
                     </form>
                 </div>
             </div>
 
-            <div class="page-detailing-part row pt-3 pb-3">
-                <div class="col-8">
+            <div class="page-detailing-part row">
+                <div class="col-9">
                     <div class="form-group row col">
                         <label for="inputPassword" class=" col-form-label">Page name: </label>
                         <div class="col user-input">
@@ -264,14 +242,45 @@
                         </div>
                         </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <form class="form-inline">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i><!--  Add new --></button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> <!-- Edit --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i><!--  Delete --></button> &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><!--  Add new --></button>
                     </form>
                 </div>
             </div>
+
+            <div class="p-5">
+                    <div class="user-input">
+                        <input class="name-input" placeholder="Enter your address" aria-invalid="false">
+                    </div>
+                    <div class="user-input mt-4">
+                        <input class="name-input" placeholder="Enter your landmark" aria-invalid="false">
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="Pincode" aria-invalid="false">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="District" aria-invalid="false">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="State" aria-invalid="false">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="Country" aria-invalid="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -335,7 +344,7 @@
 
                             <div *ngIf="(item.fielType=='text')|| (item.fielType=='number')">
                                 <div class="mb-3 maker-input">
-                                    <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                        <span class="red">*</span> <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input class="name-input" type="" placeholder="{{item.placeholder}}"
@@ -521,7 +530,7 @@
                                 <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
                                     class="fa fa-toggle-off"></i> &nbsp;
 
-                                <label data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Mandatory Or Not?</label>
+                                <label data-toggle="tooltip" data-placement="top" title="sgaergergezr" data-original-title="Tooltip on top">Mandatory Or Not?</label>
 
 
                                 <!-- <div class="float-right required-icons">

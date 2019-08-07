@@ -142,7 +142,8 @@
 .navbar{
 	border-bottom: 2px solid #ddd !important;
 	z-index: 99999; 
-	background: #fff;
+    background: #fff;
+    display: block;
 }
 .pl-30{
 	padding-left: 30px;
@@ -150,6 +151,9 @@
 .main{
 	margin-top: 50px;
 }
+.maker-input{
+    display: flex;
+  }
 .maker-input .name-input{
     order: 2;
     display: block;

@@ -9,7 +9,7 @@
 	border-bottom: 2px solid #ddd !important;
 	z-index: 99999; 
   background: #fff;
-  display: block;
+  display: flex;
 }
 .pl-30{
 	padding-left: 30px;
@@ -17,6 +17,10 @@
 .main{
 	margin-top: 50px;
 }
+.maker-input{
+  display: flex;
+}
+
 .maker-input .name-input{
     order: 2;
     display: block;
@@ -66,7 +70,6 @@
 .menu-sidebar{
 	-border:1px solid purple;
 	padding: 20px 25px;
-    -margin-left:20px;
 	height: calc(100vh - 50px);
     overflow-y:auto;
     position: fixed;
@@ -171,48 +174,6 @@
 #Rating-format{
 	padding: 40px
 }
-
-/*-----rating css-------*/
-fieldset, label { margin: 0; padding: 0; }
-
-/****** Style Star Rating Widget *****/
-
-.rating { 
-  border: none;
-  float: left;
-}
-
-.rating > input { display: none; } 
-.rating > label:before { 
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f006";
-}
-
-.rating > .half:before { 
-  content: "\f006";
-  position: absolute;
-}
-
-.rating > label { 
-  color: #949191; 
- float: right; 
-}
-
-/***** CSS Magic to Highlight Stars on Hover *****/
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
-
-
 
 
 /*-------------property part-------------*/
