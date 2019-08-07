@@ -23,6 +23,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
+    "ng-multiselect-dropdown": "^0.2.3",
     "ngx-drag-drop": "^1.1.0",
     "rxjs": "~6.3.3",
     "sweetalert2": "^7.19.3",

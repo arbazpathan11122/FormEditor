@@ -13,6 +13,19 @@ export const icons_and_fields = [
         handle: true
 
     },
+    {
+        id: 17,
+        uniqName: 'Footer',
+        name: 'Footer',
+        subName: 'Format',
+        icon: 'footer.png',
+        fielType: 'footer',
+        tooltip: '',
+        type: 'text',
+        label: 'footer content',
+        handle: true
+
+    },
 
     {
         id: 2,
@@ -47,7 +60,40 @@ export const icons_and_fields = [
 
 
     },
+    {
+        id: 14,
+        uniqName: 'Number',
+        name: 'Number',
+        subName: 'Format',
+        icon: 'Number.png',
+        fielType: 'number',
+        required: true,
+        tooltip: 'Good for long answers, like the meaning of life',
+        errorText: 'Custom Error Field',
+        label: 'Enter your amount in number here',
+        placeholder: 'Long Answer Text',
+        min: 0,
+        max: 256,
+        selestedValidation: '',
+        formValidations: [
+            {
+                label: ' Greater Then',
+                value: 'min'
+            },
+            {
+                label: ' Less Then',
+                value: 'max'
+            },
+            {
+                label: 'Between',
+                value: 'both'
+            }
+        ],
 
+
+        handle: true
+
+    },
     {
         id: 3,
         uniqName: 'Statement',
@@ -60,124 +106,6 @@ export const icons_and_fields = [
         type: 'text',
         handle: true
 
-    },
-
-    {
-        id: 4,
-        uniqName: 'Phone',
-        name: 'Phone',
-        subName: 'Number',
-        icon: 'mobile_no.png',
-        fielType: 'phone',
-        required: true,
-        tooltip: 'Ask for a phone number with a right format.',
-        errorText: 'Custom Error Field',
-        type: 'text',
-        label: 'Enter Your Phone',
-
-        placeholder: 'Enter your phone number',
-        inputValue: '',
-        regex: '[789][0-9]{9}',
-        handle: true
-    },
-
-    {
-        id: 5,
-        uniqName: 'Picture',
-        name: 'Picture',
-        subName: 'Choice',
-        icon: 'picture_format.png',
-        fielType: 'picture',
-        required: true,
-        label: 'Select the picture',
-        tooltip: 'Give your users image option to choose from.',
-        errorText: 'Custom Error Field',
-        values: [
-            {
-                label: 'Enter Your Option Here',
-                value: 'option-1',
-                img: '',
-            },
-            {
-                label: 'Enter Your Option Here',
-                value: 'option-2',
-                img: '',
-            }
-        ],
-        selestedValidation: '',
-
-        formValidations: [
-            {
-                label: 'Select atleast',
-                value: 'min'
-            },
-            {
-                label: 'Select exectly',
-                value: 'max'
-            },
-            {
-                label: 'Select atmost',
-                value: 'both'
-            }
-        ],
-        // formValidations: {
-        //     multiple: [
-        //         {
-        //             label: 'Select atleast',
-        //             value: 'min'
-        //         },
-        //         {
-        //             label: 'Select exectly',
-        //             value: 'max'
-        //         },
-        //         {
-        //             label: 'Select atmost',
-        //             value: 'both'
-        //         }
-        //     ],
-        //     text: [
-        //         {
-        //             label: ' Greater Then',
-        //             value: 'min'
-        //         },
-        //         {
-        //             label: ' Less Then',
-        //             value: 'max'
-        //         },
-        //         {
-        //             label: 'Exactly',
-        //             value: 'both'
-        //         }
-        //     ],
-        //     date: [
-        //         {
-        //             label: 'After',
-        //             value: 'min'
-        //         },
-        //         {
-        //             label: ' Before',
-        //             value: 'max'
-        //         },
-        //         {
-        //             label: 'Between',
-        //             value: 'both'
-        //         }
-        //     ],
-        //     file: [
-        //         {
-        //             label: 'Kb',
-        //             value: 'Kb'
-        //         },
-        //         {
-        //             label: ' Mb',
-        //             value: 'Mb'
-        //         },
-        //         {
-        //             label: 'Gb',
-        //             value: 'Gb'
-        //         }
-        //     ]
-        // }
     },
 
     {
@@ -237,6 +165,188 @@ export const icons_and_fields = [
     },
 
     {
+        id: 16,
+        uniqName: 'Date',
+        name: 'Date',
+        subName: 'Format',
+        type: 'date',
+        icon: 'date.png',
+        fielType: 'date',
+        required: true,
+        label: 'How old are you ?',
+
+        tooltip: 'Only accepts answers as calendar dates.',
+        errorText: 'Custom Error Field',
+        placeholder: 'Date',
+        selestedValidation: '',
+
+        formValidations: [
+            {
+                label: 'After',
+                value: 'min'
+            },
+            {
+                label: ' Before',
+                value: 'max'
+            },
+            {
+                label: 'Between',
+                value: 'both'
+            }
+        ],
+    },
+    {
+        id: 15,
+        uniqName: 'Website',
+        name: 'Website',
+        subName: 'Format',
+        icon: 'website.png',
+        fielType: 'website',
+        required: true,
+        tooltip: 'Ask your audience to share a link.',
+        errorText: 'Custom Error Field',
+        type: 'url',
+
+        label: 'Enter your website Link here',
+        inputValue: '',
+        placeholder: 'Enter your website link',
+        // regex: '^[\da-fA-F]{2}([-:])([\da-fA-F]{2}\1){4}[\da-fA-F]{2}',
+        handle: true
+    },
+
+
+
+    {
+        id: 4,
+        uniqName: 'Phone',
+        name: 'Phone',
+        subName: 'Number',
+        icon: 'mobile_no.png',
+        fielType: 'phone',
+        required: true,
+        tooltip: 'Ask for a phone number with a right format.',
+        errorText: 'Custom Error Field',
+        type: 'text',
+        label: 'Enter Your Phone',
+
+        placeholder: 'Enter your phone number',
+        inputValue: '',
+        regex: '[789][0-9]{9}',
+        handle: true
+    },
+    {
+        id: 8,
+        uniqName: 'File Upload',
+        name: 'File Upload',
+        subName: 'Format',
+        icon: 'file_upload.png',
+        fielType: 'file',
+        label: 'uploud your resume',
+        required: true,
+        tooltip: 'Ask for any type of file.',
+        errorText: 'Custom Error Field',
+        selestedValidation: '',
+
+        formValidations: [
+            {
+                label: 'Kb',
+                value: 'Kb'
+            },
+            {
+                label: ' Mb',
+                value: 'Mb'
+            },
+            {
+                label: 'Gb',
+                value: 'Gb'
+            }
+        ]
+
+    },
+    {
+        id: 12,
+        uniqName: 'Multiple Choie',
+        name: 'Multiple',
+        subName: 'Choie',
+        icon: 'multiple_choice.png',
+        fielType: 'multiple',
+        required: true,
+        label: 'Enter question for multiselection',
+        tooltip: 'Give your audience options to choose from.',
+        errorText: 'Custom Error Field',
+        values: [
+            {
+                label: 'Enter Your Option Here',
+                value: 'option-2'
+            },
+            {
+                label: 'Enter Your Option Here',
+                value: 'option-2'
+            }
+        ],
+        selestedValidation: '',
+        formValidations: [
+
+            {
+                label: 'Select atleast',
+                value: 'min'
+            },
+            {
+                label: 'Select exectly',
+                value: 'max'
+            },
+            {
+                label: 'Select atmost',
+                value: 'both'
+            }
+
+        ]
+    },
+
+    {
+        id: 5,
+        uniqName: 'Picture Choice',
+        name: 'Picture',
+        subName: 'Choice',
+        icon: 'picture_format.png',
+        fielType: 'picture',
+        required: true,
+        label: 'Select the picture',
+        tooltip: 'Give your users image option to choose from.',
+        errorText: 'Custom Error Field',
+        values: [
+            {
+                label: 'Enter Your Option Here',
+                value: 'option-1',
+                img: '',
+            },
+            {
+                label: 'Enter Your Option Here',
+                value: 'option-2',
+                img: '',
+            }
+        ],
+        selestedValidation: '',
+
+        formValidations: [
+            {
+                label: 'Select atleast',
+                value: 'min'
+            },
+            {
+                label: 'Select exectly',
+                value: 'max'
+            },
+            {
+                label: 'Select atmost',
+                value: 'both'
+            }
+        ],
+
+    },
+
+
+    {
         id: 7,
         uniqName: 'Dropdown',
         name: 'Dropdown',
@@ -274,36 +384,19 @@ export const icons_and_fields = [
             }]
 
     },
+    // {
+    //     id: 18,
+    //     uniqName: 'Conditional Dropdown',
+    //     name: 'Conditional',
+    //     subName: 'Dropdown',
+    //     icon: 'conditional_dropdown.png',
+    //     fielType: 'conditional',
+    //     required: true,
+    //     tooltip: 'Ask your users the question depending on other answers.',
+    //     label: 'Ask your users the question depending on other answers.',
+    // },
 
-    {
-        id: 8,
-        uniqName: 'File Upload',
-        name: 'File Upload',
-        subName: 'Format',
-        icon: 'file_upload.png',
-        fielType: 'file',
-        label: 'uploud your resume',
-        required: true,
-        tooltip: 'Ask for any type of file.',
-        errorText: 'Custom Error Field',
-        selestedValidation: '',
 
-        formValidations: [
-            {
-                label: 'Kb',
-                value: 'Kb'
-            },
-            {
-                label: ' Mb',
-                value: 'Mb'
-            },
-            {
-                label: 'Gb',
-                value: 'Gb'
-            }
-        ]
-
-    },
 
     {
         id: 9,
@@ -320,17 +413,17 @@ export const icons_and_fields = [
         values: ['Yes', 'No', 'MayBe'],
     },
 
-    {
-        id: 10,
-        uniqName: 'Payment',
-        name: 'Payment',
-        subName: 'Format',
-        icon: 'payment.png',
-        fielType: '',
-        required: true,
-        tooltip: '',
-        errorText: 'Custom Error Field',
-    },
+    // {
+    //     id: 10,
+    //     uniqName: 'Payment',
+    //     name: 'Payment',
+    //     subName: 'Format',
+    //     icon: 'payment.png',
+    //     fielType: '',
+    //     required: true,
+    //     tooltip: '',
+    //     errorText: 'Custom Error Field',
+    // },
     {
         id: 11,
         uniqName: 'True/False',
@@ -347,45 +440,6 @@ export const icons_and_fields = [
 
     },
 
-    {
-        id: 12,
-        uniqName: 'Multiple',
-        name: 'Multiple',
-        subName: 'Choie',
-        icon: 'multiple_choice.png',
-        fielType: 'multiple',
-        required: true,
-        label: 'Enter question for multiselection',
-        tooltip: 'Give your audience options to choose from.',
-        errorText: 'Custom Error Field',
-        values: [
-            {
-                label: 'Enter Your Option Here',
-                value: 'option-2'
-            },
-            {
-                label: 'Enter Your Option Here',
-                value: 'option-2'
-            }
-        ],
-        selestedValidation: '',
-        formValidations: [
-
-            {
-                label: 'Select atleast',
-                value: 'min'
-            },
-            {
-                label: 'Select exectly',
-                value: 'max'
-            },
-            {
-                label: 'Select atmost',
-                value: 'both'
-            }
-
-        ]
-    },
 
     {
         id: 13,
@@ -430,131 +484,25 @@ export const icons_and_fields = [
         ],
     },
 
-    {
-        id: 14,
-        uniqName: 'Number',
-        name: 'Number',
-        subName: 'Format',
-        icon: 'Number.png',
-        fielType: 'number',
-        required: true,
-        tooltip: 'Good for long answers, like the meaning of life',
-        errorText: 'Custom Error Field',
-        label: 'Enter your amount in number here',
-        placeholder: 'Long Answer Text',
-        min: 0,
-        max: 256,
-        selestedValidation: '',
-        formValidations: [
-            {
-                label: ' Greater Then',
-                value: 'min'
-            },
-            {
-                label: ' Less Then',
-                value: 'max'
-            },
-            {
-                label: 'Between',
-                value: 'both'
-            }
-        ],
 
 
-        handle: true
-
-    },
-
-    {
-        id: 15,
-        uniqName: 'Website',
-        name: 'Website',
-        subName: 'Format',
-        icon: 'website.png',
-        fielType: 'website',
-        required: true,
-        tooltip: 'Ask your audience to share a link.',
-        errorText: 'Custom Error Field',
-        type: 'url',
-
-        label: 'Enter your website Link here',
-        inputValue: '',
-        placeholder: 'Enter your website link',
-        // regex: '^[\da-fA-F]{2}([-:])([\da-fA-F]{2}\1){4}[\da-fA-F]{2}',
-        handle: true
-    },
-
-    {
-        id: 16,
-        uniqName: 'Date',
-        name: 'Date',
-        subName: 'Format',
-        type: 'date',
-        icon: 'date.png',
-        fielType: 'date',
-        required: true,
-        label: 'How old are you ?',
-
-        tooltip: 'Only accepts answers as calendar dates.',
-        errorText: 'Custom Error Field',
-        placeholder: 'Date',
-        selestedValidation: '',
-
-        formValidations: [
-            {
-                label: 'After',
-                value: 'min'
-            },
-            {
-                label: ' Before',
-                value: 'max'
-            },
-            {
-                label: 'Between',
-                value: 'both'
-            }
-        ],
-    },
-
-    {
-        id: 17,
-        uniqName: 'Footer',
-        name: 'Footer',
-        subName: 'Format',
-        icon: 'footer.png',
-        fielType: 'footer',
-        tooltip: '',
-        type: 'text',
-        label: 'footer content',
-        handle: true
-
-    },
-
-    {
-        id: 18,
-        uniqName: 'Conditional',
-        name: 'Conditional',
-        subName: 'Dropdown',
-        icon: 'conditional_dropdown.png',
-        fielType: 'conditional',
-        required: true,
-        tooltip: 'Ask your users the question depending on other answers.',
-        label: 'Ask your users the question depending on other answers.',
-    },
 
 
-    {
-        id: 19,
-        uniqName: 'Table',
-        name: 'Table',
-        subName: 'Format',
-        icon: 'table.png',
-        fielType: 'table',
-        required: true,
-        tooltip: '',
-        label: 'Enter Footer contain',
-        errorText: 'Custom Error Field',
-    },
+
+
+
+    // {
+    //     id: 19,
+    //     uniqName: 'Table',
+    //     name: 'Table',
+    //     subName: 'Format',
+    //     icon: 'table.png',
+    //     fielType: 'table',
+    //     required: true,
+    //     tooltip: '',
+    //     label: 'Enter Footer contain',
+    //     errorText: 'Custom Error Field',
+    // },
 
 
 

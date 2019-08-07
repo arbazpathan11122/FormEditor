@@ -1,6 +1,6 @@
 <div class="form-page">
   <div class="row">
-    <div class="col-6 working-part mx-auto">
+    <!-- <div class="col-6 working-part mx-auto">
       <div class="formtitle">
         <div class="mb-3 maker-input">
           <input class="name-input form-header" disabled placeholder="Hey, This is the welcome section of the form"
@@ -245,6 +245,178 @@
         <button type="button" class="btn btn-primary">Save</button> &nbsp; &nbsp; &nbsp;
         <button type="button" class="btn btn-light">Next</button>
       </div>
+-->
+
+<div class="col-md-9 ">
+
+  <div
+      *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')">
+      <div class="mb-3 maker-input">
+              <label  class="name-input ">{{item.label}}</label>
+      </div>
+  </div>
+
+  <div
+      *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')">
+      <div class="mb-3 maker-input">
+          <label  class="name-input ">{{item.label}}</label>
+
+          <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
+              aria-invalid="false">
+      </div>
+      <div class="user-input">
+          <input class="name-input" placeholder="{{item.placeholder}}"
+              [(ngModel)]="item.placeholder" [pattern]="item.regex" aria-invalid="false">
+      </div>
+  </div>
+  <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'">
+      <div class="mb-3 maker-input">
+          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+      </div>
+      <div class="user-input disabled">
+          <label class="checkbox-inline mr-4">
+              <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[0]}}
+          </label>
+          <label class="checkbox-inline mr-4">
+              <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[1]}}
+          </label>
+          <label class="checkbox-inline mr-4" *ngIf="item.values[2]">
+              <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[2]}}
+          </label>
+      </div>
+  </div>
+
+  <div *ngIf="(item.fielType=='text')|| (item.fielType=='number')">
+      <div class="mb-3 maker-input">
+          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+      </div>
+      <div class="user-input">
+          <input class="name-input" type="" placeholder="{{item.placeholder}}"
+              aria-invalid="false">
+      </div>
+  </div>
+
+
+  <div *ngIf="item.fielType=='file'">
+      <div class="mb-3 maker-input">
+          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+      </div>
+      <div class="user-input">
+          <input type="file" disabled class="name-input" aria-invalid="false">
+      </div>
+  </div>
+  <div *ngIf="item.fielType=='date'">
+      <div class="mb-3 maker-input">
+          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+      </div>
+      <div class="user-input">
+          <input style="width:75%" class="name-input" disabled placeholder="12 / DD / YYYY"
+              aria-invalid="false" id="datepicker">
+      </div>
+  </div>
+  <div *ngIf="item.fielType=='rating'">
+      <div class="mb-3 maker-input">
+          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+      </div>
+      <div class="user-input">
+          <div class="row">
+              <div class="col-5">
+                  <div class="mb-2 rating-ico"
+                      *ngIf="item.selestedValidation!=='btn btn-light'">
+
+                      <span style="opacity: 1" *ngFor="let star of numberArray; let i=index"
+                          [ngClass]="item.selestedValidation"></span>&nbsp;
+                     
+
+                  </div>
+                  <div class="mb-2 rating-ico"
+                      *ngIf="item.selestedValidation== 'btn btn-light'">
+
+
+                      <button style="background-color:#e2e6ea"
+                          *ngFor="let star of numberArray; let i=index" type="button"
+                          class="btn btn-light">{{i}}</button> &nbsp;
+
+                  </div>
+
+
+              </div>
+              <div class="col-5">
+                  <select [(ngModel)]="item.selestedValidation" class="name-input">
+                      <option *ngFor="let c of item.formRating" [value]="c.value">
+                          {{c.label}}</option>
+
+                  </select>
+
+              </div>
+              <div class="col-2">
+                  <div class="user-input">
+                      <input class="name-input" type="number" min="2" max=20
+                          (ngModelChange)="generateDynamicArray(item.ratingLimit)"
+                          [(ngModel)]="item.ratingLimit" aria-invalid="false"
+                          (keyup)="((item.ratingLimit >20)? item.ratingLimit = 20 : ((item.ratingLimit <2)? item.ratingLimit = 2 :item.ratingLimit  =item.ratingLimit))">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div
+      *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
+      <div class="mb-3 maker-input">
+          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+      </div>
+      <ol class="user-input ">
+          <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
+
+
+
+              <input class="name-input mb-2" name="i.uniqName{{valueIndex}}"
+                  [(ngModel)]="i.label" aria-invalid="false">
+              <ng-container *ngIf="item.fielType=='picture'">
+
+                  <input class="right-ico" accept="image/*" type="file">
+              </ng-container>
+
+              <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
+                  aria-hidden="true"></i>
+             
+          </li>
+      </ol>
+   
+      <button class="btn" (click)="addValue( item.values)"> add Option</button>
 
   </div>
+
+
+  <div *ngIf="item.fielType=='conditional'">
+      <div class="mb-3 maker-input">
+          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+      </div>
+      <ol class="user-input ">
+          <li *ngFor="let i of item.values; let valueIndex=index;">
+
+
+              <ng-container class="add-dropdown ">
+
+                  <input class="name-input mb-2" [(ngModel)]="i.label" aria-invalid="false">
+                  <input type='file'>
+                  <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
+                      aria-hidden="true"></i>
+              </ng-container>
+          </li>
+      </ol>
+
+      <button class="btn" (click)="addValue(item.values)"> add Option</button>
+
+  </div>
+
+
+</div>
+
+  </div>
+
+
+
+
 </div>

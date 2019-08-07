@@ -4,9 +4,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <i class="lni-chevron-left"></i> Back</a>
+        <i class="fa fa-home"></i>
+        Home</a>
 
-    <div class="top-bar mx-auto">
+    <!-- <div class="top-bar mx-auto">
         <div class="stepwizard">
             <div class="stepwizard-row">
                 <div class="stepwizard-step">
@@ -29,8 +30,41 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
+    <div class="row ">
+        <div class="col-md-4">
+            <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                <span class="current"> Folder Name</span>
+                <ul class="list">
+                    <li data-value="2" class="option">Another option</li>
+                    <li data-value="3" class="option">A disabled option</li>
+                    <li data-value="4" class="option">Potato</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                <span class="current">Form Name</span>
+                <ul class="list">
+                    <li data-value="2" class="option">Another option</li>
+                    <li data-value="3" class="option">A disabled option</li>
+                    <li data-value="4" class="option">Potato</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                <span class="current"> Page Name</span>
+                <ul class="list">
+                    <li data-value="2" class="option">Another option</li>
+                    <li data-value="3" class="option">A disabled option</li>
+                    <li data-value="4" class="option">Potato</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </nav>
 
 
@@ -39,10 +73,11 @@
     <div class="row col-12">
         <div class="col-3 menu-sidebar">
 
-            <div class="mb-3 maker-input file-name">
-                <i class="fa fa-home"></i> <input class="name-input" [(ngModel)]="model.folder.FolderName"
-                    placeholder="Your folder name" aria-invalid="false">
-            </div>
+            <!-- <div class="mb-3 maker-input file-name">
+                <i class="fa fa-home"></i>
+                <input class="name-input" [(ngModel)]="model.folder.FolderName" placeholder=" Folder Name"
+                    aria-invalid="false">
+            </div> -->
             <p class="menu-title text-center">Drag or Double click to add section</p>
             <div class="row m-auto ">
                 <div class="menu-item col-6" *ngFor=" let item of iconField ">
@@ -50,31 +85,98 @@
                         [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)"
                         (dblclick)="dblclickMove($event ,model.attributes, item)">
                         <div class="col-4">
-                            <img src="assets/img/icons/{{item.icon}}">
+                            <img src="assets/img/icons/{{item.icon}}"><br>
                         </div>
-                        <div class="col-8 pl-2 pr-0">
+                        <div class="col-8 pl-2 pr-0 mt-3">
                             <span> {{item.uniqName}}
-                                <br> {{item.subName}} </span>
+                                <!-- <br> {{item.subName}}  -->
+                            </span>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="menu-item col-12">
+                    <hr style="border:1px dashed gray">
+
+                    <div class="row m-auto">
+                        <div class="col-4">
+                            <img src="assets/img/icons/table.png"><br>
+                        </div>
+                        <div class="col-8 pl-2 pr-0 mt-3">
+                            <h4>Table Format
+                            </h4>
+                        </div>
+                    </div>
+                    <hr style="border:1px dashed gray">
+
                 </div>
 
 
             </div>
         </div>
         <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
+            <!-- <div class="row">
+                <div class="col-md-4">
+                    <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                        <span class="current"> Folder Name</span>
+                        <ul class="list">
+                            <li data-value="2" class="option">Another option</li>
+                            <li data-value="3" class="option">A disabled option</li>
+                            <li data-value="4" class="option">Potato</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                        <span class="current">Form Name</span>
+                        <ul class="list">
+                            <li data-value="2" class="option">Another option</li>
+                            <li data-value="3" class="option">A disabled option</li>
+                            <li data-value="4" class="option">Potato</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                        <span class="current"> Page Name</span>
+                        <ul class="list">
+                            <li data-value="2" class="option">Another option</li>
+                            <li data-value="3" class="option">A disabled option</li>
+                            <li data-value="4" class="option">Potato</li>
+                        </ul>
+                    </div>
+                </div>
 
+            </div> -->
+            <!-- <div class="row">
+                <div class="col-md-9">
+
+                    <div>
+                        <div class="user-input">
+                            <input class="name-input" placeholder="Form Name" aria-invalid="false">
+
+
+                        </div>
+                        <br>
+                        <div class="user-input">
+                            <input class="name-input" placeholder="Page Name" aria-invalid="false">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-warning" (click)="submitbtn()">+ Page </button>
+
+                    <button class="btn btn-warning" (click)="submitbtn()">+ Page </button>
+                </div>
+            </div> -->
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                 [style.color]="model.theme.textColor">
 
 
 
-
-                <div class="formtitle">
-                    <div class="maker-input">
-                        <input class="name-input" placeholder="Branding form" aria-invalid="false">
-                    </div>
-                </div>
 
             </div>
             <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,model.attributes)"
@@ -86,10 +188,10 @@
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, model.attributes, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
                     <div class="row form-group" (click)=" currentValidation(item)" dndHandle>
-                        <div class="col-md-1">
+                        <!-- <div class="col-md-1">
                             <i class="fa fa-ellipsis-v dndHandle"></i>
-                        </div>
-                        <div class="col-md-9 ">
+                        </div> -->
+                        <div class="col-md-10 ">
 
                             <div
                                 *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')">
@@ -266,60 +368,14 @@
 
                         </div>
                         <div class="col-md-2">
-                            <i *ngIf="item.toggle" (click)="item.toggle=false; currentValidation(item)"
+                            <!--    <i *ngIf="item.toggle" (click)="item.toggle=false; currentValidation(item)"
                                 class="fa fa-chevron-up pull-right"></i>
                             <i *ngIf="!item.toggle" (click)="item.toggle=true"
-                                class="fa fa-chevron-down pull-right"></i>
+                                class="fa fa-chevron-down pull-right"></i>-->
                             <i (click)="removeField(i)" class="fa fa-trash pull-right"></i>
                         </div>
                     </div>
-                    <div *ngIf="false" class="toggle-Wrapper">
-                        <div class="form-group">
-                            <label>Required</label>
-                            <i *ngIf="item.required" (click)="item.required=false" class="fa fa-toggle-on red"></i>
-                            <i *ngIf="!item.required" (click)="item.required=true" class="fa fa-toggle-off"></i>
-                            <span class="pull-right ucfirst">{{item.type}}</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Label</label>
-                            <input class="form-control" type="text" [(ngModel)]="item.label" />
-                        </div>
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input class="form-control" type="text" [(ngModel)]="item.name" />
-                        </div>
-                        <div class="form-group">
-                            <label>Placeholder</label>
-                            <input class="form-control" type="text" [(ngModel)]="item.placeholder" />
-                        </div>
-                        <div class="form-group">
-                            <label>Regex</label>
-                            <input class="form-control" type="text" [(ngModel)]="item.regex" />
-                        </div>
-                        <div *ngIf="item.regex" class="form-group">
-                            <label>Error text</label>
-                            <input class="form-control" type="text" [(ngModel)]="item.errorText" />
-                        </div>
 
-                        <!-- number -->
-                        <div *ngIf="item.type=='number'" class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label>Min</label>
-                                    <input class="form-control" type="text" [(ngModel)]="item.min" />
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label>Max</label>
-                                    <input class="form-control" type="text" [(ngModel)]="item.max" />
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
                 </div>
                 <div class="dndPlaceholder" dndPlaceholderRef>
                 </div>
@@ -332,12 +388,12 @@
                 <ul class="nav nav-pills navtab-bg nav-justified">
                     <li class="nav-item">
                         <a href="#Properties" data-toggle="tab" aria-expanded="false" class="nav-link  active">
-                            Properties
+                            Individual
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#Settings" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                            Settings
+                            General
                         </a>
                     </li>
                 </ul>
@@ -353,28 +409,29 @@
                                 <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
                                     class="fa fa-toggle-off"></i> &nbsp;
 
-                                <label>Required</label>
+                                <label>Mandatory Or Not?</label>
 
 
-                                <div class="float-right required-icons">
+                                <!-- <div class="float-right required-icons">
                                     <a href="#">
                                         <i class="fa fa-clone"></i>
                                     </a> &nbsp; &nbsp;
                                     <a href="#">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
 
 
                             <div *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))"
                                 class="response-validation mt-3 mb-3">
-                                <div class="custom-control custom-radio">
+                                <!-- <div class="custom-control custom-radio">
                                     <input type="radio" id="customRadio1" value="true" name="customRadio"
                                         class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1"> &nbsp; Response
-                                        Validation</label>
-                                </div>
+                                  
+                                </div> -->
+                                <label> &nbsp; Response
+                                    Validation</label>
                             </div>
 
 
@@ -393,7 +450,7 @@
 
                             <div class="row" *ngIf="selectedItem.fielType=='email'">
                                 <div class="col-md-12 user-input mb-3">
-                                        <label> Allow Only One email</label>
+                                    <label> Allow Only One email</label>
 
                                     <select [(ngModel)]="selectedItem.selestedValidation" class="name-input">
                                         <option [value]="''">Select Validation</option>
@@ -527,7 +584,8 @@
                                 </div> -->
 
 
-                                <div class="col-12" *ngIf="selectedItem.errorText">
+                                <div class="col-12"
+                                    *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))">
                                     <div class="user-input mb-3">
                                         <p> Custom Error Message</p>
 
@@ -547,57 +605,43 @@
                                     </div>
                                 </div> -->
 
-                                <!--        <div class="col-6">
-                                    <div class="user-input mb-3">
-                                        <input class="name-input" placeholder="2" aria-invalid="false">
-                                    </div>
-                                </div>
-
-                                <div class="col-7">
-                                    <div class="user-input mb-3">
-                                        <select name="put a velue">
-                                            <option value="volvo">Only available in</option>
-                                            <option value="saab">Only available in</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-5">
-                                    <div class="user-input mb-3">
-                                        <select name="put a velue">
-                                            <option value="volvo">Country</option>
-                                            <option value="saab">Country</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-7">
-                                    <div class="user-input mb-3">
-                                        <select name="put a velue">
-                                            <option value="volvo">Accept only</option>
-                                            <option value="saab">Accept only</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-5">
-                                    <div class="user-input mb-3">
-                                        <select name="put a velue">
-                                            <option value="volvo">After</option>
-                                            <option value="saab">After</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="user-input mb-3">
-                                        <input class="name-input" type="date" placeholder="date" aria-invalid="false">
-                                    </div>
-                                </div> -->
-
                             </div>
                         </div>
+                        <label class="nice-lable">Mapping</label>
 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> File Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> Page Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current">Element Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -642,7 +686,7 @@
                             <hr style="border:1px dashed gray">
                         </div>
 
-                        <div class="form-pages mt-3">
+                        <!-- <div class="form-pages mt-3">
                             <p class="text-center mb-3">Form pages</p>
                             <p class="mb-2">
                                 <a href="#">1. &nbsp; Payment requisition</a>
@@ -656,8 +700,47 @@
                             <p class="mb-2">
                                 <a href="#">4. &nbsp; Payment</a>
                             </p>
-                        </div>
+                        </div> -->
 
+                        <label class="nice-lable">Inbox</label>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> Folder Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current">Form Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> Page Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a style="    margin-left: 36%">
+
+                                <button class="btn btn-primary" (click)="submitbtn()">submit</button>
+                            </a>
+
+                        </div>
                     </div>
                 </div>
             </div>

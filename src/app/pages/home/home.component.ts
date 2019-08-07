@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   reports: any = [];
 
 
- 
+
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -188,6 +188,12 @@ export class HomeComponent implements OnInit {
 
   }
 
+
+
+  submitbtn() {
+    localStorage.setItem('FormObject', JSON.stringify(this.model));
+
+  }
   updateForm() {
     let input = new FormData;
     input.append('id', this.model._id);
