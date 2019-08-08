@@ -38,6 +38,7 @@ export const icons_and_fields = [
         tooltip: 'Good for short answers, like names.',
         label: 'Enter your Question here',
         placeholder: ' Answer Text',
+        userAns: null,
         errorText: 'maximum 256 charector are allowed',
         min: 0,
         max: 256,
@@ -178,6 +179,8 @@ export const icons_and_fields = [
         tooltip: 'Only accepts answers as calendar dates.',
         errorText: 'Custom Error Field',
         placeholder: 'Date',
+        minDate: '',
+        maxDate: '',
         selestedValidation: '',
 
         formValidations: [
@@ -410,7 +413,21 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         label: 'Are you married ?',
         inputValue: '',
-        values: ['Yes', 'No', 'MayBe'],
+        values: [
+
+            {
+                label: 'True',
+                value: true
+            },
+            {
+                label: 'False',
+                value: false
+            },
+            {
+                label: 'May Be',
+                value: 'both'
+            },
+        ],
     },
 
     // {
@@ -436,7 +453,17 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         label: 'Are you married ?',
         inputValue: '',
-        values: ['True', 'False'],
+        values: [
+
+            {
+                label: 'True',
+                value: true
+            },
+            {
+                label: 'False',
+                value: false
+            },
+        ],
 
     },
 

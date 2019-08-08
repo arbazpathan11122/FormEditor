@@ -54,8 +54,8 @@
 <!-- show hide button -->
 <div class="hide-show-btn">
 
-    <button *ngIf="!showBtn" (click)="showNavbar() " class="btn btn-primary btn-sm" type="submit">Hide</button>
-    <button *ngIf="showBtn" (click)=" showNavbar()" class="btn btn-primary btn-sm" type="submit">show</button>
+    <button *ngIf="!showBtn" (click)="showNavbar() " class="btn btn-primary btn-sm" type="submit">Show</button>
+    <button *ngIf="showBtn" (click)=" showNavbar()" class="btn btn-primary btn-sm" type="submit">Hide</button>
 
     <!-- <i class="fa fa-eye-slash" aria-hidden="true"></i> -->
 
@@ -257,15 +257,15 @@
                                         <span *ngIf="item.required" class="red">*</span>      <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input disabled">
-                                    <label class="checkbox-inline mr-4">
-                                        <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[0]}}
+                                    <label class="checkbox-inline mr-4" *ngFor="let val of item.values">
+                                        <input type="radio" name="{{item.name}}" disabled>&nbsp; {{val.label}}
                                     </label>
-                                    <label class="checkbox-inline mr-4">
+                                    <!-- <label class="checkbox-inline mr-4">
                                         <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[1]}}
                                     </label>
                                     <label class="checkbox-inline mr-4" *ngIf="item.values[2]">
                                         <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[2]}}
-                                    </label>
+                                    </label> -->
                                 </div>
                             </div>
 
@@ -274,7 +274,7 @@
                                         <span *ngIf="item.required" class="red">*</span>   <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
-                                    <input class="name-input" type="" placeholder="{{item.placeholder}}"
+                                    <input class="name-input" type="" [(ngModel)]="item.placeholder"
                                         aria-invalid="false">
                                 </div>
                             </div>
