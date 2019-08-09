@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
   dropdownList1 = [];
   selectedItems2 = [];
   dropdownSettings3 = {};
+  checkingExistingForm: any;
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -60,6 +61,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
+
     this.dropdownList = [
       {
         id: 1,
@@ -331,8 +335,9 @@ export class HomeComponent implements OnInit {
     // this.formDataForView = JSON.parse(JSON.stringify(this.model));
     // console.log(this.formDataForView);
 
-     localStorage.setItem('formName', JSON.stringify(this.model));
-     localStorage.setItem('formFields', JSON.stringify(this.model.attributes));
+    localStorage.setItem('formName', JSON.stringify(this.model));
+    localStorage.setItem('formFields', JSON.stringify(this.model.attributes));
+    this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
   }
   updateForm() {

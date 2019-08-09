@@ -210,7 +210,12 @@
 
 
             <hr style="border:1px dashed gray">
-
+            <div class="process-part">
+                <div class="d-flex justify-content-center">
+                    <div class="bd-highlight btn-warning pro-button ml-4 mr-4">1</div>
+                    <div class="bd-highlight btn-primary pro-button ml-4 mr-4">2</div>
+                </div>
+            </div>
 
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                 [style.color]="model.theme.textColor">
@@ -244,8 +249,8 @@
                             <div
                                 *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')">
                                 <div class="mb-3 maker-input">
-                                   <span *ngIf="item.required" class="red">*</span> <input class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
-                                        aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input "
+                                        type="{{item.type}}" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input class="name-input" placeholder="{{item.placeholder}}"
@@ -254,7 +259,8 @@
                             </div>
                             <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'">
                                 <div class="mb-3 maker-input">
-                                        <span *ngIf="item.required" class="red">*</span>      <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input disabled">
                                     <label class="checkbox-inline mr-4" *ngFor="let val of item.values">
@@ -271,7 +277,8 @@
 
                             <div *ngIf="(item.fielType=='text')|| (item.fielType=='number')">
                                 <div class="mb-3 maker-input">
-                                        <span *ngIf="item.required" class="red">*</span>   <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input class="name-input" type="" [(ngModel)]="item.placeholder"
@@ -282,7 +289,8 @@
 
                             <div *ngIf="item.fielType=='file'">
                                 <div class="mb-3 maker-input">
-                                        <span *ngIf="item.required" class="red">*</span>        <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="right-ico mr-5">
                                     <input type="file" id="real-file" hidden="hidden" />
@@ -295,7 +303,8 @@
                             </div>
                             <div *ngIf="item.fielType=='date'">
                                 <div class="mb-3 maker-input">
-                                        <span *ngIf="item.required" class="red">*</span>          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input style="width:75%" class="name-input" max="2050-12-31" disabled
@@ -304,7 +313,8 @@
                             </div>
                             <div *ngIf="item.fielType=='rating'">
                                 <div class="mb-3 maker-input">
-                                        <span *ngIf="item.required" class="red">*</span>           <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <div class="row">
@@ -353,7 +363,8 @@
                             <div
                                 *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
                                 <div class="mb-3 maker-input">
-                                        <span *ngIf="item.required" class="red">*</span>       <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input pl-4">
                                     <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
@@ -398,7 +409,8 @@
 
                             <div *ngIf="item.fielType=='conditional'">
                                 <div class="mb-3 maker-input">
-                                        <span *ngIf="item.required" class="red">*</span>          <input class="name-input" [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input ">
                                     <li *ngFor="let i of item.values; let valueIndex=index;">
@@ -433,6 +445,10 @@
                 <div class="dndPlaceholder" dndPlaceholderRef>
                 </div>
             </section>
+            <div class="m-4 p-4">
+                <br>
+                <br>
+            </div>
         </div>
 
 
@@ -689,7 +705,7 @@
                             </div>
                         </div>
 
-                        <div class="row" *ngIf="model.attributes.length>0">
+                        <div class="row" *ngIf="checkingExistingForm">
                             <label class="nice-lable"> <b>Mapping</b></label>
                             <div class="col-md-12">
                                 <div class="nice-select box-nice-select wide mb-3" tabindex="0">

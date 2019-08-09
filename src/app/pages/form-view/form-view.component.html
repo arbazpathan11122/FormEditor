@@ -45,9 +45,9 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input">
-              <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}" min="{{item.min}}" max="{{item.max}}"
-                required="{{item.required}}" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
-                aria-invalid="false" #number="ngModel">
+              <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}" min="{{item.min}}"
+                max="{{item.max}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
+                [(ngModel)]="item.value" aria-invalid="false" #number="ngModel">
               <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
@@ -56,6 +56,36 @@
             </div>
             <!-- <span class="mt-3 float-right" style="color:#b8b8b8">256 maximum characters</span> -->
           </div>
+
+          <div *ngIf="item.fielType==='phone'" class="mobile-no-format p-4">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+              <div class="row">
+                <div class="col-3">
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">Country</span>
+                    <ul class="list">
+                      <li data-value="India" class="option selected focus">India</li>
+                      <li data-value="Pakistan" class="option">Pakistan</li>
+                      <li data-value="America" class="option">America</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <input class="name-input" type="phone" name="{{item.name}}" id="{{item.name}}"
+                    required="{{item.required}}" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+                    aria-invalid="false" #phone="ngModel">
+                  <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+                    {{item.errorText}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <!-- 
       <div class="p-4" *ngIf="item.fielType==='footer'" id="multiple-choice-format">
         <div class="mb-3 maker-input">
@@ -85,8 +115,36 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input">
-              <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #website="ngModel">
+              <div class="user-input">
+                <div class="row">
+                  <div class="col-3">
+                    <div class="nice-select" tabindex="0">
+                      <span class="current">https://</span>
+                      <ul class="list">
+                        <li data-value="https://" class="option selected focus">https://</li>
+                        <li data-value="http://" class="option">http://</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                      placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false"
+                      #website="ngModel"> </div>
+                  <div class="col-3">
+                    <div class="nice-select" tabindex="0">
+                      <span class="current">.com</span>
+                      <ul class="list">
+                        <li data-value="India" class="option selected focus">.com</li>
+                        <li data-value="Pakistan" class="option">.net</li>
+                        <li data-value="America" class="option">.in</li>
+                        <li data-value="America" class="option">.biz</li>
+                        <li data-value="America" class="option">.org</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div [hidden]="website.valid || website.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
@@ -110,8 +168,7 @@
 
           <div class="p-4" *ngIf="item.fielType==='yesNo'">
             <div class="mb-3 maker-input">
-              <!-- <span *ngIf="item.required" class="red">*</span> -->
-               <label class="name-input">{{item.label}}</label>
+              <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input inline-form-group" *ngFor="let opt of item.values">
               <div class="custom-control custom-radio custom-control-inline">
@@ -141,13 +198,68 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input">
-              <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #email="ngModel">
+
+              <div class="row">
+                <div class="col-8">
+                  <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                    placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #email="ngModel">
+                </div>
+                <div class="col-4">
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">@gmail.com</span>
+                    <ul class="list">
+                      <li data-value="gmail" class="option selected focus">@gmail.com</li>
+                      <li data-value="hotmail" class="option">@hotmail.com</li>
+                      <li data-value="yahoo" class="option">@yahoo.com</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
             </div>
           </div>
+
+
+
+
+
+          <!-- <div class="gmail-format p-4">
+            <div class="mb-3 maker-input">
+              <input class="name-input" disabled placeholder="Enter your mail here" aria-invalid="false">
+            </div>
+            <div class="user-input">
+              <div class="row">
+                <div class="col-8">
+                  <input class="name-input" placeholder="Mail name" aria-invalid="false">
+                </div>
+                <div class="col-4">
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">@gmail.com</span>
+                    <ul class="list">
+                      <li data-value="gmail" class="option selected focus">@gmail.com</li>
+                      <li data-value="hotmail" class="option">@hotmail.com</li>
+                      <li data-value="yahoo" class="option">@yahoo.com</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
 
           <div class="p-4" *ngIf="item.fielType==='rating'" id="Rating-format">
             <div class="mb-3 maker-input">
@@ -304,7 +416,7 @@
 
 
         </div>
-        <button class="btn btn-primary" type="submit" 
+        <button class="btn btn-primary" type="submit"
           (click)="submitResult(userForm.value, userForm.invalid)">submit</button>
       </form>
     </div>
@@ -314,17 +426,17 @@
 
 </div>
 
- <div *ngIf="showTable">
+<div *ngIf="showTable">
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col" >#</th>
+        <th scope="col">#</th>
         <th scope="col">Questions</th>
         <th scope="col">Answer</th>
       </tr>
     </thead>
-    <tbody >
-      <tr *ngFor="let item of formName.attributes; let i = index;" >
+    <tbody>
+      <tr *ngFor="let item of formName.attributes; let i = index;">
         <th scope="row">{{i}}</th>
         <td>{{item.label}}</td>
         <td>{{item.value}}</td>
@@ -334,4 +446,4 @@
   </table>
 
 
-</div> 
+</div>
