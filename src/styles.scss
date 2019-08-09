@@ -186,7 +186,6 @@
     height: 30px;
     border-style:dashed;
     width: 100%;
-    font-family: poppins,sans-serif;
     color: #151948;
 }
 .user-input .name-input:focus{
@@ -208,7 +207,6 @@
 .menu-sidebar{
 	-border:1px solid purple;
 	padding: 20px 25px;
-    -margin-left:20px;
 	height: calc(100vh - 50px);
     overflow-y:auto;
     position: fixed;
