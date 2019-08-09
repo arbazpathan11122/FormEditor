@@ -3,6 +3,7 @@ import { icons_and_fields } from '../../class/data';
 import swal from 'sweetalert2';
 import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
 import { field, value } from 'src/app/class/global.model';
+import { FormService } from 'src/app/service/form.service';
 declare const $: any;
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
     label: '',
     value: ''
   };
+  formDataForView: any;
   showBtn = true;
   hideClass = 'mainshow';
   showNav = true;
@@ -49,6 +51,7 @@ export class HomeComponent implements OnInit {
   dropdownList1 = [];
   selectedItems2 = [];
   dropdownSettings3 = {};
+  checkingExistingForm: any;
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -58,6 +61,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
+
     this.dropdownList = [
       {
         id: 1,
@@ -326,7 +332,12 @@ export class HomeComponent implements OnInit {
   }
 
   submitbtn() {
-    localStorage.setItem('FormObject', JSON.stringify(this.model));
+    // this.formDataForView = JSON.parse(JSON.stringify(this.model));
+    // console.log(this.formDataForView);
+
+    localStorage.setItem('formName', JSON.stringify(this.model));
+    localStorage.setItem('formFields', JSON.stringify(this.model.attributes));
+    this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
   }
   updateForm() {

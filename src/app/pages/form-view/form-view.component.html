@@ -1,0 +1,449 @@
+<!-- <h3>{{formData.attributes}}</h3> -->
+
+
+<div *ngIf="!showTable" class="form-page">
+  <div class="row">
+    <div class="col-6 working-part mx-auto">
+      <form #userForm="ngForm">
+        <div *ngFor="let item of formName.attributes; let inVal = index;">
+          <div class="formtitle" *ngIf="item.fielType==='header'">
+            <div class="mb-3 maker-input">
+              <label class="form-header">{{item.label}}</label>
+
+            </div>
+          </div>
+          <div class="p-4" *ngIf="item.fielType==='statement'">
+            <div class="mb-3 maker-input">
+              <label class="name-input">{{item.label}}</label>
+
+            </div>
+          </div>
+          <div class="p-4" *ngIf="item.fielType==='footer'">
+            <div class="mb-3 maker-input">
+              <p class="name-input">{{item.label}}</p>
+
+            </div>
+          </div>
+          <div class="p-4" *ngIf="item.fielType==='text'">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+
+              <!-- <input class="name-input" disabled placeholder="What is your name ?" aria-invalid="false"> -->
+            </div>
+            <div class="user-input">
+              <input class="name-input" name="{{item.name}}" id="{{item.name}}" minlength="{{item.min}}"
+                maxlength="{{item.max}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
+                [(ngModel)]="item.value" aria-invalid="false" #name="ngModel">
+            </div>
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+              {{item.errorText}}
+            </div>
+          </div>
+
+          <div class="p-4" *ngIf="item.fielType==='number'">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+              <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}" min="{{item.min}}"
+                max="{{item.max}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
+                [(ngModel)]="item.value" aria-invalid="false" #number="ngModel">
+              <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
+                {{item.errorText}}
+              </div>
+
+
+            </div>
+            <!-- <span class="mt-3 float-right" style="color:#b8b8b8">256 maximum characters</span> -->
+          </div>
+
+          <div *ngIf="item.fielType==='phone'" class="mobile-no-format p-4">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+              <div class="row">
+                <div class="col-3">
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">Country</span>
+                    <ul class="list">
+                      <li data-value="India" class="option selected focus">India</li>
+                      <li data-value="Pakistan" class="option">Pakistan</li>
+                      <li data-value="America" class="option">America</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <input class="name-input" type="phone" name="{{item.name}}" id="{{item.name}}"
+                    required="{{item.required}}" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+                    aria-invalid="false" #phone="ngModel">
+                  <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+                    {{item.errorText}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 
+      <div class="p-4" *ngIf="item.fielType==='footer'" id="multiple-choice-format">
+        <div class="mb-3 maker-input">
+          <input class="name-input" disabled placeholder="What are your hobbies ?" aria-invalid="false">
+        </div>
+        <div class="user-input">
+          <div class="form-check mb-3">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="">Swimming
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="">Racing
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="">Other
+            </label>
+          </div>
+        </div>
+      </div> -->
+
+          <div class="p-4" *ngIf="item.fielType==='website'" id="Website-format">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+              <div class="user-input">
+                <div class="row">
+                  <div class="col-3">
+                    <div class="nice-select" tabindex="0">
+                      <span class="current">https://</span>
+                      <ul class="list">
+                        <li data-value="https://" class="option selected focus">https://</li>
+                        <li data-value="http://" class="option">http://</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                      placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false"
+                      #website="ngModel"> </div>
+                  <div class="col-3">
+                    <div class="nice-select" tabindex="0">
+                      <span class="current">.com</span>
+                      <ul class="list">
+                        <li data-value="India" class="option selected focus">.com</li>
+                        <li data-value="Pakistan" class="option">.net</li>
+                        <li data-value="America" class="option">.in</li>
+                        <li data-value="America" class="option">.biz</li>
+                        <li data-value="America" class="option">.org</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div [hidden]="website.valid || website.pristine" class="alert alert-danger">
+                {{item.errorText}}
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="p-4" *ngIf="item.fielType==='date'" id="Date-format">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+              <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #website="ngModel">
+                <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #website="ngModel">
+              <div [hidden]="website.valid || website.pristine" class="alert alert-danger">
+                {{item.errorText}}
+              </div>
+            </div>
+          </div> -->
+
+          <div class="p-4" *ngIf="item.fielType==='yesNo'">
+            <div class="mb-3 maker-input">
+              <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input inline-form-group" *ngFor="let opt of item.values">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" [value]="opt.value" name="{{opt.name}}" [(ngModel)]="item.value"
+                  [ngModelOptions]="{standalone: true}" required="{{item.required}}"> {{opt.label}}
+
+                <!-- <input type="radio" class="custom-control-input" id="customRadio1" name="example1">
+                <label class="custom-control-label" for="customRadio1">Yes</label> -->
+              </div>
+
+              <!-- <div [hidden]="yesNo.valid || yesNo.pristine" class="alert alert-danger">
+                  {{item.errorText}}
+                </div> -->
+              <!-- <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="customRadio2" name="example1">
+                <label class="custom-control-label" for="customRadio2">No</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="customRadio3" name="example1">
+                <label class="custom-control-label" for="customRadio3">Maybe</label>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="p-4" *ngIf="item.fielType==='email'" id="email-format">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+
+              <div class="row">
+                <div class="col-8">
+                  <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                    placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #email="ngModel">
+                </div>
+                <div class="col-4">
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">@gmail.com</span>
+                    <ul class="list">
+                      <li data-value="gmail" class="option selected focus">@gmail.com</li>
+                      <li data-value="hotmail" class="option">@hotmail.com</li>
+                      <li data-value="yahoo" class="option">@yahoo.com</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                {{item.errorText}}
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <!-- <div class="gmail-format p-4">
+            <div class="mb-3 maker-input">
+              <input class="name-input" disabled placeholder="Enter your mail here" aria-invalid="false">
+            </div>
+            <div class="user-input">
+              <div class="row">
+                <div class="col-8">
+                  <input class="name-input" placeholder="Mail name" aria-invalid="false">
+                </div>
+                <div class="col-4">
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">@gmail.com</span>
+                    <ul class="list">
+                      <li data-value="gmail" class="option selected focus">@gmail.com</li>
+                      <li data-value="hotmail" class="option">@hotmail.com</li>
+                      <li data-value="yahoo" class="option">@yahoo.com</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="p-4" *ngIf="item.fielType==='rating'" id="Rating-format">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+              <div class="row">
+                <div class="col-5">
+                  <div class="mb-2 rating-ico">
+                    <span class="fa fa-star-o"></span>&nbsp;
+                    <span class="fa fa-star-o"></span>&nbsp;
+                    <span class="fa fa-star-o"></span>&nbsp;
+                    <span class="fa fa-star-o"></span>&nbsp;
+                    <span class="fa fa-star-o"></span>
+                  </div>
+                  <div class="mb-2 rating-ico">
+                    <span class="fa fa-smile-o"></span>&nbsp;
+                    <span class="fa fa-smile-o"></span>&nbsp;
+                    <span class="fa fa-smile-o"></span>&nbsp;
+                    <span class="fa fa-smile-o"></span>&nbsp;
+                    <span class="fa fa-smile-o"></span>
+                  </div>
+                  <div class="mb-2 rating-ico">
+                    <span class="fa fa-sun-o"></span>&nbsp;
+                    <span class="fa fa-sun-o"></span>&nbsp;
+                    <span class="fa fa-sun-o"></span>&nbsp;
+                    <span class="fa fa-sun-o"></span>&nbsp;
+                    <span class="fa fa-sun-o"></span>
+                  </div>
+                  <div class="mb-2 rating-ico">
+                    <span class="fa fa-heart-o"></span>&nbsp;
+                    <span class="fa fa-heart-o"></span>&nbsp;
+                    <span class="fa fa-heart-o"></span>&nbsp;
+                    <span class="fa fa-heart-o"></span>&nbsp;
+                    <span class="fa fa-heart-o"></span>
+                  </div>
+                  <div class="mb-2">
+                    <button type="button" class="btn btn-light">1</button> &nbsp;
+                    <button type="button" class="btn btn-light">2</button> &nbsp;
+                    <button type="button" class="btn btn-light">3</button> &nbsp;
+                    <button type="button" class="btn btn-light">4</button> &nbsp;
+                    <button type="button" class="btn btn-light">5</button>
+                  </div>
+                </div>
+                <div class="col-5">
+                  <select name="Star">
+                    <option value="Star">Star</option>
+                    <option value="Smiley">Smiley</option>
+                    <option value="Sun">Sun</option>
+                    <option value="Heart">Heart</option>
+                    <option value="Number">Number</option>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <div class="user-input">
+                    <input class="name-input" placeholder="Size" aria-invalid="false">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4" *ngIf="item.fielType==='statement'" id="statement-format">
+            <div class="mb-3 maker-input">
+              <textarea class="form-control form-statement" rows="2" spellcheck="false"
+                placeholder="you can achieve anything if you want in life. Dreems should be seen by open eyes if they are meant to be completed"></textarea>
+            </div>
+          </div>
+
+          <div class="p-4" *ngIf="item.fielType==='dropdown'" id="dropdown-format">
+            <div class="mb-3 maker-input">
+              <input class="name-input" placeholder="How can you better describe yourself?*" aria-invalid="false">
+            </div>
+            <div class="user-input">
+              <div class="add-dropdown ">
+                <i class="fa fa-chevron-down left-ico" aria-hidden="true"></i>
+                <input class="name-input mb-2" placeholder="I am invincible." aria-invalid="false">
+                <i class="fa fa-times right-ico" aria-hidden="true"></i>
+              </div>
+
+              <div class="add-dropdown ">
+                <i class="fa fa-chevron-down left-ico" aria-hidden="true"></i>
+                <input class="name-input mb-2" placeholder="Add new" aria-invalid="false">
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4" *ngIf="item.fielType==='picture'" id="picture-choice-format">
+            <div class="mb-3 maker-input">
+              <input class="name-input" placeholder="Choose among these.*" aria-invalid="false">
+            </div>
+            <div class="user-input">
+              <div class="add-picture">
+                <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
+                <input class="name-input mb-2" placeholder="Website" aria-invalid="false">
+                <p class="right-img right-ico">image_1234 &nbsp; &nbsp; <i class="fa fa-times" aria-hidden="true"></i>
+                </p>
+              </div>
+
+              <div class="add-picture">
+                <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
+                <input class="name-input mb-2" placeholder="Application" aria-invalid="false">
+                <p class="right-img right-ico">image_1234 &nbsp; &nbsp; <i class="fa fa-times" aria-hidden="true"></i>
+                </p>
+              </div>
+
+              <div class="add-picture">
+                <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
+                <input style="width: 50%" class="name-input mb-2" placeholder="Add option" aria-invalid="false">
+                <input style="width: 40%" type="file" class="right-ico form-control-file">
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="p-4" *ngIf="item.fielType===''" id="conditional-dropdown-format">
+        <div class="mb-3 maker-input">
+          <input class="name-input" placeholder="This is the conditional format.*" aria-invalid="false">
+        </div>
+        <div class="user-input">
+          <div class="row">
+             <div class="col-4">
+                <div  class="add-condi-dropdown">
+                    <i aria-hidden="true" class="fa left-ico">1</i>
+                  <input  aria-invalid="false" class="name-input mb-2" placeholder="I am invincible.">
+                  <i  aria-hidden="true" class="fa fa-times right-ico"></i>
+                </div>
+             </div>
+
+             <div class="col-4">
+                <div class="add-condi-dropdown">
+                    <i aria-hidden="true" class="fa left-ico">1. a.</i> 
+                    <input aria-invalid="false" class="name-input mb-2" placeholder="I am invincible.">
+                    <i aria-hidden="true" class="fa fa-times right-ico"></i>
+                  </div>
+             </div>
+
+             <div class="col-4">
+                <div class="add-condi-dropdown">
+                    <i aria-hidden="true" class="fa fa-chevron-down left-ico"></i> 
+                    <input aria-invalid="false" class="name-input mb-2" placeholder="I am invincible.">
+             </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+          <!-- 
+      <div class="justify-content-center d-flex" id="submit-part">
+        <button type="button" class="btn btn-primary">Save</button> &nbsp; &nbsp; &nbsp;
+        <button type="button" class="btn btn-light">Next</button>
+      </div> -->
+
+
+
+
+        </div>
+        <button class="btn btn-primary" type="submit"
+          (click)="submitResult(userForm.value, userForm.invalid)">submit</button>
+      </form>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div *ngIf="showTable">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Questions</th>
+        <th scope="col">Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of formName.attributes; let i = index;">
+        <th scope="row">{{i}}</th>
+        <td>{{item.label}}</td>
+        <td>{{item.value}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+</div>

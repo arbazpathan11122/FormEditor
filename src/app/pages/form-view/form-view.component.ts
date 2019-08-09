@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-view',
@@ -6,10 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-view.component.scss']
 })
 export class FormViewComponent implements OnInit {
+  // item = { fileType: 'header' };
+  formName: any;
+  formFields: any;
+  showTable = false;
+  constructor() {
 
-  constructor() { }
-  FormData: any;
+    this.formName = JSON.parse(localStorage.getItem('formName'));
+
+    this.formFields = JSON.parse(localStorage.getItem('formFields'));
+
+    console.log(this.formFields);
+
+  }
   ngOnInit() {
-    this.FormData = localStorage.getItem('FormObject');
+  }
+
+  submitResult(val, bc) {
+
+    console.log(bc);
+
+    if (bc) {
+
+      swal('Error', ' Please Fill The Mandatory Fields (*)', 'error');
+      return;
+    }
+
+    this.showTable = true;
+
   }
 }

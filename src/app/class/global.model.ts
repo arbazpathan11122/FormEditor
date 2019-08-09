@@ -20,6 +20,8 @@ export class field {
   inline?: any;
   value?: any;
   values?: Array<value>;
+  selestedValidation: any;
+  formValidations: any;
 }
 
 export class value {

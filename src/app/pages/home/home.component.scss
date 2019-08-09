@@ -386,6 +386,24 @@
   z-index: 999999;
  }
 
+ .process-part{
+  position: relative;
+  overflow: hidden;
+  z-index: 999;
+  }
+  .process-part::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: 100%;
+  background-color: #ccc;
+  z-index: -1;
+  }
+  .pro-button{
+  padding: 5px 13px;;
+  border-radius: 50%;
+  }
 // .right-ico{
 //     right: 0;
 //     position: absolute;
