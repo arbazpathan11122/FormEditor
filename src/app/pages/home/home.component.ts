@@ -44,11 +44,13 @@ export class HomeComponent implements OnInit {
   report = false;
   reports: any = [];
 
+  // dropdown for show email and phone list for validation
 
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
-  dropdownList1 = [];
+  emailDropdownList = [];
+  emailSettings = {};
+  phoneSettings = {};
+  phoneDropdownList = [];
+
   selectedItems2 = [];
   dropdownSettings3 = {};
   checkingExistingForm: any;
@@ -64,52 +66,73 @@ export class HomeComponent implements OnInit {
 
     this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
-    this.dropdownList = [
+    this.emailDropdownList = [
       {
         id: 1,
         label: 'Gmail',
-        pattern: '.+@Gmail.com',
+        pattern: '@Gmail.com',
 
       },
       {
         id: 2,
         label: 'Outlook',
-        pattern: '.+@Gmail.com',
+        pattern: '@Outlook.com',
 
       },
       {
         id: 3,
         label: 'Yahoo',
-        pattern: '.+@Gmail.com',
+        pattern: '@Yahoo.com',
 
       },
       {
         id: 4,
         label: 'Zoho',
-        pattern: '.+@Gmail.com',
+        pattern: '@Zoho.com',
 
       },
       {
         id: 5,
         label: 'Mail',
-        pattern: '.+@Gmail.com',
+        pattern: '@Mail.com',
 
       },
       {
         id: 6,
         label: 'ProtonMail',
-        pattern: '.+@Gmail.com',
+        pattern: '@ProtonMail.com',
 
       },
       {
         id: 7,
         label: 'GMX',
-        pattern: '.+@Gmail.com',
+        pattern: '@GMX.com',
 
       },
     ];
 
-    this.dropdownList1 = [
+
+    this.emailSettings = {
+      singleSelection: false,
+      idField: 'pattern',
+      textField: 'label',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
+    this.phoneSettings = {
+      singleSelection: false,
+      idField: 'pattern',
+      textField: 'label',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
+    this.phoneDropdownList = [
       {
         id: 1,
         label: 'India',
@@ -143,45 +166,22 @@ export class HomeComponent implements OnInit {
       {
         id: 6,
         label: 'U S A',
-        pattern: 'pakistan',
+        pattern: 'usa',
 
       },
       {
         id: 7,
         label: 'Brazil',
-        pattern: '.+@Gmail.com',
+        pattern: '@Gmail.com',
 
       },
     ];
 
 
-    // this.selectedItems = [
-    //   {
-    //     id: 7,
-    //     label: 'GMX',
-    //     pattern: '.+@Gmail.com',
-
-
-    //   },
-    // ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'label',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
   }
 
 
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
+
 
   allowDrop(event) {
 

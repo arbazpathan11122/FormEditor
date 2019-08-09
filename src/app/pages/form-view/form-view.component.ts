@@ -8,6 +8,50 @@ import swal from 'sweetalert2';
 })
 export class FormViewComponent implements OnInit {
   // item = { fileType: 'header' };
+
+  // validation variables
+  mailTypeSelected = '';
+
+  // this.dropdownList = [
+  //   {
+  //     id: 1,
+  //     label: '@Gmail.com',
+
+  //   },
+  //   {
+  //     id: 2,
+  //     label: '@Outlook.com',
+
+  //   },
+  //   {
+  //     id: 3,
+  //     label: '@Yahoo.com',
+
+  //   },
+  //   {
+  //     id: 4,
+  //     label: '@Zoho.com',
+
+  //   },
+  //   {
+  //     id: 5,
+  //     label: '@Mail.com',
+
+  //   },
+  //   {
+  //     id: 6,
+  //     label: '@ProtonMail.com',
+
+  //   },
+  //   {
+  //     id: 7,
+  //     label: '@GMX.com',
+
+  //   },
+  // ];
+
+
+
   formName: any;
   formFields: any;
   showTable = false;
@@ -22,6 +66,22 @@ export class FormViewComponent implements OnInit {
   }
   ngOnInit() {
   }
+
+
+
+
+
+
+  mailExtention(val, index) {
+    val.mailType = val.emailList[index];
+
+
+  }
+
+
+
+
+
 
   submitResult(val, bc) {
 

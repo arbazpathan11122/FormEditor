@@ -206,7 +206,7 @@
 
 
             <!-- form tab end -->
-
+<!-- 
             <div class="p-5">
                     <div class="user-input">
                         <input class="name-input" placeholder="Enter your address" aria-invalid="false">
@@ -236,7 +236,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
 
@@ -545,18 +545,8 @@
 
                             <div class="row" *ngIf="selectedItem.fielType=='email'">
                                 <div class="col-md-12 user-input mb-3">
-                                    <!-- <label> Allow Only One email</label>
-
-                                    <select [(ngModel)]="selectedItem.selestedValidation"
-                                        class="name-input nice-select box-nice-select wide mb-3">
-                                        <option [value]="''">Select Validation</option>
-                                        <option *ngFor="let c of selectedItem.emailValidation" [value]="c.pattern">
-                                            {{c.label}}</option>
-                                    </select> -->
-
-                                    <ng-multiselect-dropdown [placeholder]="'Select Mail '" [data]="dropdownList"
-                                        [(ngModel)]="selectedItems" [settings]="dropdownSettings"
-                                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                    <ng-multiselect-dropdown [placeholder]="'Select Mail '" [data]="emailDropdownList"
+                                        [(ngModel)]="selectedItem.emailList" [settings]="emailSettings">
                                     </ng-multiselect-dropdown>
 
                                 </div>
@@ -568,8 +558,8 @@
 
 
                                     <ng-multiselect-dropdown [placeholder]="'Select country phone  '"
-                                        [data]="dropdownList1" [(ngModel)]="selectedItems" [settings]="dropdownSettings"
-                                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                        [data]="phoneDropdownList" [(ngModel)]="selectedItem.phoneList" [settings]="phoneSettings"
+                                       >
                                     </ng-multiselect-dropdown>
 
                                 </div>
@@ -669,47 +659,7 @@
 
 
 
-                                <!-- <div class="col-6">
-                                    <div class="user-input mb-3">
-                                        <select name="put a velue">
-                                            <option value="volvo">Number</option>
-                                            <option value="saab">number</option>
-                                        </select>
-                                    </div>
-                                </div> -->
-
-
-                                <!-- <div class="col-12"
-                                    *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
-                                    <div class=" mb-3">
-                                        <select [(ngModel)]="selectedItem.selestedValidation">
-                                            <option *ngFor="let c of selectedItem.selectValidationFrom"
-                                                [value]="c.value">{{c.label}}</option>
-                                          
-
-                                        </select>
-                                    </div> -->
-                                <!-- <div class="col-6"
-                                        *ngIf="((selectedItem.selestedValidation =='min') || (selectedItem.selestedValidation =='both'))">
-                                        <div class="user-input mb-3">
-                                            <p>Min Char</p>
-                                            <input class="name-input" type="number" min="0" maxlength="15"
-                                                (keyup)="((selectedItem.min == null)? selectedItem.min = 0 : selectedItem.min =selectedItem.min)"
-                                                [(ngModel)]="selectedItem.min" aria-invalid="false">
-                                        </div>
-                                    </div>
-                                    <div class="col-6"
-                                        *ngIf="((selectedItem.selestedValidation =='max') || (selectedItem.selestedValidation =='both'))">
-                                        <div class="user-input mb-3">
-                                            <p>Max Char</p>
-                                            <input class="name-input" type="number" [min]="selectedItem.min"
-                                                maxlength="15"
-                                                (keyup)="((selectedItem.max <selectedItem.min)? selectedItem.max= selectedItem.min : selectedItem.max =selectedItem.max)"
-                                                [(ngModel)]="selectedItem.max" aria-invalid="false">
-                                        </div>
-                                    </div>
-
-                                </div> -->
+                                
 
 
                                 <div class="col-12"
@@ -722,16 +672,7 @@
                                     </div>
                                 </div>
 
-                                <!-- <div class="col-6">
-                                    <div class="user-input mb-3">
-                                        <select name="put a velue">
-                                            <option value="min">Select atleast</option>
-                                            <option value="saab">Select exectly</option>
-                                            <option value="saab">Select atmost</option>
-
-                                        </select>
-                                    </div>
-                                </div> -->
+                               
 
                             </div>
                         </div>

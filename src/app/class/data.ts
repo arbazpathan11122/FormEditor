@@ -126,43 +126,8 @@ export const icons_and_fields = [
         errorText: 'Please enter a valid email',
         selestedValidation: '',
         handle: true,
-        emailValidation: [
-            {
-                label: 'Gmail',
-                pattern: '.+@Gmail.com',
-
-            },
-            {
-                label: 'Outlook',
-                pattern: '.+@Gmail.com',
-
-            },
-            {
-                label: 'Yahoo',
-                pattern: '.+@Gmail.com',
-
-            },
-            {
-                label: 'Zoho',
-                pattern: '.+@Gmail.com',
-
-            },
-            {
-                label: 'Mail',
-                pattern: '.+@Gmail.com',
-
-            },
-            {
-                label: 'ProtonMail',
-                pattern: '.+@Gmail.com',
-
-            },
-            {
-                label: 'GMX',
-                pattern: '.+@Gmail.com',
-
-            },
-        ]
+        mailType: '',
+        emailList: []
     },
 
     {
@@ -235,6 +200,9 @@ export const icons_and_fields = [
         placeholder: 'Enter your phone number',
         inputValue: '',
         regex: '[789][0-9]{9}',
+        phoneType: '',
+        phoneList: [],
+
         handle: true
     },
     {
