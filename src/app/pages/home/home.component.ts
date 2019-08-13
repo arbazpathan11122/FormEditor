@@ -50,9 +50,11 @@ export class HomeComponent implements OnInit {
   emailSettings = {};
   phoneSettings = {};
   phoneDropdownList = [];
+  httpSettings = {};
+  httpDropdownList = [];
+  comSettings = {};
+  comDropdownList = [];
 
-  selectedItems2 = [];
-  dropdownSettings3 = {};
   checkingExistingForm: any;
   constructor() {
     setTimeout(() => {
@@ -63,7 +65,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.showNavbar();
     this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
     this.emailDropdownList = [
@@ -142,25 +144,25 @@ export class HomeComponent implements OnInit {
       {
         id: 2,
         label: 'pakistan',
-        pattern: 'pakistan',
+        pattern: 'pakian',
 
       },
       {
         id: 3,
         label: 'BanglaDesh',
-        pattern: 'BanglaDesh',
+        pattern: 'Banglesh',
 
       },
       {
         id: 4,
         label: 'china',
-        pattern: 'china',
+        pattern: 'chia',
 
       },
       {
         id: 5,
         label: 'japan',
-        pattern: 'japan',
+        pattern: 'jaan',
 
       },
       {
@@ -177,8 +179,95 @@ export class HomeComponent implements OnInit {
       },
     ];
 
+    this.httpSettings = {
+      singleSelection: false,
+      idField: 'pattern',
+      textField: 'label',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
+    this.httpDropdownList = [
+      {
+        id: 1,
+        label: 'HTTP://',
+        pattern: 'http://',
+
+      },
+      {
+        id: 2,
+        label: 'HTTPS://',
+        pattern: 'https://',
+
+      },
+    ];
+
+    this.comSettings = {
+      singleSelection: false,
+      idField: 'pattern',
+      textField: 'label',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
+
+    this.comDropdownList = [
+      {
+        id: 1,
+        label: '.Com',
+        pattern: '.com',
+
+      },
+      {
+        id: 2,
+        label: '.IN',
+        pattern: '.in',
+
+      },
+      {
+        id: 3,
+        label: '.CO',
+        pattern: '.co',
+
+      },
+      {
+        id: 4,
+        label: '.NET',
+        pattern: '.net',
+
+      },
+      {
+        id: 5,
+        label: '.CO.IN',
+        pattern: '.co.in',
+
+      },
+      {
+        id: 6,
+        label: '.NET.IN',
+        pattern: '.net.in',
+
+      },
+      {
+        id: 7,
+        label: '.EDU',
+        pattern: '.edu',
+
+      },
+    ];
+
+
+
 
   }
+
+
+
+
 
 
 
@@ -222,7 +311,7 @@ export class HomeComponent implements OnInit {
     console.log('dragover', JSON.stringify(event, null, 2));
   }
 
-  onDrop(event: DndDropEvent, list?: any[], ) {
+  onDrop(event: DndDropEvent, list?: any[]) {
     console.log(event);
     console.log(list);
 

@@ -55,6 +55,7 @@ export class FormViewComponent implements OnInit {
   formName: any;
   formFields: any;
   showTable = false;
+  DropDownSettings = {};
   constructor() {
 
     this.formName = JSON.parse(localStorage.getItem('formName'));
@@ -65,6 +66,15 @@ export class FormViewComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.DropDownSettings = {
+      singleSelection: false,
+      idField: 'label',
+      textField: 'label',
+      enableCheckAll: false,
+      itemsShowLimit: 3,
+      // limitSelection: 2,
+      allowSearchFilter: true,
+    };
   }
 
 
@@ -85,7 +95,8 @@ export class FormViewComponent implements OnInit {
 
   submitResult(val, bc) {
 
-    console.log(bc);
+    console.log(this.formName);
+
 
     if (bc) {
 

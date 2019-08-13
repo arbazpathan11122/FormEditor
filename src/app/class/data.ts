@@ -44,6 +44,7 @@ export const icons_and_fields = [
         max: 256,
         handle: true,
         selestedValidation: '',
+        userResponse: [],
         formValidations: [
             {
                 label: ' Greater Then',
@@ -76,6 +77,7 @@ export const icons_and_fields = [
         min: 0,
         max: 256,
         selestedValidation: '',
+        userResponse: [],
         formValidations: [
             {
                 label: ' Greater Then',
@@ -148,6 +150,7 @@ export const icons_and_fields = [
         maxDate: '',
         selestedValidation: '',
 
+        userResponse: [],
         formValidations: [
             {
                 label: 'After',
@@ -179,7 +182,13 @@ export const icons_and_fields = [
         inputValue: '',
         placeholder: 'Enter your website link',
         // regex: '^[\da-fA-F]{2}([-:])([\da-fA-F]{2}\1){4}[\da-fA-F]{2}',
-        handle: true
+        handle: true,
+        httpType: '',
+        httpList: [],
+        comType: '',
+        comList: []
+
+
     },
 
 
@@ -218,18 +227,22 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         selestedValidation: '',
 
+        userResponse: [],
         formValidations: [
             {
                 label: 'Kb',
-                value: 'Kb'
+                value: 'Kb',
+                size: 100
             },
             {
                 label: ' Mb',
-                value: 'Mb'
+                value: 'Mb',
+                size: 10
             },
             {
                 label: 'Gb',
-                value: 'Gb'
+                value: 'Gb',
+                size: 1
             }
         ]
 
@@ -256,19 +269,23 @@ export const icons_and_fields = [
             }
         ],
         selestedValidation: '',
+        userResponse: [],
         formValidations: [
 
             {
                 label: 'Select atleast',
-                value: 'min'
+                value: 'min',
+                limit: 1
             },
             {
                 label: 'Select exectly',
-                value: 'max'
+                value: 'max',
+                limit: 1
             },
             {
                 label: 'Select atmost',
-                value: 'both'
+                value: 'both',
+                limit: 1
             }
 
         ]
@@ -298,19 +315,23 @@ export const icons_and_fields = [
             }
         ],
         selestedValidation: '',
-
+        validOption: {},
+        userResponse: [],
         formValidations: [
             {
                 label: 'Select atleast',
-                value: 'min'
+                value: 'min',
+                limit: 1
             },
             {
                 label: 'Select exectly',
-                value: 'max'
+                value: 'max',
+                limit: 1
             },
             {
                 label: 'Select atmost',
-                value: 'both'
+                value: 'both',
+                limit: 1
             }
         ],
 
@@ -340,18 +361,22 @@ export const icons_and_fields = [
         ],
         selestedValidation: '',
 
+        userResponse: [],
         formValidations: [
             {
                 label: 'Select atleast',
-                value: 'min'
+                value: 'min',
+                limit: 1
             },
             {
                 label: 'Select exectly',
-                value: 'max'
+                value: 'max',
+                limit: 1
             },
             {
                 label: 'Select atmost',
-                value: 'both'
+                value: 'both',
+                limit: 1
             }]
 
     },
