@@ -303,12 +303,7 @@
                                     <label class="checkbox-inline mr-4" *ngFor="let val of item.values">
                                         <input type="radio" name="{{item.name}}" disabled>&nbsp; {{val.label}}
                                     </label>
-                                    <!-- <label class="checkbox-inline mr-4">
-                                        <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[1]}}
-                                    </label>
-                                    <label class="checkbox-inline mr-4" *ngIf="item.values[2]">
-                                        <input type="radio" name="{{item.name}}" value="">&nbsp; {{item.values[2]}}
-                                    </label> -->
+                                   
                                 </div>
                             </div>
 
@@ -330,7 +325,7 @@
                                         [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="right-ico mr-5">
-                                    <input type="file" id="real-file" hidden="hidden" />
+                                    <input type="file" id="real-file1" hidden="hidden" />
                                     <button disabled type="button" class="btn btn-sm btn-primary btn-style mr-2"
                                         id="custom-button">Upload</button>
                                     <span id="custom-text">Select file</span>
@@ -398,7 +393,6 @@
                                     <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
 
 
-                                        <!-- <ng-container class="add-dropdown "> -->
 
                                         <input style="width: 50%" class="name-input mb-4"
                                             name="i.uniqName{{valueIndex}}" [(ngModel)]="i.label" aria-invalid="false">
@@ -406,8 +400,9 @@
                                         <ng-container *ngIf="item.fielType=='picture'">
 
                                             <div class="right-ico mr-5">
-                                                <input type="file" id="real-file" hidden="hidden" />
-                                                <button type="button" (click)="document.getElementById('real-file').click()" class="btn btn-sm btn-primary btn-style mr-2"
+                                                <input type="file" #fileUpload hidden="hidden" />
+                                                <button type="button" (click)="fileUpload.click()"
+                                                    class="btn btn-sm btn-primary btn-style mr-2"
                                                     id="custom-button">Upload</button>
                                                 <span id="custom-text">Select file</span>
                                             </div>
@@ -416,19 +411,9 @@
 
                                         <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
                                             aria-hidden="true"></i>
-                                        <!-- </ng-container> -->
                                     </li>
                                 </ol>
-                                <!-- <div class="user-input " *ngFor="let i of item.values; let valueIndex=index;">
-                                        <div class="add-dropdown ">
-                                               {{valueIndex +1}}
-                                            <input class="name-input mb-2" [(ngModel)]="i.label"
-                                                aria-invalid="false">
-                                            <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
-                                                aria-hidden="true"></i>
-                                        </div>
-
-                                    </div> -->
+                    
                                 <button class="btn btn-primary btn-style" (click)="addValue( item.values)"> add
                                     Option</button>
 
@@ -461,10 +446,7 @@
 
                         </div>
                         <div class="col-md-2">
-                            <!--    <i *ngIf="item.toggle" (click)="item.toggle=false; currentValidation(item)"
-                                class="fa fa-chevron-up pull-right"></i>
-                            <i *ngIf="!item.toggle" (click)="item.toggle=true"
-                                class="fa fa-chevron-down pull-right"></i>-->
+                         
                             <i (click)="removeField(i)" class="fa fa-trash pull-right"></i>
                         </div>
                     </div>
@@ -612,21 +594,21 @@
 
                                 <div class="col-md-12" *ngIf="selectedItem.fielType=='date'">
                                     <div class="user-input mb-3"
-                                        *ngIf="((selectedItem.selestedValidation =='min') || (selectedItem.selestedValidation =='both'))">
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='min') || (selectedItem.validOption.value =='both')))">
 
                                         <p>Start Date</p>
-                                        <input class="datepicker name-input" type="date" [(ngModel)]="selectedItem.min"
+                                        <input class="datepicker name-input" type="date" [(ngModel)]="selectedItem.validOption['min']"
                                             aria-invalid="false">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12" *ngIf="selectedItem.fielType=='date'">
                                     <div class="user-input mb-3"
-                                        *ngIf="((selectedItem.selestedValidation =='max') || (selectedItem.selestedValidation =='both'))">
+                                    *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
 
                                         <p>End Date</p>
-                                        <input class="datepicker name-input" [min]="selectedItem.min" type="date"
-                                            [(ngModel)]="selectedItem.max" aria-invalid="false">
+                                        <input class="datepicker name-input" [min]="selectedItem.validOption.min" type="date"
+                                            [(ngModel)]="selectedItem.validOption['max']" aria-invalid="false">
                                     </div>
                                 </div>
                                 <!-- End Date -->
@@ -636,27 +618,25 @@
                                 <div class="col-md-12"
                                     *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
                                     <div class="user-input mb-3"
-                                        *ngIf="((selectedItem.selestedValidation =='min') || (selectedItem.selestedValidation =='both'))">
-                                        <p
-                                            *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                    *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='min') || (selectedItem.validOption.value =='both')))">
+                                        <p>
                                             Min {{selectedItem.uniqName}}</p>
 
                                         <input class="name-input" type="number" min="0" maxlength="15"
-                                            (change)="((selectedItem.min == null)? selectedItem.min = 0 : selectedItem.min =selectedItem.min)"
-                                            [(ngModel)]="selectedItem.min" aria-invalid="false">
+                                            (change)="((selectedItem.validOption['min'] == null)? selectedItem.validOption['min'] = 0 : selectedItem.validOption['min'] =selectedItem.validOption['min'])"
+                                            [(ngModel)]="selectedItem.validOption['min']" aria-invalid="false">
                                     </div>
                                 </div>
                                 <div class="col-md-12"
                                     *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
                                     <div class="user-input mb-3"
-                                        *ngIf="((selectedItem.selestedValidation =='max') || (selectedItem.selestedValidation =='both'))">
-                                        <p
-                                            *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                    *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
+                                        <p>
                                             Max {{selectedItem.uniqName}}</p>
 
-                                        <input class="name-input" type="number" [min]="selectedItem.min" maxlength="15"
-                                            (change)="((selectedItem.max <selectedItem.min)? selectedItem.max= selectedItem.min : selectedItem.max =selectedItem.max)"
-                                            [(ngModel)]="selectedItem.max" aria-invalid="false">
+                                        <input class="name-input" type="number" [min]="selectedItem.validOption['min']" maxlength="15"
+                                            (change)="((selectedItem.validOption['max'] <selectedItem.validOption['min'])? selectedItem.validOption['max']= selectedItem.validOption['min'] : selectedItem.validOption['max'] =selectedItem.validOption['max'])"
+                                            [(ngModel)]="selectedItem.validOption['max']" aria-invalid="false">
                                     </div>
                                 </div>
                                 <!-- End text and number -->

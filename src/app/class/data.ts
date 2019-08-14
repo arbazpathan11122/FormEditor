@@ -409,11 +409,11 @@ export const icons_and_fields = [
         values: [
 
             {
-                label: 'True',
+                label: 'Yes',
                 value: true
             },
             {
-                label: 'False',
+                label: 'No',
                 value: false
             },
             {

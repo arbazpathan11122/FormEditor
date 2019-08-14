@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2';
-
+declare const $: any;
 @Component({
   selector: 'app-form-view',
   templateUrl: './form-view.component.html',
@@ -89,7 +89,18 @@ export class FormViewComponent implements OnInit {
   }
 
 
+  numberInputValidation(item) {
 
+    if (item.value > item.validOption.max) {
+      item.value = item.validOption.max;
+    } else if (item.value < item.validOption.min) {
+      item.value = item.validOption.min;
+    }
+    console.log(item.value);
+    console.log(item);
+
+
+  }
 
 
 

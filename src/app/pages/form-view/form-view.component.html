@@ -26,8 +26,8 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input">
-              <input class="name-input" name="{{item.name}}" id="{{item.name}}" minlength="{{item.min}}"
-                maxlength="{{item.max}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
+              <input class="name-input" name="{{item.name}}" id="{{item.name}}" minlength="{{item.validOption?.min}}"
+                maxlength="{{item.validOption?.max}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
                 [(ngModel)]="item.value" aria-invalid="false" #text="ngModel">
             </div>
             <div [hidden]="text.valid || text.pristine" class="alert alert-danger">
@@ -37,11 +37,13 @@
 
           <div class="p-4" *ngIf="item.fielType==='number'">
             <div class="mb-3 maker-input">
-              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}
+                kkkkkkkkk</label>
             </div>
             <div class="user-input">
-              <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}" min="{{item.min}}"
-                max="{{item.max}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
+              <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}"
+                min="{{item.validOption?.min}}" max="{{item.validOption?.max}}" required="{{item.required}}"
+                (change)="numberInputValidation(item, this.value)" placeholder="{{item.placeholder}}"
                 [(ngModel)]="item.value" aria-invalid="false" #number="ngModel">
               <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
                 {{item.errorText}}
@@ -52,6 +54,36 @@
             <!-- <span class="mt-3 float-right" style="color:#b8b8b8">256 maximum characters</span> -->
           </div>
 
+          <div class="p-4" *ngIf="item.fielType==='email'">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+
+              <div class="row">
+                <div class="col-8">
+                  <input class="name-input" name="{{item.name}}" pattern="^[a-zA-Z0-9_.#&-]{1,20}$" id="{{item.name}}"
+                    required="{{item.required}}" placeholder="{{item.placeholder}}" [disabled]="item.mailType ==''"
+                    [(ngModel)]="item.value" aria-invalid="false" #email="ngModel">
+                </div>
+                <div class="col-4">
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">Select Validation </span>
+                    <ul class="list">
+                      <li (click)="item.mailType = item.emailList[index]"
+                        *ngFor="let mail of item?.emailList; let i = index" class="option selected focus">
+                        {{mail.label}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <span class="red" *ngIf="item.mailType ==''">Please Select Email Type First</span>
+              <div [hidden]="email.valid || email.pristine " class="alert alert-danger">
+                {{item.errorText}}
+              </div>
+            </div>
+          </div>
 
           <div class="p-4" *ngIf="item.fielType==='phone'">
             <div class="mb-3 maker-input">
@@ -84,6 +116,22 @@
               </div>
             </div>
           </div>
+
+
+          <div class="p-4" *ngIf="item.fielType=='file'">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="right-ico mr-5">
+              <input type="file" id="real-file" hidden="hidden" />
+              <button (click)="document.getElementById('real-file').click()" type="button"
+                class="btn btn-sm btn-primary btn-style mr-2" id="custom-button">Upload</button>
+              <span id="custom-text">Select file</span>
+            </div>
+
+
+          </div>
+
 
           <!-- 
       <div class="p-4" *ngIf="item.fielType==='footer'" id="multiple-choice-format">
@@ -150,20 +198,19 @@
             </div>
           </div>
 
-          <!-- <div class="p-4" *ngIf="item.fielType==='date'" id="Date-format">
+          <div class="p-4" *ngIf="item.fielType==='date'" id="Date-format">
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input">
-              <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #website="ngModel">
-                <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false" #website="ngModel">
-              <div [hidden]="website.valid || website.pristine" class="alert alert-danger">
+              <input class="name-input" type="date" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                placeholder="{{item.placeholder}}" min="{{item.validOption.min}}" max="{{item.validOption.max}}"
+                [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
+              <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
             </div>
-          </div> -->
+          </div>
 
           <div class="p-4" *ngIf="item.fielType==='yesNo'">
             <div class="mb-3 maker-input">
@@ -171,7 +218,7 @@
             </div>
             <div class="user-input inline-form-group" *ngFor="let opt of item.values">
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" [value]="opt.value" name="{{opt.name}}" [(ngModel)]="item.value"
+                <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
                   [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel"> {{opt.label}}
               </div>
 
@@ -187,7 +234,7 @@
             </div>
             <div class="user-input inline-form-group" *ngFor="let opt of item.values">
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" [value]="opt.value" name="{{opt.name}}" [(ngModel)]="item.value"
+                <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
                   [ngModelOptions]="{standalone: true}" required="{{item.required}}" #trueFalse="ngModel">
                 {{opt.label}}
               </div>
@@ -200,36 +247,7 @@
 
             </div>
           </div>
-          <div class="p-4" *ngIf="item.fielType==='email'" id="email-format">
-            <div class="mb-3 maker-input">
-              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
-            </div>
-            <div class="user-input">
 
-              <div class="row">
-                <div class="col-8">
-                  <input class="name-input" name="{{item.name}}" pattern="^[a-zA-Z0-9_.#&-]{1,20}$" id="{{item.name}}"
-                    required="{{item.required}}" placeholder="{{item.placeholder}}" [disabled]="item.mailType ==''"
-                    [(ngModel)]="item.value" aria-invalid="false" #email="ngModel">
-                </div>
-                <div class="col-4">
-                  <div class="nice-select" tabindex="0">
-                    <span class="current">Select Validation </span>
-                    <ul class="list">
-                      <li (click)="item.mailType = item.emailList[index]"
-                        *ngFor="let mail of item?.emailList; let i = index" class="option selected focus">
-                        {{mail.label}}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <span class="red" *ngIf="item.mailType ==''">Please Select Email Type First</span>
-              <div [hidden]="email.valid || email.pristine " class="alert alert-danger">
-                {{item.errorText}}
-              </div>
-            </div>
-          </div>
 
           <div class="p-4" *ngIf="item.fielType==='rating'" id="Rating-format">
             <div class="mb-3 maker-input">
@@ -255,13 +273,6 @@
             </div>
           </div>
 
-          <!-- <div class="p-4" *ngIf="item.fielType==='statement'" id="statement-format">
-            <div class="mb-3 maker-input">
-              <textarea class="form-control form-statement" rows="2" spellcheck="false"
-                placeholder="you can achieve anything if you want in life. Dreems should be seen by open eyes if they are meant to be completed"></textarea>
-            </div>
-          </div> -->
-
           <div class="p-4" *ngIf="item.fielType==='dropdown'" id="dropdown-format">
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
@@ -272,31 +283,31 @@
 
           </div>
 
-          <div class="p-4" *ngIf="item.fielType==='picture'" id="picture-choice-format">
+          <div class="p-4" *ngIf="((item.fielType==='picture')||(item.fielType==='multiple'))"
+            id="picture-choice-format">
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <div class="user-input">
-              <div class="add-picture">
-                <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
-                <input class="name-input mb-2" placeholder="Website" aria-invalid="false">
-                <p class="right-img right-ico">image_1234 &nbsp; &nbsp; <i class="fa fa-times" aria-hidden="true"></i>
-                </p>
+            <div id="picture-choice-view" class="p-4">
+              <div class="mb-3 maker-input">
+                <input class="name-input" placeholder="Choose among these." aria-invalid="false">
               </div>
+              <div class="row">
+                <div class="col-4" *ngFor="let val of item.values">
+                  <div class="image-box" *ngIf="(item.fielType==='picture')">
+                    <img src="assets/img/intro.png" class="img-thumbnail">
+                  </div>
+                  <p class="text-center mt-2 p-2">
 
-              <div class="add-picture">
-                <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
-                <input class="name-input mb-2" placeholder="Application" aria-invalid="false">
-                <p class="right-img right-ico">image_1234 &nbsp; &nbsp; <i class="fa fa-times" aria-hidden="true"></i>
-                </p>
-              </div>
+                    <label class="form-check-label"> {{val.label}}
+                      <br>
+                      <input class="form-check-input" type="checkbox" value="">
+                    </label></p>
+                </div>
 
-              <div class="add-picture">
-                <i class="fa fa-picture-o left-ico" aria-hidden="true"></i>
-                <input style="width: 50%" class="name-input mb-2" placeholder="Add option" aria-invalid="false">
-                <input style="width: 40%" type="file" class="right-ico form-control-file">
               </div>
             </div>
+
           </div>
 
 
@@ -341,19 +352,21 @@
 
 
           <!-- </div> -->
-          <button class="btn btn-primary" type="submit"
-            (click)="submitResult(userForm.value, userForm.invalid)">submit</button>
 
 
-          <div class="m-4 p-4">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-          </div>
+
+
         </div>
       </form>
+      <button class="btn btn-primary" type="submit"
+        (click)="submitResult(userForm.value, userForm.invalid)">submit</button>
+      <div class="m-4 p-4">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
     </div>
   </div>
 
