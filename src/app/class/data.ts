@@ -73,7 +73,7 @@ export const icons_and_fields = [
         tooltip: 'Good for long answers, like the meaning of life',
         errorText: 'Custom Error Field',
         label: 'Enter your amount in number here',
-        placeholder: 'Long Answer Text',
+        placeholder: 'Enter Amount',
         min: 0,
         max: 256,
         selestedValidation: '',

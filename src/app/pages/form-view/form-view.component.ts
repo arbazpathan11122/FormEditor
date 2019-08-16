@@ -52,17 +52,19 @@ export class FormViewComponent implements OnInit {
 
 
 
-  formName: any;
+  form: any;
+  formCurrentPage: any;
+  currentPageIndex = 0;
   formFields: any;
   showTable = false;
   DropDownSettings = {};
   constructor() {
 
-    this.formName = JSON.parse(localStorage.getItem('formName'));
-
+    this.form = JSON.parse(localStorage.getItem('form'));
+    this.formCurrentPage = this.form.attributes[this.currentPageIndex];
     this.formFields = JSON.parse(localStorage.getItem('formFields'));
+    console.log(this.formCurrentPage);
 
-    console.log(this.formFields);
 
   }
   ngOnInit() {
@@ -78,7 +80,10 @@ export class FormViewComponent implements OnInit {
   }
 
 
-
+  goToPage(index) {
+    this.currentPageIndex = index;
+    this.formCurrentPage = this.form.attributes[this.currentPageIndex];
+  }
 
 
 
@@ -106,7 +111,7 @@ export class FormViewComponent implements OnInit {
 
   submitResult(val, bc) {
 
-    console.log(this.formName);
+    console.log(this.form);
 
 
     if (bc) {

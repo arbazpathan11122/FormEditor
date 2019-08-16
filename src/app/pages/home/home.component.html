@@ -1,3 +1,4 @@
+<!-- showNav -->
 <nav *ngIf="showNav" class="navbar fixed-top navbar-expand-lg navbar-light p-3">
     <div class="row ">
         <div class="col-2">
@@ -7,7 +8,7 @@
             <a class="navbar-brand" href="#">
                 <i class="fa fa-home"></i> Home</a>
         </div>
-        <div class="col-8">
+        <!-- <div class="col-8">
             <div class="row ">
                 <div class="col-4">
                     <div class="nice-select box-nice-select wide" tabindex="0">
@@ -39,27 +40,42 @@
                         </ul>
                     </div>
                 </div>
-                <!-- <div class="col-4">
-                        
-                </div> -->
+              
+            </div>
+        </div>-->
+
+        <div class="col-8">
+            <div class="process-part">
+                <div class="d-flex justify-content-center">
+                    <div class="bd-highlight btn-primary  pro-button ml-4 mr-4">1</div>
+
+                    <div class="bd-highlight btn-warning  pro-button ml-4 mr-4">2</div>
+                    <div class="bd-highlight btn-warning  pro-button ml-4 mr-4">3</div>
+
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class=" ml-4 mr-4">Form</div>
+
+                    <div class=" ml-4 mr-4">Process</div>
+
+                    <div class=" ml-4 mr-4">Publish</div>
+
+                </div>
             </div>
         </div>
+
         <div class="col-2">
             <a>
-                <!-- <button class="btn btn-primary" (click)="submitbtn()">submit</button> -->
             </a>
         </div>
     </div>
 </nav>
 <!-- show hide button -->
-<div class="hide-show-btn">
+<!-- <div class="hide-show-btn">
 
     <button *ngIf="!showBtn" (click)="showNavbar() " class="btn btn-primary btn-sm" type="submit">Show</button>
     <button *ngIf="showBtn" (click)=" showNavbar()" class="btn btn-primary btn-sm" type="submit">Hide</button>
-
-    <!-- <i class="fa fa-eye-slash" aria-hidden="true"></i> -->
-
-</div>
+</div> -->
 
 <div [class]="hideClass">
     <div class="row col-12">
@@ -75,7 +91,7 @@
                 <div class="menu-item col-6" *ngFor=" let item of iconField ">
                     <div data-toggle="tooltip" title="{{item.tooltip}}" class="row m-auto" [dndDraggable]="item"
                         [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)"
-                        (dblclick)="dblclickMove($event ,model.attributes, item)">
+                        (dblclick)="dblclickMove($event ,formCurrentPage.field, item)">
                         <div class="col-4">
                             <img src="assets/img/icons/{{item.icon}}"><br>
                         </div>
@@ -90,11 +106,16 @@
                 <div class="menu-item col-12">
                     <hr style="border:1px dashed gray">
 
-                    <div class="row m-auto">
-                        <div class="col-4">
+                    <div class="row " style="    margin-bottom: -22px;">
+                        <div class="col-md-12" style=" font-size: 12px;   margin-top: -15px;">
+
+                            <p style="float: right"> Coming Soon</p>
+                        </div>
+
+                        <div class="col-4" style=" margin-top: -15px;">
                             <img src="assets/img/icons/table.png"><br>
                         </div>
-                        <div class="col-8 pl-2 pr-0 mt-3">
+                        <div class="col-8 pl-2 pr-0 ">
                             <h4>Table Format
                             </h4>
                         </div>
@@ -109,7 +130,7 @@
         <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
 
             <!-- form tabs -->
-            <ul class="nav nav-pills navtab-bg nav-justified">
+            <!-- <ul class="nav nav-pills navtab-bg nav-justified">
                 <li class="nav-item">
                     <a href="#Folder" data-toggle="tab" aria-expanded="false" class="nav-link  active">
                         Folder
@@ -189,7 +210,7 @@
                                 <label for="inputPassword" class=" col-form-label">Page name: </label>
                                 <div class="col user-input">
                                     <input type="text" class="form-control name-input"
-                                        placeholder="Enter your Page name">
+                                        [(ngModel)]="formCurrentPage.name" placeholder="Enter your Page name">
                                 </div>
                             </div>
                         </div>
@@ -199,17 +220,42 @@
                                 </button>
                                 &nbsp;
                                 &nbsp;
-                                <button type="submit" class="btn btn-primary btn-sm"><i
+                                <button type="submit" (click)="deletePage()" class="btn btn-primary btn-sm"><i
                                         class="fa fa-trash-o"></i></button>
                                 &nbsp;
                                 &nbsp;
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                <button type="submit" (click)="addPages()" class="btn btn-primary btn-sm"><i
+                                        class="fa fa-plus"></i></button>
                             </form>
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <div class="page-detailing-part row p-4">
+                <div class="col-9 pr-0">
+                    <div class="form-group row col">
+                        <label for="inputPassword" class=" col-form-label">Page name: </label>
+                        <div class="col user-input">
+                            <input type="text" class="form-control name-input" [(ngModel)]="formCurrentPage.name"
+                                placeholder="Enter your Page name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <form class="form-inline float-right">
+                        <!-- <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>
+                        </button>
+                        &nbsp;
+                        &nbsp; -->
+                        <button type="submit" (click)="deletePage()" class="btn btn-primary btn-sm"><i
+                                class="fa fa-trash-o"></i></button>
+                        &nbsp;
+                        &nbsp;
+                        <button type="submit" (click)="addPages()" class="btn btn-primary btn-sm"><i
+                                class="fa fa-plus"></i></button>
+                    </form>
+                </div>
             </div>
-
 
             <!-- form tab end -->
             <!-- 
@@ -249,8 +295,9 @@
             <hr style="border:1px dashed gray">
             <div class="process-part">
                 <div class="d-flex justify-content-center">
-                    <div class="bd-highlight btn-warning pro-button ml-4 mr-4">1</div>
-                    <div class="bd-highlight btn-primary pro-button ml-4 mr-4">2</div>
+                    <div [class]="(i == currentPageIndex)? 'bd-highlight btn-warning pro-button ml-4 mr-4' : 'bd-highlight pro-button ml-4 mr-4 btn-primary'"
+                        *ngFor="let page of model.attributes; let i = index;" (click)="goToPage(i)">{{i+1}}</div>
+                    <!-- <div class="bd-highlight btn-primary pro-button ml-4 mr-4">2</div> -->
                 </div>
             </div>
 
@@ -261,13 +308,13 @@
 
 
             </div>
-            <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,model.attributes)"
-                class="dndDropArea" [ngClass]="{'empty':model.attributes.length == 0}"
+            <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,formCurrentPage.field)"
+                class="dndDropArea" [ngClass]="{'empty':formCurrentPage.field.length == 0}"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
 
                 <div class="field active1
-                " *ngFor="let item of model.attributes;let i= index;" (dndStart)="onDragStart($event)"
-                    (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, model.attributes, 'move')"
+                " *ngFor="let item of formCurrentPage.field;let i= index;" (dndStart)="onDragStart($event)"
+                    (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, formCurrentPage.field, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
                     <div class="row form-group" (click)=" currentValidation(item)" dndHandle>
                         <!-- <div class="col-md-1">
@@ -303,7 +350,7 @@
                                     <label class="checkbox-inline mr-4" *ngFor="let val of item.values">
                                         <input type="radio" name="{{item.name}}" disabled>&nbsp; {{val.label}}
                                     </label>
-                                   
+
                                 </div>
                             </div>
 
@@ -413,7 +460,7 @@
                                             aria-hidden="true"></i>
                                     </li>
                                 </ol>
-                    
+
                                 <button class="btn btn-primary btn-style" (click)="addValue( item.values)"> add
                                     Option</button>
 
@@ -446,7 +493,7 @@
 
                         </div>
                         <div class="col-md-2">
-                         
+
                             <i (click)="removeField(i)" class="fa fa-trash pull-right"></i>
                         </div>
                     </div>
@@ -457,9 +504,13 @@
             </section>
             <div class="m-4 text-center p-4">
                 <br>
-                <button class="btn btn-primary" (click)="submitbtn()">submit</button>
 
-                <br>
+                <button class="btn btn-primary mr-4" (click)="submitbtn()">submit</button>
+                <button class="btn btn-primary ml-4 mr-4" (click)="addPages()">
+                    <i class="fa fa-plus"></i> &nbsp; Add Page</button>
+                <!-- <button class="btn btn-primary mr-4" (click)="submitbtn()">Next page</button> -->
+
+
             </div>
         </div>
 
@@ -597,18 +648,19 @@
                                         *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='min') || (selectedItem.validOption.value =='both')))">
 
                                         <p>Start Date</p>
-                                        <input class="datepicker name-input" type="date" [(ngModel)]="selectedItem.validOption['min']"
-                                            aria-invalid="false">
+                                        <input class="datepicker name-input" type="date"
+                                            [(ngModel)]="selectedItem.validOption['min']" aria-invalid="false">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12" *ngIf="selectedItem.fielType=='date'">
                                     <div class="user-input mb-3"
-                                    *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
 
                                         <p>End Date</p>
-                                        <input class="datepicker name-input" [min]="selectedItem.validOption.min" type="date"
-                                            [(ngModel)]="selectedItem.validOption['max']" aria-invalid="false">
+                                        <input class="datepicker name-input" [min]="selectedItem.validOption.min"
+                                            type="date" [(ngModel)]="selectedItem.validOption['max']"
+                                            aria-invalid="false">
                                     </div>
                                 </div>
                                 <!-- End Date -->
@@ -618,7 +670,7 @@
                                 <div class="col-md-12"
                                     *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
                                     <div class="user-input mb-3"
-                                    *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='min') || (selectedItem.validOption.value =='both')))">
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='min') || (selectedItem.validOption.value =='both')))">
                                         <p>
                                             Min {{selectedItem.uniqName}}</p>
 
@@ -630,11 +682,12 @@
                                 <div class="col-md-12"
                                     *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
                                     <div class="user-input mb-3"
-                                    *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
                                         <p>
                                             Max {{selectedItem.uniqName}}</p>
 
-                                        <input class="name-input" type="number" [min]="selectedItem.validOption['min']" maxlength="15"
+                                        <input class="name-input" type="number" [min]="selectedItem.validOption['min']"
+                                            maxlength="15"
                                             (change)="((selectedItem.validOption['max'] <selectedItem.validOption['min'])? selectedItem.validOption['max']= selectedItem.validOption['min'] : selectedItem.validOption['max'] =selectedItem.validOption['max'])"
                                             [(ngModel)]="selectedItem.validOption['max']" aria-invalid="false">
                                     </div>
@@ -664,7 +717,7 @@
                             </div>
                         </div>
 
-                        <div class="row" *ngIf="checkingExistingForm">
+                        <div class="row" *ngIf="false">
                             <label class="nice-lable"> <b>Mapping</b></label>
                             <div class="col-md-12">
                                 <div class="nice-select box-nice-select wide mb-3" tabindex="0">

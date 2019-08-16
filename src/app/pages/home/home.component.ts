@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     value: ''
   };
   formDataForView: any;
-  showBtn = true;
+  showBtn = false;
   hideClass = 'mainshow';
   showNav = true;
   numberArray = [1, 2, 3, 4, 5];
@@ -38,9 +38,15 @@ export class HomeComponent implements OnInit {
       textColor: '555555',
       bannerImage: ''
     },
-    attributes: this.modelFields
-  };
 
+    attributes: [
+      {
+        name: 'Page 1',
+        field: this.modelFields
+      }]
+  };
+  formCurrentPage: Array<field> = [];
+  currentPageIndex = 0;
   report = false;
   reports: any = [];
 
@@ -62,7 +68,17 @@ export class HomeComponent implements OnInit {
 
     }, 0);
 
+    if (localStorage.getItem('form')) {
+
+      this.model = JSON.parse(localStorage.getItem('form'));
+    }
+
+
+    this.formCurrentPage = this.model.attributes[this.currentPageIndex];
+
   }
+
+
 
   ngOnInit() {
     this.showNavbar();
@@ -396,9 +412,9 @@ export class HomeComponent implements OnInit {
       confirmButtonText: 'Yes, remove!'
     }).then((result) => {
       if (result.value) {
-        this.model.attributes.splice(i, 1);
+        this.formCurrentPage.splice(i, 1);
         delete this.selectedItem;
-        this.selectedItem = this.model.attributes[i - 1];
+        this.selectedItem = this.formCurrentPage[i - 1];
 
       }
     });
@@ -424,11 +440,57 @@ export class HomeComponent implements OnInit {
     // this.formDataForView = JSON.parse(JSON.stringify(this.model));
     // console.log(this.formDataForView);
 
-    localStorage.setItem('formName', JSON.stringify(this.model));
-    localStorage.setItem('formFields', JSON.stringify(this.model.attributes));
+    localStorage.setItem('form', JSON.stringify(this.model));
+    localStorage.setItem('formFields', JSON.stringify(this.formCurrentPage));
     this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
   }
+
+
+
+
+
+  addPages() {
+    console.log(this.formCurrentPage);
+    console.log('add page');
+
+    this.model.attributes.push({ name: 'Page  ' + (this.model.attributes.length + 1), field: [] });
+    console.log(this.model.attributes);
+
+    this.formCurrentPage = this.model.attributes[this.model.attributes.length - 1];
+    this.currentPageIndex = this.model.attributes.length - 1;
+    console.log(this.formCurrentPage);
+
+  }
+
+  goToPage(index) {
+    this.currentPageIndex = index;
+    this.formCurrentPage = this.model.attributes[this.currentPageIndex];
+  }
+
+  deletePage() {
+    console.log('delete Page');
+
+    this.model.attributes.splice(this.currentPageIndex, 1);
+    if (this.model.attributes.length == this.currentPageIndex) {
+      this.currentPageIndex--;
+    }
+    if (this.currentPageIndex < 0) {
+      this.currentPageIndex = 0;
+      this.model.attributes.push({ name: 'Page 1', field: [] });
+    }
+    this.formCurrentPage = this.model.attributes[this.currentPageIndex];
+  }
+
+
+
+
+
+
+
+
+
+
   updateForm() {
     let input = new FormData;
     input.append('id', this.model._id);
@@ -437,7 +499,7 @@ export class HomeComponent implements OnInit {
     input.append('bannerImage', this.model.theme.bannerImage);
     input.append('bgColor', this.model.theme.bgColor);
     input.append('textColor', this.model.theme.textColor);
-    input.append('attributes', JSON.stringify(this.model.attributes));
+    input.append('attributes', JSON.stringify(this.formCurrentPage));
 
     // this.us.putDataApi('/admin/updateForm',input).subscribe(r=>{
     //   console.log(r);
@@ -472,7 +534,7 @@ export class HomeComponent implements OnInit {
 
   submit() {
     let valid = true;
-    let validationArray = JSON.parse(JSON.stringify(this.model.attributes));
+    let validationArray = JSON.parse(JSON.stringify(this.formCurrentPage));
     validationArray.reverse().forEach(field => {
       console.log(field.label + '=>' + field.required + '=>' + field.value);
       if (field.required && !field.value && field.type != 'checkbox') {
@@ -503,7 +565,7 @@ export class HomeComponent implements OnInit {
     console.log('Save', this.model);
     let input = new FormData;
     input.append('formId', this.model._id);
-    input.append('attributes', JSON.stringify(this.model.attributes))
+    input.append('attributes', JSON.stringify(this.formCurrentPage))
     // this.us.postDataApi('/user/formFill',input).subscribe(r=>{
     //   console.log(r);
     //   swal('Success','You have contact sucessfully','success');

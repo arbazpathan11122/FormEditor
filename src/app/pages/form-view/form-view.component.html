@@ -1,8 +1,19 @@
 <div *ngIf="!showTable" class="form-page">
   <div class="row">
     <div class="col-6 working-part mx-auto">
+      <div class="process-part">
+        <div class="d-flex justify-content-center">
+          <div
+            [class]="(i == currentPageIndex)? 'bd-highlight btn-warning pro-button ml-4 mr-4' : 'bd-highlight pro-button ml-4 mr-4 btn-primary'"
+            *ngFor="let page of form.attributes; let i = index;" (click)="goToPage(i)">{{i+1}}</div>
+          <!-- <div class="bd-highlight btn-primary pro-button ml-4 mr-4">2</div> -->
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <h4>{{formCurrentPage.name}}</h4>
+      </div>
       <form #userForm="ngForm">
-        <div *ngFor="let item of formName.attributes; let inVal = index;">
+        <div *ngFor="let item of formCurrentPage.field; let inVal = index;">
           <div class="formtitle" *ngIf="item.fielType==='header'">
             <div class="mb-3 maker-input">
               <label class="form-header">{{item.label}}</label>
@@ -38,7 +49,7 @@
           <div class="p-4" *ngIf="item.fielType==='number'">
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}
-                kkkkkkkkk</label>
+              </label>
             </div>
             <div class="user-input">
               <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}"
@@ -204,7 +215,7 @@
             </div>
             <div class="user-input">
               <input class="name-input" type="date" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                placeholder="{{item.placeholder}}" min="{{item.validOption.min}}" max="{{item.validOption.max}}"
+                placeholder="{{item.placeholder}}" min="{{item.validOption?.min}}" max="{{item.validOption?.max}}"
                 [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
               <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
                 {{item.errorText}}
@@ -289,19 +300,19 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div id="picture-choice-view" class="p-4">
-              <div class="mb-3 maker-input">
+              <!-- <div class="mb-3 maker-input">
                 <input class="name-input" placeholder="Choose among these." aria-invalid="false">
-              </div>
+              </div> -->
               <div class="row">
-                <div class="col-4" *ngFor="let val of item.values">
+                <div class="col-12" *ngFor="let val of item.values">
                   <div class="image-box" *ngIf="(item.fielType==='picture')">
                     <img src="assets/img/intro.png" class="img-thumbnail">
                   </div>
-                  <p class="text-center mt-2 p-2">
+                  <p class=" mt-2 ">
 
-                    <label class="form-check-label"> {{val.label}}
-                      <br>
+                    <label class="form-check-label"> 
                       <input class="form-check-input" type="checkbox" value="">
+                      {{val.label}}
                     </label></p>
                 </div>
 
@@ -360,6 +371,7 @@
       </form>
       <button class="btn btn-primary" type="submit"
         (click)="submitResult(userForm.value, userForm.invalid)">submit</button>
+
       <div class="m-4 p-4">
         <br>
         <br>
@@ -385,7 +397,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of formName.attributes; let i = index;">
+      <tr *ngFor="let item of formPage; let i = index;">
         <th scope="row">{{i}}</th>
         <td>{{item.label}}</td>
         <td>{{item.value}}</td>
