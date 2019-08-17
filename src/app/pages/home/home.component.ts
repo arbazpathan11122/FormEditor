@@ -154,7 +154,7 @@ export class HomeComponent implements OnInit {
       {
         id: 1,
         label: 'India',
-        pattern: 'india',
+        pattern: '+91',
 
       },
       {
@@ -439,6 +439,38 @@ export class HomeComponent implements OnInit {
   submitbtn() {
     // this.formDataForView = JSON.parse(JSON.stringify(this.model));
     // console.log(this.formDataForView);
+
+
+    this.model.attributes.forEach(element => {
+
+      element.field.forEach(el => {
+
+        if (((el.fielType === 'email') && (el.emailList.length < 1))) {
+          el.emailList = this.emailDropdownList;
+        }
+        if (((el.fielType === 'phone') && (el.phoneList.length < 1))) {
+          el.phoneList = this.phoneDropdownList;
+        }
+
+        if (((el.fielType === 'website') && (el.httpList.length < 1))) {
+          el.httpList = this.httpDropdownList;
+        }
+        if (((el.fielType === 'website') && (el.comList.length < 1))) {
+          el.comList = this.comDropdownList;
+        }
+      });
+
+    });
+
+
+
+
+
+
+
+
+
+
 
     localStorage.setItem('form', JSON.stringify(this.model));
     localStorage.setItem('formFields', JSON.stringify(this.formCurrentPage));

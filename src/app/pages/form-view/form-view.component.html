@@ -81,9 +81,9 @@
                   <div class="nice-select" tabindex="0">
                     <span class="current">Select Validation </span>
                     <ul class="list">
-                      <li (click)="item.mailType = item.emailList[index]"
+                      <li (click)="item.mailType = mail.pattern"
                         *ngFor="let mail of item?.emailList; let i = index" class="option selected focus">
-                        {{mail.label}}
+                        {{mail.pattern}}
                       </li>
                     </ul>
                   </div>
@@ -109,8 +109,9 @@
                   <div class="nice-select" tabindex="0">
                     <span class="current">Select Validation </span>
                     <ul class="list">
-                      <li (click)="item.phoneType = item.phoneList[index]"
-                        *ngFor="let mail of item?.phoneList; let i = index" class="option selected focus">{{mail.label}}
+                      <li (click)="item.phoneType = mail.pattern"
+                        *ngFor="let mail of item?.phoneList; let i = index" class="option selected focus">
+                        {{mail.pattern}}
                       </li>
                     </ul>
                   </div>
@@ -179,7 +180,7 @@
                     <div class="nice-select" tabindex="0">
                       <span class="current">Select http Or https</span>
                       <ul class="list">
-                        <li (click)="item.httpType = item.httpList[index]"
+                        <li (click)="item.httpType = mail.label"
                           *ngFor="let mail of item?.httpList; let i = index" class="option selected focus">
                           {{mail.label}}
                         </li>
@@ -188,13 +189,16 @@
                   </div>
                   <div class="col-6">
                     <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                      placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false"
-                      #website="ngModel"> </div>
+                      placeholder="{{item.placeholder}}" [disabled]="!((item.comType!='')&&(item.httpType!==''))"
+                      [(ngModel)]="item.value" aria-invalid="false" #website="ngModel">
+                    <span class="red" *ngIf="!((item.comType!='')&&(item.httpType!==''))">Please Select http Type &
+                      extension Type First</span>
+                  </div>
                   <div class="col-3">
                     <div class="nice-select" tabindex="0">
-                      <span class="current">Select .com or .in etc..</span>
+                      <span class="current"> .com /.in</span>
                       <ul class="list">
-                        <li (click)="item.comType = item.comList[index]"
+                        <li (click)="item.comType = mail.label"
                           *ngFor="let mail of item?.comList; let i = index" class="option selected focus">{{mail.label}}
                         </li>
                       </ul>
@@ -300,7 +304,7 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div id="picture-choice-view" class="p-4">
-              <!-- <div class="mb-3 maker-input">
+              <!-- <div class="mb-3 maker-input">com
                 <input class="name-input" placeholder="Choose among these." aria-invalid="false">
               </div> -->
               <div class="row">
@@ -392,11 +396,12 @@
 
 <div *ngIf="showTable">
   <table class="table" *ngFor=" let response of form.attributes; ">
+    
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Questions</th>
-        <th> {{response.name}}</th>
+        <!-- <th> {{response.name}}</th> -->
         <th scope="col">Answer</th>
       </tr>
     </thead>
@@ -404,8 +409,11 @@
       <tr *ngFor="let item of response.field; let i = index;">
         <th scope="row">{{i+1}}</th>
         <td>{{item.label}}</td>
-        <td></td>
-        <td>{{item.value}}</td>
+        <td *ngIf="item.fielType=='email'"> {{item.value}}{{item.mailType}}</td>
+        <td *ngIf="item.fielType=='phone'"> {{item.phoneType}}{{item.value}} </td>
+        <td *ngIf="item.fielType=='website'">{{item.httpType}}{{item.value}}{{item.comType}}</td>
+        <td *ngIf="!((item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">{{item.value}}
+        </td>
       </tr>
 
     </tbody>
