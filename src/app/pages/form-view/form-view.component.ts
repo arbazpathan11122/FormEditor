@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2';
-
+declare const $: any;
 @Component({
   selector: 'app-form-view',
   templateUrl: './form-view.component.html',
@@ -8,24 +8,111 @@ import swal from 'sweetalert2';
 })
 export class FormViewComponent implements OnInit {
   // item = { fileType: 'header' };
-  formName: any;
+
+  // validation variables
+  mailTypeSelected = '';
+
+  // this.dropdownList = [
+  //   {
+  //     id: 1,
+  //     label: '@Gmail.com',
+
+  //   },
+  //   {
+  //     id: 2,
+  //     label: '@Outlook.com',
+
+  //   },
+  //   {
+  //     id: 3,
+  //     label: '@Yahoo.com',
+
+  //   },
+  //   {
+  //     id: 4,
+  //     label: '@Zoho.com',
+
+  //   },
+  //   {
+  //     id: 5,
+  //     label: '@Mail.com',
+
+  //   },
+  //   {
+  //     id: 6,
+  //     label: '@ProtonMail.com',
+
+  //   },
+  //   {
+  //     id: 7,
+  //     label: '@GMX.com',
+
+  //   },
+  // ];
+
+
+
+  form: any;
+  formCurrentPage: any;
+  currentPageIndex = 0;
   formFields: any;
   showTable = false;
+  DropDownSettings = {};
   constructor() {
 
-    this.formName = JSON.parse(localStorage.getItem('formName'));
-
+    this.form = JSON.parse(localStorage.getItem('form'));
+    this.formCurrentPage = this.form.attributes[this.currentPageIndex];
     this.formFields = JSON.parse(localStorage.getItem('formFields'));
+    console.log(this.formCurrentPage);
 
-    console.log(this.formFields);
 
   }
   ngOnInit() {
+    this.DropDownSettings = {
+      singleSelection: false,
+      idField: 'label',
+      textField: 'label',
+      enableCheckAll: false,
+      itemsShowLimit: 3,
+      // limitSelection: 2,
+      allowSearchFilter: true,
+    };
   }
+
+
+  goToPage(index) {
+    this.currentPageIndex = index;
+    this.formCurrentPage = this.form.attributes[this.currentPageIndex];
+  }
+
+
+
+  mailExtention(val, index) {
+    val.mailType = val.emailList[index];
+
+
+  }
+
+
+  numberInputValidation(item) {
+
+    if (item.value > item.validOption.max) {
+      item.value = item.validOption.max;
+    } else if (item.value < item.validOption.min) {
+      item.value = item.validOption.min;
+    }
+    console.log(item.value);
+    console.log(item);
+
+
+  }
+
+
 
   submitResult(val, bc) {
 
-    console.log(bc);
+    console.log(this.form);
+
 
     if (bc) {
 

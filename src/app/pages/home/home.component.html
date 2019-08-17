@@ -1,0 +1,865 @@
+<!-- showNav -->
+<nav *ngIf="showNav" class="navbar fixed-top navbar-expand-lg navbar-light p-3">
+    <div class="row ">
+        <div class="col-2">
+            <button aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler" data-target="#navbarTogglerDemo03" data-toggle="collapse" type="button"><span
+                    class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-home"></i> Home</a>
+        </div>
+        <!-- <div class="col-8">
+            <div class="row ">
+                <div class="col-4">
+                    <div class="nice-select box-nice-select wide" tabindex="0">
+                        <span class="current"> Folder Name</span>
+                        <ul class="list">
+                            <li class="option" data-value="2">Another option</li>
+                            <li class="option" data-value="3">A disabled option</li>
+                            <li class="option" data-value="4">Potato</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="nice-select box-nice-select wide" tabindex="0">
+                        <span class="current">Form Name</span>
+                        <ul class="list">
+                            <li class="option" data-value="2">Another option</li>
+                            <li class="option" data-value="3">A disabled option</li>
+                            <li class="option" data-value="4">Potato</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="nice-select box-nice-select wide" tabindex="0">
+                        <span class="current"> Page Name</span>
+                        <ul class="list">
+                            <li class="option" data-value="2">Another option</li>
+                            <li class="option" data-value="3">A disabled option</li>
+                            <li class="option" data-value="4">Potato</li>
+                        </ul>
+                    </div>
+                </div>
+              
+            </div>
+        </div>-->
+
+        <div class="col-8">
+            <div class="process-part">
+                <div class="d-flex justify-content-center">
+                    <div class="bd-highlight btn-primary  pro-button ml-4 mr-4">1</div>
+
+                    <div class="bd-highlight btn-warning  pro-button ml-4 mr-4">2</div>
+                    <div class="bd-highlight btn-warning  pro-button ml-4 mr-4">3</div>
+
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class=" ml-4 mr-4">Form</div>
+
+                    <div class=" ml-4 mr-4">Process</div>
+
+                    <div class=" ml-4 mr-4">Publish</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2">
+            <a>
+            </a>
+        </div>
+    </div>
+</nav>
+<!-- show hide button -->
+<!-- <div class="hide-show-btn">
+
+    <button *ngIf="!showBtn" (click)="showNavbar() " class="btn btn-primary btn-sm" type="submit">Show</button>
+    <button *ngIf="showBtn" (click)=" showNavbar()" class="btn btn-primary btn-sm" type="submit">Hide</button>
+</div> -->
+
+<div [class]="hideClass">
+    <div class="row col-12">
+        <div class="col-3 menu-sidebar">
+
+            <!-- <div class="mb-3 maker-input file-name">
+                <i class="fa fa-home"></i>
+                <input class="name-input" [(ngModel)]="model.folder.FolderName" placeholder=" Folder Name"
+                    aria-invalid="false">
+            </div> -->
+            <p class="menu-title text-center">Drag or Double click to add section</p>
+            <div class="row m-auto ">
+                <div class="menu-item col-6" *ngFor=" let item of iconField ">
+                    <div data-toggle="tooltip" title="{{item.tooltip}}" class="row m-auto" [dndDraggable]="item"
+                        [dndEffectAllowed]="'copy'" (dndEnd)="onDragEnd($event)"
+                        (dblclick)="dblclickMove($event ,formCurrentPage.field, item)">
+                        <div class="col-4">
+                            <img src="assets/img/icons/{{item.icon}}"><br>
+                        </div>
+                        <div class="col-8 pl-2 pr-0 mt-2">
+                            <span> {{item.uniqName}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="menu-item col-12">
+                    <hr style="border:1px dashed gray">
+
+                    <div class="row " style="    margin-bottom: -22px;">
+                        <div class="col-md-12" style=" font-size: 12px;   margin-top: -15px;">
+
+                            <p style="float: right"> Coming Soon</p>
+                        </div>
+
+                        <div class="col-4" style=" margin-top: -15px;">
+                            <img src="assets/img/icons/table.png"><br>
+                        </div>
+                        <div class="col-8 pl-2 pr-0 ">
+                            <h4>Table Format
+                            </h4>
+                        </div>
+                    </div>
+                    <hr style="border:1px dashed gray">
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
+
+            <!-- form tabs -->
+            <!-- <ul class="nav nav-pills navtab-bg nav-justified">
+                <li class="nav-item">
+                    <a href="#Folder" data-toggle="tab" aria-expanded="false" class="nav-link  active">
+                        Folder
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#Form" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                        Form
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#Page" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                        <i class=" fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;
+                        Page &nbsp; &nbsp;&nbsp; <i class="fa fa-chevron-right"></i>
+
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content mt-20">
+                <div class="tab-pane active" id="Folder">
+                    <div class="form-detailing-part row p-4">
+                        <div class="col-9 pr-0">
+                            <div class="form-group row col">
+                                <label for="inputPassword" class=" col-form-label">Folder name: </label>
+                                <div class="col user-input">
+                                    <input type="text" class="form-control name-input"
+                                        placeholder="Enter your Folder name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <form class="form-inline float-right">
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>
+                                </button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary btn-sm"><i
+                                        class="fa fa-trash-o"></i></button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane show" id="Form">
+                    <div class="form-detailing-part row p-4">
+                        <div class="col-9 pr-0">
+                            <div class="form-group row col">
+                                <label for="inputPassword" class=" col-form-label">Form name: </label>
+                                <div class="col user-input">
+                                    <input type="text" class="form-control name-input"
+                                        placeholder="Enter your form name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <form class="form-inline float-right">
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>
+                                </button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary btn-sm"><i
+                                        class="fa fa-trash-o"></i></button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane show" id="Page">
+
+                    <div class="page-detailing-part row p-4">
+                        <div class="col-9 pr-0">
+                            <div class="form-group row col">
+                                <label for="inputPassword" class=" col-form-label">Page name: </label>
+                                <div class="col user-input">
+                                    <input type="text" class="form-control name-input"
+                                        [(ngModel)]="formCurrentPage.name" placeholder="Enter your Page name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <form class="form-inline float-right">
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>
+                                </button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" (click)="deletePage()" class="btn btn-primary btn-sm"><i
+                                        class="fa fa-trash-o"></i></button>
+                                &nbsp;
+                                &nbsp;
+                                <button type="submit" (click)="addPages()" class="btn btn-primary btn-sm"><i
+                                        class="fa fa-plus"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="page-detailing-part row p-4">
+                <div class="col-9 pr-0">
+                    <div class="form-group row col">
+                        <label for="inputPassword" class=" col-form-label">Page name: </label>
+                        <div class="col user-input">
+                            <input type="text" class="form-control name-input" [(ngModel)]="formCurrentPage.name"
+                                placeholder="Enter your Page name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <form class="form-inline float-right">
+                        <!-- <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>
+                        </button>
+                        &nbsp;
+                        &nbsp; -->
+                        <button type="submit" (click)="deletePage()" class="btn btn-primary btn-sm"><i
+                                class="fa fa-trash-o"></i></button>
+                        &nbsp;
+                        &nbsp;
+                        <button type="submit" (click)="addPages()" class="btn btn-primary btn-sm"><i
+                                class="fa fa-plus"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- form tab end -->
+            <!-- 
+            <div class="p-5">
+                    <div class="user-input">
+                        <input class="name-input" placeholder="Enter your address" aria-invalid="false">
+                    </div>
+                    <div class="user-input mt-4">
+                        <input class="name-input" placeholder="Enter your landmark" aria-invalid="false">
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="Pincode" aria-invalid="false">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="District" aria-invalid="false">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="State" aria-invalid="false">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="user-input">
+                                <input class="name-input" placeholder="Country" aria-invalid="false">
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+            <hr style="border:1px dashed gray">
+            <div class="process-part">
+                <div class="d-flex justify-content-center">
+                    <div [class]="(i == currentPageIndex)? 'bd-highlight btn-warning pro-button ml-4 mr-4' : 'bd-highlight pro-button ml-4 mr-4 btn-primary'"
+                        *ngFor="let page of model.attributes; let i = index;" (click)="goToPage(i)">{{i+1}}</div>
+                    <!-- <div class="bd-highlight btn-primary pro-button ml-4 mr-4">2</div> -->
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
+                [style.color]="model.theme.textColor">
+
+
+
+
+            </div>
+            <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,formCurrentPage.field)"
+                class="dndDropArea" [ngClass]="{'empty':formCurrentPage.field.length == 0}"
+                [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
+
+                <div class="field active1
+                " *ngFor="let item of formCurrentPage.field;let i= index;" (dndStart)="onDragStart($event)"
+                    (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, formCurrentPage.field, 'move')"
+                    [dndEffectAllowed]="'all'" [dndDraggable]="item">
+                    <div class="row form-group" (click)=" currentValidation(item)" dndHandle>
+                        <!-- <div class="col-md-1">
+                            <i class="fa fa-ellipsis-v dndHandle"></i>
+                        </div> -->
+                        <div class="col-md-10 ">
+
+                            <div
+                                *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')">
+                                <div class="mb-3 maker-input">
+                                    <input class="name-input " type="text" [(ngModel)]="item.label"
+                                        aria-invalid="false">
+                                </div>
+                            </div>
+
+                            <div
+                                *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input "
+                                        type="{{item.type}}" [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <input class="name-input" placeholder="{{item.placeholder}}"
+                                        [(ngModel)]="item.placeholder" [pattern]="item.regex" aria-invalid="false">
+                                </div>
+                            </div>
+                            <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input disabled">
+                                    <label class="checkbox-inline mr-4" *ngFor="let val of item.values">
+                                        <input type="radio" name="{{item.name}}" disabled>&nbsp; {{val.label}}
+                                    </label>
+
+                                </div>
+                            </div>
+
+                            <div *ngIf="(item.fielType=='text')|| (item.fielType=='number')">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <input class="name-input" type="" [(ngModel)]="item.placeholder"
+                                        aria-invalid="false">
+                                </div>
+                            </div>
+
+
+                            <div *ngIf="item.fielType=='file'">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="right-ico mr-5">
+                                    <input type="file" id="real-file1" hidden="hidden" />
+                                    <button disabled type="button" class="btn btn-sm btn-primary btn-style mr-2"
+                                        id="custom-button">Upload</button>
+                                    <span id="custom-text">Select file</span>
+                                </div>
+
+
+                            </div>
+                            <div *ngIf="item.fielType=='date'">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <input style="width:75%" class="name-input" max="2050-12-31" disabled
+                                        placeholder="12 / DD / YYYY" aria-invalid="false" id="datepicker">
+                                </div>
+                            </div>
+                            <div *ngIf="item.fielType=='rating'">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <div class="user-input">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <div class="mb-2 rating-ico">
+
+                                                <span style="opacity: 1" *ngFor="let star of numberArray; let i=index"
+                                                    [ngClass]="item.selestedValidation">
+                                                    <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
+                                                        {{i}}
+                                                    </ng-container>
+                                                </span>&nbsp;
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-5">
+                                            <select [(ngModel)]="item.selestedValidation" class="name-input">
+                                                <option *ngFor="let c of item.formRating" [value]="c.value">
+                                                    {{c.label}}</option>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="user-input">
+                                                <input class="name-input" type="number" min="2" max=20
+                                                    (ngModelChange)="generateDynamicArray(item.ratingLimit)"
+                                                    [(ngModel)]="item.ratingLimit" aria-invalid="false"
+                                                    (keyup)="((item.ratingLimit >20)? item.ratingLimit = 20 : ((item.ratingLimit <2)? item.ratingLimit = 2 :item.ratingLimit  =item.ratingLimit))">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <ol class="user-input pl-4">
+                                    <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
+
+
+
+                                        <input style="width: 50%" class="name-input mb-4"
+                                            name="i.uniqName{{valueIndex}}" [(ngModel)]="i.label" aria-invalid="false">
+
+                                        <ng-container *ngIf="item.fielType=='picture'">
+
+                                            <div class="right-ico mr-5">
+                                                <input type="file" #fileUpload hidden="hidden" />
+                                                <button type="button" (click)="fileUpload.click()"
+                                                    class="btn btn-sm btn-primary btn-style mr-2"
+                                                    id="custom-button">Upload</button>
+                                                <span id="custom-text">Select file</span>
+                                            </div>
+
+                                        </ng-container>
+
+                                        <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
+                                            aria-hidden="true"></i>
+                                    </li>
+                                </ol>
+
+                                <button class="btn btn-primary btn-style" (click)="addValue( item.values)"> add
+                                    Option</button>
+
+                            </div>
+
+
+                            <div *ngIf="item.fielType=='conditional'">
+                                <div class="mb-3 maker-input">
+                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
+                                        [(ngModel)]="item.label" aria-invalid="false">
+                                </div>
+                                <ol class="user-input ">
+                                    <li *ngFor="let i of item.values; let valueIndex=index;">
+
+
+                                        <ng-container class="add-dropdown ">
+
+                                            <input class="name-input mb-2" [(ngModel)]="i.label" aria-invalid="false">
+                                            <input type='file'>
+                                            <i class="fa fa-times right-ico" (click)="item.values.splice(valueIndex,1)"
+                                                aria-hidden="true"></i>
+                                        </ng-container>
+                                    </li>
+                                </ol>
+
+                                <button class="btn" (click)="addValue(item.values)"> add Option</button>
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-2">
+
+                            <i (click)="removeField(i)" class="fa fa-trash pull-right"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="dndPlaceholder" dndPlaceholderRef>
+                </div>
+            </section>
+            <div class="m-4 text-center p-4">
+                <br>
+
+                <button class="btn btn-primary mr-4" (click)="submitbtn()">submit</button>
+                <button class="btn btn-primary ml-4 mr-4" (click)="addPages()">
+                    <i class="fa fa-plus"></i> &nbsp; Add Page</button>
+                <!-- <button class="btn btn-primary mr-4" (click)="submitbtn()">Next page</button> -->
+
+
+            </div>
+        </div>
+
+
+        <div class="col-3 property-part">
+            <div class="property-tab">
+                <ul class="nav nav-pills navtab-bg nav-justified">
+                    <li class="nav-item">
+                        <a href="#Properties" data-toggle="tab" aria-expanded="false" class="nav-link  active">
+                            Individual
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Settings" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                            General
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-20">
+                    <div class="tab-pane active" id="Properties">
+                        <div *ngIf="isValidObject(selectedItem)">
+                            <p class="text-center mt-2">{{selectedItem.uniqName}}</p>
+
+                            <div *ngIf="!((selectedItem.uniqName =='Statement')||(selectedItem.uniqName =='Footer')||(selectedItem.uniqName =='Header'))"
+                                class="required-part mt-4 mb-4">
+                                <i *ngIf="selectedItem.required" (click)="selectedItem.required=false"
+                                    class="fa fa-toggle-on red"></i>
+                                <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
+                                    class="fa fa-toggle-off"></i> &nbsp;
+
+                                <label data-toggle="tooltip" data-placement="top" title="You Want to "
+                                    data-original-title="Tooltip on top">Mandatory Or Not?</label>
+
+
+                                <div class="response-validation mt-4 mb-3">
+                                    <label><b> Response Validation</b></label>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="required-part mt-4 mb-4" *ngIf="selectedItem.fielType=='rating'">
+
+                                <i *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false"
+                                    class="fa fa-toggle-on red"></i>
+                                <i *ngIf="!selectedItem.userComment.want" (click)="selectedItem.userComment.want=true"
+                                    class="fa fa-toggle-off"></i> &nbsp;
+
+                                <label> Comment is Required On Reating</label>
+
+
+                            </div>
+
+
+                            <div class="row" *ngIf="selectedItem.fielType=='email'">
+                                <div class="col-md-12 user-input mb-3">
+                                    <ng-multiselect-dropdown [placeholder]="'Select Mail '" [data]="emailDropdownList"
+                                        [(ngModel)]="selectedItem.emailList" [settings]="emailSettings">
+                                    </ng-multiselect-dropdown>
+
+                                </div>
+                            </div>
+
+
+                            <div class="row" *ngIf="selectedItem.fielType=='phone'">
+                                <div class="col-md-12 user-input mb-3">
+
+
+                                    <ng-multiselect-dropdown [placeholder]="'Select country phone  '"
+                                        [data]="phoneDropdownList" [(ngModel)]="selectedItem.phoneList"
+                                        [settings]="phoneSettings">
+                                    </ng-multiselect-dropdown>
+
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="selectedItem.fielType=='website'">
+                                <div class="col-md-12 user-input mb-3">
+
+
+                                    <ng-multiselect-dropdown [placeholder]="'Select Http Or Https  '"
+                                        [data]="httpDropdownList" [(ngModel)]="selectedItem.httpList"
+                                        [settings]="httpSettings">
+                                    </ng-multiselect-dropdown>
+
+                                    <br>
+                                    <ng-multiselect-dropdown [placeholder]="'Select .com  Or .in etc...  '"
+                                        [data]="comDropdownList" [(ngModel)]="selectedItem.comList"
+                                        [settings]="comSettings">
+                                    </ng-multiselect-dropdown>
+
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="selectedItem?.formValidations">
+                                <div class="col-md-12 user-input mb-3">
+                                    <label *ngIf="!selectedItem.validOption">Select Validation</label>
+                                    <select [(ngModel)]="selectedItem.validOption" class="name-input">
+                                        <!-- value="" disabled selected -->
+                                        <option [ngValue]="{}" selected>No Validation</option>
+                                        <option *ngFor="let c of selectedItem?.formValidations" [ngValue]="c">
+                                            {{c.label}}</option>
+
+                                    </select>
+                                </div>
+
+                                <!-- start multiple dropdown picture  -->
+                                <div class="col-md-12"
+                                    *ngIf="((selectedItem.fielType=='multiple')|| (selectedItem.fielType=='dropdown')|| (selectedItem.fielType=='picture')|| (selectedItem.fielType=='file'))">
+                                    <div class="user-input mb-3"
+                                        *ngIf="(isValidObject(selectedItem.validOption)&&  (selectedItem.fielType !=='file'))">
+                                        <p> Number </p>
+
+                                        <input class="name-input" min="0" type="number"
+                                            [(ngModel)]="selectedItem.validOption.limit" aria-invalid="false">
+                                    </div>
+
+                                    <div class="user-input mb-3"
+                                        *ngIf="(isValidObject(selectedItem.validOption) &&  (selectedItem.fielType =='file'))">
+                                        <p> Size</p>
+
+                                        <input class="name-input" min="0" type="number"
+                                            [(ngModel)]="selectedItem.validOption.size" aria-invalid="false">
+                                    </div>
+                                </div>
+
+
+                                <!-- start multiple dropdown picture  -->
+
+                                <!-- Start Date -->
+
+                                <div class="col-md-12" *ngIf="selectedItem.fielType=='date'">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='min') || (selectedItem.validOption.value =='both')))">
+
+                                        <p>Start Date</p>
+                                        <input class="datepicker name-input" type="date"
+                                            [(ngModel)]="selectedItem.validOption['min']" aria-invalid="false">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12" *ngIf="selectedItem.fielType=='date'">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
+
+                                        <p>End Date</p>
+                                        <input class="datepicker name-input" [min]="selectedItem.validOption.min"
+                                            type="date" [(ngModel)]="selectedItem.validOption['max']"
+                                            aria-invalid="false">
+                                    </div>
+                                </div>
+                                <!-- End Date -->
+
+                                <!-- Start text and number -->
+
+                                <div class="col-md-12"
+                                    *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='min') || (selectedItem.validOption.value =='both')))">
+                                        <p>
+                                            Min {{selectedItem.uniqName}}</p>
+
+                                        <input class="name-input" type="number" min="0" maxlength="15"
+                                            (change)="((selectedItem.validOption['min'] == null)? selectedItem.validOption['min'] = 0 : selectedItem.validOption['min'] =selectedItem.validOption['min'])"
+                                            [(ngModel)]="selectedItem.validOption['min']" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <div class="col-md-12"
+                                    *ngIf="((selectedItem.fielType =='text') || (selectedItem.fielType =='number'))">
+                                    <div class="user-input mb-3"
+                                        *ngIf="((isValidObject(selectedItem.validOption) )&&( (selectedItem.validOption.value =='max') || (selectedItem.validOption.value =='both')))">
+                                        <p>
+                                            Max {{selectedItem.uniqName}}</p>
+
+                                        <input class="name-input" type="number" [min]="selectedItem.validOption['min']"
+                                            maxlength="15"
+                                            (change)="((selectedItem.validOption['max'] <selectedItem.validOption['min'])? selectedItem.validOption['max']= selectedItem.validOption['min'] : selectedItem.validOption['max'] =selectedItem.validOption['max'])"
+                                            [(ngModel)]="selectedItem.validOption['max']" aria-invalid="false">
+                                    </div>
+                                </div>
+                                <!-- End text and number -->
+
+                            </div>
+                            <div class="row required-inputs">
+
+
+
+
+
+
+                                <div class="col-12"
+                                    *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))">
+                                    <div class="user-input mb-3">
+                                        <p> Custom Error Message</p>
+
+                                        <input class="name-input" [(ngModel)]="selectedItem.errorText"
+                                            aria-invalid="false">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="false">
+                            <label class="nice-lable"> <b>Mapping</b></label>
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> File Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> Page Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList"
+                                [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+                                (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown> -->
+
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current">Element Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane show  " id="Settings">
+
+                        <label class="nice-lable">Font</label>
+                        <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                            <span class="current">Montsarret</span>
+                            <ul class="list">
+                                <li data-value="2" class="option">Another option</li>
+                                <li data-value="3" class="option">A disabled option</li>
+                                <li data-value="4" class="option">Potato</li>
+                            </ul>
+                        </div>
+
+                        <div class="theme-setting-color mt-5">
+                            <div class="que-color mb-2">
+                                <p>Question color</p>
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.bgColor" value="#ddd">
+                            </div>
+
+                            <div class="que-color mb-2">
+                                <p>Answer color</p>
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.textColor" value="#ddd">
+                            </div>
+
+                            <div class="que-color mb-2">
+                                <p>Button color</p>
+                                <input type="color" class="input-lg" value="#ddd">
+                            </div>
+
+                            <div class="que-color mb-2">
+                                <p>Background Image</p>
+                                <i class="fa fa-check-square-o float-right" aria-hidden="true"></i>
+                            </div>
+
+                            <div class="que-color mb-5">
+                                <p>Theme Change</p>
+                                <i class="fa fa-check-square-o float-right" aria-hidden="true"></i>
+                            </div>
+
+                            <hr style="border:1px dashed gray">
+                        </div>
+
+                        <!-- <div class="form-pages mt-3">
+                            <p class="text-center mb-3">Form pages</p>
+                            <p class="mb-2">
+                                <a href="#">1. &nbsp; Payment requisition</a>
+                            </p>
+                            <p class="mb-2">
+                                <a href="#">2. &nbsp; Payment Order</a>
+                            </p>
+                            <p class="mb-2">
+                                <a href="#">3. &nbsp; Payment reciept</a>
+                            </p>
+                            <p class="mb-2">
+                                <a href="#">4. &nbsp; Payment</a>
+                            </p>
+                        </div> -->
+                        <!-- 
+                        <label class="nice-lable">Inbox</label>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> Folder Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current">Form Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="nice-select box-nice-select wide mb-3" tabindex="0">
+                                    <span class="current"> Page Name</span>
+                                    <ul class="list">
+                                        <li data-value="2" class="option">Another option</li>
+                                        <li data-value="3" class="option">A disabled option</li>
+                                        <li data-value="4" class="option">Potato</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a style="    margin-left: 36%">
+
+                                <button class="btn btn-primary" (click)="submitbtn()">submit</button>
+                            </a>
+
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
