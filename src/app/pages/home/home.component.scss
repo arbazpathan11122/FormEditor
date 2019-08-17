@@ -410,3 +410,41 @@
 //     top:0px;
 //     color: #6c757d;
 // }
+.image-box{
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+.image-box img{
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+}
+.uploadimage-dragndrop {
+  min-height: auto;
+   padding: 20px 20px 20px 20px;
+    text-align: center;
+    border: dashed 2px #cccccc; 
+  }
+ .upload-img {
+    position: relative;
+    top: 12%;
+    width: 51px;
+    height: 33px;
+    background-size: cover;
+}
+.upload-image-box{
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 3px;
+  background-size: cover
+}
+.upload-image-box img{
+  height: 125px;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+}
