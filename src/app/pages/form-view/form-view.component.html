@@ -105,7 +105,7 @@
               <div class="row">
 
 
-                <div class="col-4">
+                <div class="col-md-4 col-xs-12 mb-2">
                   <div class="nice-select" tabindex="0">
                     <span class="current">Select Validation </span>
                     <ul class="list">
@@ -115,7 +115,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8 col-xs-12 mb-2">
                   <input class="name-input" name="{{item.name}}" pattern="^[0-9]{7,20}$" id="{{item.name}}"
                     required="{{item.required}}" placeholder="{{item.placeholder}}" [disabled]="item.phoneType ==''"
                     [(ngModel)]="item.value" aria-invalid="false" #phone="ngModel">
@@ -140,14 +140,14 @@
               <span id="custom-text">Select file</span>
             </div> -->
             <div class="row">
-              <div class="col-5">
+              <div class="col">
                 <div class="uploadimage-dragndrop" id="dragndropimage">
                   <img class="upload-img mb-3" src="assets/img/icn-upload.png"
-                    onClick="document.getElementById('upload-input').click()">
-                  <p>Upload image</p>
+                  (click)="document.getElementById('real-file').click()">
+                  <p> Upload image</p>
                 </div>
               </div>
-              <div class="col-5">
+              <div class="col">
                 <div class="upload-image-box">
                   <img src="assets/img/intro.png">
                 </div>
@@ -155,51 +155,6 @@
             </div>
           </div>
 
-
-          <!-- <div id="picture-upload" class="p-4">
-            <div class="mb-3 maker-input">
-              <input class="name-input" placeholder="Upload your signature here." aria-invalid="false">
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <div class="uploadimage-dragndrop" id="dragndropimage">
-                  <img class="upload-img mb-3" src="assets/img/icn-upload.png"
-                    onClick="document.getElementById('upload-input').click()">
-                  <p>Upload image</p>
-                </div>
-              </div>
-              <div class="col-5">
-                <div class="upload-image-box">
-                  <img src="assets/img/intro.png">
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-
-          <!-- 
-      <div class="p-4" *ngIf="item.fielType==='footer'" id="multiple-choice-format">
-        <div class="mb-3 maker-input">
-          <input class="name-input" disabled placeholder="What are your hobbies ?" aria-invalid="false">
-        </div>
-        <div class="user-input">
-          <div class="form-check mb-3">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">Swimming
-            </label>
-          </div>
-          <div class="form-check mb-3">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">Racing
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">Other
-            </label>
-          </div>
-        </div>
-      </div> -->
 
           <div class="p-4" *ngIf="item.fielType==='website'" id="Website-format">
             <div class="mb-3 maker-input">
@@ -208,7 +163,7 @@
             <div class="user-input">
               <div class="user-input">
                 <div class="row">
-                  <div class="col-3">
+                  <div class="col-md-3 col-xs-12 mb-2">
                     <div class="nice-select" tabindex="0">
                       <span class="current">Select http Or https</span>
                       <ul class="list">
@@ -219,11 +174,11 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-6 col-xs-12 mb-2">
                     <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
                       placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false"
                       #website="ngModel"> </div>
-                  <div class="col-3">
+                  <div class="col-md-3 col-xs-12 mb-2">
                     <div class="nice-select" tabindex="0">
                       <span class="current">Select .com or .in etc..</span>
                       <ul class="list">
@@ -260,10 +215,10 @@
             <div class="mb-3 maker-input">
               <label class="name-input">{{item.label}}</label>
             </div>
-            <div class="user-input inline-form-group" *ngFor="let opt of item.values">
-              <div class="custom-control custom-radio custom-control-inline">
+            <div class="user-input form-check-inline" *ngFor="let opt of item.values">
+              <div class=" custom-radio custom-control-inline">
                 <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
-                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel"> {{opt.label}}
+                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel"> &nbsp; {{opt.label}}
               </div>
 
               <div [hidden]="yesNo.valid || yesNo.pristine" class="alert alert-danger">
@@ -297,7 +252,7 @@
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <div class="user-input">
+            <div class="user-input pl-4">
               <div class="row">
                 <div *ngFor="let itm of [].constructor(item.ratingLimit); let i = index">
                   <div class="mb-2 rating-ico">
@@ -327,15 +282,12 @@
 
           </div>
 
-          <div class="p-4" *ngIf="((item.fielType==='picture')||(item.fielType==='multiple'))"
-            id="picture-choice-format">
+          <div class="p-4" *ngIf="(item.fielType==='multiple')" id="picture-choice-format">
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <div id="picture-choice-view" class="p-4">
-              <!-- <div class="mb-3 maker-input">
-                <input class="name-input" placeholder="Choose among these." aria-invalid="false">
-              </div> -->
+            <div id="picture-choice-view" class="pl-4">
+
               <div class="row">
                 <div class="col-12" *ngFor="let val of item.values">
                   <div class="image-box" *ngIf="(item.fielType==='picture')">
@@ -353,7 +305,29 @@
             </div>
 
           </div>
+          <div class="p-4" *ngIf="(item.fielType==='picture')" id="picture-choice-format">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div id="picture-choice-view">
 
+              <div class="row">
+                <div class="col-md-4 col-xs-6  mt-3" *ngFor="let val of item.values">
+                  <div class="image-box">
+                    <img src="assets/img/intro.png" class="img-thumbnail">
+                  </div>
+                  <p class=" text-center mt-2 ">
+
+                    <label class="form-check-label"> {{val.label}}
+                      <br>
+                      <input class="form-check-input" type="checkbox" value="">
+                    </label></p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
 
           <!-- <div class="p-4" *ngIf="item.fielType===''" id="conditional-dropdown-format">
         <div class="mb-3 maker-input">
@@ -402,11 +376,13 @@
 
         </div>
       </form>
-      <button class="btn btn-primary" *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)">Pre</button>
+      <div class="text-center mt-4">
+        <button class="btn btn-primary" *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)">Pre</button> &nbsp; &nbsp;
       <button class="btn btn-primary" type="submit"
-        (click)="submitResult(userForm.value, userForm.invalid)">submit</button>
+        (click)="submitResult(userForm.value, userForm.invalid)">submit</button> &nbsp; &nbsp; 
       <button class="btn btn-primary" *ngIf="currentPageIndex!=(form.attributes.length -1)"
         (click)="navigateToPage(1)">Next</button>
+      </div>
 
       <div class="m-4 p-4">
         <br>
@@ -423,7 +399,7 @@
 
 
 
-<div *ngIf="showTable">
+<div *ngIf="showTable" class="m-4">
   <table class="table" *ngFor=" let response of form.attributes; ">
     <thead class="thead-dark">
       <tr>
