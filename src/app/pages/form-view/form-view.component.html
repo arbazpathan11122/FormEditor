@@ -1,6 +1,6 @@
 <div *ngIf="!showTable" class="form-page">
   <div class="row">
-    <div class="col-12 working-part mx-auto">
+    <div class="col-md-6 col-xs-10 working-part mx-auto">
       <div class="process-part">
         <div class="d-flex justify-content-center">
           <div
@@ -133,15 +133,48 @@
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <div class="right-ico mr-5">
+            <!-- <div class="right-ico mr-5">
               <input type="file" id="real-file" hidden="hidden" />
               <button (click)="document.getElementById('real-file').click()" type="button"
                 class="btn btn-sm btn-primary btn-style mr-2" id="custom-button">Upload</button>
               <span id="custom-text">Select file</span>
+            </div> -->
+            <div class="row">
+              <div class="col-5">
+                <div class="uploadimage-dragndrop" id="dragndropimage">
+                  <img class="upload-img mb-3" src="assets/img/icn-upload.png"
+                    onClick="document.getElementById('upload-input').click()">
+                  <p>Upload image</p>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="upload-image-box">
+                  <img src="assets/img/intro.png">
+                </div>
+              </div>
             </div>
-
-
           </div>
+
+
+          <!-- <div id="picture-upload" class="p-4">
+            <div class="mb-3 maker-input">
+              <input class="name-input" placeholder="Upload your signature here." aria-invalid="false">
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <div class="uploadimage-dragndrop" id="dragndropimage">
+                  <img class="upload-img mb-3" src="assets/img/icn-upload.png"
+                    onClick="document.getElementById('upload-input').click()">
+                  <p>Upload image</p>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="upload-image-box">
+                  <img src="assets/img/intro.png">
+                </div>
+              </div>
+            </div>
+          </div> -->
 
 
           <!-- 
@@ -310,7 +343,7 @@
                   </div>
                   <p class=" mt-2 ">
 
-                    <label class="form-check-label"> 
+                    <label class="form-check-label">
                       <input class="form-check-input" type="checkbox" value="">
                       {{val.label}}
                     </label></p>
