@@ -741,11 +741,6 @@
                                 </div>
                             </div>
 
-                            <!-- <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList"
-                                [(ngModel)]="selectedItems" [settings]="dropdownSettings"
-                                (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-                            </ng-multiselect-dropdown> -->
-
                             <div class="col-md-12">
                                 <div class="nice-select box-nice-select wide mb-3" tabindex="0">
                                     <span class="current">Element Name</span>
@@ -761,49 +756,54 @@
 
 
 
-                        <div class="conditional-validation mt-3">
+                        <div *ngIf="conditionalQuesList.length>0" class="conditional-validation mt-3">
                             <div class="required-part mt-4 mb-4">
-                             <i class="fa fa-toggle-on red"></i>
-                              &nbsp; <label data-original-title="Tooltip on top" data-placement="top" data-toggle="tooltip" title="You Want to ">Make it a conditional question</label></div>
-                        
-                          <div class="row">
-                            <div class="col-12 pl-0">                        
-                                <div class="nice-select box-nice-select wide mb-1" tabindex="0">
-                                    <span class="current">Show If</span>
-                                    <ul class="list">
-                                        <li data-value="Show if" class="option">Show If</li>
-                                        <li data-value="Hide if" class="option">Hide If</li>
-                                    </ul>
+                                    <i *ngIf="conditionRequired" (click)="conditionRequired=false"
+                                    class="fa fa-toggle-on red"></i>
+                                <i *ngIf="!conditionRequired" (click)="conditionRequired=true"
+                                    class="fa fa-toggle-off"></i> &nbsp;                                &nbsp; <label data-original-title="Tooltip on top" data-placement="top"
+                                    data-toggle="tooltip" title="You Want to ">Make it a conditional question</label>
+                            </div>
+
+                            <div class="row">
+                                <div *ngIf="conditionRequired" class="col-12 pl-0">
+                                    <div class="nice-select box-nice-select wide mb-1" tabindex="0">
+                                        <span class="current">Show If</span>
+                                        <ul class="list">
+                                            <li data-value="Show if" class="option">Show If</li>
+                                            <li data-value="Hide if" class="option">Hide If</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div *ngIf="conditionRequired" class="col-12 pl-0">
+                                    <label class="nice-lable">Question</label>
+                                    <div class="nice-select box-nice-select wide mb-1" tabindex="0">
+                                        <span class="current">Question</span>
+                                        <ul class="list">
+                                            <li *ngFor="let ques of conditionalQuesList; let indx = index;"
+                                                (click)="conditionalAnsList = ques" class="option">{{ques.label}}</li>
+                                            <!-- <li data-value="2" class="option">{{ques.label}}</li>
+                                        <li data-value="2" class="option">{{ques.label}}</li>
+                                        <li data-value="2" class="option">{{ques.label}}</li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div *ngIf="conditionRequired" class="col-12 pl-0">
+                                    <label class="nice-lable">Answer</label>
+                                    <div class="nice-select box-nice-select wide mb-1" tabindex="0">
+                                        <span class="current">Answer</span>
+                                        <ul class="list">
+                                            <li *ngFor="let ans of conditionalAnsList.values; let indx = index;"
+                                                class="option">{{ans.label}}</li>
+
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 pl-0">
-                                <label class="nice-lable">Question</label>            
-                                <div class="nice-select box-nice-select wide mb-1" tabindex="0">
-                                    <span class="current">Question</span>
-                                    <ul class="list">
-                                        <li data-value="1" class="option">This is MCQ</li>
-                                        <li data-value="2" class="option">This is MCQ</li>
-                                        <li data-value="2" class="option">This is MCQ</li>
-                                        <li data-value="2" class="option">This is MCQ</li>
-                                    </ul>
-                                </div>
+                            <div *ngIf="conditionalAnsList.length>0" class="text-center mt-3">
+                                <button class="btn btn-primary">submit</button>
                             </div>
-                            <div class="col-12 pl-0">
-                                <label class="nice-lable">Answer</label>            
-                                <div class="nice-select box-nice-select wide mb-1" tabindex="0">
-                                    <span class="current">Answer</span>
-                                    <ul class="list">
-                                        <li data-value="1" class="option">One</li>
-                                        <li data-value="2" class="option">Two</li>
-                                        <li data-value="2" class="option">Three</li>
-                                    </ul>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="text-center mt-3">
-                            <button class="btn btn-primary">submit</button>
-                          </div>
-                    </div>
+                        </div>
 
 
 

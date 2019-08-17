@@ -62,6 +62,13 @@ export class HomeComponent implements OnInit {
   comDropdownList = [];
 
   checkingExistingForm: any;
+
+
+
+
+  showConditionalQues: false;
+  conditionalQuesList = [];
+  conditionalAnsList = [];
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -365,7 +372,22 @@ export class HomeComponent implements OnInit {
     this.showProperties = true;
     this.selectedItem = item;
     // console.log(this.formValidations[this.selectedItem.fielType]);
+    this.checkConditionalQuest();
+  }
 
+
+
+  checkConditionalQuest() {
+    this.conditionalQuesList = [];
+    this.formCurrentPage.field.forEach(element => {
+      // tslint:disable-next-line: max-line-length
+      if ((element.fielType === 'yesNo') || (element.fielType === 'trueFalse') || (element.fielType === 'picture') || (element.fielType === 'multiple') || (element.fielType === 'dropdown')) {
+        this.conditionalQuesList.push(element);
+      }
+      console.log(this.conditionalQuesList);
+
+
+    });
   }
 
   // check object is not null or valid
