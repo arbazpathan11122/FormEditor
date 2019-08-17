@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
         field: this.modelFields
       }]
   };
-  formCurrentPage: Array<field> = [];
+  formCurrentPage: any;
   currentPageIndex = 0;
   report = false;
   reports: any = [];
@@ -412,9 +412,9 @@ export class HomeComponent implements OnInit {
       confirmButtonText: 'Yes, remove!'
     }).then((result) => {
       if (result.value) {
-        this.formCurrentPage.splice(i, 1);
+        this.formCurrentPage.field.splice(i, 1);
         delete this.selectedItem;
-        this.selectedItem = this.formCurrentPage[i - 1];
+        this.selectedItem = this.formCurrentPage.field[i - 1];
 
       }
     });

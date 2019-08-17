@@ -310,7 +310,7 @@
                   </div>
                   <p class=" mt-2 ">
 
-                    <label class="form-check-label"> 
+                    <label class="form-check-label">
                       <input class="form-check-input" type="checkbox" value="">
                       {{val.label}}
                     </label></p>
@@ -369,8 +369,11 @@
 
         </div>
       </form>
+      <button class="btn btn-primary" *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)">Pre</button>
       <button class="btn btn-primary" type="submit"
         (click)="submitResult(userForm.value, userForm.invalid)">submit</button>
+      <button class="btn btn-primary" *ngIf="currentPageIndex!=(form.attributes.length -1)"
+        (click)="navigateToPage(1)">Next</button>
 
       <div class="m-4 p-4">
         <br>
@@ -388,18 +391,20 @@
 
 
 <div *ngIf="showTable">
-  <table class="table">
+  <table class="table" *ngFor=" let response of form.attributes; ">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Questions</th>
+        <th> {{response.name}}</th>
         <th scope="col">Answer</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of formPage; let i = index;">
-        <th scope="row">{{i}}</th>
+      <tr *ngFor="let item of response.field; let i = index;">
+        <th scope="row">{{i+1}}</th>
         <td>{{item.label}}</td>
+        <td></td>
         <td>{{item.value}}</td>
       </tr>
 

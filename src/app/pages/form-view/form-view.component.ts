@@ -109,6 +109,13 @@ export class FormViewComponent implements OnInit {
 
 
 
+  navigateToPage(val) {
+    this.currentPageIndex = this.currentPageIndex + val;
+    this.formCurrentPage = this.form.attributes[this.currentPageIndex];
+
+  }
+
+
   submitResult(val, bc) {
 
     console.log(this.form);
@@ -123,4 +130,7 @@ export class FormViewComponent implements OnInit {
     this.showTable = true;
 
   }
+
+
+
 }
