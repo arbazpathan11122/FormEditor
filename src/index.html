@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/nice-select.css">
   <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
 
 </head>
 
@@ -72,6 +73,18 @@
      });
 
  </script>
+
+
+<script src="assets/js/bootstrap-datepicker.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#user1").datepicker({
+    'format':'dd / mm / yyyy ',
+    'startDate': new Date('2019-8-1'),
+    'endDate': new Date('2019-8-19')
+    });
+  });
+</script>
 
   
 
