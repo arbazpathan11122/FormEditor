@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
 
 
 
-
+  conditionRequired = false;
   showConditionalQues: false;
   conditionalQuesList = [];
   conditionalAnsList = [];

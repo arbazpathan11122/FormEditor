@@ -54,7 +54,7 @@
             <div class="user-input">
               <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}"
                 min="{{item.validOption?.min}}" max="{{item.validOption?.max}}" required="{{item.required}}"
-                (change)="numberInputValidation(item, this.value)" placeholder="{{item.placeholder}}"
+                (change)="numberInputValidation(item)" placeholder="{{item.placeholder}}"
                 [(ngModel)]="item.value" aria-invalid="false" #number="ngModel">
               <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
                 {{item.errorText}}
@@ -134,15 +134,18 @@
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <!-- <div class="right-ico mr-5">
+            <div class="right-ico mr-5">
               <input type="file" id="real-file" hidden="hidden" />
-              <button (click)="document.getElementById('real-file').click()" type="button"
+              <!-- (click)="document.getElementById('real-file').click()" -->
+              <button  type="button"
                 class="btn btn-sm btn-primary btn-style mr-2" id="custom-button">Upload</button>
               <span id="custom-text">Select file</span>
-            </div> -->
-            <div class="row">
+            </div>
+            <!-- <div class="row">
               <div class="col">
                 <div class="uploadimage-dragndrop" id="dragndropimage">
+                    <input type="file" id="real-file" hidden="hidden" />
+
                   <img class="upload-img mb-3" src="assets/img/icn-upload.png"
                   (click)="document.getElementById('real-file').click()">
                   <p> Upload image</p>
@@ -152,8 +155,8 @@
                 <div class="upload-image-box">
                   <img src="assets/img/intro.png">
                 </div>
-              </div>
-            </div>
+              </div> 
+            </div>-->
           </div>
 
 
