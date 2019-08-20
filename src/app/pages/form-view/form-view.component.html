@@ -197,6 +197,20 @@
             </div>
           </div>
 
+          <!-- <div class="p-4" *ngIf="item.fielType==='date'" id="Date-format">
+            <div class="mb-3 maker-input">
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
+            </div>
+            <div class="user-input">
+              <input class="name-input" type="date" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
+                placeholder="{{item.placeholder}}" min="{{item.validOption?.min}}" max="{{item.validOption?.max}}"
+                [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
+              <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+                {{item.errorText}}
+              </div>
+            </div>
+          </div> -->
+
           <div class="p-4" *ngIf="item.fielType==='date'" id="Date-format">
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
@@ -210,6 +224,15 @@
               </div>
             </div>
           </div>
+
+          <div  *ngIf="item.fielType==='date'" id="Date-format">
+            <div class="mb-4 maker-input">
+                <input class="name-input" placeholder="How old are you ?" aria-invalid="false">
+            </div>
+            <div class="dates user-input">
+                <input style="width:50%" type="text" name="" autocomplete="of" id="user1" class="name-input" placeholder="12 / DD / YYYY">
+            </div>
+        </div>
 
           <div class="p-4" *ngIf="item.fielType==='yesNo'">
             <div class="mb-3 maker-input">
