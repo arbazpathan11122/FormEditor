@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './share/login/login.component';
 import { FormViewComponent } from './pages/form-view/form-view.component';
+import { DashbordComponent } from './pages/dashbord/dashbord.component';
+import { ProcessComponent } from './pages/process/process.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'dashbord',
+    component: DashbordComponent,
+  },
+  {
+    path: 'process',
+    component: ProcessComponent,
   },
 
 

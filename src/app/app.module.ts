@@ -12,6 +12,8 @@ import { FooterComponent } from './share/footer/footer.component';
 import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { FormViewComponent } from './pages/form-view/form-view.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { DashbordComponent } from './pages/dashbord/dashbord.component';
+import { ProcessComponent } from './pages/process/process.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FooterComponent,
     SidebarComponent,
     FormViewComponent,
+    DashbordComponent,
+    ProcessComponent,
   ],
   imports: [
     BrowserModule,

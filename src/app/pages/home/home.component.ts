@@ -69,6 +69,9 @@ export class HomeComponent implements OnInit {
   showConditionalQues: false;
   conditionalQuesList = [];
   conditionalAnsList = [];
+
+
+  showGenSetting = true;
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -88,6 +91,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.showNavbar();
     this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
@@ -373,6 +377,8 @@ export class HomeComponent implements OnInit {
     this.selectedItem = item;
     // console.log(this.formValidations[this.selectedItem.fielType]);
     this.checkConditionalQuest();
+
+    this.showGenSetting = false;
   }
 
 
@@ -442,7 +448,32 @@ export class HomeComponent implements OnInit {
     });
 
   }
+  removePage(i, mesg) {
+    swal({
+      title: 'Are you sure?',
+      text: 'Do you want to remove ' + mesg + ' Page?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#00B96F',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, remove!'
+    }).then((result) => {
+      if (result.value) {
 
+        // if (i > this.model.attributes.length) {
+        //   this.model.attributes.splice(i, 1);
+        //   delete this.formCurrentPage;
+        //   this.formCurrentPage = this.model.attributes[i - 1];
+        // } else {
+        //   this.formCurrentPage = [];
+        // }
+
+        this.deletePage();
+
+      }
+    });
+
+  }
   showNavbar() {
 
 
@@ -539,7 +570,9 @@ export class HomeComponent implements OnInit {
 
 
 
-
+  editPageName(page) {
+    this.formCurrentPage = page;
+  }
 
 
 

@@ -1,0 +1,95 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light p-3">
+  <div class="row ">
+    <div class="col-4">
+      <button aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
+        class="navbar-toggler" data-target="#navbarTogglerDemo03" data-toggle="collapse" type="button"><span
+          class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand" href="#">
+        <i class="fa fa-home"></i> Home</a>
+    </div>
+    <div class="col-2">
+      <a>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row  mr-2 ml-2" style="margin-top: 100px;">
+    <div class="col-md-12">
+      <h5 class="voiletColor mt-2 mb-4">Your WorkFlow</h5>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="uploadimage-dragndrop" data-toggle="modal" data-target="#ProcessDetailsModel">
+            <h3 class="voiletColor text-center mt-5">
+
+              + Create New </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 mt-2">
+      <h5 class="voiletColor mt-4 mb-3">Pre-Define WorkFlow</h5>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="uploadimage-dragndrop">
+            <div>
+              Comming Soon </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="ProcessDetailsModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class=" p-5">
+
+        <div class=" maker-input">
+          <label class="name-input">Workflow Name: <span class="red">*</span>
+          </label>
+        </div>
+        <div class="user-input">
+          <input class="name-input" placeholder="Purchase Requisition" type="text" name="Workflow">
+
+        </div>
+
+        <div class=" mt-3 maker-input">
+          <label class="name-input">Category: <span class="red">*</span>
+          </label>
+        </div>
+        <div class="user-input">
+          <input class="name-input" type="text" placeholder="Purchase" name="category">
+
+        </div>
+
+        <div class="mt-3 maker-input">
+          <label class="name-input">Description
+          </label>
+        </div>
+        <div class="user-input">
+          <textarea class="name-input" id="message-text" placeholder="hey there" type="text"
+            name="description"></textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn voiletBG" (click)="goToFoermEditor()">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
