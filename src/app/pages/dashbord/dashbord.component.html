@@ -1,66 +1,58 @@
-Html
-<div class="wrapper">
-    <!-- Sidebar  -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
-            <strong>BS</strong>
+<div class="navbar-2">
+    <div class="row p-0 m-0">
+        <div class="col-1">
+            <ul class="menu-2 d-flex justify-content-end">
+                <li>
+                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                </li>
+            </ul>
         </div>
 
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-briefcase"></i>
-                    About
-                </a>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fas fa-copy"></i>
-                    Pages
-                </a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-    </nav>
-
-    <!-- Page Content  -->
-    <div id="content">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
-                </button>
+        <div class="col-8">
+            <div class="input-group p-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Search any workflow by category or name from here"
+                    aria-label="Username" aria-describedby="basic-addon1">
             </div>
-        </nav>
+        </div>
+        <div class="col-3">
+            <div class="d-flex flex-row float-right bd-highlight">
+                <div class="p-3 bd-highlight">
+                    <div class="notification d-flex justify-content-center">
+                        <i class="fa fa-bell"></i>
+                    </div>
+                </div>
+                <div class="p-3 bd-highlight"><img alt="" class="profile-img" src="assets/img/user.jpg" width="42">
+                </div>
+                <div class="pt-3 bd-highlight">
+                    <div class="profile-heading">Abhinav</div>
+                    <div class="profile-subheading">Super-Admin</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-1">
+                            <div class="notification d-flex justify-content-center">
+                                <i class="fa fa-bell"></i>
+                            </div>
+                        </div> -->
+        <!-- <div class="col-3">
+                            <div class="notification mr-4 pull-left">
+                                <i class="fa fa-bell"></i>
+                            </div>
+                            <div class="profile-part">
+                                <div class="row">
+                                  <div class="col-md-3">
+                                        <img alt="" class="profile-img" src="assets/img/user.jpg" width="42">
+                                  </div>
+                                  <div class="col-md-8">
+                                        <div class="profile-heading">Abhinav</div>
+                                        <div class="profile-subheading">Super-Admin</div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div> -->
     </div>
 </div>

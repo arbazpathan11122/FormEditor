@@ -363,7 +363,7 @@
   
   color: #ffffff;
   }
-.mainshow{	margin-top: 100px;
+.mainshow{	margin-top: 85px;
 }
 .mainhide{	margin-top: 0px;
 }
@@ -392,21 +392,25 @@
 
  .process-part{
   position: relative;
-  overflow: hidden;
+  -overflow: hidden;
   z-index: 999;
   }
   .process-part::after{
   content: '';
   position: absolute;
-  top: 38%;
-  height: 1px;
+  top: 25%;
+  height: 2px;
   width: 100%;
-  background-color: #ccc;
+  background-color: #007bff;
   z-index: -1;
   }
   .pro-button{
-  padding: 13px 21px;
-  border-radius: 50%;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border: 2px solid white;
+    box-shadow: 0px 0px 0px 2px #007bff;
+    background: #ffffff;
   }
 // .right-ico{
 //     right: 0;
