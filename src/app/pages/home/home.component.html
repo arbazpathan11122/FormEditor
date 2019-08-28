@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-8 pl-2 pr-0 mt-2">
                             <span> {{item.uniqName}}
-                                <br> {{item.subName}} 
+                                <br> {{item.subName}}
                             </span>
                         </div>
                     </div>
@@ -321,10 +321,16 @@
                 " *ngFor="let item of formCurrentPage?.field;let i= index;" (dndStart)="onDragStart($event)"
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, formCurrentPage.field, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
-                    <div class="row form-group" (click)=" currentValidation(item)" dndHandle>
-                        <!-- <div class="col-md-1">
-                            <i class="fa fa-ellipsis-v dndHandle"></i>
-                        </div> -->
+
+                    <!-- <div class="row">
+                        
+                    </div> -->
+                    <div class="row form-group" (click)=" currentValidation(item)" >
+                        <div class="col-md-12 text-center m-0 p-0" dndHandle>
+                            <i class="fa  fa-bars dndHandle"></i>
+                            <!-- <i class="fa fa-ellipsis-h dndHandle"></i> -->
+                            <!-- <i class="fa fa-ellipsis-h dndHandle"></i> -->
+                        </div>
                         <div class="col-md-10  ">
 
                             <div
@@ -510,12 +516,13 @@
             </section>
             <div class="m-4 text-center p-4">
                 <br>
-                <a href="" class="float-left">Prev</a>
+                <a *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)" class="float-left">Prev</a>
                 <button class="btn btn-primary mr-3">Save</button>
                 <button class="btn btn-success mr-3" (click)="submitbtn()">Submit</button>
                 <button class="btn btn-custom" (click)="addPages()">
                     <i class="fa fa-plus"></i> &nbsp; Add Page</button>
-                <a href="" class="float-right">Next</a>
+                <a *ngIf="currentPageIndex!=(model.attributes.length -1)" (click)="navigateToPage(1)"
+                    class="float-right">Next</a>
 
 
             </div>
@@ -541,7 +548,8 @@
                     <div *ngIf="!showGenSetting">
                         <div *ngIf="isValidObject(selectedItem)">
                             <!-- <p class="text-center mt-2">{{selectedItem.uniqName}}</p> -->
-                            <div class="title-with-ico mt-3 mb-4"><img src="assets/img/icons/{{selectedItem.icon}}"> &nbsp; {{selectedItem.uniqName}}</div>
+                            <div class="title-with-ico mt-3 mb-4"><img src="assets/img/icons/{{selectedItem.icon}}">
+                                &nbsp; {{selectedItem.uniqName}}</div>
 
                             <div *ngIf="!((selectedItem.uniqName =='Statement')||(selectedItem.uniqName =='Footer')||(selectedItem.uniqName =='Header'))"
                                 class="required-part mt-4 mb-4">
