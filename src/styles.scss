@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
-
+body{
+    font-family: 'Poppins', sans-serif;
+}
 .clearfix{clear:both;}
 .pointer{cursor: pointer;}
 .ucfirst{text-transform: capitalize;}
@@ -34,6 +36,9 @@
     display: inline-block;
     margin-bottom: 5px;
 }
+.btn-custom{
+    border:1px solid #cccccc;
+}
 .box{
     padding: 10px;
     margin-bottom:10px;
@@ -56,7 +61,7 @@
 }
 
 .field{
-    padding:10px;
+    padding:30px 10px;
     margin-bottom:10px;
     position: relative;
 }
@@ -170,8 +175,8 @@
     border:none;
     width: 100%;
     box-sizing: border-box;
-    color: #000000;
-    font-size: 18px;
+    color: #3c3c3c;
+    font-size: 17px;
 }
 .maker-input .name-input:focus{
 	outline: none;
@@ -186,7 +191,7 @@
     height: 30px;
     border-style:dashed;
     width: 100%;
-    color: #151948;
+    color: #8b8b8b;
 }
 .user-input .name-input:focus{
 	outline: none;
@@ -196,7 +201,8 @@
 	color:#b8b8b8;
 }
 .nice-lable{
-	padding:10px 0;
+    padding:10px 0;
+    font-size: 14px;
 }
 /*.fixed-bar{
     height: calc(100vh - 50px);
@@ -226,20 +232,18 @@
 	float: left;
 	margin:0 10px 10px 0;
 	position: relative;
-	top: 10px;
+	top: 15px;
 }
 .menu-item span{
-	-float: right;
+	font-size: 13px;
 	display: block;
-	color:#000;
+	color:#3c3c3c;
 }
 
 .menu-title {
-    -padding: 15px 20px;
     letter-spacing: .05em;
     cursor: default;
-    font-size: 12px;
-    text-transform: uppercase;
+    font-size: 14px;
 }
 
 /*-------------working form part-------------*/
@@ -468,11 +472,23 @@ fieldset, label { margin: 0; padding: 0; }
     top:5px;
     font-size: 18px;
 }
-.form-pages p a{
+.form-pages .pages a{
     color:#212529;
 }
-.form-pages p a:hover{
-    color:#ffae1f;
+.form-pages .pages a:hover{
+    color:#50ADFF;
+}
+.form-pages .pages .pages-ico a{
+    opacity: 0;
+}
+.form-pages .pages:hover .pages-ico a{
+    opacity: 1;
+}
+.form-pages .pages a:active{
+    color:#50ADFF;
+}
+.form-pages .pages:active .pages-ico a{
+    opacity: 1;
 }
 .mtb{
 	margin: 35px 0;
@@ -545,7 +561,7 @@ fieldset, label { margin: 0; padding: 0; }
     color: #000000
 }
 .maker-input .name-input::placeholder{
-    color:#000000;
+    color:#3c3c3c;
 }
 .rating-ico span{
 font-size: 20px;

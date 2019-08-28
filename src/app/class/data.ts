@@ -249,9 +249,9 @@ export const icons_and_fields = [
     },
     {
         id: 12,
-        uniqName: 'Multiple Choie',
+        uniqName: 'Multiple',
         name: 'Multiple',
-        subName: 'Choie',
+        subName: 'Choice',
         icon: 'multiple_choice.png',
         fielType: 'multiple',
         required: true,
@@ -293,7 +293,7 @@ export const icons_and_fields = [
 
     {
         id: 5,
-        uniqName: 'Picture Choice',
+        uniqName: 'Picture',
         name: 'Picture',
         subName: 'Choice',
         icon: 'picture_format.png',

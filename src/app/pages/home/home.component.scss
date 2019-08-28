@@ -359,7 +359,7 @@
 //   background: #ccc; 
 // }
 
-.mainshow{	margin-top: 100px;
+.mainshow{	margin-top: 75px;
 }
 .mainhide{	margin-top: 0px;
 }
@@ -447,4 +447,15 @@
   width: 100%;
   overflow: hidden;
   background-size: cover;
+}
+.title-with-ico{
+  padding: 8px 15px;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(148,148,148,1);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(148,148,148,1);
+  box-shadow: inset 0px 0px 5px 0px rgb(216, 210, 210);
+}
+.title-with-ico img{
+  width: 19px;
+  height: auto;
 }

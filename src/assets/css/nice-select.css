@@ -9,13 +9,11 @@
   display: block;
   -float: left;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   height: 30px;
   line-height: 30px;
   outline: none;
- -padding-left: 18px;
-  -padding-right: 30px;
   position: relative;
   text-align: left !important;
   -webkit-transition: all 0.2s ease-in-out;
@@ -140,9 +138,12 @@
 
   .box-nice-select{
     border-radius: 5px !important;
-    border: solid 1px #cccccc !important;
+    border: solid 1px transparent !important;
     padding-left: 18px;
     padding-right: 30px;
     height: 40px;
     line-height: 40px;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(148,148,148,1);
+    -moz-box-shadow: inset 0px 0px 3px 0px rgba(148,148,148,1);
+    box-shadow: inset 0px 0px 3px 0px rgb(216, 210, 210);
   }

@@ -1,7 +1,7 @@
 <!-- showNav -->
 <nav *ngIf="showNav" class="navbar fixed-top navbar-expand-lg navbar-light p-3">
     <div class="row ">
-        <div class="col-4">
+        <div class="col">
             <button aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-target="#navbarTogglerDemo03" data-toggle="collapse" type="button"><span
                     class="navbar-toggler-icon"></span></button>
@@ -44,7 +44,7 @@
             </div>
         </div>-->
 
-        <div class="col-4">
+        <!-- <div class="col-4">
             <div class="process-part">
                 <div class="d-flex justify-content-center">
                     <div class="bd-highlight btn-primary  pro-button ml-4 mr-4">1</div>
@@ -67,7 +67,7 @@
         <div class="col-2">
             <a>
             </a>
-        </div>
+        </div> -->
     </div>
 </nav>
 <!-- show hide button -->
@@ -97,6 +97,7 @@
                         </div>
                         <div class="col-8 pl-2 pr-0 mt-2">
                             <span> {{item.uniqName}}
+                                <br> {{item.subName}} 
                             </span>
                         </div>
                     </div>
@@ -231,7 +232,7 @@
                     </div>
                 </div>
             </div> -->
-            <div class="page-detailing-part row p-4">
+            <!-- <div class="page-detailing-part row p-4">
                 <div class="col-9 pr-0">
                     <div class="form-group row col">
                         <label for="inputPassword" class=" col-form-label">Page name: </label>
@@ -243,10 +244,7 @@
                 </div>
                 <div class="col-3">
                     <form class="form-inline float-right">
-                        <!-- <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>
-                        </button>
-                        &nbsp;
-                        &nbsp; -->
+                        
                         <button type="submit" (click)="deletePage()" class="btn btn-primary btn-sm"><i
                                 class="fa fa-trash-o"></i></button>
                         &nbsp;
@@ -255,7 +253,7 @@
                                 class="fa fa-plus"></i></button>
                     </form>
                 </div>
-            </div>
+            </div> -->
 
             <!-- form tab end -->
             <!-- 
@@ -292,14 +290,13 @@
 
 
 
-            <hr style="border:1px dashed gray">
+            <!-- <hr style="border:1px dashed gray">
             <div class="process-part">
                 <div class="d-flex justify-content-center">
                     <div [class]="(i == currentPageIndex)? 'bd-highlight btn-warning pro-button ml-4 mr-4' : 'bd-highlight pro-button ml-4 mr-4 btn-primary'"
                         *ngFor="let page of model.attributes; let i = index;" (click)="goToPage(i)">{{i+1}}</div>
-                    <!-- <div class="bd-highlight btn-primary pro-button ml-4 mr-4">2</div> -->
                 </div>
-            </div>
+            </div> -->
 
             <div class="form-group" style="margin-bottom: 0px !important;" [style.backgroundColor]="model.theme.bgColor"
                 [style.color]="model.theme.textColor">
@@ -324,7 +321,7 @@
 
                             <div
                                 *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')">
-                                <div class="mb-3 maker-input">
+                                <div class="maker-input">
                                     <input class="name-input " type="text" [(ngModel)]="item.label"
                                         aria-invalid="false">
                                 </div>
@@ -504,11 +501,12 @@
             </section>
             <div class="m-4 text-center p-4">
                 <br>
-
-                <button class="btn btn-primary mr-4" (click)="submitbtn()">submit</button>
-                <button class="btn btn-primary ml-4 mr-4" (click)="addPages()">
+                <a href="" class="float-left">Prev</a>
+                <button class="btn btn-primary mr-3">Save</button>
+                <button class="btn btn-success mr-3" (click)="submitbtn()">Submit</button>
+                <button class="btn btn-custom" (click)="addPages()">
                     <i class="fa fa-plus"></i> &nbsp; Add Page</button>
-                <!-- <button class="btn btn-primary mr-4" (click)="submitbtn()">Next page</button> -->
+                <a href="" class="float-right">Next</a>
 
 
             </div>
@@ -519,20 +517,21 @@
             <div class="property-tab">
                 <ul class="nav nav-pills navtab-bg nav-justified">
                     <li class="nav-item">
-                        <a href="#Properties" data-toggle="tab" aria-expanded="false" class="nav-link  active">
+                        <a href="#Properties" data-toggle="tab" aria-expanded="false" class="nav-link">
                             Individual
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#Settings" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                        <a href="#Settings" data-toggle="tab" aria-expanded="true" class="nav-link active">
                             General
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content mt-20">
-                    <div class="tab-pane active" id="Properties">
+                    <div class="tab-pane" id="Properties">
                         <div *ngIf="isValidObject(selectedItem)">
-                            <p class="text-center mt-2">{{selectedItem.uniqName}}</p>
+                            <!-- <p class="text-center mt-2">{{selectedItem.uniqName}}</p> -->
+                            <div class="title-with-ico mt-3 mb-4"><img src="assets/img/icons/{{selectedItem.icon}}"> &nbsp; {{selectedItem.uniqName}}</div>
 
                             <div *ngIf="!((selectedItem.uniqName =='Statement')||(selectedItem.uniqName =='Footer')||(selectedItem.uniqName =='Header'))"
                                 class="required-part mt-4 mb-4">
@@ -697,11 +696,6 @@
                             </div>
                             <div class="row required-inputs">
 
-
-
-
-
-
                                 <div class="col-12"
                                     *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))">
                                     <div class="user-input mb-3">
@@ -812,9 +806,9 @@
                     </div>
 
 
-                    <div class="tab-pane show  " id="Settings">
+                    <div class="tab-pane  active show" id="Settings">
 
-                        <label class="nice-lable">Font</label>
+                        <label class="nice-lable">Font Style</label>
                         <div class="nice-select box-nice-select wide mb-3" tabindex="0">
                             <span class="current">Montsarret</span>
                             <ul class="list">
@@ -824,18 +818,18 @@
                             </ul>
                         </div>
 
-                        <div class="theme-setting-color mt-5">
-                            <div class="que-color mb-2">
+                        <div class="theme-setting-color mt-4">
+                            <div class="que-color mb-3">
                                 <p>Question color</p>
                                 <input type="color" class="input-lg" [(ngModel)]="model.theme.bgColor" value="#ddd">
                             </div>
 
-                            <div class="que-color mb-2">
+                            <div class="que-color mb-3">
                                 <p>Answer color</p>
                                 <input type="color" class="input-lg" [(ngModel)]="model.theme.textColor" value="#ddd">
                             </div>
 
-                            <div class="que-color mb-2">
+                            <!-- <div class="que-color mb-2">
                                 <p>Button color</p>
                                 <input type="color" class="input-lg" value="#ddd">
                             </div>
@@ -848,26 +842,61 @@
                             <div class="que-color mb-5">
                                 <p>Theme Change</p>
                                 <i class="fa fa-check-square-o float-right" aria-hidden="true"></i>
-                            </div>
+                            </div> -->
 
-                            <hr style="border:1px dashed gray">
+                            <hr class="mb-4 mb-4" style="border:1px dashed #cccccc">
                         </div>
 
-                        <!-- <div class="form-pages mt-3">
-                            <p class="text-center mb-3">Form pages</p>
-                            <p class="mb-2">
-                                <a href="#">1. &nbsp; Payment requisition</a>
-                            </p>
-                            <p class="mb-2">
-                                <a href="#">2. &nbsp; Payment Order</a>
-                            </p>
-                            <p class="mb-2">
-                                <a href="#">3. &nbsp; Payment reciept</a>
-                            </p>
-                            <p class="mb-2">
-                                <a href="#">4. &nbsp; Payment</a>
-                            </p>
-                        </div> -->
+                        <div class="form-pages">
+                            <p class="mb-4">Form pages</p>
+                            <div class="mb-3 pages">
+                                <a href="#"> &nbsp; 1. &nbsp; Payment requisition</a>
+                                <div class="float-right pages-ico">
+	                                <a href="#">
+	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+	                                </a> &nbsp; &nbsp;
+	                                <a href="#">
+	                                    <i class="fa fa-trash-o"></i>
+	                                </a>
+	                            </div>
+                            </div>
+                            <div class="mb-3 pages">
+                                <a href="#"> &nbsp; 2. &nbsp; Payment Order</a>
+                                <div class="float-right pages-ico">
+	                                <a href="#">
+	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+	                                </a> &nbsp; &nbsp;
+	                                <a href="#">
+	                                    <i class="fa fa-trash-o"></i>
+	                                </a>
+	                            </div>
+                            </div>
+                            <div class="mb-3 pages">
+                                <a href="#"> &nbsp; 3. &nbsp; Payment reciept</a>
+                                <div class="float-right pages-ico">
+	                                <a href="#">
+	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+	                                </a> &nbsp; &nbsp;
+	                                <a href="#">
+	                                    <i class="fa fa-trash-o"></i>
+	                                </a>
+	                            </div>
+                            </div>
+                            <div class="mb-3 pages">
+                                <a href="#"> &nbsp; 4. &nbsp; Payment </a>
+                                <div class="float-right pages-ico">
+	                                <a href="">
+	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+	                                </a> &nbsp; &nbsp;
+	                                <a href="">
+	                                    <i class="fa fa-trash-o"></i>
+	                                </a>
+	                            </div>
+                            </div>
+                            
+                        </div>
+
+                        
                         <!-- 
                         <label class="nice-lable">Inbox</label>
 
