@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Formbuilder</title>
+  <title>No Code BPM</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,41 +53,41 @@
   </script> -->
 
   <script type="text/javascript">
-    $(document).ready(function(){
-     const realFileBtn = document.getElementById("real-file");
-     const customBtn = document.getElementById("custom-button");
-     const customTxt = document.getElementById("custom-text");
+    $(document).ready(function () {
+      const realFileBtn = document.getElementById("real-file");
+      const customBtn = document.getElementById("custom-button");
+      const customTxt = document.getElementById("custom-text");
 
-     customBtn.addEventListener("click", function() {
-       realFileBtn.click();
-     });
+      customBtn.addEventListener("click", function () {
+        realFileBtn.click();
+      });
 
-     realFileBtn.addEventListener("change", function() {
-       if (realFileBtn.value) {
-         customTxt.innerHTML = realFileBtn.value.match(
-           /[\/\\]([\w\d\s\.\-\(\)]+)$/
-         )[1];
-       } else {
-         customTxt.innerHTML = "No file chosen, yet.";
-       }
-     });
-     });
-
- </script>
-
-
-<script src="assets/js/bootstrap-datepicker.js"></script>
-<script>
-  $(document).ready(function(){
-    $("#user1").datepicker({
-    'format':'dd / mm / yyyy ',
-    'startDate': new Date('2019-8-1'),
-    'endDate': new Date('2019-8-19')
+      realFileBtn.addEventListener("change", function () {
+        if (realFileBtn.value) {
+          customTxt.innerHTML = realFileBtn.value.match(
+            /[\/\\]([\w\d\s\.\-\(\)]+)$/
+          )[1];
+        } else {
+          customTxt.innerHTML = "No file chosen, yet.";
+        }
+      });
     });
-  });
-</script>
 
-  
+  </script>
+
+
+  <script src="assets/js/bootstrap-datepicker.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#user1").datepicker({
+        'format': 'dd / mm / yyyy ',
+        'startDate': new Date('2019-8-1'),
+        'endDate': new Date('2019-8-19')
+      });
+    });
+  </script>
+
+
 
 </body>
 

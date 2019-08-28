@@ -54,8 +54,8 @@
             <div class="user-input">
               <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}"
                 min="{{item.validOption?.min}}" max="{{item.validOption?.max}}" required="{{item.required}}"
-                (change)="numberInputValidation(item, this.value)" placeholder="{{item.placeholder}}"
-                [(ngModel)]="item.value" aria-invalid="false" #number="ngModel">
+                (change)="numberInputValidation(item)" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+                aria-invalid="false" #number="ngModel">
               <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
@@ -81,9 +81,9 @@
                   <div class="nice-select" tabindex="0">
                     <span class="current">Select Validation </span>
                     <ul class="list">
-                      <li (click)="item.mailType = item.emailList[index]"
-                        *ngFor="let mail of item?.emailList; let i = index" class="option selected focus">
-                        {{mail.label}}
+                      <li (click)="item.mailType = mail.pattern" *ngFor="let mail of item?.emailList; let i = index"
+                        class="option selected focus">
+                        {{mail.pattern}}
                       </li>
                     </ul>
                   </div>
@@ -109,8 +109,9 @@
                   <div class="nice-select" tabindex="0">
                     <span class="current">Select Validation </span>
                     <ul class="list">
-                      <li (click)="item.phoneType = item.phoneList[index]"
-                        *ngFor="let mail of item?.phoneList; let i = index" class="option selected focus">{{mail.label}}
+                      <li (click)="item.phoneType = mail.pattern" *ngFor="let mail of item?.phoneList; let i = index"
+                        class="option selected focus">
+                        {{mail.pattern}}
                       </li>
                     </ul>
                   </div>
@@ -133,15 +134,17 @@
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <!-- <div class="right-ico mr-5">
+            <div class="right-ico mr-5">
               <input type="file" id="real-file" hidden="hidden" />
-              <button (click)="document.getElementById('real-file').click()" type="button"
-                class="btn btn-sm btn-primary btn-style mr-2" id="custom-button">Upload</button>
+              <!-- (click)="document.getElementById('real-file').click()" -->
+              <button type="button" class="btn btn-sm btn-primary btn-style mr-2" id="custom-button">Upload</button>
               <span id="custom-text">Select file</span>
-            </div> -->
+            </div>
             <div class="row">
               <div class="col">
                 <div class="uploadimage-dragndrop" id="dragndropimage">
+                    <input type="file" id="real-file" hidden="hidden" />
+
                   <img class="upload-img mb-3" src="assets/img/icn-upload.png"
                   (click)="document.getElementById('real-file').click()">
                   <p> Upload image</p>
@@ -151,7 +154,7 @@
                 <div class="upload-image-box">
                   <img src="assets/img/intro.png">
                 </div>
-              </div>
+              </div> 
             </div>
           </div>
 
@@ -167,8 +170,8 @@
                     <div class="nice-select" tabindex="0">
                       <span class="current">Select http Or https</span>
                       <ul class="list">
-                        <li (click)="item.httpType = item.httpList[index]"
-                          *ngFor="let mail of item?.httpList; let i = index" class="option selected focus">
+                        <li (click)="item.httpType = mail.label" *ngFor="let mail of item?.httpList; let i = index"
+                          class="option selected focus">
                           {{mail.label}}
                         </li>
                       </ul>
@@ -180,10 +183,10 @@
                       #website="ngModel"> </div>
                   <div class="col-md-3 col-xs-12 mb-2">
                     <div class="nice-select" tabindex="0">
-                      <span class="current">Select .com or .in etc..</span>
+                      <span class="current"> .com /.in</span>
                       <ul class="list">
-                        <li (click)="item.comType = item.comList[index]"
-                          *ngFor="let mail of item?.comList; let i = index" class="option selected focus">{{mail.label}}
+                        <li (click)="item.comType = mail.label" *ngFor="let mail of item?.comList; let i = index"
+                          class="option selected focus">{{mail.label}}
                         </li>
                       </ul>
                     </div>
@@ -215,17 +218,17 @@
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <div class="user-input">
-              <input class="name-input" type="date" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                placeholder="{{item.placeholder}}" min="{{item.validOption?.min}}" max="{{item.validOption?.max}}"
-                [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
+            <div class="dates user-input">
+              <input style="width:50%" class="name-input" type="text" name="{{item.name}}" 
+                required="{{item.required}}" placeholder="{{item.placeholder}}" autocomplete="of" id="user1"
+                min="{{item.validOption?.min}}" max="{{item.validOption?.max}}" [(ngModel)]="item.value"
+                aria-invalid="false" #date="ngModel">
               <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
             </div>
           </div>
-
-          <div  *ngIf="item.fielType==='date'" id="Date-format">
+          <!-- <div  *ngIf="item.fielType==='date'" id="Date-format">
             <div class="mb-4 maker-input">
                 <input class="name-input" placeholder="How old are you ?" aria-invalid="false">
             </div>
@@ -233,6 +236,7 @@
                 <input style="width:50%" type="text" name="" autocomplete="of" id="user1" class="name-input" placeholder="12 / DD / YYYY">
             </div>
         </div>
+          -->
 
           <div class="p-4" *ngIf="item.fielType==='yesNo'">
             <div class="mb-3 maker-input">
@@ -241,7 +245,8 @@
             <div class="user-input form-check-inline" *ngFor="let opt of item.values">
               <div class=" custom-radio custom-control-inline">
                 <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
-                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel"> &nbsp; {{opt.label}}
+                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel"> &nbsp;
+                {{opt.label}}
               </div>
 
               <div [hidden]="yesNo.valid || yesNo.pristine" class="alert alert-danger">
@@ -305,7 +310,7 @@
 
           </div>
 
-          <div class="p-4" *ngIf="(item.fielType==='multiple')" id="picture-choice-format">
+          <div class="p-4" *ngIf="(item.fielType==='multiple')" >
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
@@ -328,7 +333,7 @@
             </div>
 
           </div>
-          <div class="p-4" *ngIf="(item.fielType==='picture')" id="picture-choice-format">
+          <div class="p-4" *ngIf="(item.fielType==='picture')" >
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
@@ -383,16 +388,7 @@
         </div>
       </div>
     </div> -->
-          <!-- 
-      <div class="justify-content-center d-flex" id="submit-part">
-        <button type="button" class="btn btn-primary">Save</button> &nbsp; &nbsp; &nbsp;
-        <button type="button" class="btn btn-light">Next</button>
-      </div> -->
 
-
-
-
-          <!-- </div> -->
 
 
 
@@ -400,11 +396,12 @@
         </div>
       </form>
       <div class="text-center mt-4">
-        <button class="btn btn-primary" *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)">Pre</button> &nbsp; &nbsp;
-      <button class="btn btn-primary" type="submit"
-        (click)="submitResult(userForm.value, userForm.invalid)">submit</button> &nbsp; &nbsp; 
-      <button class="btn btn-primary" *ngIf="currentPageIndex!=(form.attributes.length -1)"
-        (click)="navigateToPage(1)">Next</button>
+        <button class="btn btn-light" *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)">Pre</button> &nbsp;
+        &nbsp;
+        <button class="btn btn-primary" type="submit"
+          (click)="submitResult(userForm.value, userForm.invalid)">submit</button> &nbsp; &nbsp;
+        <button class="btn btn-light" *ngIf="currentPageIndex!=(form.attributes.length -1)"
+          (click)="navigateToPage(1)">Next</button>
       </div>
 
       <div class="m-4 p-4">
@@ -424,11 +421,12 @@
 
 <div *ngIf="showTable" class="m-4">
   <table class="table" *ngFor=" let response of form.attributes; ">
+
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Questions</th>
-        <th> {{response.name}}</th>
+        <!-- <th> {{response.name}}</th> -->
         <th scope="col">Answer</th>
       </tr>
     </thead>
@@ -436,8 +434,11 @@
       <tr *ngFor="let item of response.field; let i = index;">
         <th scope="row">{{i+1}}</th>
         <td>{{item.label}}</td>
-        <td></td>
-        <td>{{item.value}}</td>
+        <td *ngIf="item.fielType=='email'"> {{item.value}}{{item.mailType}}</td>
+        <td *ngIf="item.fielType=='phone'"> {{item.phoneType}}{{item.value}} </td>
+        <td *ngIf="item.fielType=='website'">{{item.httpType}}{{item.value}}{{item.comType}}</td>
+        <td *ngIf="!((item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">{{item.value}}
+        </td>
       </tr>
 
     </tbody>

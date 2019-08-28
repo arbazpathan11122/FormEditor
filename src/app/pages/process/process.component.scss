@@ -1,0 +1,71 @@
+.uploadimage-dragndrop {
+    min-height: auto;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+    border: solid 1.2px #d1d1d1;
+    height: 180px;
+    }
+
+
+    .upload-image-box{
+        width: 100%;
+        overflow: hidden;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        padding: 3px;
+        background-size: cover
+        }
+
+
+
+        .maker-input{
+            display: flex;
+          }
+        .maker-input .name-input{
+            order: 2;
+            display: block;
+            margin-top: 0;
+            background: none;
+            padding: 2px 2px 1px;
+            line-height: 22px;
+            height: 30px;
+            border:none;
+            width: 100%;
+            box-sizing: border-box;
+            color:rgb(123, 111, 251);
+            font-size: 14px;
+        }
+        .maker-input .name-input:focus{
+            outline: none;
+        }
+        .user-input .name-input{
+            order: 2;
+            margin-top: 0;
+            border-width:0 0 1px;
+            background: none;
+            padding: 2px 2px 1px;
+            line-height: 26px;
+            height: 30px;
+            border-style:groove;
+            width: 100%;
+            color: #151948;
+        }
+        .user-input .name-input:focus{
+            outline: none;
+        }
+        .user-answer{
+            border-bottom:2px dashed #b8b8b8;
+            color:#b8b8b8;
+        }
+
+
+       .voiletBG{
+        background-color: #7b6ffb!important;    
+        
+        color: #ffffff;
+        }
+        .voiletColor{
+            // background-color: #7b6ffb!important;    
+            
+            color: #7b6ffb;
+            }

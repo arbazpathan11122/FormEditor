@@ -62,6 +62,16 @@ export class HomeComponent implements OnInit {
   comDropdownList = [];
 
   checkingExistingForm: any;
+
+
+
+  conditionRequired = false;
+  showConditionalQues: false;
+  conditionalQuesList = [];
+  conditionalAnsList = [];
+
+
+  showGenSetting = true;
   constructor() {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -81,6 +91,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.showNavbar();
     this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
@@ -154,7 +165,7 @@ export class HomeComponent implements OnInit {
       {
         id: 1,
         label: 'India',
-        pattern: 'india',
+        pattern: '+91',
 
       },
       {
@@ -365,7 +376,24 @@ export class HomeComponent implements OnInit {
     this.showProperties = true;
     this.selectedItem = item;
     // console.log(this.formValidations[this.selectedItem.fielType]);
+    this.checkConditionalQuest();
 
+    this.showGenSetting = false;
+  }
+
+
+
+  checkConditionalQuest() {
+    this.conditionalQuesList = [];
+    this.formCurrentPage.field.forEach(element => {
+      // tslint:disable-next-line: max-line-length
+      if ((element.fielType === 'yesNo') || (element.fielType === 'trueFalse') || (element.fielType === 'picture') || (element.fielType === 'multiple') || (element.fielType === 'dropdown')) {
+        this.conditionalQuesList.push(element);
+      }
+      console.log(this.conditionalQuesList);
+
+
+    });
   }
 
   // check object is not null or valid
@@ -420,7 +448,32 @@ export class HomeComponent implements OnInit {
     });
 
   }
+  removePage(i, mesg) {
+    swal({
+      title: 'Are you sure?',
+      text: 'Do you want to remove ' + mesg + ' Page?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#00B96F',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, remove!'
+    }).then((result) => {
+      if (result.value) {
 
+        // if (i > this.model.attributes.length) {
+        //   this.model.attributes.splice(i, 1);
+        //   delete this.formCurrentPage;
+        //   this.formCurrentPage = this.model.attributes[i - 1];
+        // } else {
+        //   this.formCurrentPage = [];
+        // }
+
+        this.deletePage();
+
+      }
+    });
+
+  }
   showNavbar() {
 
 
@@ -439,6 +492,38 @@ export class HomeComponent implements OnInit {
   submitbtn() {
     // this.formDataForView = JSON.parse(JSON.stringify(this.model));
     // console.log(this.formDataForView);
+
+
+    this.model.attributes.forEach(element => {
+
+      element.field.forEach(el => {
+
+        if (((el.fielType === 'email') && (el.emailList.length < 1))) {
+          el.emailList = this.emailDropdownList;
+        }
+        if (((el.fielType === 'phone') && (el.phoneList.length < 1))) {
+          el.phoneList = this.phoneDropdownList;
+        }
+
+        if (((el.fielType === 'website') && (el.httpList.length < 1))) {
+          el.httpList = this.httpDropdownList;
+        }
+        if (((el.fielType === 'website') && (el.comList.length < 1))) {
+          el.comList = this.comDropdownList;
+        }
+      });
+
+    });
+
+
+
+
+
+
+
+
+
+
 
     localStorage.setItem('form', JSON.stringify(this.model));
     localStorage.setItem('formFields', JSON.stringify(this.formCurrentPage));
@@ -485,7 +570,9 @@ export class HomeComponent implements OnInit {
 
 
 
-
+  editPageName(page) {
+    this.formCurrentPage = page;
+  }
 
 
 

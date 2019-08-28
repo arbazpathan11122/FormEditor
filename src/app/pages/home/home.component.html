@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                 </div>
-              
+
             </div>
         </div>-->
 
@@ -129,6 +129,14 @@
             </div>
         </div>
         <div class="col-6  mx-auto  working-part" (drop)="drop($event)" (dragover)="allowDrop($event)">
+
+
+
+            <div class="text-center p-3">
+                <h5>{{formCurrentPage.name}}</h5>
+            </div>
+
+
 
             <!-- form tabs -->
             <!-- <ul class="nav nav-pills navtab-bg nav-justified">
@@ -256,7 +264,7 @@
             </div> -->
 
             <!-- form tab end -->
-            <!-- 
+            <!--
             <div class="p-5">
                     <div class="user-input">
                         <input class="name-input" placeholder="Enter your address" aria-invalid="false">
@@ -309,15 +317,15 @@
                 class="dndDropArea" [ngClass]="{'empty':formCurrentPage.field.length == 0}"
                 [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
 
-                <div class="field active1
-                " *ngFor="let item of formCurrentPage.field;let i= index;" (dndStart)="onDragStart($event)"
+                <div class="field active
+                " *ngFor="let item of formCurrentPage?.field;let i= index;" (dndStart)="onDragStart($event)"
                     (dndCanceled)="onDragCanceled($event)" (dndMoved)="onDragged(item, formCurrentPage.field, 'move')"
                     [dndEffectAllowed]="'all'" [dndDraggable]="item">
                     <div class="row form-group" (click)=" currentValidation(item)" dndHandle>
                         <!-- <div class="col-md-1">
                             <i class="fa fa-ellipsis-v dndHandle"></i>
                         </div> -->
-                        <div class="col-md-10 ">
+                        <div class="col-md-10  ">
 
                             <div
                                 *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')">
@@ -330,8 +338,9 @@
                             <div
                                 *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input "
-                                        type="{{item.type}}" [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input " type="{{item.type}}" [(ngModel)]="item.label"
+                                        aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input class="name-input" placeholder="{{item.placeholder}}"
@@ -340,8 +349,8 @@
                             </div>
                             <div *ngIf="(item.fielType=='yesNo')|| item.fielType=='trueFalse'">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input disabled">
                                     <label class="checkbox-inline mr-4" *ngFor="let val of item.values">
@@ -353,8 +362,8 @@
 
                             <div *ngIf="(item.fielType=='text')|| (item.fielType=='number')">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input class="name-input" type="" [(ngModel)]="item.placeholder"
@@ -365,8 +374,8 @@
 
                             <div *ngIf="item.fielType=='file'">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="right-ico mr-5">
                                     <input type="file" id="real-file1" hidden="hidden" />
@@ -379,8 +388,8 @@
                             </div>
                             <div *ngIf="item.fielType=='date'">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <input style="width:75%" class="name-input" max="2050-12-31" disabled
@@ -389,8 +398,8 @@
                             </div>
                             <div *ngIf="item.fielType=='rating'">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <div class="row">
@@ -430,8 +439,8 @@
                             <div
                                 *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input pl-4">
                                     <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
@@ -466,8 +475,8 @@
 
                             <div *ngIf="item.fielType=='conditional'">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    Q - {{ i}} &nbsp;&nbsp; <span *ngIf="item.required" class="red">*</span> <input
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input ">
                                     <li *ngFor="let i of item.values; let valueIndex=index;">
@@ -516,19 +525,20 @@
         <div class="col-3 property-part">
             <div class="property-tab">
                 <ul class="nav nav-pills navtab-bg nav-justified">
-                    <li class="nav-item">
-                        <a href="#Properties" data-toggle="tab" aria-expanded="false" class="nav-link">
-                            Individual
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Settings" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                    <li class="nav-item" (click)="showGenSetting = true">
+                        <a [class]="(showGenSetting) ? 'nav-link active': 'nav-link'">
                             General
                         </a>
                     </li>
+                    <li class="nav-item" (click)="showGenSetting = false">
+                        <a [class]="(!showGenSetting) ? 'nav-link active': 'nav-link'">
+                            Individual
+                        </a>
+                    </li>
+
                 </ul>
                 <div class="tab-content mt-20">
-                    <div class="tab-pane" id="Properties">
+                    <div *ngIf="!showGenSetting">
                         <div *ngIf="isValidObject(selectedItem)">
                             <!-- <p class="text-center mt-2">{{selectedItem.uniqName}}</p> -->
                             <div class="title-with-ico mt-3 mb-4"><img src="assets/img/icons/{{selectedItem.icon}}"> &nbsp; {{selectedItem.uniqName}}</div>
@@ -735,11 +745,6 @@
                                 </div>
                             </div>
 
-                            <!-- <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList"
-                                [(ngModel)]="selectedItems" [settings]="dropdownSettings"
-                                (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-                            </ng-multiselect-dropdown> -->
-
                             <div class="col-md-12">
                                 <div class="nice-select box-nice-select wide mb-3" tabindex="0">
                                     <span class="current">Element Name</span>
@@ -755,58 +760,63 @@
 
 
 
-                        <div class="conditional-validation mt-3">
+                        <div *ngIf="conditionalQuesList.length>0" class="conditional-validation mt-3">
                             <div class="required-part mt-4 mb-4">
-                             <i class="fa fa-toggle-on red"></i>
-                              &nbsp; <label data-original-title="Tooltip on top" data-placement="top" data-toggle="tooltip" title="You Want to ">Make it a conditional question</label></div>
-                        
-                          <div class="row">
-                            <div class="col-12 pl-0">                        
-                                <div class="nice-select box-nice-select wide mb-1" tabindex="0">
-                                    <span class="current">Show If</span>
-                                    <ul class="list">
-                                        <li data-value="Show if" class="option">Show If</li>
-                                        <li data-value="Hide if" class="option">Hide If</li>
-                                    </ul>
+                                <i *ngIf="conditionRequired" (click)="conditionRequired = false"
+                                    class="fa fa-toggle-on red"></i>
+                                <i *ngIf="!conditionRequired" (click)="conditionRequired = true"
+                                    class="fa fa-toggle-off"></i> &nbsp;
+                                &nbsp; <label data-original-title="Tooltip on top" data-placement="top"
+                                    data-toggle="tooltip" title="You Want to ">Make it a conditional question</label>
+                            </div>
+
+                            <div class="row">
+                                <div *ngIf="conditionRequired" class="col-12 pl-0">
+                                    <div class="nice-select box-nice-select wide mb-1" tabindex="0">
+                                        <span class="current">Show If</span>
+                                        <ul class="list">
+                                            <li data-value="Show if" class="option">Show If</li>
+                                            <li data-value="Hide if" class="option">Hide If</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div *ngIf="conditionRequired" class="col-12 pl-0">
+                                    <label class="nice-lable">Question</label>
+                                    <div class="nice-select box-nice-select wide mb-1" tabindex="0">
+                                        <span class="current">Question</span>
+                                        <ul class="list">
+                                            <li *ngFor="let ques of conditionalQuesList; let indx = index;"
+                                                (click)="conditionalAnsList = ques" class="option">{{ques.label}}</li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div *ngIf="conditionRequired" class="col-12 pl-0">
+                                    <label class="nice-lable">Answer</label>
+                                    <div class="nice-select box-nice-select wide mb-1" tabindex="0">
+                                        <span class="current">Answer</span>
+                                        <ul class="list">
+                                            <li *ngFor="let ans of conditionalAnsList.values; let indx = index;"
+                                                class="option">{{ans.label}}</li>
+
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 pl-0">
-                                <label class="nice-lable">Question</label>            
-                                <div class="nice-select box-nice-select wide mb-1" tabindex="0">
-                                    <span class="current">Question</span>
-                                    <ul class="list">
-                                        <li data-value="1" class="option">This is MCQ</li>
-                                        <li data-value="2" class="option">This is MCQ</li>
-                                        <li data-value="2" class="option">This is MCQ</li>
-                                        <li data-value="2" class="option">This is MCQ</li>
-                                    </ul>
-                                </div>
+                            <div *ngIf="conditionalAnsList.length>0" class="text-center mt-3">
+                                <button class="btn btn-primary">submit</button>
                             </div>
-                            <div class="col-12 pl-0">
-                                <label class="nice-lable">Answer</label>            
-                                <div class="nice-select box-nice-select wide mb-1" tabindex="0">
-                                    <span class="current">Answer</span>
-                                    <ul class="list">
-                                        <li data-value="1" class="option">One</li>
-                                        <li data-value="2" class="option">Two</li>
-                                        <li data-value="2" class="option">Three</li>
-                                    </ul>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="text-center mt-3">
-                            <button class="btn btn-primary">submit</button>
-                          </div>
+                        </div>
+
+
+
+
+
                     </div>
 
 
+                    <div *ngIf="showGenSetting">
 
-
-
-                    </div>
-
-
-                    <div class="tab-pane  active show" id="Settings">
 
                         <label class="nice-lable">Font Style</label>
                         <div class="nice-select box-nice-select wide mb-3" tabindex="0">
@@ -844,60 +854,36 @@
                                 <i class="fa fa-check-square-o float-right" aria-hidden="true"></i>
                             </div> -->
 
-                            <hr class="mb-4 mb-4" style="border:1px dashed #cccccc">
+                            <!-- <hr style="border:1px dashed gray"> -->
                         </div>
 
-                        <div class="form-pages">
-                            <p class="mb-4">Form pages</p>
-                            <div class="mb-3 pages">
-                                <a href="#"> &nbsp; 1. &nbsp; Payment requisition</a>
-                                <div class="float-right pages-ico">
-	                                <a href="#">
-	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-	                                </a> &nbsp; &nbsp;
-	                                <a href="#">
-	                                    <i class="fa fa-trash-o"></i>
-	                                </a>
-	                            </div>
+                        <div class="form-pages mt-3">
+                            <!-- <p class="text-center mb-3">Form pages</p> -->
+
+                            <div class="maker-input">
+                                <label class="name-input">Form Name
+                                </label>
                             </div>
-                            <div class="mb-3 pages">
-                                <a href="#"> &nbsp; 2. &nbsp; Payment Order</a>
-                                <div class="float-right pages-ico">
-	                                <a href="#">
-	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-	                                </a> &nbsp; &nbsp;
-	                                <a href="#">
-	                                    <i class="fa fa-trash-o"></i>
-	                                </a>
-	                            </div>
+                            <div class="user-input">
+                                <input class="name-input" type="text" [(ngModel)]="model.name" placeholder="Purchase"
+                                    name="category">
+
                             </div>
-                            <div class="mb-3 pages">
-                                <a href="#"> &nbsp; 3. &nbsp; Payment reciept</a>
-                                <div class="float-right pages-ico">
-	                                <a href="#">
-	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-	                                </a> &nbsp; &nbsp;
-	                                <a href="#">
-	                                    <i class="fa fa-trash-o"></i>
-	                                </a>
-	                            </div>
-                            </div>
-                            <div class="mb-3 pages">
-                                <a href="#"> &nbsp; 4. &nbsp; Payment </a>
-                                <div class="float-right pages-ico">
-	                                <a href="">
-	                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-	                                </a> &nbsp; &nbsp;
-	                                <a href="">
-	                                    <i class="fa fa-trash-o"></i>
-	                                </a>
-	                            </div>
-                            </div>
-                            
+                            <p class="mb-2 mt-3" *ngFor=" let page of model.attributes; let pageNo = index">
+                                <a (click)="goToPage(pageNo)">{{pageNo}}. &nbsp; {{page.name}} </a>
+
+                                <i (click)="removePage(pageNo, page.name)" class="fa fa-trash mr-2 pull-right"></i>
+
+                                <i data-toggle="modal" data-target="#ProcessDetailsModel" (click)="editPageName(page)"
+                                    class="fa fa-pencil-square-o mr-4 pull-right"></i>
+                                &nbsp; &nbsp; &nbsp;
+                            </p>
+
                         </div>
 
-                        
-                        <!-- 
+
+
+                        <!--
                         <label class="nice-lable">Inbox</label>
 
                         <div class="row">
@@ -943,4 +929,36 @@
         </div>
     </div>
 
+</div>
+
+
+
+<div class="modal fade" id="ProcessDetailsModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class=" p-5">
+
+                <div class=" maker-input">
+                    <label class="name-input">Page Name: <span class="red">*</span>
+                    </label>
+                </div>
+                <div class="user-input">
+                    <input class="name-input" [(ngModel)]="formCurrentPage.name" placeholder="Purchase Requisition"
+                        type="text" name="Workflow">
+
+                </div>
+
+
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
+                <button type="button" class="btn voiletBG">Create</button>
+            </div>
+        </div>
+    </div>
 </div>
