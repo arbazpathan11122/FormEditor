@@ -56,3 +56,13 @@ body{
     color: #7130ff;
     font-size: 18px;
 }
+.entity-logo .logo-img{
+    height: 55px;
+    width: 55px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    float: left;
+}
+.entity-logo .entity-name{
+    font-weight: 500;
+}
