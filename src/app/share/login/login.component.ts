@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user = {
-    userName: 'Nyazkhan1996',
-    password: '12345678'
+    userName: '',
+    password: ''
   };
   constructor() {
 

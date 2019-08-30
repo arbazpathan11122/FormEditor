@@ -46,7 +46,7 @@ body{
 .menu-2 li{
     list-style-type: none;
     border-bottom:2px solid #7130ff;
-    padding: 23px 0px;
+    padding: 31px 0px;
 }
 .menu-2 li a{
     color: #7130ff;
@@ -65,4 +65,24 @@ body{
 }
 .entity-logo .entity-name{
     font-weight: 500;
+}
+
+.dropdown-menu {
+    border:1px solid transparent;
+    box-shadow: inset 0px 0px 3px 0px rgb(216, 210, 210);
+}
+.profile-part li{
+    list-style-type: none;
+    }
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
 }
