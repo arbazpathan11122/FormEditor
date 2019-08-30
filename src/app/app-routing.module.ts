@@ -5,6 +5,7 @@ import { LoginComponent } from './share/login/login.component';
 import { FormViewComponent } from './pages/form-view/form-view.component';
 import { DashbordComponent } from './pages/dashbord/dashbord.component';
 import { ProcessComponent } from './pages/process/process.component';
+import { PublishComponent } from './pages/publish/publish.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
     component: ProcessComponent,
   },
 
+  {
+    path: 'publish',
+    component: PublishComponent,
+  },
 
 ];
 

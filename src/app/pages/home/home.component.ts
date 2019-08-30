@@ -568,7 +568,11 @@ export class HomeComponent implements OnInit {
   }
 
 
+  navigateToPage(val) {
+    this.currentPageIndex = this.currentPageIndex + val;
+    this.formCurrentPage = this.model.attributes[this.currentPageIndex];
 
+  }
 
   editPageName(page) {
     this.formCurrentPage = page;

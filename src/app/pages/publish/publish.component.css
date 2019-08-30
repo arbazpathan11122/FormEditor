@@ -1,0 +1,60 @@
+.tastCard {
+    border: 3px solid #3bb4f2;
+    margin-top: 50px;
+}
+
+.tastCard .card-header{
+    width: 84%;
+    margin-left: 8%;
+    margin-top: -28px;
+    background-color: #3bb4f2;
+    border-radius: 10px;
+}
+
+.tastCard  .text-info{
+    font-size: 10px
+}
+.userList {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 8vh;
+}
+
+
+.process-part{
+    position: relative;
+    -overflow: hidden;
+    z-index: 999;
+    }
+    .process-part::after{
+    content: '';
+    position: absolute;
+    top: 25%;
+    height: 2px;
+    width: 100%;
+    background-color: #007bff;
+    z-index: -1;
+    }
+    .pro-button{
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      border: 2px solid white;
+      box-shadow: 0px 0px 0px 2px #007bff;
+      background: #ffffff;
+    }
+
+
+
+    .hide-show-btn{
+        position: fixed;
+        bottom: 30px;
+        right: 80px;
+        z-index: 999999;
+       }
+
+       .vl {
+        border-left: 3px solid green;
+        height: 28px;
+        margin-left:50%;
+      }
