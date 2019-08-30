@@ -1,5 +1,3 @@
-
-
 <div class="form-bg d-flex align-items-center">
     <div class="container">
         <div class="row">
@@ -7,13 +5,16 @@
                 <form class="form-horizontal" #logingForm="ngForm">
                     <div class="heading">No Code BPM <br></div>
                     <div class="form-group">
-                        <i class="fa fa-user"></i><input required [(ngModel)]="user.userName"   size="30" name="username"  class="form-control" placeholder="Username" id="exampleInputEmail1">
+                        <i class="fa fa-user"></i><input required [(ngModel)]="user.userName" size="30" name="username"
+                            class="form-control" placeholder="Username" id="exampleInputEmail1">
                     </div>
                     <div class="form-group">
-                        <i class="fa fa-lock"></i><input required [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Password">
+                        <i class="fa fa-lock"></i><input required [(ngModel)]="user.password" name="password"
+                            type="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <button type="submit" [disabled]="!logingForm.valid" routerLink="/home" class="btn btn-default">Login</button>
+                        <button type="submit" [disabled]="!logingForm.valid" routerLink="/home"
+                            class="btn btn-default">Login</button>
                         <span>Don't have an account? <a href="" class="create_account"> &nbsp; Sign up</a></span>
                     </div>
                 </form>

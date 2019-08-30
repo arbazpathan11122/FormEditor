@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { icons_and_fields } from '../../class/data';
 import swal from 'sweetalert2';
 import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
 import { field, value } from 'src/app/class/global.model';
 import { FormService } from 'src/app/service/form.service';
+import { Router } from '@angular/router';
 declare const $: any;
 @Component({
   selector: 'app-home',
@@ -34,6 +35,9 @@ export class HomeComponent implements OnInit {
       pages: []
     },
     theme: {
+      fontFamily: '',
+      qestColor: '',
+      ansColor: '',
       bgColor: 'f0f0f0',
       textColor: '555555',
       bannerImage: ''
@@ -69,10 +73,30 @@ export class HomeComponent implements OnInit {
   showConditionalQues: false;
   conditionalQuesList = [];
   conditionalAnsList = [];
-
+  currentFieldIndex: number;
 
   showGenSetting = true;
-  constructor() {
+
+
+  FontStyleArray = [
+    { name: 'Arial' },
+    { name: 'Helvetica' },
+    { name: 'Times New Roman' },
+    { name: 'Courier New' },
+    { name: 'Courier' },
+    { name: 'Verdana' },
+    { name: 'Georgia' },
+    { name: 'Palatino' },
+    { name: 'Garamond' },
+    { name: 'Bookman' },
+    { name: 'Comic Sans MS' },
+    { name: 'Trebuchet MS' },
+  ];
+
+
+
+
+  constructor(@Inject(Router) private router: Router) {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
 
@@ -343,18 +367,18 @@ export class HomeComponent implements OnInit {
     console.log(list);
 
 
+    let index = event.index;
     if (list && (event.dropEffect === 'copy' || event.dropEffect === 'move')) {
 
       if (event.dropEffect === 'copy') {
         event.data.name = event.data.type + '-' + new Date().getTime();
       }
-      let index = event.index;
       if (typeof index === 'undefined') {
         index = list.length;
       }
       list.splice(index, 0, event.data);
     }
-    this.currentValidation(event.data);
+    this.currentValidation(event.data, index);
   }
   dblclickMove(event: DndDropEvent, list: any, item: any) {
     console.log(event);
@@ -362,22 +386,20 @@ export class HomeComponent implements OnInit {
     console.log(item);
 
     list.splice(list.length, 0, JSON.parse(JSON.stringify(item)));
-    this.currentValidation(item);
+    console.log(list);
+
+    this.currentValidation(item, list.length - 1);
 
 
   }
-  currentValidation(item) {
+  currentValidation(item, i) {
     delete this.selectedItem;
-    console.log(item);
-
-    // item.name = item.type + '-' + new Date().getTime();
-    console.log(item);
+    console.log(i);
 
     this.showProperties = true;
     this.selectedItem = item;
-    // console.log(this.formValidations[this.selectedItem.fielType]);
     this.checkConditionalQuest();
-
+    this.currentFieldIndex = i;
     this.showGenSetting = false;
   }
 
@@ -528,12 +550,42 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('form', JSON.stringify(this.model));
     localStorage.setItem('formFields', JSON.stringify(this.formCurrentPage));
     this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
+    this.router.navigate(['/formView']);
 
   }
 
 
+  changeFontStyle(val) {
+    const nodes = document.getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+    for (let i = 0; i < nodes.length; i++) {
+      // const node = nodes[i].getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+      // for (let j = 0; j < node.length; j++) {
+      nodes[i].style.fontFamily = val;
+      //   console.log(node[j]);
+      //   // tslint:disable-next-line: no-debugger
+      //   debugger;
+      // }
+    }
+  }
+  changeQuestColor() {
+    const nodes = document.getElementsByClassName('maker-input') as HTMLCollectionOf<HTMLElement>;
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i].getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+      for (let j = 0; j < node.length; j++) {
+        node[j].style.color = this.model.theme.qestColor;
 
-
+      }
+    }
+  }
+  changeAnsColor() {
+    const nodes = document.getElementsByClassName('user-input') as HTMLCollectionOf<HTMLElement>;
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i].getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+      for (let j = 0; j < node.length; j++) {
+        node[j].style.color = this.model.theme.ansColor;
+      }
+    }
+  }
 
   addPages() {
     console.log(this.formCurrentPage);
