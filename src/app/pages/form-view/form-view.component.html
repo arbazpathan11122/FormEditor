@@ -54,11 +54,12 @@
             <div class="user-input">
               <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}"
                 min="{{item.validOption?.min}}" max="{{item.validOption?.max}}" required="{{item.required}}"
-                (change)="numberInputValidation(item)" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+          (keyup)="numberInputValidation(item)" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
                 aria-invalid="false" #number="ngModel">
-              <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
+              <div [hidden]="!numberError && (number.valid || number.pristine)" class="alert alert-danger">
                 {{item.errorText}}
               </div>
+              <!-- <div *ngIf="" class="alert alert-danger">please enter a value less then {{item.validOption?.max}}</div> -->
 
 
             </div>
@@ -390,7 +391,7 @@
       <div class="text-center mt-4">
         <button class="btn btn-light" *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)">Pre</button> &nbsp;
         &nbsp;
-        <button class="btn btn-primary" type="submit"
+        <button class="btn btn-primary" type="submit" 
           (click)="submitResult(userForm.value, userForm.invalid)">submit</button> &nbsp; &nbsp;
         <button class="btn btn-primary" routerLink="/home">Back</button>
         &nbsp; &nbsp;

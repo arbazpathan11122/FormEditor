@@ -631,7 +631,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-
+  validationSelect(val) {
+    this.selectedItem.validOption = val;
+    console.log(val);
+    console.log(this.selectedItem.validOption);
+    
+    
+  }
 
 
   updateForm() {

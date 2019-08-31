@@ -132,7 +132,7 @@
 
 
 
-            <div class="text-center p-3">
+            <div class="text-center text-primary p-3">
                 <h5>{{formCurrentPage.name}}</h5>
             </div>
 
@@ -402,11 +402,11 @@
                                 </div>
                             </div>
 
-                            
 
 
 
-                            
+
+
                             <div *ngIf="item.fielType=='rating'">
                                 <div class="mb-3 maker-input">
                                     <span *ngIf="item.required" class="red">*</span> <input class="name-input"
@@ -661,7 +661,7 @@
                                 </div>
 
 
-                                <!-- start multiple dropdown picture  -->
+                                <!-- end multiple dropdown picture  -->
 
                                 <!-- Start Date -->
 
@@ -722,7 +722,12 @@
                                 <div class="col-12"
                                     *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))">
                                     <div class="user-input mb-3">
-                                        <p> Custom Error Message</p>
+                                        <label>
+                                            <b>
+
+                                                Custom Error Message
+                                            </b>
+                                        </label>
 
                                         <input class="name-input" [(ngModel)]="selectedItem.errorText"
                                             aria-invalid="false">
@@ -844,12 +849,14 @@
                         <div class="theme-setting-color mt-4">
                             <div class="que-color mb-3">
                                 <p>Question color</p>
-                                <input type="color" class="input-lg" [(ngModel)]="model.theme.qestColor" (ngModelChange)="changeQuestColor()" >
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.qestColor"
+                                    (ngModelChange)="changeQuestColor()">
                             </div>
 
                             <div class="que-color mb-3">
                                 <p>Answer color</p>
-                                <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor" (ngModelChange)="changeAnsColor()" >
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
+                                    (ngModelChange)="changeAnsColor()">
                             </div>
 
                             <!-- <div class="que-color mb-2">
@@ -874,7 +881,7 @@
                             <!-- <p class="text-center mb-3">Form pages</p> -->
 
                             <div class="maker-input">
-                                <label class="name-input">Form Name
+                                <label class="name-input"><b>Form Name</b>
                                 </label>
                             </div>
                             <div class="user-input">
@@ -882,8 +889,14 @@
                                     name="category">
 
                             </div>
+                            <div class="maker-input mt-4">
+                                <label class="name-input"><b> Pages </b>
+                                </label>
+                            </div>
                             <p class="mb-2 mt-3" *ngFor=" let page of model.attributes; let pageNo = index">
-                                <a (click)="goToPage(pageNo)">{{pageNo}}. &nbsp; {{page.name}} </a>
+                                <a (click)="goToPage(pageNo)"
+                                    [class]="((pageNo == currentPageIndex)?'text-primary':'')">{{pageNo +1}} &nbsp;
+                                    {{page.name}} </a>
 
                                 <i (click)="removePage(pageNo, page.name)" class="fa fa-trash mr-2 pull-right"></i>
 

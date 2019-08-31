@@ -50,7 +50,7 @@ export class FormViewComponent implements OnInit {
   //   },
   // ];
 
-
+  numberError = false;
 
   form: any;
   formCurrentPage: any;
@@ -97,10 +97,19 @@ export class FormViewComponent implements OnInit {
   numberInputValidation(item) {
 
     if (item.value > item.validOption.max) {
-      item.value = item.validOption.max;
+      // item.value = item.validOption.max;
+      this.numberError = true;
+
     } else if (item.value < item.validOption.min) {
-      item.value = item.validOption.min;
+      // item.value = item.validOption.min;
+      this.numberError = true;
+
+    } else {
+      this.numberError = false;
+
     }
+    console.log(this.numberError);
+
     console.log(item.value);
     console.log(item);
 
@@ -120,7 +129,10 @@ export class FormViewComponent implements OnInit {
 
     console.log(this.form);
 
-
+    if (this.numberError) {
+      swal('Error', ' Please fill valid details', 'error');
+      return;
+    }
     if (bc) {
 
       swal('Error', ' Please Fill The Mandatory Fields (*)', 'error');
