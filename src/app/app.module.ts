@@ -15,6 +15,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DashbordComponent } from './pages/dashbord/dashbord.component';
 import { ProcessComponent } from './pages/process/process.component';
 import { PublishComponent } from './pages/publish/publish.component';
+import { SignUpComponent } from './share/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PublishComponent } from './pages/publish/publish.component';
     DashbordComponent,
     ProcessComponent,
     PublishComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
