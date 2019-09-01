@@ -383,10 +383,12 @@
                                         [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="right-ico mr-5">
-                                    <input type="file" id="real-file1" hidden="hidden" />
-                                    <button disabled type="button" class="btn btn-sm btn-primary btn-style mr-2"
-                                        id="custom-button">Upload</button>
-                                    <span id="custom-text">Select file</span>
+                                        <div  class="uploadimage-dragndrop" id="dragndropimage">
+                                                <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
+                              
+                                                <img class="upload-img mb-3" src="assets/img/icn-upload.png">
+                                                <p> Upload image</p>
+                                              </div>
                                 </div>
 
 

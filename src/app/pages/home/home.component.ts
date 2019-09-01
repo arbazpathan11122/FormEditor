@@ -382,7 +382,7 @@ export class HomeComponent implements OnInit {
   }
   dblclickMove(event: DndDropEvent, list: any, item: any) {
     console.log(event);
-    // item.name = item.type + '-' + new Date().getTime();
+    item.name = item.type + '-' + new Date().getTime();
     console.log(item);
 
     list.splice(list.length, 0, JSON.parse(JSON.stringify(item)));

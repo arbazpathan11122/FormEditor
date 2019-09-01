@@ -28,23 +28,36 @@
 <div class="form-bg d-flex align-items-center">
     <div class="container">
         <div class="row">
-            <div class="m-auto">
-                <form class="form-horizontal">
-                    <p class="hint-text text-center mb-4">Sign in Using</p>
-                    <div class="form-group social-btn clearfix">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="#" class="btn btn-social"><i class="fa fa-google"></i> &nbsp;
-                                   Google</a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class="btn btn-social"><i class="fa fa-facebook"></i> &nbsp;
-                                    Facebook</a>
-                            </div>
+            <div class="m-auto form-horizontal">
+                <p class="hint-text text-center mb-4">Sign in Using</p>
+                <div class="form-group social-btn clearfix">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-social"><i class="fa fa-google"></i> &nbsp;
+                                Google</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-social"><i class="fa fa-facebook"></i> &nbsp;
+                                Facebook</a>
                         </div>
                     </div>
-                    <div class="or-seperator mb-2"><b>or</b></div>
-                    <div class="form-group mb-4">
+                </div>
+                <div class="or-seperator mb-2"><b>or</b></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a [class]="((emailTabActive)?'text-primary btn btn-social':'btn btn-social')"
+                            (click)="changeTabe(true)"><i class="fa fa-email"></i>
+                            &nbsp;
+                            Email</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a [class]=" ((!emailTabActive)?'text-primary btn btn-social':'btn btn-social')"
+                            (click)="changeTabe(false)"><i class="fa fa-phone"></i>
+                            &nbsp;
+                            phone</a>
+                    </div>
+                </div>
+                <!-- <div class="form-group mb-4">
                         <input type="text" class="form-control" placeholder="Username" required="required">
                     </div>
                     <div class="form-group mb-4">
@@ -61,9 +74,59 @@
                     </div>
                     <input type="submit" routerLink="/process" class="btn btn-primary w-100 mb-4" value="Login">
                     <div class="form-footer">
-                        <a href="#">Forgot Your password?</a>
-                    </div>
-                </form>
+                        <span class="text-primary" routerLink="/signUp">Sign Up</span>
+                    </div> -->
+
+                <div *ngIf="emailTabActive">
+
+                    <form #emailLoginForm="ngForm">
+                        <div class="form-group mt-3 mb-4">
+                            <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                [(ngModel)]="user.email" name="email" placeholder="Email Id" [required]="true"
+                                #email="ngModel">
+                        </div>
+                        <div [hidden]="email.valid || email.pristine " class="alert alert-danger">
+                            Please Enter Valid Email Address
+                        </div>
+                        <div class="form-group mb-4">
+                            <input type="password" class="form-control" name="password" [(ngModel)]="user.password"
+                                placeholder="Password" required="required">
+                        </div>
+                        <button type="submit" [disabled]="emailLoginForm.invalid" routerLink="/process"
+                            class="btn btn-primary w-100 mb-4"> login</button>
+                        <div class="form-footer">
+                            <span class="text-primary" routerLink="/signUp">Sign Up</span>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div *ngIf="!emailTabActive">
+
+                    <form>
+
+                        <div class="form-group mt-3 mb-4">
+                            <input type="text" class="form-control" pattern="^[0-9]{10,10}$" [(ngModel)]="user.phone"
+                                name="phone" placeholder="Mobile No" [required]="true" #phone="ngModel">
+                            <button (click)="generateOTP()" style="margin-top: -37px" [disabled]=" !phone.valid "
+                                class="btn btn-primary pull-right">Send OTP</button>
+                        </div>
+
+                        <div [hidden]="phone.valid || phone.pristine " class="alert alert-danger">
+                            Please Enter Valid Phone Number </div>
+                        <div class="form-group mb-4" *ngIf="sendOtpClick">
+                            <input type="text" [ngModelOptions]="{standalone: true}" pattern="^[0-9]{4,4}$"
+                                class="form-control otp-input" [(ngModel)]="user.otp" name="otp" placeholder="Enter OTP"
+                                [required]="true" #otp="ngModel">
+                        </div>
+                        <input routerLink="/process" type="submit" class="btn btn-primary w-100 mb-4"
+                            [disabled]="user.otp !=otp" value="Login">
+                        <!-- <input type="submit" routerLink="/process" class="btn btn-primary w-100 mb-4" value="Login"> -->
+                        <div class="form-footer">
+                            <span class="text-primary" routerLink="/signUp">Sign Up</span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
