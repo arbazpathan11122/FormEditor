@@ -4,7 +4,7 @@ import swal from 'sweetalert2';
 import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
 import { field, value } from 'src/app/class/global.model';
 import { FormService } from 'src/app/service/form.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 declare const $: any;
 @Component({
   selector: 'app-home',
@@ -93,15 +93,19 @@ export class HomeComponent implements OnInit {
     { name: 'Trebuchet MS' },
   ];
 
+  formStorge = [];
 
 
-
-  constructor(@Inject(Router) private router: Router) {
+  constructor(@Inject(Router) private router: Router, private activatedRoute: ActivatedRoute,
+  ) {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
 
     }, 0);
-
+    // this.router.navigate(['/incidents'], { queryParams: { duration: this.filterByDate,
+    // cType: this.categoryType, pcId: pc, gType: gtype, Type: type, stId: stid, warranty: wrnty, rating: rating,
+    // start: this.dateRange.startDate, end: this.dateRange.endDate, } });
+    this.subscribeRouteChanges();
     if (localStorage.getItem('form')) {
 
       this.model = JSON.parse(localStorage.getItem('form'));
@@ -318,6 +322,12 @@ export class HomeComponent implements OnInit {
 
 
 
+  subscribeRouteChanges() {
+    // this.activatedRoute.queryParams
+    // .subscribe((e: Params) => {
+
+    // });
+  }
 
 
 
@@ -417,7 +427,11 @@ export class HomeComponent implements OnInit {
 
     });
   }
+  onChange(val) {
+    console.log(val);
+    console.log('its clcik');
 
+  }
   // check object is not null or valid
 
   isValidObject(obj) {
@@ -438,16 +452,17 @@ export class HomeComponent implements OnInit {
 
 
 
-  generateDynamicArray(no) {
+  generateDynamicArray(item, no) {
     console.log(no);
 
-    this.numberArray.splice(0, this.numberArray.length);
+    item.ratingArray.splice(0, item.ratingArray.length);
     for (let i = 0; i < no; i++) {
-      this.numberArray.push(i);
+      item.ratingArray.push(i);
       console.log(i, no);
 
     }
-    console.log(this.numberArray);
+    // item.ratingArray = item.ratingArray;
+    console.log(item.ratingArray);
 
   }
 
@@ -545,7 +560,15 @@ export class HomeComponent implements OnInit {
 
 
 
+    if (localStorage.getItem('formList')) {
+      this.formStorge = JSON.parse(localStorage.getItem('formList'));
+      this.formStorge.push(this.model);
 
+    } else {
+      this.formStorge.push(this.model);
+
+    }
+    localStorage.setItem('formList', JSON.stringify(this.formStorge));
 
     localStorage.setItem('form', JSON.stringify(this.model));
     localStorage.setItem('formFields', JSON.stringify(this.formCurrentPage));
@@ -635,8 +658,8 @@ export class HomeComponent implements OnInit {
     this.selectedItem.validOption = val;
     console.log(val);
     console.log(this.selectedItem.validOption);
-    
-    
+
+
   }
 
 

@@ -138,19 +138,19 @@
 
             <div class="row">
               <div class="col">
-                <div (click)="file.click()" class="uploadimage-dragndrop" id="dragndropimage">
-                  <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
-
+                <div (click)="uploadFileClick(item.name)" class="uploadimage-dragndrop">
+                  <input type="file" [required]="item.required" (change)="onSelectFile($event ,item )"
+                    id="{{item.name}}" hidden="hidden" />
                   <img class="upload-img mb-3" src="assets/img/icn-upload.png">
                   <p> Upload image</p>
-                  <p *ngIf="item.validOption">
+                  <p *ngIf="isValidObject(item.validOption)">
                     Please select file less then {{item.validOption.size}} {{item.validOption.value}}
                   </p>
                 </div>
               </div>
-              <div *ngIf="url" class="col">
+              <div *ngIf="item.uploadedFileByUser.url!=''" class="col">
                 <div class="upload-image-box">
-                  <img [src]="url">
+                  <img [src]="item.uploadedFileByUser.url">
                 </div>
               </div>
             </div>
@@ -219,9 +219,10 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="dates user-input">
-              <input  (click)="setDateValidation(item)" #datepicker style="width:50%" class="name-input date" type="text"
-                name="{{item.name}}" required="{{item.required}}" placeholder="{{item.placeholder}}" autocomplete="of"
-                id="{{item.name}}" [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
+              <input (click)="setDateValidation(item)" style="width:50%" class="name-input " type="date"
+                name="{{item.name}}" min="{{item.validOption?.min}}" max="{{item.validOption?.max}}"
+                required="{{item.required}}" placeholder="{{item.placeholder}}" autocomplete="of" id="{{item.name}}"
+                [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
               <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
@@ -232,7 +233,7 @@
               <input class="span2" size="16" type="text" value="12-02-2012">
               <span class="add-on"><i class="icon-th"></i></span>
             </div>-->
-          </div> 
+          </div>
 
 
 
@@ -281,9 +282,9 @@
             </div>
             <div class="user-input pl-4">
               <div class="row">
-                <div *ngFor="let itm of [].constructor(item.ratingLimit); let i = index">
+                <div *ngFor="let star of item.ratingArray;let i =index">
                   <div class="mb-2 rating-ico">
-                    <span [class]="item?.selestedValidation ">
+                    <span [ngClass]="item?.selestedValidation " (click)="ratingColor(item ,i)" id="{{item.name +i}}">
                       <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
                         {{i}}
                       </ng-container>
@@ -291,12 +292,46 @@
 
                   </div>
                 </div>
-                <div *ngIf="item.userComment.want" class="maker-input">
-                  <textarea [(ngModel)]="item.userComment.comment" cols="50" rows="5"
-                    placeholder="Enter your suggestion" [ngModelOptions]="{standalone: true}"></textarea>
+
+                <div class="col-md-12" *ngIf="item.userComment.want">
+                  <div class="form-group">
+                    <span class="red">*</span><label for="comment">Comment:</label>
+                    <textarea class="form-control" [(ngModel)]="item.userComment.comment"
+                      placeholder="Enter your suggestion" [ngModelOptions]="{standalone: true}" required rows="5"
+                      id="comment"></textarea>
+                  </div>
                 </div>
               </div>
             </div>
+
+
+            <!-- <div id="Rating-format">
+              <div class="mb-4 maker-input">
+                <input class="name-input" [(ngModel)] aria-invalid="false">
+              </div>
+              <div style="width: 50%" class="user-input">
+                <fieldset class="rating">
+                  <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"></label>
+
+
+                  <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"></label>
+
+                  <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
+
+                  <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"></label>
+
+                  <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"></label>
+
+                </fieldset>
+
+                <span style="opacity: 1" *ngFor="let star of item.ratingArray; let i=index"
+                  [ngClass]="item.selestedValidation">
+                  <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
+                    {{i}}
+                  </ng-container>&nbsp;&nbsp;
+                </span>
+              </div>
+            </div> -->
           </div>
 
           <div class="p-4" *ngIf="item.fielType==='dropdown'" id="dropdown-format">
@@ -438,7 +473,12 @@
         <td *ngIf="item.fielType=='email'"> {{item.value}}{{item.mailType}}</td>
         <td *ngIf="item.fielType=='phone'"> {{item.phoneType}}{{item.value}} </td>
         <td *ngIf="item.fielType=='website'">{{item.httpType}}{{item.value}}{{item.comType}}</td>
-        <td *ngIf="!((item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">{{item.value}}
+        <td *ngIf="item.fielType=='file'"> {{item.uploadedFileByUser.name}} </td>
+        <td *ngIf="item.fielType=='rating'"> {{item.RatingByUser}} </td>
+
+        <td
+          *ngIf="!((item.fielType=='rating')||(item.fielType=='file')||(item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">
+          {{item.value}}
         </td>
       </tr>
 

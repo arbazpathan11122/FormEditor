@@ -383,12 +383,12 @@
                                         [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="right-ico mr-5">
-                                        <div  class="uploadimage-dragndrop" id="dragndropimage">
-                                                <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
-                              
-                                                <img class="upload-img mb-3" src="assets/img/icn-upload.png">
-                                                <p> Upload image</p>
-                                              </div>
+                                    <div class="uploadimage-dragndrop" id="dragndropimage">
+                                        <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
+
+                                        <img class="upload-img mb-3" src="assets/img/icn-upload.png">
+                                        <p> Upload image</p>
+                                    </div>
                                 </div>
 
 
@@ -411,26 +411,27 @@
 
                             <div *ngIf="item.fielType=='rating'">
                                 <div class="mb-3 maker-input">
-                                    <span *ngIf="item.required" class="red">*</span> <input class="name-input"
-                                        [(ngModel)]="item.label" aria-invalid="false">
+                                    <span *ngIf="item.required" class="red">*</span> <input name="{{item.name}}"
+                                        class="name-input" [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="user-input">
                                     <div class="row">
                                         <div class="col-5">
                                             <div class="mb-2 rating-ico">
 
-                                                <span style="opacity: 1" *ngFor="let star of numberArray; let i=index"
+                                                <span style="opacity: 1"
+                                                    *ngFor="let star of item.ratingArray; let i=index"
                                                     [ngClass]="item.selestedValidation">
                                                     <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
-                                                        {{i}}
-                                                    </ng-container>
-                                                </span>&nbsp;
+                                                        {{i}} 
+                                                    </ng-container>&nbsp;&nbsp;
+                                                </span>
                                             </div>
 
 
                                         </div>
                                         <div class="col-5">
-                                            <select [(ngModel)]="item.selestedValidation" class="name-input">
+                                            <select [(ngModel)]="item.selestedValidation" name="{{item.name }}" class="name-input">
                                                 <option *ngFor="let c of item.formRating" [value]="c.value">
                                                     {{c.label}}</option>
 
@@ -439,8 +440,8 @@
                                         </div>
                                         <div class="col-2">
                                             <div class="user-input">
-                                                <input class="name-input" type="number" min="2" max=20
-                                                    (ngModelChange)="generateDynamicArray(item.ratingLimit)"
+                                                <input class="name-input" name="{{item.name }}" type="number" min="2"
+                                                    max=20 (change)="generateDynamicArray(item, item.ratingLimit)"
                                                     [(ngModel)]="item.ratingLimit" aria-invalid="false"
                                                     (keyup)="((item.ratingLimit >20)? item.ratingLimit = 20 : ((item.ratingLimit <2)? item.ratingLimit = 2 :item.ratingLimit  =item.ratingLimit))">
                                             </div>

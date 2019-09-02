@@ -59,9 +59,7 @@ export class FormViewComponent implements OnInit {
   showTable = false;
   DropDownSettings = {};
   constructor() {
-    $("#datepicker").datepicker();
 
-    // $("#form_datepicker_enddate").datetimepicker();
     this.form = JSON.parse(localStorage.getItem('form'));
     this.formCurrentPage = this.form.attributes[this.currentPageIndex];
     this.formFields = JSON.parse(localStorage.getItem('formFields'));
@@ -80,33 +78,6 @@ export class FormViewComponent implements OnInit {
       allowSearchFilter: true,
     };
 
-    this.form.attributes.forEach(element => {
-      console.log('its call 1');
-
-      element.field.forEach(el => {
-        console.log('its call2');
-        const id = '#' + el.name;
-        console.log(id);
-
-
-        // $(id).datepicker.minDate('10/03/2017');
-
-
-        if (el.fileType == 'date' && this.isValidObject(el.validOption)) {
-          console.log('its call3');
-
-          const min = ((el.validOption.max) ? el.validOption.max : '');
-          const max = ((el.validOption.max) ? el.validOption.max : '');
-          console.log('its call');
-
-          $('.date').datepicker({
-            format: 'dd / mm / yyyy ',
-            startDate: new Date(min),
-            endDate: new Date(max)
-          });
-        }
-      });
-    });
   }
   // check object is not null or valid
 
@@ -120,30 +91,86 @@ export class FormViewComponent implements OnInit {
     return false;
   }
   setDateValidation(val) {
-    // setTimeout(() => {
-    //   const min = ((val.validOption.max) ? val.validOption.max : '');
-    //   const max = ((val.validOption.max) ? val.validOption.max : '');
-    //   const id = '#' + val.name;
-    //   $(id).datepicker({
-    //     'format': 'dd / mm / yyyy ',
-    //     'startDate': new Date(min),
-    //     'endDate': new Date(max)
-    //   });
-    // }, 0);
+
   }
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
+  onSelectFile(event, val) {
+    console.log(event.target.files[0]);
+    console.log(val.validOption);
+    let uploadFileSize = event.target.files[0].size / 1024;
+    if (this.isValidObject(val.validOption)) {
+      if (val.validOption.value === 'Mb') {
+        uploadFileSize /= 1024;
+      }
+      if (val.validOption.value === 'Gb') {
+        uploadFileSize = uploadFileSize / 1024 / 1024;
+      }
+      if (uploadFileSize < val.validOption.size) {
+        if (event.target.files && event.target.files[0]) {
+          val.uploadedFileByUser.name = event.target.files[0].name;
+          const reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
+          reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      // tslint:disable-next-line: no-shadowed-variable
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        console.log(event);
+          // tslint:disable-next-line: no-shadowed-variable
+          reader.onload = (event) => { // called once readAsDataURL is completed
+            console.log(val);
 
-        this.url = (event.target as FileReader).result;
-      };
+            this.url = (event.target as FileReader).result;
+            val.uploadedFileByUser.url = this.url;
+          };
+        }
+      } else {
+        swal('Error', 'File Size Exceed Limit of ' + val.validOption.size + val.validOption.value, 'error');
+
+      }
+    } else {
+      if (event.target.files && event.target.files[0]) {
+        val.uploadedFileByUser.name = event.target.files[0].name;
+
+        const reader = new FileReader();
+
+        reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+        // tslint:disable-next-line: no-shadowed-variable
+        reader.onload = (event) => { // called once readAsDataURL is completed
+          console.log(event);
+
+          this.url = (event.target as FileReader).result;
+          val.uploadedFileByUser.url = this.url;
+        };
+      }
+
+
     }
+
+
+  }
+  uploadFileClick(id) {
+    document.getElementById(id).click();
+  }
+
+
+  ratingColor(item, i) {
+    item.RatingByUser = i;
+    for (let j = 0; j < item.ratingArray.length; j++) {
+      // document.getElementsByClassName(item + j);;
+      if (i >= j) {
+        if (item.selestedValidation == 'btn btn-light') {
+          document.getElementById(item.name + j).style.backgroundColor = '#fcf403';
+
+        } else {
+
+          document.getElementById(item.name + j).style.color = '#fcf403';
+        }
+      } else {
+        document.getElementById(item.name + j).style.color = 'black';
+
+      }
+      // console.log(nodes);
+      // nodes[j].style.color = 'yellow';
+    }
+
+
   }
   goToPage(index) {
     this.currentPageIndex = index;
@@ -191,9 +218,7 @@ export class FormViewComponent implements OnInit {
 
 
   submitResult(val, bc) {
-
-    console.log(this.form);
-
+    let errorCount = 0;
     if (this.numberError) {
       swal('Error', ' Please fill valid details', 'error');
       return;
@@ -203,8 +228,33 @@ export class FormViewComponent implements OnInit {
       swal('Error', ' Please Fill The Mandatory Fields (*)', 'error');
       return;
     }
+    this.form.attributes.forEach(element => {
+      element.field.forEach(el => {
 
-    this.showTable = true;
+        // tslint:disable-next-line: no-debugger
+        if (el.required) {
+          if ((el.fielType === 'rating') && (el.RatingByUser == '')) {
+            swal('Error', ' Please fill Rating', 'error');
+            errorCount++
+            return;
+
+          }
+
+          if ((el.fielType === 'file') && (el.uploadedFileByUser.url == '')) {
+            swal('Error', ' Please Upload File', 'error');
+            errorCount++
+
+            return;
+
+          }
+        }
+      });
+    });
+    if (errorCount == 0) {
+      this.showTable = true;
+
+    }
+
 
   }
 

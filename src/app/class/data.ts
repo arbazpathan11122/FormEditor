@@ -226,7 +226,10 @@ export const icons_and_fields = [
         tooltip: 'Ask for any type of file.',
         errorText: 'Custom Error Field',
         selestedValidation: '',
-
+        uploadedFileByUser: {
+            name: '',
+            url: '',
+        },
         userResponse: [],
         formValidations: [
             {
@@ -474,6 +477,8 @@ export const icons_and_fields = [
         errorText: 'Custom Error Field',
         selestedValidation: 'fa fa-star-o',
         ratingLimit: 5,
+        RatingByUser: '',
+        ratingArray: [1, 2, 3, 4, 5],
         userComment: {
             want: false,
             comment: '',
