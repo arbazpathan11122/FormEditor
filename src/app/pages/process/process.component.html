@@ -1,7 +1,7 @@
 <div class="navbar-2">
   <div class="row p-0 m-0">
-    <div class="col-1">
-      <ul class="menu-2 d-flex justify-content-end">
+    <div class="col-2">
+      <ul class="menu-2 d-flex ">
         <li>
           <a href="#"><i class="fa fa-home"></i> Home</a>
         </li>
@@ -17,7 +17,7 @@
           aria-label="Username" aria-describedby="basic-addon1">
       </div>
     </div>
-    <div class="col-3">
+    <!-- <div class="col-3">
       <div class="d-flex flex-row float-right bd-highlight">
         <div class="p-3 bd-highlight">
           <div class="notification d-flex justify-content-center">
@@ -31,13 +31,35 @@
           <div class="profile-subheading">Super-Admin</div>
         </div>
       </div>
-    </div>
+    </div> -->
 
+    <div class="col-2">
+      <div class="d-flex flex-row float-right">
+        <div class="profile-part">
+          <ul class="profile-wrapper">
+            <li>
+              <!-- user profile -->
+              <div class="profile">
+                <a href="#" onclick="myFunction()" data-toggle="dropdown" class="nav-link user-action"><img
+                    class="profile-img mr-2" src="assets/img/user.jpg" alt="Avatar"> Nyaz khan<br>
+                  <span style="font-size: 12px;">Super-admin </span></a>
+
+                <!-- more menu -->
+                <ul class="menu" id="pro-menu">
+                  <li><a href="#">Profile</a></li>
+                  <li><a routerLink="/home">Log out</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
 <div class="container-fluid">
-  <div class="row  mr-2 ml-2" style="margin-top: 100px;">
+  <div class="row  m-2">
     <div class="col-md-12">
       <h5 class="voiletColor mt-2 mb-4">Your WorkFlow</h5>
 

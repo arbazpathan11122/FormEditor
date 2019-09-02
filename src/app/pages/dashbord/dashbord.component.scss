@@ -89,10 +89,13 @@ body{
   background-color: white;
 }
 .menu li a {
-    text-decoration: none
+    text-decoration: none;
+    // background-color: #7130ff;
 }
 .menu li:hover > a{
-	text-decoration: none
+    text-decoration: none;
+    // background-color: #f8f8f8
+
 }
 
 /* hover profile show menu */
