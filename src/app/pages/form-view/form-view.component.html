@@ -54,11 +54,12 @@
             <div class="user-input">
               <input class="name-input" type="number" name="{{item.name}}" id="{{item.name}}"
                 min="{{item.validOption?.min}}" max="{{item.validOption?.max}}" required="{{item.required}}"
-                (change)="numberInputValidation(item)" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+                (keyup)="numberInputValidation(item)" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
                 aria-invalid="false" #number="ngModel">
-              <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
+              <div [hidden]="!numberError && (number.valid || number.pristine)" class="alert alert-danger">
                 {{item.errorText}}
               </div>
+              <!-- <div *ngIf="" class="alert alert-danger">please enter a value less then {{item.validOption?.max}}</div> -->
 
 
             </div>
@@ -134,25 +135,22 @@
             <div class="mb-3 maker-input">
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
-            <div class="right-ico mr-5">
-              <input type="file" id="real-file" hidden="hidden" />
-              <!-- (click)="document.getElementById('real-file').click()" -->
-              <button type="button" class="btn btn-sm btn-primary btn-style mr-2" id="custom-button">Upload</button>
-              <span id="custom-text">Select file</span>
-            </div>
+
             <div class="row">
               <div class="col">
-                <div class="uploadimage-dragndrop" id="dragndropimage">
-                  <input type="file" id="real-file" hidden="hidden" />
+                <div (click)="file.click()" class="uploadimage-dragndrop" id="dragndropimage">
+                  <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
 
-                  <img class="upload-img mb-3" src="assets/img/icn-upload.png"
-                    (click)="document.getElementById('real-file').click()">
+                  <img class="upload-img mb-3" src="assets/img/icn-upload.png">
                   <p> Upload image</p>
+                  <p *ngIf="item.validOption">
+                    Please select file less then {{item.validOption.size}} {{item.validOption.value}}
+                  </p>
                 </div>
               </div>
-              <div class="col">
+              <div *ngIf="url" class="col">
                 <div class="upload-image-box">
-                  <img src="assets/img/intro.png">
+                  <img [src]="url">
                 </div>
               </div>
             </div>
@@ -178,9 +176,9 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-xs-12 mb-2">
-                    <input class="name-input" name="{{item.name}}" id="{{item.name}}" required="{{item.required}}"
-                      placeholder="{{item.placeholder}}" [(ngModel)]="item.value" aria-invalid="false"
-                      #website="ngModel"> </div>
+                    <input class="name-input" [disabled]="item.comType =='' || item.httpType==''" name="{{item.name}}"
+                      id="{{item.name}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
+                      [(ngModel)]="item.value" aria-invalid="false" #website="ngModel"> </div>
                   <div class="col-md-3 col-xs-12 mb-2">
                     <div class="nice-select" tabindex="0">
                       <span class="current"> .com /.in</span>
@@ -193,6 +191,8 @@
                   </div>
                 </div>
               </div>
+              <span class="red" *ngIf="item.comType =='' || item.httpType==''">Please Select Http/https and .in/.com
+              </span>
 
               <div [hidden]="website.valid || website.pristine" class="alert alert-danger">
                 {{item.errorText}}
@@ -219,16 +219,23 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="dates user-input">
-              <input style="width:50%" class="name-input" type="text" name="{{item.name}}" required="{{item.required}}"
-                placeholder="{{item.placeholder}}" autocomplete="of" id="user1" min="{{item.validOption?.min}}"
-                max="{{item.validOption?.max}}" [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
+              <input  (click)="setDateValidation(item)" #datepicker style="width:50%" class="name-input date" type="text"
+                name="{{item.name}}" required="{{item.required}}" placeholder="{{item.placeholder}}" autocomplete="of"
+                id="{{item.name}}" [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
               <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
                 {{item.errorText}}
               </div>
             </div>
-          </div>
-         
-         
+
+
+            <!-- <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+              <input class="span2" size="16" type="text" value="12-02-2012">
+              <span class="add-on"><i class="icon-th"></i></span>
+            </div>-->
+          </div> 
+
+
+
 
           <div class="p-4" *ngIf="item.fielType==='yesNo'">
             <div class="mb-3 maker-input">

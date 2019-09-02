@@ -1,31 +1,31 @@
 // tslint:disable-next-line:variable-name
 export const icons_and_fields = [
-    {
-        id: 1,
-        uniqName: 'Header',
-        name: 'Header',
-        subName: 'Format',
-        icon: 'header.png',
-        fielType: 'header',
-        tooltip: 'The first thing your users will see.',
-        label: 'Enter Your Heading',
-        type: 'text',
-        handle: true
+    // {
+    //     id: 1,
+    //     uniqName: 'Header',
+    //     name: 'Header',
+    //     subName: 'Format',
+    //     icon: 'header.png',
+    //     fielType: 'header',
+    //     tooltip: 'The first thing your users will see.',
+    //     label: 'Enter Your Heading',
+    //     type: 'text',
+    //     handle: true
 
-    },
-    {
-        id: 17,
-        uniqName: 'Footer',
-        name: 'Footer',
-        subName: 'Format',
-        icon: 'footer.png',
-        fielType: 'footer',
-        tooltip: 'The last thing your users will see.',
-        type: 'text',
-        label: 'footer content',
-        handle: true
+    // },
+    // {
+    //     id: 17,
+    //     uniqName: 'Footer',
+    //     name: 'Footer',
+    //     subName: 'Format',
+    //     icon: 'footer.png',
+    //     fielType: 'footer',
+    //     tooltip: 'The last thing your users will see.',
+    //     type: 'text',
+    //     label: 'footer content',
+    //     handle: true
 
-    },
+    // },
 
     {
         id: 2,
