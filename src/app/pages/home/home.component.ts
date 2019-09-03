@@ -85,18 +85,66 @@ export class HomeComponent implements OnInit {
 
 
   FontStyleArray = [
-    { name: 'Arial' },
-    { name: 'Helvetica' },
-    { name: 'Times New Roman' },
-    { name: 'Courier New' },
-    { name: 'Courier' },
-    { name: 'Verdana' },
-    { name: 'Georgia' },
-    { name: 'Palatino' },
-    { name: 'Garamond' },
-    { name: 'Bookman' },
-    { name: 'Comic Sans MS' },
-    { name: 'Trebuchet MS' },
+    {
+      name: 'Arial'
+      ,
+      fontStyle: {fontFamily: 'Arial'}
+  },
+    {
+      name: 'Helvetica'
+      ,
+      fontStyle: {fontFamily: 'Helvetica'} 
+  },
+    {
+      name: 'Times New Roman'
+      ,
+      fontStyle: {fontFamily: 'Times New Roman'} 
+  },
+    {
+      name: 'Courier New'
+      ,
+      fontStyle: {fontFamily: 'Courier New'} 
+  },
+    {
+      name: 'Courier'
+      ,
+      fontStyle: {fontFamily: 'Courier'} 
+  },
+    {
+      name: 'Verdana'
+      ,
+      fontStyle: {fontFamily: 'Verdana'} 
+  },
+    {
+      name: 'Georgia'
+      ,
+      fontStyle: {fontFamily: 'Georgia'} 
+  },
+    {
+      name: 'Palatino'
+      ,
+      fontStyle: {fontFamily: 'Palatino'} 
+  },
+    {
+      name: 'Garamond'
+      ,
+      fontStyle: {fontFamily: 'Garamond'} 
+  },
+    {
+      name: 'Bookman'
+      ,
+      fontStyle: {fontFamily: 'Bookman'} 
+  },
+    {
+      name: 'Comic Sans MS'
+      ,
+      fontStyle: {fontFamily: 'Comic Sans MS'} 
+  },
+    {
+      name: 'Trebuchet MS'
+      ,
+      fontStyle: {fontFamily: 'Trebuchet MS'} 
+  },
   ];
 
   formStorge = [];

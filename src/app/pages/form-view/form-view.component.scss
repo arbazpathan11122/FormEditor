@@ -12,99 +12,108 @@
     }
     
     .process-part{
-    position: relative;
-    overflow: hidden;
-    z-index: 999;
-    }
-    .process-part::after{
-    content: '';
-    position: absolute;
-    top: 50%;
-    height: 1px;
-    width: 100%;
-    background-color: #ccc;
-    z-index: -1;
-    }
-    .pro-button{
-    padding: 5px 13px;;
-    border-radius: 50%;
-    } 
-    .uploadimage-dragndrop {
-    min-height: auto;
-    padding: 20px 20px 20px 20px;
-    text-align: center;
-    border: dashed 2px #cccccc; 
-    }
-    .upload-img {
-    position: relative;
-    top: 12%;
-    width: 51px;
-    height: 33px;
-    background-size: cover;
-    }
-    .upload-image-box{
-    width: 100%;
-    overflow: hidden;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    padding: 3px;
-    background-size: cover
-    }
-    .upload-image-box img{
-    height: 125px;
-    width: 100%;
-    overflow: hidden;
-    background-size: cover;
-    }
-    
-    
-    .custom-check {
+        position: relative;
+        overflow: hidden;
+        z-index: 999;
+        }
+        .process-part::after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        height: 1px;
+        width: 100%;
+        background-color: #ccc;
+        z-index: -1;
+        }
+        .pro-button{
+        padding: 5px 13px;;
+        border-radius: 50%;
+        }   
+        
+        
+.uploadimage-dragndrop {
+min-height: auto;
+padding: 20px 20px 20px 20px;
+text-align: center;
+border: dashed 2px #cccccc; 
+}
+.upload-img {
+position: relative;
+top: 12%;
+width: 51px;
+height: 33px;
+background-size: cover;
+}
+.upload-image-box{
+width: 100%;
+overflow: hidden;
+border: 1px solid #cccccc;
+border-radius: 5px;
+padding: 3px;
+background-size: cover
+}
+.upload-image-box img{
+height: 125px;
+width: 100%;
+overflow: hidden;
+background-size: cover;
+}
+
+
+.custom-check {
     position: relative;
     padding-left: 35px;
-    
+
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    }
-    /* Hide the browser's default checkbox */
-    .custom-check input {
+  }
+  
+  /* Hide the browser's default checkbox */
+  .custom-check input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
-    }
-    /* Create a custom checkbox */
-    .checkmark {
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
     position: absolute;
     top: 0;
     left: 0;
     height: 21px;
     width: 21px;
     background-color: #eee;
-    }
-    /* On mouse-over, add a grey background color */
-    .custom-check:hover input ~ .checkmark {
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .custom-check:hover input ~ .checkmark {
     background-color: #ccc;
-    }
-    /* When the checkbox is checked, add a blue background */
-    .custom-check input:checked ~ .checkmark {
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .custom-check input:checked ~ .checkmark {
     background-color: #2196F3;
-    }
-    /* Create the checkmark/indicator (hidden when not checked) */
-    .checkmark:after {
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
     content: "";
     position: absolute;
     display: none;
-    }
-    /* Show the checkmark when checked */
-    .custom-check input:checked ~ .checkmark:after {
+  }
+  
+  /* Show the checkmark when checked */
+  .custom-check input:checked ~ .checkmark:after {
     display: block;
-    }
-    /* Style thecustom-check checkmark/indicator */
-    .custom-check .checkmark:after {
+  }
+  
+  /* Style thecustom-check checkmark/indicator */
+  .custom-check .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -114,4 +123,68 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    }
+  }
+
+
+
+  .Custom-Radio-Buttons {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .Custom-Radio-Buttons input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 21px;
+    width: 21px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .Custom-Radio-Buttons:hover input ~ .checkmark-dot {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .Custom-Radio-Buttons input:checked ~ .checkmark-dot {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark-dot:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .Custom-Radio-Buttons input:checked ~ .checkmark-dot:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .Custom-Radio-Buttons .checkmark-dot:after {
+       top: 7px;
+      left: 7px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }

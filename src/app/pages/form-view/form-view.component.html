@@ -83,7 +83,7 @@
                     <span class="current">Select Validation </span>
                     <ul class="list">
                       <li (click)="item.mailType = mail.pattern" *ngFor="let mail of item?.emailList; let i = index"
-                        class="option selected focus">
+                        class="option focus">
                         {{mail.pattern}}
                       </li>
                     </ul>
@@ -111,7 +111,7 @@
                     <span class="current">Select Validation </span>
                     <ul class="list">
                       <li (click)="item.phoneType = mail.pattern" *ngFor="let mail of item?.phoneList; let i = index"
-                        class="option selected focus">
+                        class="option focus">
                         {{mail.pattern}}
                       </li>
                     </ul>
@@ -169,7 +169,7 @@
                       <span class="current">Select http Or https</span>
                       <ul class="list">
                         <li (click)="item.httpType = mail.label" *ngFor="let mail of item?.httpList; let i = index"
-                          class="option selected focus">
+                          class="option focus">
                           {{mail.label}}
                         </li>
                       </ul>
@@ -184,7 +184,7 @@
                       <span class="current"> .com /.in</span>
                       <ul class="list">
                         <li (click)="item.comType = mail.label" *ngFor="let mail of item?.comList; let i = index"
-                          class="option selected focus">{{mail.label}}
+                          class="option focus">{{mail.label}}
                         </li>
                       </ul>
                     </div>
@@ -243,11 +243,17 @@
               <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input form-check-inline" *ngFor="let opt of item.values">
-              <div class=" custom-radio custom-control-inline">
+              <!-- <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
                   [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel"> &nbsp;
                 {{opt.label}}
-              </div>
+              </div> -->
+              <label class="Custom-Radio-Buttons">
+                  <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
+                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel">
+                {{opt.label}} &nbsp; &nbsp; &nbsp;
+                  <span class="checkmark-dot"></span>
+                </label>
 
               <div [hidden]="yesNo.valid || yesNo.pristine" class="alert alert-danger">
                 {{item.errorText}}
@@ -260,11 +266,17 @@
               <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input inline-form-group" *ngFor="let opt of item.values">
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
-                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #trueFalse="ngModel">
-                {{opt.label}}
-              </div>
+              <!-- <div class="custom-control Custom-Radio-Buttons custom-control-inline"> -->
+                <!-- <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
+                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #trueFalse="ngModel"> -->
+               
+                <label class="Custom-Radio-Buttons">
+                    {{opt.label}}
+                    <input type="radio" name="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
+                    [ngModelOptions]="{standalone: true}" required="{{item.required}}" #trueFalse="ngModel">
+                    <span class="checkmark-dot"></span>
+                  </label>
+              <!-- </div> -->
 
               <div [hidden]="trueFalse.valid || trueFalse.pristine" class="alert alert-danger">
                 {{item.errorText}}
