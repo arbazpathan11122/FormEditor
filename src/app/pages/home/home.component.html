@@ -1,5 +1,5 @@
 <!-- showNav -->
-<nav *ngIf="showNav" class="navbar fixed-top navbar-expand-lg navbar-light p-3">
+<!-- <nav *ngIf="showNav" class="navbar fixed-top navbar-expand-lg navbar-light p-3">
     <div class="row ">
         <div class="col-4">
             <button aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
@@ -8,41 +8,7 @@
             <a class="navbar-brand" href="#">
                 <i class="fa fa-home"></i> Home</a>
         </div>
-        <!-- <div class="col-8">
-            <div class="row ">
-                <div class="col-4">
-                    <div class="nice-select box-nice-select wide" tabindex="0">
-                        <span class="current"> Folder Name</span>
-                        <ul class="list">
-                            <li class="option" data-value="2">Another option</li>
-                            <li class="option" data-value="3">A disabled option</li>
-                            <li class="option" data-value="4">Potato</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="nice-select box-nice-select wide" tabindex="0">
-                        <span class="current">Form Name</span>
-                        <ul class="list">
-                            <li class="option" data-value="2">Another option</li>
-                            <li class="option" data-value="3">A disabled option</li>
-                            <li class="option" data-value="4">Potato</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="nice-select box-nice-select wide" tabindex="0">
-                        <span class="current"> Page Name</span>
-                        <ul class="list">
-                            <li class="option" data-value="2">Another option</li>
-                            <li class="option" data-value="3">A disabled option</li>
-                            <li class="option" data-value="4">Potato</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>-->
+        
 
         <div class="col-4 pl-6 pr-6">
             <div class="process-part row">
@@ -64,12 +30,92 @@
             </div>
         </div>
 
-        <!-- <div class="col-4">
-            <a>
-            </a>
-        </div> -->
     </div>
-</nav>
+</nav> -->
+
+<div class="navbar fixed-top">
+    <div class="row p-0 m-0">
+
+        <!-- <div class="col-2">
+                <div class="d-flex flex-row bd-highlight entity-logo">
+                    <div class="p-3 bd-highlight"><img alt="" class="logo-img" src="assets/img/user.jpg" width="42">
+                    </div>
+                    <div class="pt-3 bd-highlight">
+                        <p class="entity-name">Compony name</p>
+                    </div>
+                </div>
+        </div> -->
+
+
+        <div class="col-1">
+            <ul class="menu-2 d-flex justify-content-end">
+                <li>
+                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-3">
+
+        </div>
+
+        <div class="col-4">
+            <div class="process-part row">
+                <div class="col-4">
+                    <div class="bd-highlight btn-primary  pro-button mx-auto">
+                    </div>
+                    <div class="text-center mt-1">Form</div>
+                </div>
+                <div class="col-4">
+                    <div class="bd-highlight   pro-button mx-auto">
+                    </div>
+                    <div class="text-center mt-1">Process</div>
+                </div>
+                <div class="col-4">
+                    <div class="bd-highlight pro-button mx-auto">
+                    </div>
+                    <div class="text-center mt-1">Publish</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-1">
+
+        </div>
+        <div class="col-1">
+            <div class="notification d-flex justify-content-end">
+                <i class="fa fa-bell"></i>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="d-flex flex-row float-right">
+                <div class="profile-part">
+                    <ul class="profile-wrapper">
+                        <li>
+                            <!-- user profile -->
+                            <div class="profile">
+                                <a href="#" onclick="myFunction()" data-toggle="dropdown"
+                                    class="nav-link user-action"><img class="profile-img mr-2" src="assets/img/user.jpg"
+                                        alt="Avatar"> Nyaz Khan<br>
+                                    <span style="font-size: 12px;">Super-admin </span></a>
+
+                                <!-- more menu -->
+                                <ul class="menu" id="pro-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">Log out</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
 <!-- show hide button -->
 <!-- <div class="hide-show-btn">
 
@@ -383,12 +429,12 @@
                                         [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <div class="right-ico mr-5">
-                                        <div  class="uploadimage-dragndrop" id="dragndropimage">
-                                                <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
-                              
-                                                <img class="upload-img mb-3" src="assets/img/icn-upload.png">
-                                                <p> Upload image</p>
-                                              </div>
+                                    <div class="uploadimage-dragndrop" id="dragndropimage">
+                                        <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
+
+                                        <img class="upload-img mb-3" src="assets/img/icn-upload.png">
+                                        <p> Upload image</p>
+                                    </div>
                                 </div>
 
 
@@ -560,10 +606,14 @@
 
                             <div *ngIf="!((selectedItem.uniqName =='Statement')||(selectedItem.uniqName =='Footer')||(selectedItem.uniqName =='Header'))"
                                 class="required-part mt-4 mb-4">
-                                <i *ngIf="selectedItem.required" (click)="selectedItem.required=false"
+                                <!-- <i *ngIf="selectedItem.required" (click)="selectedItem.required=false"
                                     class="fa fa-toggle-on red"></i>
                                 <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
-                                    class="fa fa-toggle-off"></i> &nbsp;
+                                    class="fa fa-toggle-off"></i> &nbsp; -->
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="toogle-slide round"></span>
+                                </label> &nbsp;
 
                                 <label data-toggle="tooltip" data-placement="top" title="You Want to "
                                     data-original-title="Tooltip on top">Mandatory Or Not?</label>
@@ -580,10 +630,14 @@
 
                             <div class="required-part mt-4 mb-4" *ngIf="selectedItem.fielType=='rating'">
 
-                                <i *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false"
+                                <!-- <i *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false"
                                     class="fa fa-toggle-on red"></i>
                                 <i *ngIf="!selectedItem.userComment.want" (click)="selectedItem.userComment.want=true"
-                                    class="fa fa-toggle-off"></i> &nbsp;
+                                    class="fa fa-toggle-off"></i> &nbsp; -->
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="toogle-slide round"></span>
+                                </label> &nbsp;
 
                                 <label> Comment is Required On Reating</label>
 
@@ -724,7 +778,7 @@
                                 <div class="col-12"
                                     *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))">
                                     <div class="user-input mb-3">
-                                        <label>
+                                        <label class="mb-3">
                                             <b>
 
                                                 Custom Error Message
@@ -782,10 +836,14 @@
 
                         <div *ngIf="conditionalQuesList.length>0" class="conditional-validation mt-3">
                             <div class="required-part mt-4 mb-4">
-                                <i *ngIf="conditionRequired" (click)="conditionRequired = false"
+                                <!-- <i *ngIf="conditionRequired" (click)="conditionRequired = false"
                                     class="fa fa-toggle-on red"></i>
                                 <i *ngIf="!conditionRequired" (click)="conditionRequired = true"
-                                    class="fa fa-toggle-off"></i> &nbsp;
+                                    class="fa fa-toggle-off"></i> &nbsp; -->
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="toogle-slide round"></span>
+                                </label> &nbsp;
                                 &nbsp; <label data-original-title="Tooltip on top" data-placement="top"
                                     data-toggle="tooltip" title="You Want to ">Make it a conditional question</label>
                             </div>
@@ -842,8 +900,8 @@
                         <div class="nice-select box-nice-select wide mb-3" tabindex="0">
                             <span class="current">Select Font Style</span>
                             <ul class="list">
-                                <li *ngFor="let font of FontStyleArray" (click)="changeFontStyle(font.name)"
-                                    class="option">{{font.name}}</li>
+                                <li *ngFor="let font of FontStyleArray" [ngStyle]="font.fontStyle"
+                                    (click)="changeFontStyle(font.name)" class="option">{{font.name}}</li>
 
                             </ul>
                         </div>
@@ -857,8 +915,9 @@
 
                             <div class="que-color mb-3">
                                 <p>Answer color</p>
-                                <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
-                                    (ngModelChange)="changeAnsColor()">
+                                <!-- <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
+                                    (ngModelChange)="changeAnsColor()" value="#ff0000"> -->
+                                    <input type="color" name="favcolor" value="#ff0000" [(ngModel)]="model.theme.ansColor">
                             </div>
 
                             <!-- <div class="que-color mb-2">
@@ -882,7 +941,7 @@
                         <div class="form-pages mt-3">
                             <!-- <p class="text-center mb-3">Form pages</p> -->
 
-                            <div class="maker-input">
+                            <div class="maker-input mb-2">
                                 <label class="name-input"><b>Form Name</b>
                                 </label>
                             </div>
