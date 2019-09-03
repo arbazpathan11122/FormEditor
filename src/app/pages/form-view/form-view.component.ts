@@ -65,7 +65,6 @@ export class FormViewComponent implements OnInit {
     this.formFields = JSON.parse(localStorage.getItem('formFields'));
     console.log(this.formCurrentPage);
 
-
   }
   ngOnInit() {
     this.DropDownSettings = {
@@ -150,6 +149,58 @@ export class FormViewComponent implements OnInit {
   }
 
 
+
+  checkedState(item, val) {
+    console.log('click');
+   
+    if (this.isValidObject(item.validOption)) {
+
+      if (item.validOption.value === 'max') {
+        $(('.' + item.name)).on('change', function () {
+          if ($(('.' + item.name + ':checked')).length > item.validOption.limit) {
+            this.checked = false;
+            return;
+          }
+        });
+      } else {
+        if (item.validOption.value === 'both') {
+          $(('.' + item.name)).on('change', function () {
+            if ($(('.' + item.name + ':checked')).length === item.validOption.limit + 1) {
+              this.checked = false;
+
+              return;
+
+            }
+          });
+        }
+      }
+
+    }
+    // setTimeout(() => {
+
+    // $(('.' + item.name)).on('change', function () {
+    item.userResponse.checked = ($(('.' + item.name + ':checked')).length);
+    // $(('.' + item.name + ':checked')).length : 0;
+    console.log($(('.' + item.name + ':checked')));
+
+    console.log(item.userResponse);
+    // });
+    // }, 100);
+
+
+    // item.userResponse = [];
+    // item.values.forEach(element => {
+    //   if (element.value === true) {
+    //     item.userResponse.push(element);
+    //   }
+    // });
+
+  }
+
+  checkAns() {
+
+  }
+
   ratingColor(item, i) {
     item.RatingByUser = i;
     for (let j = 0; j < item.ratingArray.length; j++) {
@@ -218,6 +269,10 @@ export class FormViewComponent implements OnInit {
 
 
   submitResult(val, bc) {
+    console.log(this.form.attributes);
+
+    console.log(val);
+
     let errorCount = 0;
     if (this.numberError) {
       swal('Error', ' Please fill valid details', 'error');
@@ -235,14 +290,14 @@ export class FormViewComponent implements OnInit {
         if (el.required) {
           if ((el.fielType === 'rating') && (el.RatingByUser == '')) {
             swal('Error', ' Please fill Rating', 'error');
-            errorCount++
+            errorCount++;
             return;
 
           }
 
           if ((el.fielType === 'file') && (el.uploadedFileByUser.url == '')) {
             swal('Error', ' Please Upload File', 'error');
-            errorCount++
+            errorCount++;
 
             return;
 

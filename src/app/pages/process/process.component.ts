@@ -23,7 +23,7 @@ export class ProcessComponent implements OnInit {
     localStorage.setItem('FormDetails', JSON.stringify(this.FormDetails));
 
     $('#ProcessDetailsModel').modal('hide');
-    // this.router.navigate(['/home'], { queryParams: { NewProcess: this.FormDetails.formName } });
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home'], { queryParams: { formId: JSON.stringify(this.FormDetails) } });
+    // this.router.navigate(['/home']);
   }
 }

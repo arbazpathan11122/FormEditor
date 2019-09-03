@@ -264,15 +264,17 @@ export const icons_and_fields = [
         values: [
             {
                 label: 'Enter Your Option Here',
-                value: 'option-2'
+                value: false
             },
             {
                 label: 'Enter Your Option Here',
-                value: 'option-2'
+                value: false
             }
         ],
         selestedValidation: '',
-        userResponse: [],
+        userResponse: {
+            checked: 0
+        },
         formValidations: [
 
             {
@@ -282,12 +284,12 @@ export const icons_and_fields = [
             },
             {
                 label: 'Select exectly',
-                value: 'max',
+                value: 'both',
                 limit: 1
             },
             {
                 label: 'Select atmost',
-                value: 'both',
+                value: 'max',
                 limit: 1
             }
 
@@ -308,13 +310,16 @@ export const icons_and_fields = [
         values: [
             {
                 label: 'Enter Your Option Here',
-                value: 'option-1',
+                value: false,
                 img: '',
+                name: '',
             },
             {
                 label: 'Enter Your Option Here',
-                value: 'option-2',
+                value: false,
                 img: '',
+                name: '',
+
             }
         ],
         selestedValidation: '',
@@ -328,12 +333,12 @@ export const icons_and_fields = [
             },
             {
                 label: 'Select exectly',
-                value: 'max',
+                value: 'both',
                 limit: 1
             },
             {
                 label: 'Select atmost',
-                value: 'both',
+                value: 'max',
                 limit: 1
             }
         ],

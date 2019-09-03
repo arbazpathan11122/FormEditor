@@ -15,7 +15,13 @@ export class HomeComponent implements OnInit {
   iconField: any = icons_and_fields;
   value: value = {
     label: '',
-    value: ''
+    value: false
+  };
+  pictureChoiceValue = {
+    label: '',
+    value: false,
+    img: '',
+    name: '',
   };
   formDataForView: any;
   showBtn = false;
@@ -96,7 +102,7 @@ export class HomeComponent implements OnInit {
   formStorge = [];
 
 
-  constructor(@Inject(Router) private router: Router, private activatedRoute: ActivatedRoute,
+  constructor(@Inject(Router) private router: Router, @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute,
   ) {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
@@ -105,11 +111,11 @@ export class HomeComponent implements OnInit {
     // this.router.navigate(['/incidents'], { queryParams: { duration: this.filterByDate,
     // cType: this.categoryType, pcId: pc, gType: gtype, Type: type, stId: stid, warranty: wrnty, rating: rating,
     // start: this.dateRange.startDate, end: this.dateRange.endDate, } });
-    this.subscribeRouteChanges();
     if (localStorage.getItem('form')) {
 
       this.model = JSON.parse(localStorage.getItem('form'));
     }
+    this.subscribeRouteChanges();
 
 
     this.formCurrentPage = this.model.attributes[this.currentPageIndex];
@@ -323,10 +329,12 @@ export class HomeComponent implements OnInit {
 
 
   subscribeRouteChanges() {
-    // this.activatedRoute.queryParams
-    // .subscribe((e: Params) => {
+    this.activatedRoute.queryParams
+      .subscribe((e: Params) => {
+        console.log(e);
 
-    // });
+      });
+
   }
 
 
@@ -446,11 +454,40 @@ export class HomeComponent implements OnInit {
 
   addValue(values) {
     values.push(this.value);
-    this.value = { label: '', value: '' };
+    this.value = { label: '', value: false };
+  }
+  addPicture(values) {
+    values.push(this.pictureChoiceValue);
+    this.pictureChoiceValue = {
+      label: '',
+      value: false,
+      img: '',
+      name: '',
+    };
   }
 
+  onSelectFile(event, val) {
+    if (event.target.files && event.target.files[0]) {
+      val.name = event.target.files[0].name;
+
+      const reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      // tslint:disable-next-line: no-shadowed-variable
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        console.log(event);
 
 
+        val.img = (event.target as FileReader).result;
+      };
+    }
+
+
+  }
+  uploadFileClick(id) {
+    document.getElementById(id).click();
+  }
 
   generateDynamicArray(item, no) {
     console.log(no);

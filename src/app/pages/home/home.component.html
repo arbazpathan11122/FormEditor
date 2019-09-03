@@ -423,7 +423,7 @@
                                                     *ngFor="let star of item.ratingArray; let i=index"
                                                     [ngClass]="item.selestedValidation">
                                                     <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
-                                                        {{i}} 
+                                                        {{i}}
                                                     </ng-container>&nbsp;&nbsp;
                                                 </span>
                                             </div>
@@ -431,7 +431,8 @@
 
                                         </div>
                                         <div class="col-5">
-                                            <select [(ngModel)]="item.selestedValidation" name="{{item.name }}" class="name-input">
+                                            <select [(ngModel)]="item.selestedValidation" name="{{item.name }}"
+                                                class="name-input">
                                                 <option *ngFor="let c of item.formRating" [value]="c.value">
                                                     {{c.label}}</option>
 
@@ -457,21 +458,26 @@
                                         [(ngModel)]="item.label" aria-invalid="false">
                                 </div>
                                 <ol class="user-input pl-4">
-                                    <li class="add-dropdown " *ngFor="let i of item.values; let valueIndex=index;">
+                                    <li class="add-dropdown " *ngFor="let val of item.values; let valueIndex=index;">
 
 
 
                                         <input style="width: 50%" class="name-input mb-4"
-                                            name="i.uniqName{{valueIndex}}" [(ngModel)]="i.label" aria-invalid="false">
+                                            name="val.uniqName{{valueIndex}}" [(ngModel)]="val.label"
+                                            aria-invalid="false">
 
                                         <ng-container *ngIf="item.fielType=='picture'">
 
                                             <div class="right-ico mr-5">
-                                                <input type="file" #fileUpload hidden="hidden" />
-                                                <button type="button" (click)="fileUpload.click()"
+                                                <input type="file" accept="image/*"
+                                                    (change)="onSelectFile($event ,val )"
+                                                    id="{{item.name }}{{valueIndex}}" hidden="hidden" />
+                                                <button type="button" (click)="uploadFileClick(item.name + valueIndex)"
                                                     class="btn btn-sm btn-primary btn-style mr-2"
                                                     id="custom-button">Upload</button>
-                                                <span id="custom-text">Select file</span>
+                                                <span id="custom-text" *ngIf="val.name ==''">Select file</span>
+                                                <span id="custom-text" *ngIf="val.name !==''">{{val.name }}</span>
+
                                             </div>
 
                                         </ng-container>
@@ -480,10 +486,18 @@
                                             aria-hidden="true"></i>
                                     </li>
                                 </ol>
+                                <ng-container *ngIf="item.fielType=='picture'">
 
-                                <button class="btn btn-primary btn-style" (click)="addValue( item.values)"> add
-                                    Option</button>
 
+                                    <button class="btn btn-primary btn-style" (click)="addPicture( item.values)"> add
+                                        Option</button>
+                                </ng-container>
+                                <ng-container *ngIf="item.fielType =='multiple'">
+
+                                    <button class="btn btn-primary btn-style" (click)="addValue( item.values)"> add
+                                        Option</button>
+
+                                </ng-container>
                             </div>
 
 

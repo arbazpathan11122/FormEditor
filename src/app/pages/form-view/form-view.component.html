@@ -352,17 +352,33 @@
 
               <div class="row">
                 <div class="col-12" *ngFor="let val of item.values">
-                  <div class="image-box" *ngIf="(item.fielType==='picture')">
-                    <img src="assets/img/intro.png" class="img-thumbnail">
-                  </div>
-                  <p class=" mt-2 ">
 
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value="">
+                  <p class=" mt-2 " (click)="checkedState(item , val)">
+
+                    <label class="custom-check">
+                      <input class="{{item.name}}" name="{{val.label}}" [(ngModel)]="val.value" type="checkbox">
                       {{val.label}}
-                    </label></p>
+                      <span class="checkmark"></span>
+                    </label>
+                  </p>
+
                 </div>
 
+                <ng-container *ngIf="isValidObject(item.validOption)">
+                  <p *ngIf="((item.validOption.value =='min') && (item.userResponse.checked<item.validOption.limit))"
+                    class="red">
+                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                  </p>
+
+                  <p *ngIf="((item.validOption.value =='max') && (item.userResponse.checked<item.validOption.limit))"
+                    class="red">
+                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                  </p>
+                  <p *ngIf="((item.validOption.value =='both') && (item.userResponse.checked !==item.validOption.limit))"
+                    class="red">
+                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                  </p>
+                </ng-container>
               </div>
             </div>
 
@@ -378,14 +394,32 @@
                   <div class="image-box">
                     <img src="assets/img/intro.png" class="img-thumbnail">
                   </div>
-                  <p class=" text-center mt-2 ">
+                  <p class=" text-center mt-2 " (click)="checkedState(item , val)">
+                    {{val.label}}
+                    <br>
+                    <label class="custom-check">
+                      <input class="{{item.name}}" name="{{val.label}}" [(ngModel)]="val.value" type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </p>
 
-                    <label class="form-check-label"> {{val.label}}
-                      <br>
-                      <input class="form-check-input" type="checkbox" value="">
-                    </label></p>
                 </div>
 
+                <ng-container *ngIf="isValidObject(item.validOption)">
+                    <p *ngIf="((item.validOption.value =='min') && (item.userResponse.checked<item.validOption.limit))"
+                      class="red">
+                      please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                    </p>
+  
+                    <p *ngIf="((item.validOption.value =='max') && (item.userResponse.checked<item.validOption.limit))"
+                      class="red">
+                      please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                    </p>
+                    <p *ngIf="((item.validOption.value =='both') && (item.userResponse.checked !==item.validOption.limit))"
+                      class="red">
+                      please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                    </p>
+                  </ng-container>
               </div>
             </div>
 
@@ -474,7 +508,7 @@
         <td *ngIf="item.fielType=='phone'"> {{item.phoneType}}{{item.value}} </td>
         <td *ngIf="item.fielType=='website'">{{item.httpType}}{{item.value}}{{item.comType}}</td>
         <td *ngIf="item.fielType=='file'"> {{item.uploadedFileByUser.name}} </td>
-        <td *ngIf="item.fielType=='rating'"> {{item.RatingByUser}} </td>
+        <td *ngIf="item.fielType=='rating'"> {{item.RatingByUser}} / {{item.ratingLimit}} </td>
 
         <td
           *ngIf="!((item.fielType=='rating')||(item.fielType=='file')||(item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">
