@@ -219,7 +219,7 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="dates user-input">
-              <input (click)="setDateValidation(item)" #datepicker style="width:50%" class="name-input date" type="text"
+              <input (click)="setDateValidation(item)"  style="width:50%" class="name-input " type="date"
                 name="{{item.name}}" required="{{item.required}}" placeholder="{{item.placeholder}}" autocomplete="of"
                 id="{{item.name}}" [(ngModel)]="item.value" aria-invalid="false" #date="ngModel">
               <div [hidden]="date.valid || date.pristine" class="alert alert-danger">

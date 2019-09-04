@@ -33,33 +33,33 @@
     </div>
 </nav> -->
 
-<div class="navbar fixed-top">
-    <div class="row p-0 m-0">
 
-        <!-- <div class="col-2">
-                <div class="d-flex flex-row bd-highlight entity-logo">
-                    <div class="p-3 bd-highlight"><img alt="" class="logo-img" src="assets/img/user.jpg" width="42">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav left-menu mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link lh-49" href="#"><i class="fa fa-home"></i>&nbsp; Home <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <div class="input-group p-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                     </div>
-                    <div class="pt-3 bd-highlight">
-                        <p class="entity-name">Compony name</p>
-                    </div>
+                    <input style="border:none" type="text" class="form-control"
+                        placeholder="Search any workflow by category or name from here" aria-label="Username"
+                        aria-describedby="basic-addon1">
                 </div>
-        </div> -->
+            </li>
+        </ul>
 
-
-        <div class="col-1">
-            <ul class="menu-2 d-flex justify-content-end">
-                <li>
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-3">
-
-        </div>
-
-        <div class="col-4">
+        <div class="navbar-nav abs-center-x">
             <div class="process-part row">
                 <div class="col-4">
                     <div class="bd-highlight btn-primary  pro-button mx-auto">
@@ -79,41 +79,29 @@
             </div>
         </div>
 
-        <div class="col-1">
+        <ul class="right-menu navbar-nav">
 
-        </div>
-        <div class="col-1">
-            <div class="notification d-flex justify-content-end">
-                <i class="fa fa-bell"></i>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="d-flex flex-row float-right">
-                <div class="profile-part">
-                    <ul class="profile-wrapper">
-                        <li>
-                            <!-- user profile -->
-                            <div class="profile">
-                                <a href="#" onclick="myFunction()" data-toggle="dropdown"
-                                    class="nav-link user-action"><img class="profile-img mr-2" src="assets/img/user.jpg"
-                                        alt="Avatar"> Nyaz Khan<br>
-                                    <span style="font-size: 12px;">Super-admin </span></a>
-
-                                <!-- more menu -->
-                                <ul class="menu" id="pro-menu">
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="#">Log out</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+            <li class="nav-item">
+                <a class="nav-link lh-49" href="#"><i style="font-size: 18px;" class="fa fa-bell"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><img class="profile-img mr-2"
+                        src="http://localhost:4200/assets/img/user.jpg" alt="Avatar">
+                    <div class="right-menu float-right">
+                        <span>Abhinav</span>
+                        <br>
+                        <span style="font-size: 14px">Super-admin</span>
+                    </div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Log out</a>
                 </div>
-            </div>
-        </div>
-
-
+            </li>
+        </ul>
     </div>
-</div>
+</nav>
 
 
 <!-- show hide button -->
@@ -915,9 +903,9 @@
 
                             <div class="que-color mb-3">
                                 <p>Answer color</p>
-                                <!-- <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
-                                    (ngModelChange)="changeAnsColor()" value="#ff0000"> -->
-                                    <input type="color" name="favcolor" value="#ff0000" [(ngModel)]="model.theme.ansColor">
+                                <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
+                                    (ngModelChange)="changeAnsColor()" value="#ff0000">
+
                             </div>
 
                             <!-- <div class="que-color mb-2">
