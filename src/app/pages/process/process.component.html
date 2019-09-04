@@ -1,65 +1,56 @@
-<div class="navbar-2">
-  <div class="row p-0 m-0">
-    <div class="col-2">
-      <ul class="menu-2 d-flex ">
-        <li>
-          <a routerLink="/process"><i class="fa fa-home"></i> Home</a>
-        </li>
-      </ul>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="col-8">
-      <div class="input-group p-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-        </div>
-        <input type="text" class="form-control" placeholder="Search any workflow by category or name from here"
-          aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-    </div>
-    <!-- <div class="col-3">
-      <div class="d-flex flex-row float-right bd-highlight">
-        <div class="p-3 bd-highlight">
-          <div class="notification d-flex justify-content-center">
-            <i class="fa fa-bell"></i>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav left-menu mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link lh-49" routerLink="/process"><i class="fa fa-home"></i>&nbsp; Home <span
+            class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-4">
+          <div class="input-group" style="width: 500px">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+            </div>
+            <input style="border:none" type="text" class="form-control"
+              placeholder="Search any workflow by category or name from here" aria-label="Username"
+              aria-describedby="basic-addon1">
           </div>
-        </div>
-        <div class="p-3 bd-highlight"><img alt="" class="profile-img" src="assets/img/user.jpg" width="42">
-        </div>
-        <div class="pt-3 bd-highlight">
-          <div class="profile-heading">Abhinav</div>
-          <div class="profile-subheading">Super-Admin</div>
-        </div>
-      </div>
-    </div> -->
+        </a>
+      </li>
+    </ul>
 
-    <div class="col-2">
-      <div class="d-flex flex-row float-right">
-        <div class="profile-part">
-          <ul class="profile-wrapper">
-            <li>
-              <!-- user profile -->
-              <div class="profile">
-                <a href="#" onclick="myFunction()" data-toggle="dropdown" class="nav-link user-action"><img
-                    class="profile-img mr-2" src="assets/img/user.jpg" alt="Avatar"> Nyaz khan<br>
-                  <span style="font-size: 12px;">Super-admin </span></a>
 
-                <!-- more menu -->
-                <ul class="menu" id="pro-menu">
-                  <li><a href="#">Profile</a></li>
-                  <li><a routerLink="/login">Log out</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+    <ul class="right-menu navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link lh-49"><i style="font-size: 18px;" class="fa fa-bell"></i></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false"><img class="profile-img mr-2" src="http://localhost:4200/assets/img/user.jpg"
+            alt="Avatar">
+          <div class="right-menu float-right">
+            <span>Abhinav</span>
+            <br>
+            <span style="font-size: 14px">Super-admin</span>
+          </div>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">Profile</a>
+          <a class="dropdown-item" routerLink="/login">Log out</a>
         </div>
-      </div>
-    </div>
-
+      </li>
+    </ul>
   </div>
-</div>
+</nav>
 <div class="container-fluid">
-  <div class="row  m-2">
+  <div class="row mr-2 ml-2" style="margin-top: 100px">
     <div class="col-md-12">
       <h5 class="voiletColor mt-2 mb-4">Your WorkFlow</h5>
 
@@ -79,7 +70,7 @@
               {{form.name}} </h4><br>
             <h5> {{form.category}}</h5><br>
 
-            <p> {{form.description.substring(0, 10)}}</p>
+            <p class="text-description"> {{form.description.substring(0, 10)}}</p>
 
           </div>
         </div>

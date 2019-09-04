@@ -15,27 +15,7 @@
   word-wrap: break-word;
 }
 
- .process-part{
-  position: relative;
-  -overflow: hidden;
-  margin-top: 20px;  }
-  .process-part::after{
-  content: '';
-  position: absolute;
-  top: 25%;
-  height: 2px;
-  width: 100%;
-  background-color: #007bff;
-  z-index: -1;
-  }
-  .pro-button{
-    border-radius: 50%;
-    height: 25px;
-    width: 25px;
-    border: 2px solid white;
-    box-shadow: 0px 0px 0px 2px #007bff;
-    background: #ffffff;
-  }
+
 // .right-ico{
 //     right: 0;
 //     position: absolute;
