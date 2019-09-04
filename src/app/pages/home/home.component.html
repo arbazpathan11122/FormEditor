@@ -50,7 +50,7 @@
         <div class="col-1">
             <ul class="menu-2 d-flex justify-content-end">
                 <li>
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                    <a routerLink="/process"><i class="fa fa-home"></i> Home</a>
                 </li>
             </ul>
         </div>
@@ -101,8 +101,8 @@
 
                                 <!-- more menu -->
                                 <ul class="menu" id="pro-menu">
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="#">Log out</a></li>
+                                    <li><a>Profile</a></li>
+                                    <li><a routerLink="/login">Log out</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -430,7 +430,7 @@
                                 </div>
                                 <div class="right-ico mr-5">
                                     <div class="uploadimage-dragndrop" id="dragndropimage">
-                                        <input type="file" (change)="onSelectFile($event)" #file hidden="hidden" />
+                                        <input type="file" #file hidden="hidden" />
 
                                         <img class="upload-img mb-3" src="assets/img/icn-upload.png">
                                         <p> Upload image</p>
@@ -469,7 +469,7 @@
                                                     *ngFor="let star of item.ratingArray; let i=index"
                                                     [ngClass]="item.selestedValidation">
                                                     <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
-                                                        {{i}}
+                                                        {{i+1}}
                                                     </ng-container>&nbsp;&nbsp;
                                                 </span>
                                             </div>
@@ -522,7 +522,8 @@
                                                     class="btn btn-sm btn-primary btn-style mr-2"
                                                     id="custom-button">Upload</button>
                                                 <span id="custom-text" *ngIf="val.name ==''">Select file</span>
-                                                <span id="custom-text" *ngIf="val.name !==''">{{val.name }}</span>
+                                                <span id="custom-text"
+                                                    *ngIf="val.name !==''">{{val.name.substring(0, 10) }}..</span>
 
                                             </div>
 
@@ -538,7 +539,7 @@
                                     <button class="btn btn-primary btn-style" (click)="addPicture( item.values)"> add
                                         Option</button>
                                 </ng-container>
-                                <ng-container *ngIf="item.fielType =='multiple'">
+                                <ng-container *ngIf="item.fielType !=='picture'">
 
                                     <button class="btn btn-primary btn-style" (click)="addValue( item.values)"> add
                                         Option</button>
@@ -586,7 +587,8 @@
                 <br>
                 <a *ngIf="currentPageIndex!=0" (click)="navigateToPage(-1)" class="float-left">Prev</a>
                 <button class="btn btn-primary mr-3">Save</button>
-                <button class="btn btn-success mr-3" (click)="submitbtn()">Submit</button>
+                <button class="btn btn-success mr-3" data-toggle="modal" data-target="#assingModel"
+                    (click)="submitbtn()">Submit</button>
                 <button class="btn btn-custom" (click)="addPages()">
                     <i class="fa fa-plus"></i> &nbsp; Add Page</button>
                 <a *ngIf="currentPageIndex!=(model.attributes.length -1)" (click)="navigateToPage(1)"
@@ -621,14 +623,14 @@
 
                             <div *ngIf="!((selectedItem.uniqName =='Statement')||(selectedItem.uniqName =='Footer')||(selectedItem.uniqName =='Header'))"
                                 class="required-part mt-4 mb-4">
-                                <!-- <i *ngIf="selectedItem.required" (click)="selectedItem.required=false"
+                                <i *ngIf="selectedItem.required" (click)="selectedItem.required=false"
                                     class="fa fa-toggle-on red"></i>
                                 <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
-                                    class="fa fa-toggle-off"></i> &nbsp; -->
-                                <label class="switch">
+                                    class="fa fa-toggle-off"></i> &nbsp;
+                                <!-- <label class="switch">
                                     <input type="checkbox">
                                     <span class="toogle-slide round"></span>
-                                </label> &nbsp;
+                                </label> &nbsp; -->
 
                                 <label data-toggle="tooltip" data-placement="top" title="You Want to "
                                     data-original-title="Tooltip on top">Mandatory Or Not?</label>
@@ -645,14 +647,14 @@
 
                             <div class="required-part mt-4 mb-4" *ngIf="selectedItem.fielType=='rating'">
 
-                                <!-- <i *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false"
+                                <i *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false"
                                     class="fa fa-toggle-on red"></i>
                                 <i *ngIf="!selectedItem.userComment.want" (click)="selectedItem.userComment.want=true"
-                                    class="fa fa-toggle-off"></i> &nbsp; -->
-                                <label class="switch">
+                                    class="fa fa-toggle-off"></i> &nbsp;
+                                <!-- <label class="switch">
                                     <input type="checkbox">
                                     <span class="toogle-slide round"></span>
-                                </label> &nbsp;
+                                </label> &nbsp; -->
 
                                 <label> Comment is Required On Reating</label>
 
@@ -851,14 +853,14 @@
 
                         <div *ngIf="conditionalQuesList.length>0" class="conditional-validation mt-3">
                             <div class="required-part mt-4 mb-4">
-                                <!-- <i *ngIf="conditionRequired" (click)="conditionRequired = false"
+                                <i *ngIf="conditionRequired" (click)="conditionRequired = false"
                                     class="fa fa-toggle-on red"></i>
                                 <i *ngIf="!conditionRequired" (click)="conditionRequired = true"
-                                    class="fa fa-toggle-off"></i> &nbsp; -->
-                                <label class="switch">
+                                    class="fa fa-toggle-off"></i> &nbsp;
+                                <!-- <label class="switch">
                                     <input type="checkbox">
                                     <span class="toogle-slide round"></span>
-                                </label> &nbsp;
+                                </label> &nbsp; -->
                                 &nbsp; <label data-original-title="Tooltip on top" data-placement="top"
                                     data-toggle="tooltip" title="You Want to ">Make it a conditional question</label>
                             </div>
@@ -932,7 +934,7 @@
                                 <p>Answer color</p>
                                 <!-- <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
                                     (ngModelChange)="changeAnsColor()" value="#ff0000"> -->
-                                    <input type="color" name="favcolor" value="#ff0000" [(ngModel)]="model.theme.ansColor">
+                                <input type="color" name="favcolor" value="#ff0000" [(ngModel)]="model.theme.ansColor">
                             </div>
 
                             <!-- <div class="que-color mb-2">
@@ -976,7 +978,7 @@
 
                                 <i (click)="removePage(pageNo, page.name)" class="fa fa-trash mr-2 pull-right"></i>
 
-                                <i data-toggle="modal" data-target="#ProcessDetailsModel" (click)="editPageName(page)"
+                                <i data-toggle="modal" data-target="#editPageNameModel" (click)="editPageName(page)"
                                     class="fa fa-pencil-square-o mr-4 pull-right"></i>
                                 &nbsp; &nbsp; &nbsp;
                             </p>
@@ -1035,7 +1037,7 @@
 
 
 
-<div class="modal fade" id="ProcessDetailsModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="editPageNameModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -1060,6 +1062,86 @@
             <div class="modal-footer">
                 <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
                 <button type="button" class="btn voiletBG">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="assingModel" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class=" pt-5 pr-5 pl-5 pb-1">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <a [class]="((selfAssing)?'text-primary btn btn-social':'btn btn-social')"
+                            (click)="selfAssing = true"><i class="fa fa-email"></i>
+                            &nbsp;
+                            Assing To User</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a [class]=" ((!selfAssing)?'text-primary btn btn-social':'btn btn-social')"
+                            (click)="selfAssing = false">
+                            <!-- <i class="fa fa-phone"></i> -->
+                            &nbsp;
+                            Self Assing</a>
+                    </div>
+                </div>
+
+                <div *ngIf="selfAssing">
+
+                    <form #assingForm="ngForm">
+                        <div class="form-group mt-3 mb-4">
+                            <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                [(ngModel)]="assingToUser.email" name="email" placeholder="Email Id" [required]="true"
+                                #email="ngModel">
+                        </div>
+                        <div [hidden]="email.valid || email.pristine " class="alert alert-danger">
+                            Please Enter Valid Email Address
+                        </div>
+                        <div class="form-group mt-3 mb-4">
+                            <input type="text" class="form-control" pattern="^[0-9]{10,10}$"
+                                [(ngModel)]="assingToUser.phone" name="phone" placeholder="Mobile No" [required]="true"
+                                #phone="ngModel">
+
+                        </div>
+                        <div [hidden]="phone.valid || phone.pristine " class="alert alert-danger">
+                            Please Enter Valid Phone No
+                        </div>
+
+                    </form>
+
+                    <span class="m-auto p-auto">
+                        <a class="link">
+                            https://form-ab97d.firebaseapp.com/formView
+                        </a>
+                    </span>
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn voiletBG" data-dismiss="modal"
+                            [disabled]="assingForm.invalid">Assing To
+                            User</button>
+                    </div>
+                </div>
+
+
+                <div *ngIf="!selfAssing">
+                    <span class="m-auto p-auto">
+                        <a class="link">
+                            https://form-ab97d.firebaseapp.com/formView
+                        </a>
+                    </span>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn voiletBG" (click)="goToForm()"> Self
+                            Assing</button> </div>
+                </div>
             </div>
         </div>
     </div>

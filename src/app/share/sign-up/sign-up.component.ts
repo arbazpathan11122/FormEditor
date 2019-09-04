@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,15 +28,29 @@ export class SignUpComponent implements OnInit {
   generateOTP() {
     this.sendOtpClick = true;
     this.otp = Math.floor(1000 + Math.random() * 9000);
-    alert('your OTP is  ' + this.otp);
+    swal('your OTP is  ' + this.otp);
+
   }
 
   submitSingUpForm() {
+    swal({
+      position: 'top-end',
+      type: 'success',
+      title: 'Sing Up Successfuly',
+      showConfirmButton: false,
+      timer: 1000
+    });
     this.showPasswdTab = true;
   }
 
 
   submitPassword() {
-
+    swal({
+      position: 'top-end',
+      type: 'success',
+      title: 'Password Create  Successfuly',
+      showConfirmButton: false,
+      timer: 700
+    });
   }
 }

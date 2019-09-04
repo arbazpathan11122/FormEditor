@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import swal from 'sweetalert2';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 declare const $: any;
 @Component({
   selector: 'app-form-view',
@@ -55,15 +56,12 @@ export class FormViewComponent implements OnInit {
   form: any;
   formCurrentPage: any;
   currentPageIndex = 0;
-  formFields: any;
   showTable = false;
   DropDownSettings = {};
-  constructor() {
+  formListNo: any;
+  constructor(@Inject(ActivatedRoute) private activatedRoute: ActivatedRoute, @Inject(Router) private router: Router, ) {
+    this.subscribeRouteChanges();
 
-    this.form = JSON.parse(localStorage.getItem('form'));
-    this.formCurrentPage = this.form.attributes[this.currentPageIndex];
-    this.formFields = JSON.parse(localStorage.getItem('formFields'));
-    console.log(this.formCurrentPage);
 
   }
   ngOnInit() {
@@ -73,9 +71,33 @@ export class FormViewComponent implements OnInit {
       textField: 'label',
       enableCheckAll: false,
       itemsShowLimit: 3,
-      // limitSelection: 2,
+      // limitSelection: ,
       allowSearchFilter: true,
     };
+
+  }
+
+
+
+
+  subscribeRouteChanges() {
+    const formList = JSON.parse(localStorage.getItem('formList'));
+    this.activatedRoute.queryParams
+      .subscribe((e: Params) => {
+        this.formListNo = e.formId;
+        this.form = formList[this.formListNo];
+
+        this.formCurrentPage = this.form.attributes[this.currentPageIndex];
+
+        console.log(this.formCurrentPage);
+
+      });
+
+  }
+
+  backToForm() {
+    // tslint:disable-next-line: radix
+    this.router.navigate(['/home'], { queryParams: { formId: this.formListNo } });
 
   }
   // check object is not null or valid
@@ -151,49 +173,21 @@ export class FormViewComponent implements OnInit {
 
 
   checkedState(item, val) {
-    console.log('click');
-   
+
+    console.log(val);
     if (this.isValidObject(item.validOption)) {
+      const selected = item.values.filter(c => c.value);
+      console.log(selected);
 
-      if (item.validOption.value === 'max') {
-        $(('.' + item.name)).on('change', function () {
-          if ($(('.' + item.name + ':checked')).length > item.validOption.limit) {
-            this.checked = false;
-            return;
-          }
-        });
-      } else {
-        if (item.validOption.value === 'both') {
-          $(('.' + item.name)).on('change', function () {
-            if ($(('.' + item.name + ':checked')).length === item.validOption.limit + 1) {
-              this.checked = false;
-
-              return;
-
-            }
-          });
-        }
+      if ((item.validOption.value !== 'min') && (selected.length > item.validOption.limit)) {
+        val.value = false;
       }
 
+      item.userResponse = selected.filter(c => c.value);
+      console.log(item.userResponse);
+
     }
-    // setTimeout(() => {
 
-    // $(('.' + item.name)).on('change', function () {
-    item.userResponse.checked = ($(('.' + item.name + ':checked')).length);
-    // $(('.' + item.name + ':checked')).length : 0;
-    console.log($(('.' + item.name + ':checked')));
-
-    console.log(item.userResponse);
-    // });
-    // }, 100);
-
-
-    // item.userResponse = [];
-    // item.values.forEach(element => {
-    //   if (element.value === true) {
-    //     item.userResponse.push(element);
-    //   }
-    // });
 
   }
 
@@ -202,7 +196,7 @@ export class FormViewComponent implements OnInit {
   }
 
   ratingColor(item, i) {
-    item.RatingByUser = i;
+    item.RatingByUser = i + 1;
     for (let j = 0; j < item.ratingArray.length; j++) {
       // document.getElementsByClassName(item + j);;
       if (i >= j) {
@@ -215,7 +209,10 @@ export class FormViewComponent implements OnInit {
         }
       } else {
         document.getElementById(item.name + j).style.color = 'black';
+        if (item.selestedValidation == 'btn btn-light') {
+          document.getElementById(item.name + j).style.backgroundColor = '#f8f9fa';
 
+        }
       }
       // console.log(nodes);
       // nodes[j].style.color = 'yellow';
@@ -288,17 +285,69 @@ export class FormViewComponent implements OnInit {
 
         // tslint:disable-next-line: no-debugger
         if (el.required) {
-          if ((el.fielType === 'rating') && (el.RatingByUser == '')) {
-            swal('Error', ' Please fill Rating', 'error');
+          if ((el.fielType === 'rating')) {
+
+            if (el.RatingByUser === '') {
+
+
+              swal('Error', ' Please fill Rating', 'error');
+              errorCount++;
+              return;
+            }
+            if ((el.userComment.want) && (el.userComment.comment === '')) {
+              swal('Error', ' Please Comment On Your Rating', 'error');
+              errorCount++;
+              return;
+            }
+
+          }
+
+          if ((el.fielType === 'file') && (el.uploadedFileByUser.url === '')) {
+            swal('Error', ' Please Upload File', 'error');
+            errorCount++;
+
+            return;
+
+          }
+          if ((el.fielType === 'dropdown')) {
+            if ((el.validOption.value === 'max') && (el.userResponse.length < el.validOption.limit)) {
+              swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
+
+              errorCount++;
+
+              return;
+            } else if ((el.validOption.value === 'min') && (el.userResponse.length < el.validOption.limit)) {
+              swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
+              errorCount++;
+
+              return;
+            } else {
+
+
+              if ((el.validOption.value === 'both') && (el.userResponse.length !== el.validOption.limit)) {
+                swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
+
+                errorCount++;
+
+                return;
+
+              }
+            }
+
+
+
+          }
+
+          if ((el.fielType === 'trueFalse') && (el.inputValue === '')) {
+            swal('Error', 'Choose Option For' + el.label, 'error');
             errorCount++;
             return;
 
           }
 
-          if ((el.fielType === 'file') && (el.uploadedFileByUser.url == '')) {
-            swal('Error', ' Please Upload File', 'error');
+          if ((el.fielType === 'yesNo') && (el.inputValue === '')) {
+            swal('Error', 'Choose Option For' + el.label, 'error');
             errorCount++;
-
             return;
 
           }
@@ -313,6 +362,35 @@ export class FormViewComponent implements OnInit {
 
   }
 
+  onItemSelect(event, item) {
+    console.log(event);
 
+    if (this.isValidObject(item.validOption)) {
+
+      if (item.validOption.value === 'max') {
+        this.DropDownSettings = Object.assign({}, this.DropDownSettings, { limitSelection: item.validOption.limit });
+
+      } else if (item.validOption.value === 'min') {
+        this.DropDownSettings = Object.assign({}, this.DropDownSettings, { limitSelection: item.values.length + 1 });
+
+      } else {
+
+
+        if (item.validOption.value === 'both') {
+          this.DropDownSettings = Object.assign({}, this.DropDownSettings, { limitSelection: item.validOption.limit });
+
+
+        }
+      }
+
+    }
+
+
+
+    // this.DropDownSettings = Object.assign({}, this.DropDownSettings, { limitSelection: 2 });
+
+    console.log(item);
+
+  }
 
 }

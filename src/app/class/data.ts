@@ -360,11 +360,11 @@ export const icons_and_fields = [
         values: [
             {
                 label: 'Enter Your Option Here',
-                value: 'option-1'
+                value: false
             },
             {
                 label: 'Enter Your Option Here',
-                value: 'option-2'
+                value: false
             }
         ],
         selestedValidation: '',
@@ -378,12 +378,12 @@ export const icons_and_fields = [
             },
             {
                 label: 'Select exectly',
-                value: 'max',
+                value: 'both',
                 limit: 1
             },
             {
                 label: 'Select atmost',
-                value: 'both',
+                value: 'max',
                 limit: 1
             }]
 

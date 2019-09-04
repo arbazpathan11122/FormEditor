@@ -31,30 +31,30 @@ export class HomeComponent implements OnInit {
   success = false;
   showProperties = false;
   selectedItem: any = {};
-  modelFields: Array<field> = [];
-  model: any = {
-    name: 'App name...',
-    description: 'App Description...',
-    folder: {
-      FolderName: '',
-      FileName: '',
-      pages: []
-    },
-    theme: {
-      fontFamily: '',
-      qestColor: '',
-      ansColor: '',
-      bgColor: 'f0f0f0',
-      textColor: '555555',
-      bannerImage: ''
-    },
+  // modelFields: Array<field> = [];
+  // model: any = {
+  //   name: 'App name...',
+  //   description: 'App Description...',
+  //   folder: {
+  //     FolderName: '',
+  //     FileName: '',
+  //     pages: []
+  //   },
+  //   theme: {
+  //     fontFamily: '',
+  //     qestColor: '',
+  //     ansColor: '',
+  //     bgColor: 'f0f0f0',
+  //     textColor: '555555',
+  //     bannerImage: ''
+  //   },
 
-    attributes: [
-      {
-        name: 'Page 1',
-        field: this.modelFields
-      }]
-  };
+  //   attributes: [
+  //     {
+  //       name: 'Page 1',
+  //       field: this.modelFields
+  //     }]
+  // };
   formCurrentPage: any;
   currentPageIndex = 0;
   report = false;
@@ -73,7 +73,10 @@ export class HomeComponent implements OnInit {
 
   checkingExistingForm: any;
 
-
+  assingToUser = {
+    email: '',
+    phone: ''
+  };
 
   conditionRequired = false;
   showConditionalQues: false;
@@ -82,91 +85,85 @@ export class HomeComponent implements OnInit {
   currentFieldIndex: number;
 
   showGenSetting = true;
-
-
+  // for assign model
+  selfAssing = true;
   FontStyleArray = [
     {
       name: 'Arial'
       ,
-      fontStyle: {fontFamily: 'Arial'}
-  },
+      fontStyle: { fontFamily: 'Arial' }
+    },
     {
       name: 'Helvetica'
       ,
-      fontStyle: {fontFamily: 'Helvetica'} 
-  },
+      fontStyle: { fontFamily: 'Helvetica' }
+    },
     {
       name: 'Times New Roman'
       ,
-      fontStyle: {fontFamily: 'Times New Roman'} 
-  },
+      fontStyle: { fontFamily: 'Times New Roman' }
+    },
     {
       name: 'Courier New'
       ,
-      fontStyle: {fontFamily: 'Courier New'} 
-  },
+      fontStyle: { fontFamily: 'Courier New' }
+    },
     {
       name: 'Courier'
       ,
-      fontStyle: {fontFamily: 'Courier'} 
-  },
+      fontStyle: { fontFamily: 'Courier' }
+    },
     {
       name: 'Verdana'
       ,
-      fontStyle: {fontFamily: 'Verdana'} 
-  },
+      fontStyle: { fontFamily: 'Verdana' }
+    },
     {
       name: 'Georgia'
       ,
-      fontStyle: {fontFamily: 'Georgia'} 
-  },
+      fontStyle: { fontFamily: 'Georgia' }
+    },
     {
       name: 'Palatino'
       ,
-      fontStyle: {fontFamily: 'Palatino'} 
-  },
+      fontStyle: { fontFamily: 'Palatino' }
+    },
     {
       name: 'Garamond'
       ,
-      fontStyle: {fontFamily: 'Garamond'} 
-  },
+      fontStyle: { fontFamily: 'Garamond' }
+    },
     {
       name: 'Bookman'
       ,
-      fontStyle: {fontFamily: 'Bookman'} 
-  },
+      fontStyle: { fontFamily: 'Bookman' }
+    },
     {
       name: 'Comic Sans MS'
       ,
-      fontStyle: {fontFamily: 'Comic Sans MS'} 
-  },
+      fontStyle: { fontFamily: 'Comic Sans MS' }
+    },
     {
       name: 'Trebuchet MS'
       ,
-      fontStyle: {fontFamily: 'Trebuchet MS'} 
-  },
+      fontStyle: { fontFamily: 'Trebuchet MS' }
+    },
   ];
 
   formStorge = [];
-
-
+  model: any;
+  formListNo: number;
   constructor(@Inject(Router) private router: Router, @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute,
   ) {
     setTimeout(() => {
       $('[data-toggle="tooltip"]').tooltip();
 
     }, 0);
-    // this.router.navigate(['/incidents'], { queryParams: { duration: this.filterByDate,
-    // cType: this.categoryType, pcId: pc, gType: gtype, Type: type, stId: stid, warranty: wrnty, rating: rating,
-    // start: this.dateRange.startDate, end: this.dateRange.endDate, } });
-    if (localStorage.getItem('form')) {
+    this.formStorge = JSON.parse(localStorage.getItem('formList'));
 
-      this.model = JSON.parse(localStorage.getItem('form'));
-    }
     this.subscribeRouteChanges();
 
 
-    this.formCurrentPage = this.model.attributes[this.currentPageIndex];
 
   }
 
@@ -175,7 +172,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.showNavbar();
-    this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
+    // this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
 
     this.emailDropdownList = [
       {
@@ -377,10 +374,17 @@ export class HomeComponent implements OnInit {
 
 
   subscribeRouteChanges() {
+
     this.activatedRoute.queryParams
       .subscribe((e: Params) => {
         console.log(e);
+        // tslint:disable-next-line: radix
+        this.formListNo = parseInt(e.formId);
+        this.model = this.formStorge[this.formListNo];
+        this.formCurrentPage = this.model.attributes[this.currentPageIndex];
 
+      }, (err: any) => {
+        this.router.navigate(['/process']);
       });
 
   }
@@ -639,27 +643,21 @@ export class HomeComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-    if (localStorage.getItem('formList')) {
-      this.formStorge = JSON.parse(localStorage.getItem('formList'));
-      this.formStorge.push(this.model);
-
-    } else {
-      this.formStorge.push(this.model);
-
-    }
+    this.formStorge[this.formListNo] = this.model;
     localStorage.setItem('formList', JSON.stringify(this.formStorge));
 
-    localStorage.setItem('form', JSON.stringify(this.model));
-    localStorage.setItem('formFields', JSON.stringify(this.formCurrentPage));
+    // localStorage.setItem('form', JSON.stringify(this.model));
+    // localStorage.setItem('formFields', JSON.stringify(this.formCurrentPage));
     this.checkingExistingForm = JSON.parse(localStorage.getItem('formName'));
-    this.router.navigate(['/formView']);
+    // this.router.navigate(['/formView']);
 
+  }
+  goToForm() {
+    $('#assingModel').modal('hide');
+
+    // this.router.navigate(['/formView'], { queryParams: { formId: this.formListNo } });
+    const win = window.open('https://form-ab97d.firebaseapp.com/formView/formId=' + this.formListNo, '_blank');
+    win.focus();
   }
 
 
@@ -749,14 +747,14 @@ export class HomeComponent implements OnInit {
 
 
   updateForm() {
-    let input = new FormData;
-    input.append('id', this.model._id);
-    input.append('name', this.model.name);
-    input.append('description', this.model.description);
-    input.append('bannerImage', this.model.theme.bannerImage);
-    input.append('bgColor', this.model.theme.bgColor);
-    input.append('textColor', this.model.theme.textColor);
-    input.append('attributes', JSON.stringify(this.formCurrentPage));
+    // let input = new FormData;
+    // input.append('id', this.model._id);
+    // input.append('name', this.model.name);
+    // input.append('description', this.model.description);
+    // input.append('bannerImage', this.model.theme.bannerImage);
+    // input.append('bgColor', this.model.theme.bgColor);
+    // input.append('textColor', this.model.theme.textColor);
+    // input.append('attributes', JSON.stringify(this.formCurrentPage));
 
     // this.us.putDataApi('/admin/updateForm',input).subscribe(r=>{
     //   console.log(r);

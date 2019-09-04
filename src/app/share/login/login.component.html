@@ -33,11 +33,11 @@
                 <div class="form-group social-btn clearfix">
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-social"><i class="fa fa-google"></i> &nbsp;
+                            <a (click)="login()" class="btn btn-social"><i class="fa fa-google"></i> &nbsp;
                                 Google</a>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-social"><i class="fa fa-facebook"></i> &nbsp;
+                            <a  class="btn btn-social"><i class="fa fa-facebook"></i> &nbsp;
                                 Facebook</a>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                             <input type="password" class="form-control" name="password" [(ngModel)]="user.password"
                                 placeholder="Password" required="required">
                         </div>
-                        <button type="submit" [disabled]="emailLoginForm.invalid" routerLink="/process"
+                        <button type="submit" (click)="login()"  [disabled]="emailLoginForm.invalid" routerLink="/process"
                             class="btn btn-primary w-100 mb-4"> login</button>
                         <div class="form-footer">
                             <span class="text-primary" routerLink="/signUp">Sign Up</span>
@@ -119,7 +119,7 @@
                                 class="form-control otp-input" [(ngModel)]="user.otp" name="otp" placeholder="Enter OTP"
                                 [required]="true" #otp="ngModel">
                         </div>
-                        <input routerLink="/process" type="submit" class="btn btn-primary w-100 mb-4"
+                        <input  (click)="login()" routerLink="/process" type="submit" class="btn btn-primary w-100 mb-4"
                             [disabled]="user.otp !=otp" value="Login">
                         <!-- <input type="submit" routerLink="/process" class="btn btn-primary w-100 mb-4" value="Login"> -->
                         <div class="form-footer">

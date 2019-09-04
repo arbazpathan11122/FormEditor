@@ -240,7 +240,7 @@
 
           <div class="p-4" *ngIf="item.fielType==='yesNo'">
             <div class="mb-3 maker-input">
-              <label class="name-input">{{item.label}}</label>
+              <span *ngIf="item.required" class="red">*</span><label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input form-check-inline" *ngFor="let opt of item.values">
               <!-- <div class="custom-control custom-radio custom-control-inline">
@@ -249,38 +249,31 @@
                 {{opt.label}}
               </div> -->
               <label class="Custom-Radio-Buttons">
-                  <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
-                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel">
+                <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue">
                 {{opt.label}} &nbsp; &nbsp; &nbsp;
-                  <span class="checkmark-dot"></span>
-                </label>
+                <span class="checkmark-dot"></span>
+              </label>
 
-              <div [hidden]="yesNo.valid || yesNo.pristine" class="alert alert-danger">
-                {{item.errorText}}
-              </div>
+
             </div>
           </div>
 
           <div class="p-4" *ngIf="item.fielType==='trueFalse'">
             <div class="mb-3 maker-input">
-              <label class="name-input">{{item.label}}</label>
+              <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input inline-form-group" *ngFor="let opt of item.values">
               <!-- <div class="custom-control Custom-Radio-Buttons custom-control-inline"> -->
-                <!-- <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
+              <!-- <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
                   [ngModelOptions]="{standalone: true}" required="{{item.required}}" #trueFalse="ngModel"> -->
-               
-                <label class="Custom-Radio-Buttons">
-                    {{opt.label}}
-                    <input type="radio" name="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.value"
-                    [ngModelOptions]="{standalone: true}" required="{{item.required}}" #trueFalse="ngModel">
-                    <span class="checkmark-dot"></span>
-                  </label>
+
+              <label class="Custom-Radio-Buttons">
+                {{opt.label}}
+                <input type="radio" name="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue">
+                <span class="checkmark-dot"></span>
+              </label>
               <!-- </div> -->
 
-              <div [hidden]="trueFalse.valid || trueFalse.pristine" class="alert alert-danger">
-                {{item.errorText}}
-              </div>
 
 
 
@@ -298,7 +291,7 @@
                   <div class="mb-2 rating-ico">
                     <span [ngClass]="item?.selestedValidation " (click)="ratingColor(item ,i)" id="{{item.name +i}}">
                       <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
-                        {{i}}
+                        {{i+1}}
                       </ng-container>
                     </span>&nbsp;
 
@@ -351,9 +344,24 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <ng-multiselect-dropdown [data]="item.values" [(ngModel)]="item.userResponse"
-              [ngModelOptions]="{standalone: true}" [settings]="DropDownSettings">
+              [ngModelOptions]="{standalone: true}" (onSelect)="onItemSelect($event ,item)"
+              [settings]="DropDownSettings">
             </ng-multiselect-dropdown>
+            <ng-container *ngIf="isValidObject(item.validOption)">
+              <p *ngIf="((item.validOption.value =='min') && (item.userResponse.length<item.validOption.limit))"
+                class="red">
+                please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+              </p>
 
+              <p *ngIf="((item.validOption.value =='max') && (item.userResponse.length<item.validOption.limit))"
+                class="red">
+                please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+              </p>
+              <p *ngIf="((item.validOption.value =='both') && (item.userResponse.length !==item.validOption.limit))"
+                class="red">
+                please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+              </p>
+            </ng-container>
           </div>
 
           <div class="p-4" *ngIf="(item.fielType==='multiple')">
@@ -365,10 +373,11 @@
               <div class="row">
                 <div class="col-12" *ngFor="let val of item.values">
 
-                  <p class=" mt-2 " (click)="checkedState(item , val)">
+                  <p class=" mt-2 " (change)="checkedState(item , val)">
 
                     <label class="custom-check">
-                      <input class="{{item.name}}" name="{{val.label}}" [(ngModel)]="val.value" type="checkbox">
+                      <input class="{{item.name}}" id="{{item.name}}" name="{{val.label}}" [(ngModel)]="val.value"
+                        type="checkbox">
                       {{val.label}}
                       <span class="checkmark"></span>
                     </label>
@@ -377,19 +386,16 @@
                 </div>
 
                 <ng-container *ngIf="isValidObject(item.validOption)">
-                  <p *ngIf="((item.validOption.value =='min') && (item.userResponse.checked<item.validOption.limit))"
+                  <p *ngIf="((item.validOption.value =='min') && (item.userResponse.length<item.validOption.limit))"
                     class="red">
                     please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
                   </p>
 
-                  <p *ngIf="((item.validOption.value =='max') && (item.userResponse.checked<item.validOption.limit))"
+                  <p *ngIf="((item.validOption.value !=='min') && (item.userResponse.length<item.validOption.limit))"
                     class="red">
                     please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
                   </p>
-                  <p *ngIf="((item.validOption.value =='both') && (item.userResponse.checked !==item.validOption.limit))"
-                    class="red">
-                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
-                  </p>
+
                 </ng-container>
               </div>
             </div>
@@ -404,7 +410,8 @@
               <div class="row">
                 <div class="col-md-4 col-xs-6  mt-3" *ngFor="let val of item.values">
                   <div class="image-box">
-                    <img src="assets/img/intro.png" class="img-thumbnail">
+                    <img *ngIf="val.img!==''" [src]="val.img" alt="Image">
+                    <img *ngIf="val.img==''" src="assets/img/intro.png" class="img-thumbnail">
                   </div>
                   <p class=" text-center mt-2 " (click)="checkedState(item , val)">
                     {{val.label}}
@@ -418,20 +425,17 @@
                 </div>
 
                 <ng-container *ngIf="isValidObject(item.validOption)">
-                    <p *ngIf="((item.validOption.value =='min') && (item.userResponse.checked<item.validOption.limit))"
-                      class="red">
-                      please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
-                    </p>
-  
-                    <p *ngIf="((item.validOption.value =='max') && (item.userResponse.checked<item.validOption.limit))"
-                      class="red">
-                      please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
-                    </p>
-                    <p *ngIf="((item.validOption.value =='both') && (item.userResponse.checked !==item.validOption.limit))"
-                      class="red">
-                      please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
-                    </p>
-                  </ng-container>
+                  <p *ngIf="((item.validOption.value =='min') && (item.userResponse.length<item.validOption.limit))"
+                    class="red">
+                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                  </p>
+
+                  <p *ngIf="((item.validOption.value !=='min') && (item.userResponse.length<item.validOption.limit))"
+                    class="red">
+                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                  </p>
+
+                </ng-container>
               </div>
             </div>
 
@@ -480,7 +484,7 @@
         &nbsp;
         <button class="btn btn-primary" type="submit"
           (click)="submitResult(userForm.value, userForm.invalid)">submit</button> &nbsp; &nbsp;
-        <button class="btn btn-primary" routerLink="/home">Back</button>
+        <button class="btn btn-primary" (click)="backToForm()">Back</button>
         &nbsp; &nbsp;
         <button class="btn btn-light" *ngIf="currentPageIndex!=(form.attributes.length -1)"
           (click)="navigateToPage(1)">Next</button>
@@ -521,9 +525,18 @@
         <td *ngIf="item.fielType=='website'">{{item.httpType}}{{item.value}}{{item.comType}}</td>
         <td *ngIf="item.fielType=='file'"> {{item.uploadedFileByUser.name}} </td>
         <td *ngIf="item.fielType=='rating'"> {{item.RatingByUser}} / {{item.ratingLimit}} </td>
+        <td *ngIf="item.fielType=='trueFalse'">{{item.inputValue}}</td>
+        <td *ngIf="item.fielType=='yesNo'"> {{item.inputValue}} </td>
 
+        <!-- inputValue -->
+        <td *ngIf="item.fielType=='dropdown'"> <span class="badge m-2 p-2 badge-danger"
+            *ngFor="let resp of item.userResponse">
+            {{resp}}
+          </span>
+
+        </td>
         <td
-          *ngIf="!((item.fielType=='rating')||(item.fielType=='file')||(item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">
+          *ngIf="!((item.fielType=='dropdown')||(item.fielType=='rating')||(item.fielType=='file')||(item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">
           {{item.value}}
         </td>
       </tr>

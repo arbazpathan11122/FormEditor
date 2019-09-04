@@ -3,7 +3,7 @@
     <div class="col-2">
       <ul class="menu-2 d-flex ">
         <li>
-          <a href="#"><i class="fa fa-home"></i> Home</a>
+          <a routerLink="/process"><i class="fa fa-home"></i> Home</a>
         </li>
       </ul>
     </div>
@@ -72,11 +72,15 @@
               + Create New </h3>
           </div>
         </div>
-        <div class="col-md-3 mt-3" *ngFor="let form of formStorge">
-          <div class="uploadimage-dragndrop">
-            <h3 class="voiletColor text-center mt-5">
+        <div class="col-md-3 mt-3" *ngFor="let form of formStorge; let i = index">
+          <div class="uploadimage-dragndrop" (click)="editProcess (i) ">
+            <h4 class="voiletColor text-center ">
 
-              {{form.name}} </h3>
+              {{form.name}} </h4><br>
+            <h5> {{form.category}}</h5><br>
+
+            <p> {{form.description.substring(0, 10)}}</p>
+
           </div>
         </div>
       </div>
@@ -113,8 +117,8 @@
             </label>
           </div>
           <div class="user-input">
-            <input class="name-input" required [(ngModel)]="FormDetails.formName" placeholder="Purchase Requisition"
-              type="text" name="Workflow">
+            <input class="name-input" required [(ngModel)]="model.name" placeholder="Purchase Requisition" type="text"
+              name="Workflow">
 
           </div>
 
@@ -123,7 +127,7 @@
             </label>
           </div>
           <div class="user-input">
-            <input class="name-input" required type="text" [(ngModel)]="FormDetails.category" placeholder="Purchase"
+            <input class="name-input" required type="text" [(ngModel)]="model.category" placeholder="Purchase"
               name="category">
 
           </div>
@@ -133,7 +137,7 @@
             </label>
           </div>
           <div class="user-input">
-            <textarea class="name-input" [(ngModel)]="FormDetails.desc" id="message-text"
+            <textarea class="name-input" [(ngModel)]="model.description" id="message-text"
               placeholder="enter description here" type="text" name="description"></textarea>
 
           </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,18 @@ export class LoginComponent implements OnInit {
     this.sendOtpClick = true;
     this.otp = Math.floor(1000 + Math.random() * 9000);
     alert('your OTP is ' + this.otp);
+  }
+
+
+  login() {
+
+    swal({
+      position: 'top-end',
+      type: 'success',
+      title: 'Login Successfuly',
+      showConfirmButton: false,
+      timer: 300
+    });
   }
 }
 
