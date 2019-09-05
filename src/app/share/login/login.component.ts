@@ -10,7 +10,12 @@ import swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   user = {
     userName: '',
-    password: ''
+    password: '',
+  };
+  userPhone = {
+    phone: '',
+    otp: null,
+
   };
   otp: number;
   emailTabActive = true;
@@ -32,7 +37,7 @@ export class LoginComponent implements OnInit {
   generateOTP() {
     this.sendOtpClick = true;
     this.otp = Math.floor(1000 + Math.random() * 9000);
-    alert('your OTP is ' + this.otp);
+    swal('your OTP is  ' + this.otp);
   }
 
 

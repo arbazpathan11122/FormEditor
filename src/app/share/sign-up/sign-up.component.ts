@@ -11,7 +11,7 @@ export class SignUpComponent implements OnInit {
     name: '',
     email: '',
     phone: '',
-    otp: ''
+    otp: null
   };
   sendOtpClick = false;
   otp: number;

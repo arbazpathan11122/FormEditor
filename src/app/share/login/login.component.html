@@ -37,7 +37,7 @@
                                 Google</a>
                         </div>
                         <div class="col-md-6">
-                            <a  class="btn btn-social"><i class="fa fa-facebook"></i> &nbsp;
+                            <a class="btn btn-social"><i class="fa fa-facebook"></i> &nbsp;
                                 Facebook</a>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <form #emailLoginForm="ngForm">
                         <div class="form-group mt-3 mb-4">
                             <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                                [(ngModel)]="user.email" name="email" placeholder="Email Id" [required]="true"
+                                [(ngModel)]="user.userName" name="email" placeholder="Email Id" [required]="true"
                                 #email="ngModel">
                         </div>
                         <div [hidden]="email.valid || email.pristine " class="alert alert-danger">
@@ -92,8 +92,8 @@
                             <input type="password" class="form-control" name="password" [(ngModel)]="user.password"
                                 placeholder="Password" required="required">
                         </div>
-                        <button type="submit" (click)="login()"  [disabled]="emailLoginForm.invalid" routerLink="/process"
-                            class="btn btn-primary w-100 mb-4"> login</button>
+                        <button type="submit" (click)="login()" [disabled]="emailLoginForm.invalid"
+                            routerLink="/process" class="btn btn-primary w-100 mb-4"> login</button>
                         <div class="form-footer">
                             <span class="text-primary" routerLink="/signUp">Sign Up</span>
                         </div>
@@ -106,8 +106,9 @@
                     <form>
 
                         <div class="form-group mt-3 mb-4">
-                            <input type="text" class="form-control" pattern="^[0-9]{10,10}$" [(ngModel)]="user.phone"
-                                name="phone" placeholder="Mobile No" [required]="true" #phone="ngModel">
+                            <input type="text" class="form-control" pattern="^[0-9]{10,10}$"
+                                [(ngModel)]="userPhone.phone" name="phone" placeholder="Mobile No" [required]="true"
+                                #phone="ngModel">
                             <button (click)="generateOTP()" style="margin-top: -37px" [disabled]=" !phone.valid "
                                 class="btn btn-primary pull-right">Send OTP</button>
                         </div>
@@ -116,11 +117,11 @@
                             Please Enter Valid Phone Number </div>
                         <div class="form-group mb-4" *ngIf="sendOtpClick">
                             <input type="text" [ngModelOptions]="{standalone: true}" pattern="^[0-9]{4,4}$"
-                                class="form-control otp-input" [(ngModel)]="user.otp" name="otp" placeholder="Enter OTP"
-                                [required]="true" #otp="ngModel">
+                                class="form-control otp-input" [(ngModel)]="userPhone.otp" name="otp"
+                                placeholder="Enter OTP" [required]="true" #otp="ngModel">
                         </div>
-                        <input  (click)="login()" routerLink="/process" type="submit" class="btn btn-primary w-100 mb-4"
-                            [disabled]="user.otp !=otp" value="Login">
+                        <input (click)="login()" routerLink="/process" type="submit" class="btn btn-primary w-100 mb-4"
+                            [disabled]="userPhone.otp !=otp" value="Login">
                         <!-- <input type="submit" routerLink="/process" class="btn btn-primary w-100 mb-4" value="Login"> -->
                         <div class="form-footer">
                             <span class="text-primary" routerLink="/signUp">Sign Up</span>
