@@ -173,7 +173,7 @@ export class FormViewComponent implements OnInit {
 
 
   checkedState(item, val) {
-
+    debugger;
     console.log(val);
     if (this.isValidObject(item.validOption)) {
       const selected = item.values.filter(c => c.value);
@@ -309,30 +309,40 @@ export class FormViewComponent implements OnInit {
             return;
 
           }
-          if ((el.fielType === 'dropdown')) {
-            if ((el.validOption.value === 'max') && (el.userResponse.length < el.validOption.limit)) {
-              swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
+          if ((el.fielType === 'dropdown') || (el.fielType === 'multiple') || (el.fielType === 'picture')) {
 
-              errorCount++;
+            if (el.userResponse.length > 0) {
 
-              return;
-            } else if ((el.validOption.value === 'min') && (el.userResponse.length < el.validOption.limit)) {
-              swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
-              errorCount++;
-
-              return;
-            } else {
-
-
-              if ((el.validOption.value === 'both') && (el.userResponse.length !== el.validOption.limit)) {
+              if ((el.validOption.value === 'max') && (el.userResponse.length < el.validOption.limit)) {
                 swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
 
                 errorCount++;
 
                 return;
+              } else if ((el.validOption.value === 'min') && (el.userResponse.length < el.validOption.limit)) {
+                swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
+                errorCount++;
 
+                return;
+              } else {
+                if ((el.validOption.value === 'both') && (el.userResponse.length !== el.validOption.limit)) {
+                  swal('Error', 'please  ' + el.validOption.label + '  ' + el.validOption.limit, 'error');
+
+                  errorCount++;
+
+                  return;
+
+                }
               }
+            } else {
+              swal('Error', 'please fill  ' + el.label, 'error');
+
+              errorCount++;
+
+              return;
+
             }
+
 
 
 

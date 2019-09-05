@@ -347,20 +347,18 @@
               [ngModelOptions]="{standalone: true}" (onSelect)="onItemSelect($event ,item)"
               [settings]="DropDownSettings">
             </ng-multiselect-dropdown>
+
             <ng-container *ngIf="isValidObject(item.validOption)">
-              <p *ngIf="((item.validOption.value =='min') && (item.userResponse.length<item.validOption.limit))"
+              <p *ngIf="( (item.validOption.value !=='max') &&(item.userResponse.length<item.validOption.limit))"
                 class="red">
                 please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
               </p>
 
-              <p *ngIf="((item.validOption.value =='max') && (item.userResponse.length<item.validOption.limit))"
+              <p *ngIf="((item.validOption.value ==='max') && (item.userResponse.length>item.validOption.limit))"
                 class="red">
-                please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                please fds {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
               </p>
-              <p *ngIf="((item.validOption.value =='both') && (item.userResponse.length !==item.validOption.limit))"
-                class="red">
-                please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
-              </p>
+
             </ng-container>
           </div>
 
@@ -386,14 +384,14 @@
                 </div>
 
                 <ng-container *ngIf="isValidObject(item.validOption)">
-                  <p *ngIf="((item.validOption.value =='min') && (item.userResponse.length<item.validOption.limit))"
+                  <p *ngIf="( (item.validOption.value !=='max') &&(item.userResponse.length<item.validOption.limit))"
                     class="red">
                     please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
                   </p>
 
-                  <p *ngIf="((item.validOption.value !=='min') && (item.userResponse.length<item.validOption.limit))"
+                  <p *ngIf="((item.validOption.value ==='max') && (item.userResponse.length>item.validOption.limit))"
                     class="red">
-                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                    please fds {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
                   </p>
 
                 </ng-container>
@@ -410,29 +408,33 @@
               <div class="row">
                 <div class="col-md-4 col-xs-6  mt-3" *ngFor="let val of item.values">
                   <div class="image-box">
-                    <img *ngIf="val.img!==''" [src]="val.img" alt="Image">
-                    <img *ngIf="val.img==''" src="assets/img/intro.png" class="img-thumbnail">
+                    <!-- <img *ngIf="val.img!==''" [src]="val.img" alt="Image">
+                    <img *ngIf="val.img==''" src="assets/img/intro.png" class="img-thumbnail"> -->
                   </div>
                   <p class=" text-center mt-2 " (click)="checkedState(item , val)">
                     {{val.label}}
                     <br>
                     <label class="custom-check">
-                      <input class="{{item.name}}" name="{{val.label}}" [(ngModel)]="val.value" type="checkbox">
+                      <input class="{{item.name}}" id="{{item.name}}" name="{{val.label}}" [(ngModel)]="val.value"
+                        type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                   </p>
+                  
+
+
 
                 </div>
 
                 <ng-container *ngIf="isValidObject(item.validOption)">
-                  <p *ngIf="((item.validOption.value =='min') && (item.userResponse.length<item.validOption.limit))"
+                  <p *ngIf="( (item.validOption.value !=='max') &&(item.userResponse.length<item.validOption.limit))"
                     class="red">
                     please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
                   </p>
 
-                  <p *ngIf="((item.validOption.value !=='min') && (item.userResponse.length<item.validOption.limit))"
+                  <p *ngIf="((item.validOption.value ==='max') && (item.userResponse.length>=item.validOption.limit))"
                     class="red">
-                    please {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
+                    please fds {{item.validOption.label}} &nbsp; {{item.validOption.limit}}
                   </p>
 
                 </ng-container>
@@ -535,8 +537,22 @@
           </span>
 
         </td>
+        <td *ngIf="item.fielType=='multiple'"> <span class="badge m-2 p-2 badge-danger"
+            *ngFor="let resp of item.userResponse">
+            {{resp.label}}
+          </span>
+
+        </td>
+        <td *ngIf="item.fielType=='picture'"> <span class="badge m-2 p-2 badge-danger"
+            *ngFor="let resp of item.userResponse">
+            {{resp.label}}
+          </span>
+
+        </td>
+
+
         <td
-          *ngIf="!((item.fielType=='dropdown')||(item.fielType=='rating')||(item.fielType=='file')||(item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">
+          *ngIf="!((item.fielType=='multiple')||(item.fielType=='picture')||(item.fielType=='dropdown')||(item.fielType=='rating')||(item.fielType=='file')||(item.fielType=='email')||(item.fielType=='phone')||(item.fielType=='website'))">
           {{item.value}}
         </td>
       </tr>
