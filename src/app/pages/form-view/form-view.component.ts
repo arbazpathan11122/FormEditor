@@ -173,7 +173,7 @@ export class FormViewComponent implements OnInit {
 
 
   checkedState(item, val) {
-    debugger;
+
     console.log(val);
     if (this.isValidObject(item.validOption)) {
       const selected = item.values.filter(c => c.value);
@@ -234,27 +234,27 @@ export class FormViewComponent implements OnInit {
   }
 
 
-  numberInputValidation(item) {
+  // numberInputValidation(item) {
 
-    if (item.value > item.validOption.max) {
-      // item.value = item.validOption.max;
-      this.numberError = true;
+  //   if (item.value > item.validOption.max) {
+  //     // item.value = item.validOption.max;
+  //     this.numberError = true;
 
-    } else if (item.value < item.validOption.min) {
-      // item.value = item.validOption.min;
-      this.numberError = true;
+  //   } else if (item.value < item.validOption.min) {
+  //     // item.value = item.validOption.min;
+  //     this.numberError = true;
 
-    } else {
-      this.numberError = false;
+  //   } else {
+  //     this.numberError = false;
 
-    }
-    console.log(this.numberError);
+  //   }
+  //   console.log(this.numberError);
 
-    console.log(item.value);
-    console.log(item);
+  //   console.log(item.value);
+  //   console.log(item);
 
 
-  }
+  // }
 
 
 
@@ -301,7 +301,25 @@ export class FormViewComponent implements OnInit {
             }
 
           }
-
+          if (el.fielType === 'number') {
+            if (this.isValidObject(el.value)) {
+              swal('Error', 'Please fill the mendatory field', 'error');
+              errorCount++;
+              return;
+            }
+            if (this.isValidObject(el.validOption)) {
+              if ((el.validOption.min) && (el.validOption.min > el.value)) {
+                swal('Error', 'Please enter grater then minimum value', 'error');
+                errorCount++;
+                return;
+              }
+              if ((el.validOption.max) && (el.validOption.max < el.value)) {
+                swal('Error', 'Please enter less then maximum value', 'error');
+                errorCount++;
+                return;
+              }
+            }
+          }
           if ((el.fielType === 'file') && (el.uploadedFileByUser.url === '')) {
             swal('Error', ' Please Upload File', 'error');
             errorCount++;
