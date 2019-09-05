@@ -61,7 +61,7 @@ export class ProcessComponent implements OnInit {
   }
 
   editProcess(i) {
-    // this.router.navigate(['/home'], { queryParams: { formId: i } });
+    this.router.navigate(['/home'], { queryParams: { formId: i } });
 
   }
 }
