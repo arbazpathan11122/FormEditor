@@ -44,7 +44,12 @@ export class ProcessComponent implements OnInit {
   constructor(@Inject(Router) private router: Router) { }
 
   ngOnInit() {
-    this.formStorge = JSON.parse(localStorage.getItem('formList'));
+    if (JSON.parse(localStorage.getItem('formList'))) {
+
+      this.formStorge = JSON.parse(localStorage.getItem('formList'));
+    }
+
+
   }
   goToFoermEditor() {
     this.formStorge.push(this.model);
@@ -56,7 +61,7 @@ export class ProcessComponent implements OnInit {
   }
 
   editProcess(i) {
-    this.router.navigate(['/home'], { queryParams: { formId: i } });
+    // this.router.navigate(['/home'], { queryParams: { formId: i } });
 
   }
 }
