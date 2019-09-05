@@ -272,9 +272,7 @@ export const icons_and_fields = [
             }
         ],
         selestedValidation: '',
-        userResponse: {
-            checked: 0
-        },
+        userResponse: [],
         formValidations: [
 
             {

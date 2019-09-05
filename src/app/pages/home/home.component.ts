@@ -655,9 +655,9 @@ export class HomeComponent implements OnInit {
   goToForm() {
     $('#assingModel').modal('hide');
 
-    // this.router.navigate(['/formView'], { queryParams: { formId: this.formListNo } });
-    const win = window.open('https://form-ab97d.firebaseapp.com/formView/formId=' + this.formListNo, '_blank');
-    win.focus();
+    this.router.navigate(['/formView'], { queryParams: { formId: this.formListNo } });
+    // const win = window.open('https://form-ab97d.firebaseapp.com/formView/formId=' + this.formListNo, '_blank');
+    // win.focus();
   }
 
 

@@ -64,22 +64,22 @@
           </div>
         </div>
         <div class="col-md-3 mt-3 mb-3" *ngFor="let form of formStorge; let i = index">
-          <div class="uploadimage-dragndrop" (click)="editProcess (i) ">
+          <div class="uploadimage-dragndrop">
             <div class="drop-menu text-right">
-              <i class="fa fa-ellipsis-v dropdown-toggle" aria-hidden="true"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+              <i class="fa fa-ellipsis-v dropdown-toggle" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"></i>
               <div class="dropdown-menu">
-                <a class="dropdown-item">Edit</a>
-                <a class="dropdown-item">Delete</a>
+                <a class="dropdown-item" (click)="editProcess (i) ">Edit</a>
+                <a class="dropdown-item" (click)="deleteProcess (i) ">Delete</a>
               </div>
             </div>
             <div class="p-2">
-                <h4 class="voiletColor text-center mb-3">
+              <h4 class="voiletColor text-center mb-3">
 
-                    {{form.name}} </h4>
-                  <h5 class="mb-3" style="line-height: 30px"> {{form.category}}</h5>
-      
-                  <p class="text-description" style="color: #777777"> {{form.description.substring(0, 10)}}</p>
+                {{form.name}} </h4>
+              <h5 class="mb-3" style="line-height: 30px"> {{form.category}}</h5>
+
+              <p class="text-description" style="color: #777777"> {{form.description.substring(0, 10)}}</p>
             </div>
 
           </div>

@@ -45,11 +45,9 @@ export class ProcessComponent implements OnInit {
 
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('formList'))) {
-
       this.formStorge = JSON.parse(localStorage.getItem('formList'));
+
     }
-
-
   }
   goToFoermEditor() {
     this.formStorge.push(this.model);
@@ -63,5 +61,8 @@ export class ProcessComponent implements OnInit {
   editProcess(i) {
     this.router.navigate(['/home'], { queryParams: { formId: i } });
 
+  }
+  deleteProcess(i) {
+    this.formStorge.splice(i, 1);
   }
 }
