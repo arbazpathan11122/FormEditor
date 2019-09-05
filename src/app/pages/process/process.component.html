@@ -56,21 +56,31 @@
 
       <div class="row">
 
-        <div class="col-md-3 mt-3">
-          <div class="uploadimage-dragndrop" data-toggle="modal" data-target="#ProcessDetailsModel">
-            <h3 class="voiletColor text-center mt-5">
+        <div class="col-md-3 mt-3 mb-3">
+          <div class="uploadimage-dragndrop create-box" data-toggle="modal" data-target="#ProcessDetailsModel">
+            <h3 class="voiletColor text-center">
 
               + Create New </h3>
           </div>
         </div>
-        <div class="col-md-3 mt-3" *ngFor="let form of formStorge; let i = index">
-          <div class="uploadimage-dragndrop" (click)="editProcess (i) ">
-            <h4 class="voiletColor text-center ">
+        <div class="col-md-3 mt-3 mb-3" *ngFor="let form of formStorge; let i = index">
+          <div class="uploadimage-dragndrop">
+            <div class="drop-menu text-right">
+              <i class="fa fa-ellipsis-v dropdown-toggle" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"></i>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" (click)="editProcess (i) ">Edit</a>
+                <a class="dropdown-item" (click)="deleteProcess (i) ">Delete</a>
+              </div>
+            </div>
+            <div class="p-2">
+              <h4 class="voiletColor text-center mb-3">
 
-              {{form.name}} </h4><br>
-            <h5> {{form.category}}</h5><br>
+                {{form.name}} </h4>
+              <h5 class="mb-3" style="line-height: 30px"> {{form.category}}</h5>
 
-            <p class="text-description"> {{form.description.substring(0, 10)}}</p>
+              <p class="text-description" style="color: #777777"> {{form.description.substring(0, 10)}}</p>
+            </div>
 
           </div>
         </div>

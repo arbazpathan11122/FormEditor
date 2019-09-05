@@ -62,4 +62,7 @@ export class ProcessComponent implements OnInit {
     this.router.navigate(['/home'], { queryParams: { formId: i } });
 
   }
+  deleteProcess(i) {
+    this.formStorge.splice(i, 1);
+  }
 }
