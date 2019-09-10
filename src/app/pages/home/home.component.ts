@@ -70,7 +70,8 @@ export class HomeComponent implements OnInit {
   httpDropdownList = [];
   comSettings = {};
   comDropdownList = [];
-
+  fontSettings = {};
+  FontDropdownList = [];
   checkingExistingForm: any;
 
   assingToUser = {
@@ -365,8 +366,74 @@ export class HomeComponent implements OnInit {
 
       },
     ];
-
-
+    this.fontSettings = {
+      singleSelection: true,
+      idField: 'fontStyle',
+      textField: 'name',
+      allowSearchFilter: true
+    };
+    this.FontDropdownList = [
+      {
+        name: 'Arial'
+        ,
+        fontStyle: { fontFamily: 'Arial' }
+      },
+      {
+        name: 'Helvetica'
+        ,
+        fontStyle: { fontFamily: 'Helvetica' }
+      },
+      {
+        name: 'Times New Roman'
+        ,
+        fontStyle: { fontFamily: 'Times New Roman' }
+      },
+      {
+        name: 'Courier New'
+        ,
+        fontStyle: { fontFamily: 'Courier New' }
+      },
+      {
+        name: 'Courier'
+        ,
+        fontStyle: { fontFamily: 'Courier' }
+      },
+      {
+        name: 'Verdana'
+        ,
+        fontStyle: { fontFamily: 'Verdana' }
+      },
+      {
+        name: 'Georgia'
+        ,
+        fontStyle: { fontFamily: 'Georgia' }
+      },
+      {
+        name: 'Palatino'
+        ,
+        fontStyle: { fontFamily: 'Palatino' }
+      },
+      {
+        name: 'Garamond'
+        ,
+        fontStyle: { fontFamily: 'Garamond' }
+      },
+      {
+        name: 'Bookman'
+        ,
+        fontStyle: { fontFamily: 'Bookman' }
+      },
+      {
+        name: 'Comic Sans MS'
+        ,
+        fontStyle: { fontFamily: 'Comic Sans MS' }
+      },
+      {
+        name: 'Trebuchet MS'
+        ,
+        fontStyle: { fontFamily: 'Trebuchet MS' }
+      },
+    ];
 
 
   }
@@ -377,11 +444,11 @@ export class HomeComponent implements OnInit {
 
     this.activatedRoute.queryParams
       .subscribe((e: Params) => {
-        console.log(e);
         // tslint:disable-next-line: radix
         this.formListNo = parseInt(e.formId);
         this.model = this.formStorge[this.formListNo];
         this.formCurrentPage = this.model.attributes[this.currentPageIndex];
+        console.log(this.model);
 
       }, (err: any) => {
         this.router.navigate(['/process']);
@@ -468,6 +535,8 @@ export class HomeComponent implements OnInit {
 
     this.showProperties = true;
     this.selectedItem = item;
+    console.log(JSON.parse(JSON.stringify(item)));
+
     this.checkConditionalQuest();
     this.currentFieldIndex = i;
     this.showGenSetting = false;
@@ -655,9 +724,9 @@ export class HomeComponent implements OnInit {
   goToForm() {
     $('#assingModel').modal('hide');
 
-    this.router.navigate(['/formView'], { queryParams: { formId: this.formListNo } });
-    // const win = window.open('https://form-ab97d.firebaseapp.com/formView/formId=' + this.formListNo, '_blank');
-    // win.focus();
+    // this.router.navigate(['/formView'], { queryParams: { formId: this.formListNo } });
+    const win = window.open('https://form-ab97d.firebaseapp.com/formView?formId=' + this.formListNo, '_blank');
+    win.focus();
   }
 
 

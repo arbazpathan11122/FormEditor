@@ -37,9 +37,10 @@
               <span *ngIf="item.required" class="red">*</span> <label class="name-input">{{item.label}}</label>
             </div>
             <div class="user-input">
-              <input class="name-input" name="{{item.name}}" id="{{item.name}}" minlength="{{item.validOption?.min}}"
-                maxlength="{{item.validOption?.max}}" required="{{item.required}}" placeholder="{{item.placeholder}}"
-                [(ngModel)]="item.value" aria-invalid="false" #text="ngModel">
+              <textarea class="name-input" name="{{item.name}}" id="{{item.name}}" minlength="{{item.validOption?.min}}"
+                maxlength="{{item.validOption?.max}}" (keyup)="countWord(item.value, $event)"
+                required="{{item.required}}" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+                #text="ngModel"></textarea>
             </div>
             <div [hidden]="text.valid || text.pristine" class="alert alert-danger">
 
@@ -244,7 +245,8 @@
             <div class="user-input form-check-inline" *ngFor="let opt of item.values">
 
               <label class="Custom-Radio-Buttons">
-                <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue">
+                <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue"
+                [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel">
                 {{opt.label}} &nbsp; &nbsp; &nbsp;
                 <span class="checkmark-dot"></span>
               </label>
@@ -262,7 +264,8 @@
 
               <label class="Custom-Radio-Buttons">
                 {{opt.label}}
-                <input type="radio" name="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue">
+                <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue"
+               required="{{item.required}}" >
                 <span class="checkmark-dot"></span>
               </label>
 

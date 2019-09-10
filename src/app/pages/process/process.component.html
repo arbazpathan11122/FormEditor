@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,8 +32,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false"><img class="profile-img mr-2" src="http://localhost:4200/assets/img/user.jpg"
-            alt="Avatar">
+          aria-expanded="false"><img class="profile-img mr-2" src="assets/img/user.jpg" alt="Avatar">
           <div class="right-menu float-right">
             <span>Abhinav</span>
             <br>
@@ -49,6 +47,8 @@
     </ul>
   </div>
 </nav>
+
+<!-- <app-nav></app-nav> -->
 <div class="container-fluid">
   <div class="row mr-2 ml-2" style="margin-top: 100px">
     <div class="col-md-12">
@@ -75,10 +75,8 @@
             </div>
             <div class="p-2">
               <h4 class="voiletColor text-center mb-3">
-
-                {{form.name}} </h4>
-              <h5 class="mb-3" style="line-height: 30px"> {{form.category}}</h5>
-
+                {{form.name.substring(0, 10)}} </h4>
+              <h5 class="mb-3" style="line-height: 30px"> {{form.category.substring(0, 20)}}</h5>
               <p class="text-description" style="color: #777777"> {{form.description.substring(0, 10)}}</p>
             </div>
 

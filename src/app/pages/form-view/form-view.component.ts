@@ -94,6 +94,50 @@ export class FormViewComponent implements OnInit {
       });
 
   }
+  countWord(str, obj) {
+    // const counter = str.match(/(\w+)/g).length;
+    // console.log(obj);
+    // console.log(str);
+
+    // obj.srcElement.style.minWidth = ((str.length + 1) * 9) + 'px';
+    // if (obj.srcElement.style.minWidth < '320px') {
+    //   obj.srcElement.style.minWidth = ((str.length + 1) * 9) + 'px';
+    // }
+    console.log(str.length % 60);
+
+    if ((str.length > 0) && (str.length % 60 === 0)) {
+      obj.srcElement.style.height = (str.length / 60) * 30 + 30 + 'px';
+    }
+
+    if ((str.length === 0) && (str.length % 60 === 0)) {
+      obj.srcElement.style.height = 40 + 'px';
+
+    }
+
+    console.log(obj.srcElement.style.width);
+
+    console.log(((str.length + 1) * 8));
+
+    // console.log(counters);
+    // if (!obj.savesize) {
+    //   {
+    //     obj.savesize = obj.size;
+    //     // obj.size = Math.max(obj.savesize, obj.value.length);
+    //   }
+
+    // }
+
+  }
+  Expand(obj) {
+    if (!obj.savesize) {
+      {
+        obj.savesize = obj.size;
+        obj.size = Math.max(obj.savesize, obj.value.length);
+      }
+
+    }
+  }
+
 
   backToForm() {
     // tslint:disable-next-line: radix
