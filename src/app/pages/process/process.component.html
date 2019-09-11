@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav left-menu mr-auto">
       <li class="nav-item active">
-        <a class="nav-link lh-49" routerLink="/process"><i class="fa fa-home"></i>&nbsp; Home <span
+        <a class="nav-link lh-49" routerLink="/process"><span class="glyphicon glyphicon-home"></span>&nbsp; Home <span
             class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
@@ -66,8 +66,10 @@
         <div class="col-md-3 mt-3 mb-3" *ngFor="let form of formStorge; let i = index">
           <div class="uploadimage-dragndrop">
             <div class="drop-menu text-right">
-              <i class="fa fa-ellipsis-v dropdown-toggle" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false"></i>
+              <!-- <i class="fa fa-ellipsis-v dropdown-toggle" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"></i> -->
+              <span class="glyphicon glyphicon-option-vertical dropdown-toggle" aria-hidden="true"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
               <div class="dropdown-menu">
                 <a class="dropdown-item" (click)="editProcess (i) ">Edit</a>
                 <a class="dropdown-item" (click)="deleteProcess (i) ">Delete</a>
@@ -154,3 +156,17 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

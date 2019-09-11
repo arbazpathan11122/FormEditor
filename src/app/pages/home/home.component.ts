@@ -227,7 +227,7 @@ export class HomeComponent implements OnInit {
       textField: 'label',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
+      itemsShowLimit: 2,
       allowSearchFilter: true
     };
 
@@ -237,7 +237,7 @@ export class HomeComponent implements OnInit {
       textField: 'label',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
+      itemsShowLimit: 2,
       allowSearchFilter: true
     };
 
@@ -292,8 +292,8 @@ export class HomeComponent implements OnInit {
       textField: 'label',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
+      itemsShowLimit: 2,
+      allowSearchFilter: false,
     };
 
     this.httpDropdownList = [
@@ -317,7 +317,7 @@ export class HomeComponent implements OnInit {
       textField: 'label',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
+      itemsShowLimit: 2,
       allowSearchFilter: true
     };
 

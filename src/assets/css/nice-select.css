@@ -146,4 +146,5 @@
     -webkit-box-shadow: inset 0px 0px 3px 0px rgba(148,148,148,1);
     -moz-box-shadow: inset 0px 0px 3px 0px rgba(148,148,148,1);
     box-shadow: inset 0px 0px 3px 0px rgb(216, 210, 210);
+    font-size: 15px;
   }
