@@ -849,7 +849,7 @@
 
                             </div>
                         </div> -->
-                        <div class="theme-setting-color mt-4">
+                        <div class="theme-setting-color mt-4 pb-2">
                             <div class="que-color mb-3">
                                 <p>Question color</p>
                                 <input type="color" class="input-lg" [(ngModel)]="model.theme.qestColor"
@@ -881,7 +881,7 @@
                             <!-- <hr style="border:1px dashed gray"> -->
                         </div>
 
-                        <div class="form-pages mt-3">
+                        <div class="form-pages mt-4">
                             <!-- <p class="text-center mb-3">Form pages</p> -->
 
                             <div class="maker-input mb-2">
@@ -891,7 +891,7 @@
                                 <input style="border-style: inset !important" class="name-input" type="text" [(ngModel)]="model.name" placeholder="Purchase"
                                     name="category">
                             </div>
-                            <div class="maker-input mt-4">
+                            <div class="maker-input mt-4 mb-3">
                                 <label> Pages</label>
                             </div>
                             <p class="mb-2 mt-2" *ngFor=" let page of model.attributes; let pageNo = index">

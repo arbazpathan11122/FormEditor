@@ -594,7 +594,15 @@ fieldset, label { margin: 0; padding: 0; }
 .mtb{
 	margin: 35px 0;
 }
-
+.multiselect-dropdown{
+    position: relative;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 5px 0px #d8d2d2;
+}
 .multiselect-dropdown .dropdown-btn .selected-item {
     border: none !important;
     background: #ffffff !important;
@@ -613,7 +621,6 @@ fieldset, label { margin: 0; padding: 0; }
     border-right:none !important;
     border-left:none !important;
     border-radius:0px !important;
-    padding: 0px !important;
     font-size: 15px;
 }
 .multiselect-dropdown .dropdown-btn .dropdown-down {

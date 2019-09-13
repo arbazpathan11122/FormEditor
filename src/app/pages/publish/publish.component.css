@@ -1,60 +1,149 @@
 .tastCard {
-    border: 3px solid #3bb4f2;
+    border: 2px solid #3bb4f2;
     margin-top: 50px;
-}
-
-.tastCard .card-header{
-    width: 84%;
-    margin-left: 8%;
-    margin-top: -28px;
-    background-color: #3bb4f2;
     border-radius: 10px;
 }
 
+.tastCard .card-header{
+    width: 94%;
+    margin-left: 3%;
+    margin-top: -28px;
+    background-color: #3bb4f2;
+    border-radius: 10px;
+    color: #ffffff;
+}
+.card-body{
+    padding: 40px 15px;
+    width: 215px;
+}
+.card-header {
+    padding: .5rem 1.25rem;
+}
 .tastCard  .text-info{
-    font-size: 10px
+    color: #212529 !important;
+    font-size: 12px;
 }
 .userList {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 8vh;
+    overflow: hidden;
+    height: 7vh;
+}
+.userlistimg{
+    height: 40px;
+    width: 40px;
+}
+.plus-circle-ico{
+    height: 20px;
+    width: 20px;
+}
+.hide-show-btn{
+    position: fixed;
+    bottom: 30px;
+    right: 80px;
+    z-index: 999;
+}
+.vl {
+    border-left: 3px solid green;
+    height: 28px;
+    margin-left:50%;
+}
+.modal-tab-menu{
+    -border:1px solid red;
+}
+.modal-tab-menu li a{
+    font-weight:500;
+    font-size: 18px;
+    border:2px solid transparent;
+    border-radius: 0px;
+    color: #8b8b8b;
+}
+.modal-tab-menu li a:hover:active{
+    border-bottom:2px solid #7130ff;
+}
+#publishPageModel .nav-pills .nav-link.active{
+    color: #7130ff !important;
+    border-bottom: 2px solid #7130ff;
+}
+.btn-purple{
+    color: #fff;
+    background-color: #7130ff !important;
+    border-color:#7130ff;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 0 20px;
+}
+.btn-purple-2{
+    padding: 12px 45px !important;
+}
+.btn-publish{
+    padding: 15px 25px !important;
+}
+.btn-purple-light{
+    color: #7130ff;
+    font-size: 17px;
+    padding: 15px 30px;
+}
+.publish-modal-search{
+    border:1px solid #ced4da;
+    padding: 2px;
+    border-radius: 7px;
+}
+.modal-user-image{
+    height: 45px;
+    width: 45px;
+}
+.modaluserbox{
+    border:1px solid #ced4da;
+    overflow: hidden;
+    border-radius: 7px;
+    padding: 15px;
+}
+.modaluserbox .text-info{
+    overflow: hidden;
+    color: #212529 !important;
+    font-size: 12px;
 }
 
-
-.process-part{
-    position: relative;
-    -overflow: hidden;
-    z-index: 999;
-    }
-    .process-part::after{
-    content: '';
+.modalradiolable{
+    font-size:19px;
+    color: #8b8b8b;
+    margin-bottom: 4px;
+}
+.modal-subheading{
+    color: #757575;
+    font-size: 15px;
+}
+.p-2rem{
+    padding: 2rem;
+}
+.border-top-none{
+    border-top: none !important;
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #7130ff !important;
+    border: 2px solid #7130ff !important;
+    background-color: #7130ff !important;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: none;
+    font-size: 19px;
+    font-weight: 500;
+}
+.publishdopmenu{
     position: absolute;
-    top: 25%;
-    height: 2px;
-    width: 100%;
-    background-color: #007bff;
-    z-index: -1;
-    }
-    .pro-button{
-      border-radius: 50%;
-      height: 25px;
-      width: 25px;
-      border: 2px solid white;
-      box-shadow: 0px 0px 0px 2px #007bff;
-      background: #ffffff;
-    }
-
-
-
-    .hide-show-btn{
-        position: fixed;
-        bottom: 30px;
-        right: 80px;
-        z-index: 999999;
-       }
-
-       .vl {
-        border-left: 3px solid green;
-        height: 28px;
-        margin-left:50%;
-      }
+    will-change: transform;
+    top: 0px;
+    left: 0px;
+    transform: translate3d(9px, 11px, 0px) !important;
+    width: 91% !important;
+}
+.publishdopmenu .dropdown-item {
+    padding: .5rem 1.5rem !important;
+    font-size: 14px !important;
+}
+.card-header .nav-link {
+    font-size: 15px !important;
+}
+.plus-user-content span{
+    font-size: 15px;
+}
