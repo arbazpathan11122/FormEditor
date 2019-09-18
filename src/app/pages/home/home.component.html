@@ -824,7 +824,7 @@
 
                         <label class="nice-lable">Font Style</label>
                         <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                            <span class="current">Select Font Style</span>
+                            <span class="current">{{model.theme.fontFamily}}</span>
                             <ul class="list">
                                 <li *ngFor="let font of FontStyleArray" [ngStyle]="font.fontStyle"
                                     (click)="changeFontStyle(font.name)" class="option">{{font.name}}</li>
@@ -852,7 +852,7 @@
                             <div class="que-color mb-3">
                                 <p>Answer color</p>
                                 <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
-                                    (ngModelChange)="changeAnsColor()" value="#ff0000">
+                                    (ngModelChange)="changeAnsColor()">
 
                             </div>
 

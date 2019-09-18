@@ -10,12 +10,18 @@ import { SignUpComponent } from './share/sign-up/sign-up.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
+  // { path: 'mis', loadChildren: 'pages/mis/mis.module#MISModule', canActivate: [AuthGaurd] },
+  // {
+  //  path: '**',
+  //  redirectTo: '/page404'
+  // },
+  // {
+  //    path: 'page404',
+  //    component: Page404Component
+  // }
+
   {
     path: 'login',
     component: LoginComponent,

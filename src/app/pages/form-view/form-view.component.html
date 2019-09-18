@@ -246,7 +246,7 @@
 
               <label class="Custom-Radio-Buttons">
                 <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue"
-                [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel">
+                  [ngModelOptions]="{standalone: true}" required="{{item.required}}" #yesNo="ngModel">
                 {{opt.label}} &nbsp; &nbsp; &nbsp;
                 <span class="checkmark-dot"></span>
               </label>
@@ -265,7 +265,7 @@
               <label class="Custom-Radio-Buttons">
                 {{opt.label}}
                 <input type="radio" [value]="opt.value" name="{{item.name}}" [(ngModel)]="item.inputValue"
-               required="{{item.required}}" >
+                  required="{{item.required}}">
                 <span class="checkmark-dot"></span>
               </label>
 
@@ -305,33 +305,6 @@
             </div>
 
 
-            <!-- <div id="Rating-format">
-              <div class="mb-4 maker-input">
-                <input class="name-input" [(ngModel)] aria-invalid="false">
-              </div>
-              <div style="width: 50%" class="user-input">
-                <fieldset class="rating">
-                  <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"></label>
-
-
-                  <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"></label>
-
-                  <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
-
-                  <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"></label>
-
-                  <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"></label>
-
-                </fieldset>
-
-                <span style="opacity: 1" *ngFor="let star of item.ratingArray; let i=index"
-                  [ngClass]="item.selestedValidation">
-                  <ng-container *ngIf="item.selestedValidation== 'btn btn-light'">
-                    {{i}}
-                  </ng-container>&nbsp;&nbsp;
-                </span>
-              </div>
-            </div> -->
           </div>
 
           <div class="p-4" *ngIf="item.fielType==='dropdown'" id="dropdown-format">
@@ -366,11 +339,11 @@
               <div class="row">
                 <div class="col-12" *ngFor="let val of item.values">
 
-                  <p class=" mt-2 " (change)="checkedState(item , val)">
+                  <p class=" mt-2 ">
 
                     <label class="custom-check">
-                      <input class="{{item.name}}" id="{{item.name}}" name="{{val.label}}" [(ngModel)]="val.value"
-                        type="checkbox">
+                      <input class="{{item.name}}" (change)="checkedState(item , val)" id="{{item.name}}"
+                        name="{{val.label}}" [(ngModel)]="val.value" type="checkbox">
                       {{val.label}}
                       <span class="checkmark"></span>
                     </label>

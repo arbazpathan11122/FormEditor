@@ -104,6 +104,12 @@ export class HomeComponent implements OnInit {
       ,
       fontStyle: { fontFamily: 'Times New Roman' }
     },
+
+    {
+      name: 'Poppins'
+      ,
+      fontStyle: { fontFamily: 'Poppins' }
+    },
     {
       name: 'Courier New'
       ,
@@ -447,6 +453,10 @@ export class HomeComponent implements OnInit {
         // tslint:disable-next-line: radix
         this.formListNo = parseInt(e.formId);
         this.model = this.formStorge[this.formListNo];
+        this.changeFontStyle(this.model.theme.fontFamily);
+        this.changeQuestColor();
+        this.changeAnsColor();
+
         this.formCurrentPage = this.model.attributes[this.currentPageIndex];
         console.log(this.model);
 
@@ -723,6 +733,11 @@ export class HomeComponent implements OnInit {
         if (((el.fielType === 'website') && (el.comList.length < 1))) {
           el.comList = this.comDropdownList;
         }
+        if ((el.fielType === 'multiple') || (el.fielType === 'dropdown') || (el.fielType === 'picture') || (el.fielType === 'file')) {
+          if (!this.isValidObject(el.validOption)) {
+            el.validOption = {};
+          }
+        }
       });
 
     });
@@ -748,16 +763,18 @@ export class HomeComponent implements OnInit {
 
 
   changeFontStyle(val) {
-    const nodes = document.getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
-    for (let i = 0; i < nodes.length; i++) {
-      // const node = nodes[i].getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
-      // for (let j = 0; j < node.length; j++) {
-      nodes[i].style.fontFamily = val;
-      //   console.log(node[j]);
-      //   // tslint:disable-next-line: no-debugger
-      //   debugger;
-      // }
-    }
+    this.model.theme.fontFamily = val;
+    $('.name-input').css('fontFamily', val);
+    // const nodes = document.getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+    // for (let i = 0; i < nodes.length; i++) {
+    //   // const node = nodes[i].getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+    //   // for (let j = 0; j < node.length; j++) {
+    //   nodes[i].style.fontFamily = val;
+    //   //   console.log(node[j]);
+    //   //   // tslint:disable-next-line: no-debugger
+    //   //   debugger;
+    //   // }
+    // }
   }
   changeQuestColor() {
     const nodes = document.getElementsByClassName('maker-input') as HTMLCollectionOf<HTMLElement>;
