@@ -75,7 +75,8 @@
                     <div class="row">
                         <div class="col-md-12 coming-soon-part mt-3 mb-4">
                             <p class="m-auto center justify-content-center"> Coming Soon</p>
-                            <div class="title-with-ico mt-3 mb-4"><img src="assets/img/icons/table.png"> &nbsp; Table Format</div>
+                            <div class="title-with-ico mt-3 mb-4"><img src="assets/img/icons/table.png"> &nbsp; Table
+                                Format</div>
                         </div>
                         <!-- <div class="col-4" style=" margin-top: -15px;">
                             <img src="assets/img/icons/table.png"><br>
@@ -285,19 +286,22 @@
                         <div style="cursor: all-scroll;" class="col-md-12 text-center m-0 mb-2 pt-3" dndHandle>
                             <span class="glyphicon glyphicon-menu-hamburger dndHandle part-hover-ico"></span>
                             <div class="float-right mr-4">
-                                <span style="cursor: pointer" (click)="removeField(i)" class="glyphicon glyphicon-trash pull-right part-hover-ico"></span>
+                                <span style="cursor: pointer" (click)="removeField(i)"
+                                    class="glyphicon glyphicon-trash pull-right part-hover-ico"></span>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-12  ">
-                            <div *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')"  class="pl-3 pr-3">
+                            <div *ngIf="(item.fielType ==='header')||(item.fielType === 'statement')|| (item.fielType ==='footer')"
+                                class="pl-3 pr-3">
                                 <div class="maker-input">
                                     <input class="name-input " type="text" [(ngModel)]="item.label"
                                         aria-invalid="false">
                                 </div>
                             </div>
 
-                            <div *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')" class="pl-3 pr-3">
+                            <div *ngIf="(item.fielType ==='email')||(item.fielType ==='website')|| (item.fielType ==='phone')"
+                                class="pl-3 pr-3">
                                 <div class="mb-3 maker-input">
                                     <span *ngIf="item.required" class="red">*</span> <input class="name-input "
                                         type="{{item.type}}" [(ngModel)]="item.label" aria-invalid="false">
@@ -405,7 +409,8 @@
                                 </div>
                             </div>
 
-                            <div class="pl-3 pr-3" *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
+                            <div class="pl-3 pr-3"
+                                *ngIf="((item.fielType=='dropdown') || (item.fielType=='picture')||(item.fielType =='multiple'))">
                                 <div class="mb-3 maker-input">
                                     <span *ngIf="item.required" class="red">*</span> <input class="name-input"
                                         [(ngModel)]="item.label" aria-invalid="false">
@@ -480,7 +485,7 @@
 
 
                         </div>
-                        
+
 
 
 
@@ -501,7 +506,7 @@
                 <button class="btn btn-success mr-3" data-toggle="modal" data-target="#assingModel"
                     (click)="submitbtn()">Submit</button>
                 <button class="btn btn-custom" (click)="addPages()">
-                <span class="glyphicon glyphicon-plus"></span> &nbsp; Add Page</button>
+                    <span class="glyphicon glyphicon-plus"></span> &nbsp; Add Page</button>
                 <a *ngIf="currentPageIndex!=(model.attributes.length -1)" (click)="navigateToPage(1)"
                     class="float-right">Next</a>
 
@@ -536,18 +541,22 @@
                                 class="required-part mt-4 mb-4 pt-2">
                                 <!-- <i *ngIf="selectedItem.required" (click)="selectedItem.required=false"
                                     class="fa fa-toggle-on red"></i> -->
-                                    <img class="toggle-imag" *ngIf="selectedItem.required" (click)="selectedItem.required=false" src="assets/img/toggle-button-inactive.png">
+                                <img class="toggle-imag" *ngIf="selectedItem.required"
+                                    (click)="selectedItem.required=false" src="assets/img/toggle-button-inactive.png">
 
                                 <!-- <i *ngIf="!selectedItem.required" (click)="selectedItem.required=true"
                                     class="fa fa-toggle-off"></i> &nbsp; -->
-                                    <img class="toggle-imag" *ngIf="!selectedItem.required" (click)="selectedItem.required=true" src="assets/img/toggle-button-active.png">&nbsp;
+                                <img class="toggle-imag" *ngIf="!selectedItem.required"
+                                    (click)="selectedItem.required=true"
+                                    src="assets/img/toggle-button-active.png">&nbsp;
                                 <!-- <label class="switch">
                                     <input type="checkbox">
                                     <span class="toogle-slide round"></span>
                                 </label> &nbsp; -->
 
                                 <label data-toggle="tooltip" data-placement="top" title="You Want to "
-                                    data-original-title="Tooltip on top"><span style="font-weight: 500;">Mandatory Or Not?</span></label>
+                                    data-original-title="Tooltip on top"><span style="font-weight: 500;">Mandatory Or
+                                        Not?</span></label>
 
 
                                 <!-- <div class="response-validation mt-4 mb-3">
@@ -563,8 +572,12 @@
 
                                 <!-- <i *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false"
                                     class="fa fa-toggle-on red"></i> -->
-                                    <img class="toggle-imag" *ngIf="selectedItem.userComment.want" (click)="selectedItem.userComment.want=false" src="assets/img/toggle-button-inactive.png">
-                                    <img class="toggle-imag" *ngIf="!selectedItem.userComment.want" (click)="selectedItem.userComment.want=true" src="assets/img/toggle-button-active.png"> &nbsp;
+                                <img class="toggle-imag" *ngIf="selectedItem.userComment.want"
+                                    (click)="selectedItem.userComment.want=false"
+                                    src="assets/img/toggle-button-inactive.png">
+                                <img class="toggle-imag" *ngIf="!selectedItem.userComment.want"
+                                    (click)="selectedItem.userComment.want=true"
+                                    src="assets/img/toggle-button-active.png"> &nbsp;
                                 <!-- <i *ngIf="!selectedItem.userComment.want" (click)="selectedItem.userComment.want=true"
                                     class="fa fa-toggle-off"></i> &nbsp; -->
                                 <!-- <label class="switch">
@@ -617,13 +630,14 @@
 
                                 </div>
                             </div>
-                          
+
                             <div class="row" *ngIf="selectedItem?.formValidations">
                                 <div class="col-md-12 user-input mb-4">
                                     <label *ngIf="!selectedItem.validOption">Select Validation</label>
-                                    <select style="border-style: inset !important;border-color:#f1f1f1" [(ngModel)]="selectedItem.validOption" class="name-input">
+                                    <select style="border-style: inset !important;border-color:#f1f1f1"
+                                        [(ngModel)]="selectedItem.validOption" class="name-input">
                                         <!-- value="" disabled selected -->
-                                        <option [ngValue]="{}"  selected>No Validation</option>
+                                        <option [ngValue]="{}" selected>No Validation</option>
                                         <option *ngFor="let c of selectedItem?.formValidations" [ngValue]="c">
                                             {{c.label}}</option>
 
@@ -637,7 +651,8 @@
                                         *ngIf="(isValidObject(selectedItem.validOption)&&  (selectedItem.fielType !=='file'))">
                                         <p class="mb-2"> Number </p>
 
-                                        <input style="border-style: inset !important;border-color:#f1f1f1" class="name-input" min="0" type="number"
+                                        <input style="border-style: inset !important;border-color:#f1f1f1"
+                                            class="name-input" min="0" type="number"
                                             [(ngModel)]="selectedItem.validOption.limit" aria-invalid="false">
                                     </div>
 
@@ -645,7 +660,8 @@
                                         *ngIf="(isValidObject(selectedItem.validOption) &&  (selectedItem.fielType =='file'))">
                                         <label class="mb-2"> Custom Error Message </label>
 
-                                        <input style="border-style: inset !important;border-color:#f1f1f1" class="name-input" min="0" type="number"
+                                        <input style="border-style: inset !important;border-color:#f1f1f1"
+                                            class="name-input" min="0" type="number"
                                             [(ngModel)]="selectedItem.validOption.size" aria-invalid="false">
                                     </div>
                                 </div>
@@ -713,11 +729,11 @@
                                     *ngIf="!((selectedItem.fielType =='statement')||(selectedItem.fielType =='footer')||(selectedItem.fielType =='header'))">
                                     <div class="user-input mb-3">
                                         <label class="mb-2">
-                                                Custom Error Message
+                                            Custom Error Message
                                         </label>
 
-                                        <input style="border-style: inset !important" class="name-input" [(ngModel)]="selectedItem.errorText"
-                                            aria-invalid="false">
+                                        <input style="border-style: inset !important" class="name-input"
+                                            [(ngModel)]="selectedItem.errorText" aria-invalid="false">
                                     </div>
                                 </div>
 
@@ -771,14 +787,17 @@
                                     class="fa fa-toggle-on red"></i>
                                 <i *ngIf="!conditionRequired" (click)="conditionRequired = true"
                                     class="fa fa-toggle-off"></i> &nbsp; -->
-                                    <img class="toggle-imag" *ngIf="conditionRequired" (click)="conditionRequired = false" src="assets/img/toggle-button-active.png">
-                                    <img class="toggle-imag" *ngIf="!conditionRequired" (click)="conditionRequired = true" src="assets/img/toggle-button-inactive.png">
+                                <img class="toggle-imag" *ngIf="conditionRequired" (click)="conditionRequired = false"
+                                    src="assets/img/toggle-button-active.png">
+                                <img class="toggle-imag" *ngIf="!conditionRequired" (click)="conditionRequired = true"
+                                    src="assets/img/toggle-button-inactive.png">
                                 <!-- <label class="switch">
                                     <input type="checkbox">
                                     <span class="toogle-slide round"></span>
                                 </label> &nbsp; -->
                                 &nbsp; <label data-original-title="Tooltip on top" data-placement="top"
-                                    data-toggle="tooltip" title="You Want to "><span style="font-weight: 500;">Make it a conditional question</span></label>
+                                    data-toggle="tooltip" title="You Want to "><span style="font-weight: 500;">Make it a
+                                        conditional question</span></label>
                             </div>
 
                             <div class="row">
@@ -797,7 +816,7 @@
                                         <span class="current">Question</span>
                                         <ul class="list">
                                             <li *ngFor="let ques of conditionalQuesList; let indx = index;"
-                                                (click)="conditionalAnsList = ques"  class ="option">{{ques.label}}</li>
+                                                (click)="conditionalAnsList = ques" class="option">{{ques.label}}</li>
 
                                         </ul>
                                     </div>
@@ -831,7 +850,7 @@
 
                         <label class="nice-lable">Font Style</label>
                         <div class="nice-select box-nice-select wide mb-3" tabindex="0">
-                            <span class="current">Select Font Style</span>
+                            <span class="current">{{model.theme.fontFamily}}</span>
                             <ul class="list">
                                 <li *ngFor="let font of FontStyleArray" [ngStyle]="font.fontStyle"
                                     (click)="changeFontStyle(font.name)" class="option">{{font.name}}</li>
@@ -859,7 +878,7 @@
                             <div class="que-color mb-3">
                                 <p>Answer color</p>
                                 <input type="color" class="input-lg" [(ngModel)]="model.theme.ansColor"
-                                    (ngModelChange)="changeAnsColor()" value="#ff0000">
+                                    (ngModelChange)="changeAnsColor()">
 
                             </div>
 
@@ -888,8 +907,8 @@
                                 <label>Form Name</label>
                             </div>
                             <div class="user-input">
-                                <input style="border-style: inset !important" class="name-input" type="text" [(ngModel)]="model.name" placeholder="Purchase"
-                                    name="category">
+                                <input style="border-style: inset !important" class="name-input" type="text"
+                                    [(ngModel)]="model.name" placeholder="Purchase" name="category">
                             </div>
                             <div class="maker-input mt-4">
                                 <label> Pages</label>
@@ -899,10 +918,12 @@
                                     [class]="((pageNo == currentPageIndex)?'text-primary':'')">{{pageNo +1}} &nbsp;
                                     {{page.name}} </a>
 
-                               
-                                <span  (click)="removePage(pageNo, page.name)" class="glyphicon glyphicon-trash  mr-2 pull-right"></span>
 
-                                    <span data-toggle="modal" data-target="#editPageNameModel" (click)="editPageName(page)"  class="glyphicon glyphicon-edit mr-4 pull-right"></span>
+                                <span (click)="removePage(pageNo, page.name)"
+                                    class="glyphicon glyphicon-trash  mr-2 pull-right"></span>
+
+                                <span data-toggle="modal" data-target="#editPageNameModel" (click)="editPageName(page)"
+                                    class="glyphicon glyphicon-edit mr-4 pull-right"></span>
                                 &nbsp; &nbsp; &nbsp;
                             </p>
 

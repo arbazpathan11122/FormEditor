@@ -26,11 +26,11 @@ export class ProcessComponent implements OnInit {
       pages: []
     },
     theme: {
-      fontFamily: '',
-      qestColor: '',
-      ansColor: '',
-      bgColor: 'f0f0f0',
-      textColor: '555555',
+      fontFamily: 'Poppins',
+      qestColor: '#000000',
+      ansColor: '#000000',
+      bgColor: '000000',
+      textColor: '000000',
       bannerImage: ''
     },
 
@@ -64,5 +64,7 @@ export class ProcessComponent implements OnInit {
   }
   deleteProcess(i) {
     this.formStorge.splice(i, 1);
+    localStorage.setItem('formList', JSON.stringify(this.formStorge));
+
   }
 }

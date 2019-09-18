@@ -75,6 +75,8 @@ export class FormViewComponent implements OnInit {
       allowSearchFilter: true,
     };
 
+
+
   }
 
 
@@ -90,10 +92,33 @@ export class FormViewComponent implements OnInit {
         this.formCurrentPage = this.form.attributes[this.currentPageIndex];
 
         console.log(this.formCurrentPage);
-
+        $('.name-input').css('fontFamily', this.form.theme.fontFamily);
+        this.changeQuestColor();
+        this.changeAnsColor();
       });
 
   }
+
+  changeQuestColor() {
+    const nodes = document.getElementsByClassName('maker-input') as HTMLCollectionOf<HTMLElement>;
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i].getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+      for (let j = 0; j < node.length; j++) {
+        node[j].style.color = this.form.theme.qestColor;
+
+      }
+    }
+  }
+  changeAnsColor() {
+    const nodes = document.getElementsByClassName('user-input') as HTMLCollectionOf<HTMLElement>;
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i].getElementsByClassName('name-input') as HTMLCollectionOf<HTMLElement>;
+      for (let j = 0; j < node.length; j++) {
+        node[j].style.color = this.form.theme.ansColor;
+      }
+    }
+  }
+
   countWord(str, obj) {
     // const counter = str.match(/(\w+)/g).length;
     // console.log(obj);
@@ -219,18 +244,18 @@ export class FormViewComponent implements OnInit {
   checkedState(item, val) {
 
     console.log(val);
-    if (this.isValidObject(item.validOption)) {
-      const selected = item.values.filter(c => c.value);
-      console.log(selected);
+    // if (this.isValidObject(item.validOption)) {
+    const selected = item.values.filter(c => c.value);
+    console.log(selected);
 
-      if ((item.validOption.value !== 'min') && (selected.length > item.validOption.limit)) {
-        val.value = false;
-      }
-
-      item.userResponse = selected.filter(c => c.value);
-      console.log(item.userResponse);
-
+    if ((item.validOption.value !== 'min') && (selected.length > item.validOption.limit)) {
+      val.value = false;
     }
+
+    item.userResponse = selected.filter(c => c.value);
+    console.log(item.userResponse);
+
+    // }
 
 
   }
@@ -397,11 +422,11 @@ export class FormViewComponent implements OnInit {
                 }
               }
             } else {
-              swal('Error', 'please fill  ' + el.label, 'error');
+              // swal('Error', 'please fill  ' + el.label, 'error');
 
-              errorCount++;
+              // errorCount++;
 
-              return;
+              // return;
 
             }
 
