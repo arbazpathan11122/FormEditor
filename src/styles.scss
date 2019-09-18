@@ -37,6 +37,28 @@ body{
 .btn-custom{
     border:1px solid #cccccc;
 }
+.btn-purple{
+    color: #fff;
+    background-color: #7130ff !important;
+    border-color:#7130ff;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 0 20px;
+}
+.btn-purple:hover{
+    color:none !important;
+}
+.btn-purple-2{
+    padding: 12px 45px !important;
+}
+.border-top-none{
+    border-top: none !important;
+}
+.btn-purple-light{
+    color: #7130ff;
+    font-size: 17px;
+    padding: 15px 30px;
+}
 .box{
     padding: 10px;
     margin-bottom:10px;
@@ -141,11 +163,20 @@ body{
       color:#3c3c3c;
       font-size: 17px;
   }
+//   .navbar-light .navbar-toggler {
+//     display: none !important;
+//   }
+//   .navbar-light .navbar-toggler {
+//     display: flex !important;
+//   }
+  .navbar-collapse{
+    display: flex !important;
+  }
   .left-menu li.nav-item.active{
-      border-bottom:2px solid #007bff;
+      border-bottom:2px solid #7130ff;
   }
   .left-menu li.nav-item.active a{
-    color: #007bff !important;
+    color: #7130ff !important;
 }
   .profile-img {
       height: 50px;
@@ -193,7 +224,9 @@ body{
     .dropdown-toggle {
         cursor: pointer;
     }
-
+    .dropdown-item:active {
+        background-color: #f8f9fa;
+    }
 
 
 // navbar
@@ -677,18 +710,7 @@ fieldset, label { margin: 0; padding: 0; }
 ::-webkit-scrollbar-thumb:hover {
   background: #ccc; 
 }
-
-
-
-
-
 // form
-
-
-
-
-
-
 
 .form-control:focus{
     box-shadow: none
@@ -845,9 +867,65 @@ font-size: 20px;
     height: 2px !important;
     margin-top: -3px !important;
 }
+.fw-normal{
+    font-weight: normal !important;
+}
 
 
 
+
+
+
+
+
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .navbar-light .navbar-nav .nav-link {
+    padding: 12px !important;
+  }
+  .navbar {
+    padding: 0 15px !important;
+  }
+  .process-part {
+    width: 350px !important;
+  }
+  .navbar-nav {
+    display: -webkit-box !important;
+   }
+   .menu-item {
+    padding: 10px 5px;
+    }
+    .menu-sidebar {
+        padding: 10px 15px;
+    }
+    .mob-tabl-none{
+        display: none;
+    }
+    .profile-img {
+        height: 40px;
+        width: 40px;
+    }
+    .pro-button {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+  
+}
 
 
 

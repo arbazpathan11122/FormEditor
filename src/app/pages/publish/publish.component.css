@@ -63,24 +63,8 @@
     color: #7130ff !important;
     border-bottom: 2px solid #7130ff;
 }
-.btn-purple{
-    color: #fff;
-    background-color: #7130ff !important;
-    border-color:#7130ff;
-    font-size: 17px;
-    border-radius: 10px;
-    padding: 0 20px;
-}
-.btn-purple-2{
-    padding: 12px 45px !important;
-}
 .btn-publish{
     padding: 15px 25px !important;
-}
-.btn-purple-light{
-    color: #7130ff;
-    font-size: 17px;
-    padding: 15px 30px;
 }
 .publish-modal-search{
     border:1px solid #ced4da;
@@ -114,9 +98,6 @@
 }
 .p-2rem{
     padding: 2rem;
-}
-.border-top-none{
-    border-top: none !important;
 }
 .custom-control-input:checked~.custom-control-label::before {
     color: #7130ff !important;

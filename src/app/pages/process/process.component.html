@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
 
 <!-- <app-nav></app-nav> -->
 <div class="container-fluid">
@@ -58,9 +58,9 @@
 
         <div class="col-md-3 mt-3 mb-3">
           <div class="uploadimage-dragndrop create-box" data-toggle="modal" data-target="#ProcessDetailsModel">
-            <h3 class="voiletColor text-center">
+            <h4 class="voiletColor text-center fw-normal">
 
-              + Create New </h3>
+              + Create New </h4>
           </div>
         </div>
         <div class="col-md-3 mt-3 mb-3" *ngFor="let form of formStorge; let i = index">
@@ -76,9 +76,9 @@
               </div>
             </div>
             <div class="p-2">
-              <h4 class="voiletColor text-center mb-3">
+              <h4 class="text-center mb-4 fw-normal">
                 {{form.name.substring(0, 10)}} </h4>
-              <h5 class="mb-3" style="line-height: 30px"> {{form.category.substring(0, 20)}}</h5>
+              <h5 class="mb-2 fw-normal"> {{form.category.substring(0, 20)}}</h5>
               <p class="text-description" style="color: #777777"> {{form.description.substring(0, 10)}}</p>
             </div>
 
@@ -120,27 +120,24 @@
           <div class="user-input">
             <input class="name-input" required [(ngModel)]="model.name" placeholder="Purchase Requisition" type="text"
               name="Workflow">
-
           </div>
 
-          <div class=" mt-3 maker-input">
+          <div class=" mt-5 maker-input">
             <label class="name-input">Category: <span class="red">*</span>
             </label>
           </div>
           <div class="user-input">
             <input class="name-input" required type="text" [(ngModel)]="model.category" placeholder="Purchase"
               name="category">
-
           </div>
 
-          <div class="mt-3 maker-input">
+          <div class="mt-5 maker-input">
             <label class="name-input">Description
             </label>
           </div>
           <div class="user-input">
             <textarea class="name-input" [(ngModel)]="model.description" id="message-text"
               placeholder="enter description here" type="text" name="description"></textarea>
-
           </div>
 
 
@@ -148,15 +145,20 @@
       </div>
 
 
-      <div class="modal-footer">
-        <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn voiletBG" [disabled]="modelForm.invalid"
-          (click)="goToFoermEditor()">Create</button>
+      <div class="modal-footer border-top-none  p-5">
+        <button class="btn btn-purple-light" data-dismiss="modal" type="button">Cancel</button>
+        <button class="btn btn-purple btn-purple-2" [disabled]="modelForm.invalid"
+        (click)="goToFoermEditor()" type="button">Create</button>
       </div>
     </div>
   </div>
 </div>
 
+<div class="modal-footer">
+    <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
+    <button type="button" class="btn voiletBG" [disabled]="modelForm.invalid"
+      (click)="goToFoermEditor()">Create</button>
+  </div>
 
 
 

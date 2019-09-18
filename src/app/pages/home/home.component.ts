@@ -535,13 +535,30 @@ export class HomeComponent implements OnInit {
 
     this.showProperties = true;
     this.selectedItem = item;
+
+    setTimeout(() => {
+
+      // if (!this.isValidObject(this.selectedItem.validOption)) {
+      //   this.selectedItem.validOption = {};
+      // } else {
+      //   this.selectedItem.validOption = item.validOption;
+
+      // }
+      console.log(this.selectedItem.validOption);
+
+    }, 1000);
     console.log(JSON.parse(JSON.stringify(item)));
 
     this.checkConditionalQuest();
     this.currentFieldIndex = i;
     this.showGenSetting = false;
   }
+  changeSelectValidation(event) {
+    console.log(event);
 
+    console.log('its working bro');
+
+  }
 
 
   checkConditionalQuest() {
