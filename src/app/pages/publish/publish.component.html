@@ -1,5 +1,8 @@
 <!-- <app-nav></app-nav> -->
-<div style="margin-top: 110px; ">
+<div style="margin-top: 90px">
+  <app-nav></app-nav>
+</div>
+<div >
   <div class="ml-5">
     <div class="d-flex flex-row" style="width: max-content; ">
 
@@ -30,7 +33,7 @@
               <a class="dropdown-item hoverColor">Approve</a>
             </div>
           </div>
-          <div class="card-body"  data-toggle="modal" data-target="#publishPageModel">
+          <div class="card-body" data-toggle="modal" data-target="#publishPageModel">
             <div class="userList">
               <div class="row">
                 <div class="col-md-3 mr-0">
@@ -92,7 +95,7 @@
       </div>
       <div class="">
         <div class="card tastCard">
-        <div class="card-header">
+          <div class="card-header">
             <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="nav-link active dropdown-toggle p-0">Select Task <i class="fa fa-angle-down float-right"
                   aria-hidden="true"></i></div>
@@ -167,7 +170,7 @@
 
       <div class="">
         <div class="card tastCard">
-        <div class="card-header">
+          <div class="card-header">
             <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="nav-link active dropdown-toggle p-0">Select Task <i class="fa fa-angle-down float-right"
                   aria-hidden="true"></i></div>
@@ -234,29 +237,29 @@
         </div>
       </div>
 
-        <div class="align-self-center">
-          <hr style="width: 20px;
+      <div class="align-self-center">
+        <hr style="width: 20px;
            border:1px solid #8b8b8b">
-        </div>
-        
-        <div class="">
-          <div class="card tastCard">
+      </div>
+
+      <div class="">
+        <div class="card tastCard">
           <div class="card-header">
-              <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="nav-link active dropdown-toggle p-0">Select Task <i class="fa fa-angle-down float-right"
-                    aria-hidden="true"></i></div>
-              </a>
-              <div class="dropdown-menu publishdopmenu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item hoverColor">Request</a>
-                <a class="dropdown-item hoverColor">Preparation</a>
-                <a class="dropdown-item hoverColor">View</a>
-                <a class="dropdown-item hoverColor">Approve</a>
-              </div>
+            <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="nav-link active dropdown-toggle p-0">Select Task <i class="fa fa-angle-down float-right"
+                  aria-hidden="true"></i></div>
+            </a>
+            <div class="dropdown-menu publishdopmenu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item hoverColor">Request</a>
+              <a class="dropdown-item hoverColor">Preparation</a>
+              <a class="dropdown-item hoverColor">View</a>
+              <a class="dropdown-item hoverColor">Approve</a>
             </div>
-            <div class="card-body">
-              <div class="userList">
-                <div class="row">
-                  <!-- <div class="col-md-3 mr-0">
+          </div>
+          <div class="card-body">
+            <div class="userList">
+              <div class="row">
+                <!-- <div class="col-md-3 mr-0">
                     <img class="m-auto userlistimg" style="border-radius: 50px;" src="assets/img/user.jpg">
                   </div>
                   <div class="col-md-9 pl-2">
@@ -267,11 +270,11 @@
                       shirley23@gmail.com
                     </div>
                   </div> -->
-                  <div class="plus-user-content m-auto">
-                      <img src="assets/img/plus-ico.png"> &nbsp; <span>Assign User</span>
-                  </div>
+                <div class="plus-user-content m-auto">
+                  <img src="assets/img/plus-ico.png"> &nbsp; <span>Assign User</span>
                 </div>
-                <!-- <div class="row">
+              </div>
+              <!-- <div class="row">
                   <div class="col-md-3 mr-0">
                     <img class="m-auto userlistimg" style="border-radius: 50px;" src="assets/img/user.jpg">
                   </div>
@@ -297,234 +300,239 @@
                     </div>
                   </div>
                 </div> -->
-              </div>
             </div>
           </div>
         </div>
+      </div>
 
     </div>
   </div>
 
 
 
-  
-
-<div class="hide-show-btn">
-    <button class="btn btn-purple btn-publish" type="button">Move To Publish &nbsp; &nbsp; <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-</div>
 
 
+  <div class="hide-show-btn">
+    <button class="btn btn-purple btn-publish" type="button">Move To Publish &nbsp; &nbsp; <i class="fa fa-arrow-right"
+        aria-hidden="true"></i></button>
+  </div>
 
 
 
-<div class="modal fade" id="publishPageModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body p-2rem">
-        <ul class="nav nav-pills modal-tab-menu" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active pl-0 pr-0 mr-4" id="pills-home-tab" data-toggle="pill" href="#pills-home"
-              role="tab" aria-controls="pills-home" aria-selected="true">Users</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-0 pr-0 mr-4" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-              role="tab" aria-controls="pills-profile" aria-selected="false">Assignment Rules</a>
-          </li>
-          <button class="ml-auto btn btn-purple">+ Add new</button>
-        </ul>
 
 
-        <div class="tab-content  mt-3" id="pills-tabContent">
+  <div class="modal fade" id="publishPageModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
 
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="input-group publish-modal-search">
-              <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
-                  <i class="fa fa-search"></i>
-                </span>
+        <div class="modal-body p-2rem">
+          <ul class="nav nav-pills modal-tab-menu" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active pl-0 pr-0 mr-4" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                role="tab" aria-controls="pills-home" aria-selected="true">Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pl-0 pr-0 mr-4" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                role="tab" aria-controls="pills-profile" aria-selected="false">Assignment Rules</a>
+            </li>
+            <button class="ml-auto btn btn-purple">+ Add new</button>
+          </ul>
+
+
+          <div class="tab-content  mt-3" id="pills-tabContent">
+
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+              <div class="input-group publish-modal-search">
+                <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </div>
+                <input aria-describedby="basic-addon1" aria-label="Username" class="form-control"
+                  placeholder="Search by username, email Id or category" style="border:none; font-size: 13px;"
+                  type="text">
               </div>
-              <input aria-describedby="basic-addon1" aria-label="Username" class="form-control"
-                placeholder="Search by username, email Id or category" style="border:none; font-size: 13px;"
-                type="text">
-            </div>
 
-            <div class="publishmodaluserList">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="modaluserbox mt-4">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
+              <div class="publishmodaluserList">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="modaluserbox mt-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
+                        </div>
+                        <div class="col-md-9 m-auto">
+                          <div class="title"> Nyaz Khan </div>
+                          <div class="text-info"> khannyaz1705@gmail.com </div>
+                        </div>
                       </div>
-                      <div class="col-md-9 m-auto">
-                        <div class="title"> Nyaz Khan </div>
-                        <div class="text-info"> khannyaz1705@gmail.com </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="modaluserbox mt-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
+                        </div>
+                        <div class="col-md-9 m-auto">
+                          <div class="title"> Nyaz Khan </div>
+                          <div class="text-info"> khannyaz1705@gmail.com </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="modaluserbox mt-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
+                        </div>
+                        <div class="col-md-9 m-auto">
+                          <div class="title"> Nyaz Khan </div>
+                          <div class="text-info"> khannyaz1705@gmail.com </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="modaluserbox mt-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
+                        </div>
+                        <div class="col-md-9 m-auto">
+                          <div class="title"> Nyaz Khan </div>
+                          <div class="text-info"> khannyaz1705@gmail.com </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="modaluserbox mt-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
+                        </div>
+                        <div class="col-md-9 m-auto">
+                          <div class="title"> Nyaz Khan </div>
+                          <div class="text-info"> khannyaz1705@gmail.com </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="modaluserbox mt-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
+                        </div>
+                        <div class="col-md-9 m-auto">
+                          <div class="title"> Nyaz Khan </div>
+                          <div class="text-info"> khannyaz1705@gmail.com </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="modaluserbox mt-4">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
-                      </div>
-                      <div class="col-md-9 m-auto">
-                        <div class="title"> Nyaz Khan </div>
-                        <div class="text-info"> khannyaz1705@gmail.com </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="modaluserbox mt-4">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
-                      </div>
-                      <div class="col-md-9 m-auto">
-                        <div class="title"> Nyaz Khan </div>
-                        <div class="text-info"> khannyaz1705@gmail.com </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="modaluserbox mt-4">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
-                      </div>
-                      <div class="col-md-9 m-auto">
-                        <div class="title"> Nyaz Khan </div>
-                        <div class="text-info"> khannyaz1705@gmail.com </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="modaluserbox mt-4">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
-                      </div>
-                      <div class="col-md-9 m-auto">
-                        <div class="title"> Nyaz Khan </div>
-                        <div class="text-info"> khannyaz1705@gmail.com </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="modaluserbox mt-4">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <img class="m-auto modal-user-image" src="assets/img/user.jpg" style="border-radius: 50px;">
-                      </div>
-                      <div class="col-md-9 m-auto">
-                        <div class="title"> Nyaz Khan </div>
-                        <div class="text-info"> khannyaz1705@gmail.com </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <br>
+                <br>
+                <br>
+              </div>
+
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+              <span class="modal-subheading">Select the rule here in which you want to flow your process</span>
+
+              <div class="custom-control custom-radio mb-4 mt-4">
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label modalradiolable pl-1" for="customRadio1">All</label><br>
+                <span class="pl-1 modal-subheading">Task Will not be complited untill all assignees do their
+                  tasks</span>
+              </div>
+              <div class="custom-control custom-radio mb-4">
+                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label modalradiolable pl-1" for="customRadio2">Round Robbin</label><br>
+                <span class="pl-1 modal-subheading">Task Will not be complited untill all assignees do their
+                  tasks</span>
+              </div>
+              <div class="custom-control custom-radio mb-4">
+                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label modalradiolable pl-1" for="customRadio3">Least Loaded</label><br>
+                <span class="pl-1 modal-subheading">Task Will not be complited untill all assignees do their
+                  tasks</span>
               </div>
               <br>
               <br>
-              <br>
             </div>
-
-          </div>
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <span class="modal-subheading">Select the rule here in which you want to flow your process</span>
-
-            <div class="custom-control custom-radio mb-4 mt-4">
-              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label modalradiolable pl-1" for="customRadio1">All</label><br>
-              <span class="pl-1 modal-subheading">Task Will not be complited untill all assignees do their tasks</span>
-            </div>
-            <div class="custom-control custom-radio mb-4">
-              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label modalradiolable pl-1" for="customRadio2">Round Robbin</label><br>
-              <span class="pl-1 modal-subheading">Task Will not be complited untill all assignees do their tasks</span>
-            </div>
-            <div class="custom-control custom-radio mb-4">
-              <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label modalradiolable pl-1" for="customRadio3">Least Loaded</label><br>
-              <span class="pl-1 modal-subheading">Task Will not be complited untill all assignees do their tasks</span>
-            </div>
-            <br>
-            <br>
           </div>
         </div>
-      </div>
-      <div class="modal-footer border-top-none p-2rem">
-        <button type="button" class="btn btn-purple-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-purple btn-purple-2">Confirm</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-<div class="modal fade" id="publishPagetableModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body p-0" style="overflow: scroll">
-        <table class="table publish-modal-table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col" class="pl-4">S. No.</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email I'd</th>
-              <th scope="col">Mobile</th>
-              <th scope="col">+ Add Field</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row" class="pl-4">1</th>
-              <td contenteditable="true">Shubham</td>
-              <td contenteditable="true">yadavshubham2199@gmail.com</td>
-              <td contenteditable="true">+91 8295796995</td>
-              <td contenteditable="true"> </td>
-            </tr>
-            <tr>
-              <th scope="row" class="pl-4">2</th>
-              <td>Anjali</td>
-              <td>anjalisharma@gmail.com</td>
-              <td>+91 8295796995</td>
-              <td> </td>
-            </tr>
-            <tr>
-              <th scope="row" class="pl-4">3</th>
-              <td>Shubham</td>
-              <td>yadavshubham2199@gmail.com</td>
-              <td>+91 8295796995</td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row" class="pl-4">3</th>
-              <td contenteditable="true"></td>
-              <td>arbazpathan11122@gmail.com</td>
-              <td>+91 6354725638</td>
-              <td> </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer border-top-none">
-        <button type="button" class="btn btn-purple-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-purple btn-purple-2">Confirm</button>
+        <div class="modal-footer border-top-none p-2rem">
+          <button type="button" class="btn btn-purple-light" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-purple btn-purple-2">Confirm</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button class="btn btn-primary" data-toggle="modal" data-target="#publishPagetableModel">Table Modal</button>
+
+
+  <div class="modal fade" id="publishPagetableModel" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body p-0" style="overflow: scroll">
+          <table class="table publish-modal-table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" class="pl-4">S. No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email I'd</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">+ Add Field</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="pl-4">1</th>
+                <td contenteditable="true">Shubham</td>
+                <td contenteditable="true">yadavshubham2199@gmail.com</td>
+                <td contenteditable="true">+91 8295796995</td>
+                <td contenteditable="true"> </td>
+              </tr>
+              <tr>
+                <th scope="row" class="pl-4">2</th>
+                <td>Anjali</td>
+                <td>anjalisharma@gmail.com</td>
+                <td>+91 8295796995</td>
+                <td> </td>
+              </tr>
+              <tr>
+                <th scope="row" class="pl-4">3</th>
+                <td>Shubham</td>
+                <td>yadavshubham2199@gmail.com</td>
+                <td>+91 8295796995</td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="pl-4">3</th>
+                <td contenteditable="true"></td>
+                <td>arbazpathan11122@gmail.com</td>
+                <td>+91 6354725638</td>
+                <td> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer border-top-none">
+          <button type="button" class="btn btn-purple-light" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-purple btn-purple-2">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button class="btn btn-primary" data-toggle="modal"
+    data-target="#publishPagetableModel">Table Modal</button>

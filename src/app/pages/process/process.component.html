@@ -49,6 +49,11 @@
 </nav> -->
 
 <!-- <app-nav></app-nav> -->
+
+<div style="margin-top: 90px">
+  <app-nav></app-nav>
+</div>
+
 <div class="container-fluid">
   <div class="row mr-2 ml-2" style="margin-top: 110px">
     <div class="col-md-12">
@@ -147,28 +152,14 @@
 
       <div class="modal-footer border-top-none  p-5">
         <button class="btn btn-purple-light" data-dismiss="modal" type="button">Cancel</button>
-        <button class="btn btn-purple btn-purple-2" [disabled]="modelForm.invalid"
-        (click)="goToFoermEditor()" type="button">Create</button>
+        <button class="btn btn-purple btn-purple-2" [disabled]="modelForm.invalid" (click)="goToFoermEditor()"
+          type="button">Create</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
-    <button type="button" class="btn voiletBG" [disabled]="modelForm.invalid"
-      (click)="goToFoermEditor()">Create</button>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <button type="button" class="btn bg-light" data-dismiss="modal">Close</button>
+  <button type="button" class="btn voiletBG" [disabled]="modelForm.invalid" (click)="goToFoermEditor()">Create</button>
+</div>

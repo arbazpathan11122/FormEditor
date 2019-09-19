@@ -544,7 +544,7 @@ export class HomeComponent implements OnInit {
     console.log(i);
 
     this.showProperties = true;
-    this.selectedItem = item;
+    this.selectedItem = JSON.parse(JSON.stringify(item));
 
     setTimeout(() => {
 
