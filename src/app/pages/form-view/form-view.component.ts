@@ -279,7 +279,7 @@ export class FormViewComponent implements OnInit {
       } else {
         document.getElementById(item.name + j).style.color = 'black';
         if (item.selestedValidation == 'btn btn-light') {
-          document.getElementById(item.name + j).style.backgroundColor = '#f8f9fa';
+          document.getElementById(item.name + j).style.backgroundColor = 'var(--active-light-grey)';
 
         }
       }

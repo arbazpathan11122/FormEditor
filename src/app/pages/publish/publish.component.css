@@ -1,5 +1,5 @@
 .tastCard {
-    border: 2px solid #3bb4f2;
+    border: 2px solid var(--primary-color);
     margin-top: 50px;
     border-radius: 10px;
 }
@@ -8,9 +8,9 @@
     width: 94%;
     margin-left: 3%;
     margin-top: -28px;
-    background-color: #3bb4f2;
+    background-color: var(--primary-color);
     border-radius: 10px;
-    color: #ffffff;
+    color: var(--white-color);
 }
 .card-body{
     padding: 40px 15px;
@@ -20,12 +20,12 @@
     padding: .5rem 1.25rem;
 }
 .tastCard  .text-info{
-    color: #212529 !important;
+    color: var(--black-color) !important;
     font-size: 12px;
 }
 .userList {
     overflow: hidden;
-    height: 7vh;
+    height: 11vh;
 }
 .userlistimg{
     height: 40px;
@@ -54,14 +54,14 @@
     font-size: 18px;
     border:2px solid transparent;
     border-radius: 0px;
-    color: #8b8b8b;
+    color: var(--Font-light-color);
 }
 .modal-tab-menu li a:hover:active{
-    border-bottom:2px solid #7130ff;
+    border-bottom:2px solid var(--main-purple-color);
 }
 #publishPageModel .nav-pills .nav-link.active{
-    color: #7130ff !important;
-    border-bottom: 2px solid #7130ff;
+    color: var(--main-purple-color) !important;
+    border-bottom: 2px solid var(--main-purple-color);
 }
 .btn-publish{
     padding: 15px 25px !important;
@@ -83,26 +83,26 @@
 }
 .modaluserbox .text-info{
     overflow: hidden;
-    color: #212529 !important;
+    color: var(--black-color) !important;
     font-size: 12px;
 }
 
 .modalradiolable{
     font-size:19px;
-    color: #8b8b8b;
+    color: var(--Font-light-color);
     margin-bottom: 4px;
 }
 .modal-subheading{
-    color: #757575;
+    color: var(--lightgray-color);
     font-size: 15px;
 }
 .p-2rem{
     padding: 2rem;
 }
 .custom-control-input:checked~.custom-control-label::before {
-    color: #7130ff !important;
-    border: 2px solid #7130ff !important;
-    background-color: #7130ff !important;
+    color: var(--main-purple-color) !important;
+    border: 2px solid var(--main-purple-color) !important;
+    background-color: var(--main-purple-color) !important;
 }
 .table thead th {
     vertical-align: bottom;

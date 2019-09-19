@@ -2,7 +2,7 @@
 .navbar{
 	border-bottom: 2px solid #ddd !important;
 	z-index: 99999; 
-  background: #fff;
+  background: var(--white-color);
   display: flex;
 }
 .user-input .name-input{
@@ -16,7 +16,7 @@
     border-style:dashed;
     width: 100%;
     font-family: poppins,sans-serif;
-    color: #151948;
+    -color: #151948;
 }
 .user-input .name-input:focus{
 	outline: none;
@@ -109,7 +109,7 @@
 .file-name li i{
   margin-right: 5px;
   font-size:18px;
-  color:#000000;
+  color:var(--black-color);
 }
 
 
@@ -210,7 +210,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--dashborder-color);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -228,11 +228,11 @@
 }
 
 .required-part input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--primary-color);
 }
 
 .required-part input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--primary-color);
 }
 
 .required-part input:checked + .slider:before {
@@ -299,7 +299,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: var(--active-light-grey); 
 }
  
 /* Handle */
@@ -309,5 +309,5 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #ccc; 
+  background: var(--dashborder-color); 
 }
