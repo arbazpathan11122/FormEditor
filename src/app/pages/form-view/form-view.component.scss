@@ -22,7 +22,7 @@
         top: 50%;
         height: 1px;
         width: 100%;
-        background-color: #ccc;
+        background-color: var(--dashborder-color);
         z-index: -1;
         }
         .pro-button{
@@ -87,17 +87,17 @@ background-size: cover;
     left: 0;
     height: 21px;
     width: 21px;
-    background-color: #eee;
+    background-color: var(--active-light-grey);
   }
   
   /* On mouse-over, add a grey background color */
   .custom-check:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: var(--dashborder-color);
   }
   
   /* When the checkbox is checked, add a blue background */
   .custom-check input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: var(--primary-color);
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -153,18 +153,18 @@ background-size: cover;
     left: 0;
     height: 21px;
     width: 21px;
-    background-color: #eee;
+    background-color: var(--active-light-grey);
     border-radius: 50%;
   }
   
   /* On mouse-over, add a grey background color */
   .Custom-Radio-Buttons:hover input ~ .checkmark-dot {
-    background-color: #ccc;
+    background-color: var(--dashborder-color);
   }
   
   /* When the radio button is checked, add a blue background */
   .Custom-Radio-Buttons input:checked ~ .checkmark-dot {
-    background-color: #2196F3;
+    background-color: var(--primary-color);
   }
   
   /* Create the indicator (the dot/circle - hidden when not checked) */

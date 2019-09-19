@@ -8,14 +8,14 @@
   background: #f8f8f8;
 }
 .form-horizontal{
-    background-color: #fff;
+    background-color: var(--white-color);
     text-align: center;
     padding: 50px 50px 50px;
     box-shadow:0 1px 4px rgba(0, 0, 0, 0.1),;
 }
 .otp-input{
     border:none;
-    border-bottom:2px dashed #cccccc;
+    border-bottom:2px dashed var(--dashborder-color);
 }
 .or-seperator {
     margin-top: 32px;
@@ -23,7 +23,7 @@
     border-top: 1px solid #e0e0e0;
 }
 .or-seperator b {
-    color: #666;
+    color: var(--lightgray-color);
     padding: 0 8px;
     width: 30px;
     height: 30px;
@@ -43,9 +43,9 @@
     font-size: .875rem;
     font-weight: 400;
     line-height: 1.7rem;
-    color: #6c757d;
+    color: var(--lightgray-color);
     background-clip: padding-box;
-    border: 1px solid #cccccc;
+    border: 1px solid var(--dashborder-color);
     border-radius: .2rem;
 }
 .hint-text{

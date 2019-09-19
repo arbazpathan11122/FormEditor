@@ -27,8 +27,8 @@ export class ProcessComponent implements OnInit {
     },
     theme: {
       fontFamily: 'Poppins',
-      qestColor: '#000000',
-      ansColor: '#000000',
+      qestColor: 'var(--black-color)',
+      ansColor: 'var(--black-color)',
       bgColor: '000000',
       textColor: '000000',
       bannerImage: ''

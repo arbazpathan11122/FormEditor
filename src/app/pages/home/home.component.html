@@ -604,7 +604,7 @@
                             <div class="row" *ngIf="selectedItem?.formValidations">
                                 <div class="col-md-12 user-input mb-4">
                                     <label *ngIf="!selectedItem.validOption">Select Validation</label>
-                                    <select type='text' style="border-style: inset !important;border-color:#f1f1f1"
+                                    <select type='text' style="border-style: inset !important;"
                                         [(ngModel)]="selectedItem.validOption" (change)="changeSelectValidation($event)" class="name-input">
                                         <!-- value="" disabled selected -->
                                         <option [ngValue]="{}">No Validation</option>
@@ -621,7 +621,7 @@
                                         *ngIf="(isValidObject(selectedItem.validOption)&&  (selectedItem.fielType !=='file'))">
                                         <label class="mb-2"> Number </label>
 
-                                        <input style="border-style: inset !important;border-color:#f1f1f1"
+                                        <input style="border-style: inset !important;"
                                             class="name-input" min="0" type="number"
                                             [(ngModel)]="selectedItem.validOption.limit" aria-invalid="false">
                                     </div>
@@ -630,7 +630,7 @@
                                         *ngIf="(isValidObject(selectedItem.validOption) &&  (selectedItem.fielType =='file'))">
                                         <label class="mb-2"> Custom Error Message </label>
 
-                                        <input style="border-style: inset !important;border-color:#f1f1f1"
+                                        <input style="border-style: inset !important;"
                                             class="name-input" min="0" type="number"
                                             [(ngModel)]="selectedItem.validOption.size" aria-invalid="false">
                                     </div>
